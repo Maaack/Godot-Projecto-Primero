@@ -37,12 +37,12 @@ func is_in_world(position):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	character.target_node = station
-	character.target_nodes.append(station)
-	character.target_nodes.append(planet8)
+	pass
+#	character.target_node = station
+#	character.target_nodes.append(station)
+#	character.target_nodes.append(planet8)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time_since_last_spawn += delta
 	if time_since_last_spawn >= WHALE_SPAWN_DELAY:

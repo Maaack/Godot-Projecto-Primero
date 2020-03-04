@@ -16,8 +16,8 @@ var is_sas_thrusting_backward = false
 var is_sas_thrusting_right = false
 var is_sas_thrusting_left = false
 
-var target_node = null
-var target_nodes = []
+#var target_node = null
+#var target_nodes = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,7 +64,6 @@ func get_angle_to_target(target_node):
 func _physics_process(delta):
 	run_sas(self)
 	var additional_force_vector = Vector2(0.0, 0.0)
-	var additional_rotation = 0
 	if is_player_thrusting_forward:
 		additional_force_vector += Vector2(0,-5).rotated(rotation)
 	if is_player_thrusting_backward:
