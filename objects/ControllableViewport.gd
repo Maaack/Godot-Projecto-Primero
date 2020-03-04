@@ -5,12 +5,12 @@ const VIEW_TYPE_TRACKING = 0
 const VIEW_TYPE_FREE = 1
 const ZOOM_RATIO = 0.8
 const ZOOM_IN_MAX = 6
-const ZOOM_OUT_MAX = 15
+const ZOOM_OUT_MAX = 22
 
 onready var camera_2d = $ViewportContainer/Viewport/Camera2D
 onready var viewport = $ViewportContainer/Viewport
 var view_centered_on = null
-var view_zoom_level = 0
+var view_zoom_level = 3
 
 func _physics_process(delta):
 	if view_centered_on != null:
@@ -23,6 +23,8 @@ func set_world(world):
 func set_centered_on(target):
 	if target.position != null:
 		view_centered_on = target
+		var zoom_ratio = get_zoom_ratio()
+		camera_2d.set_zoom(Vector2(zoom_ratio, zoom_ratio))
 
 func get_zoom_ratio():
 	return pow(ZOOM_RATIO, view_zoom_level)
@@ -39,4 +41,4 @@ func _input(event):
 			elif view_zoom_level <= -(ZOOM_OUT_MAX):
 				view_zoom_level = -(ZOOM_OUT_MAX)
 			var zoom_ratio = get_zoom_ratio()
-			camera_2d.zoom = Vector2(zoom_ratio, zoom_ratio)
+			camera_2d.set_zoom(Vector2(zoom_ratio, zoom_ratio))

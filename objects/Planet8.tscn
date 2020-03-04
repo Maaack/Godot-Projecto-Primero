@@ -4,16 +4,18 @@
 [ext_resource path="res://objects/BasicTarget.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 1288.02
+radius = 25779.6
 
 [node name="Planet8" type="RigidBody2D"]
-mass = 53806.6
+position = Vector2( 0, -22.8486 )
+mass = 65535.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 20, 20 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -27,4 +29,4 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 10, 10 )
+zoom = Vector2( 180, 180 )

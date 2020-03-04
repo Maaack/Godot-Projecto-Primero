@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objects/BasicTarget.gd" type="Script" id=1]
+[ext_resource path="res://assets/originals/space_whale_black.png" type="Texture" id=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 925.343
+
+[node name="Space Whale" type="RigidBody2D"]
+position = Vector2( -1.36035, 3.87793 )
+mass = 1024.0
+physics_material_override = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 20, 20 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotating = true
+current = true
+zoom = Vector2( 20, 20 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, -54.7212 )
+scale = Vector2( 1.33763, 1.29486 )
+polygon = PoolVector2Array( -7245.12, -1671.03, -176.657, -1532.63, -95.2372, -1714.86, 81.173, -1721.87, 138.077, -1522.88, 7165.16, -1678.84, 488.274, -1280.3, 481.489, -397.149, -471.916, -400.948, -468.412, -1266.28 )
