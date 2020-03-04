@@ -51,34 +51,33 @@ func should_show_circular_viewport(circular_viewport, relative_position):
 	
 func is_position_on_screen(position:Vector2):
 	var screen_size = centered_container.get_size()
-	if position.x < -(screen_size.x/2):
+	var screen_x = screen_size.x/2
+	var screen_y = screen_size.y/2
+	if abs(position.x) > screen_x:
 		return false
-	if position.x > screen_size.x/2:
-		return false
-	if position.y < -(screen_size.y/2):
-		return false
-	if position.y > screen_size.y/2:
+	if abs(position.y) > screen_y:
 		return false
 	return true
 
-func clamped_position_to_screen(position:Vector2):
+func get_position_clamped_to_screen(position:Vector2):
 	var screen_size = centered_container.get_size()
+	var screen_x = screen_size.x/2
+	var screen_y = screen_size.y/2
+	var ratio_x = 1.0
+	var ratio_y = 1.0
 	var new_position = Vector2(position)
-	if new_position.x < -(screen_size.x/2):
-		new_position.x = -(screen_size.x/2)
-	if new_position.x > screen_size.x/2:
-		new_position.x = screen_size.x/2
-	if new_position.y < -(screen_size.y/2):
-		new_position.y = -(screen_size.y/2)
-	if new_position.y > screen_size.y/2:
-		new_position.y = screen_size.y/2
-	return new_position
+	if abs(new_position.x) > screen_x:
+		ratio_x = screen_x / abs(new_position.x) 
+	if abs(new_position.y) > screen_y:
+		ratio_y = screen_y / abs(new_position.y)
+	var ratio = min(ratio_x, ratio_y)
+	return new_position * ratio
 	
-func _physics_process(delta):
+func update_circular_viewports():
 	for target in view_targets:
 		var circular_viewport = view_targets[target]
 		var relative_screen_position = get_screen_position(target)
-		var final_screen_position = clamped_position_to_screen(relative_screen_position)
+		var final_screen_position = get_position_clamped_to_screen(relative_screen_position)
 		if should_show_circular_viewport(circular_viewport, relative_screen_position):
 			circular_viewport.show()
 			circular_viewport.set_position(final_screen_position)
@@ -89,4 +88,6 @@ func _physics_process(delta):
 				circular_viewport.set_is_pointing(true)
 		else:
 			circular_viewport.hide()
-#	arrow_2_hud.rotation = character.get_angle_to_target(planet8)
+	
+func _physics_process(_delta):
+	update_circular_viewports()
