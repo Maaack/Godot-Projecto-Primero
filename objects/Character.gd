@@ -4,6 +4,9 @@ extends RigidBody2D
 const FORWARD_THRUST_MAX = 10.0
 const SAS_ANGULAR_VELOCITY_ABS = 10
 const SAS_ANGULAR_VELOCITY_ABS_EMERGENCY = 50
+
+onready var camera_2d = $Camera2D
+
 var is_player_thrusting_forward = false
 var is_player_thrusting_backward = false
 var is_player_thrusting_right = false
@@ -19,10 +22,6 @@ var is_sas_thrusting_left = false
 #var target_node = null
 #var target_nodes = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-	
 func _input(event):
 	if event.is_action_pressed("ui_up"):
 		is_player_thrusting_forward = true
