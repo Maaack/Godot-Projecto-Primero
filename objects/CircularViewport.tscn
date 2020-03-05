@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://objects/CircularViewport.gd" type="Script" id=1]
+[ext_resource path="res://scripts/CircularViewport.gd" type="Script" id=1]
 [ext_resource path="res://assets/originals/circular_viewport_pointing.png" type="Texture" id=2]
-[ext_resource path="res://objects/shaders/CircularViewport.tres" type="Material" id=3]
+[ext_resource path="res://shaders/CircularViewport.tres" type="Material" id=3]
 [ext_resource path="res://assets/originals/circular_viewport.png" type="Texture" id=4]
+
 
 [node name="CircularViewport" type="Node2D"]
 script = ExtResource( 1 )

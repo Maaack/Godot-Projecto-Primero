@@ -1,7 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://objects/SpaceObjectRigidBody2D.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Asteroid.gd" type="Script" id=1]
 [ext_resource path="res://assets/kenney_spaceshooterextension/PNG/Sprites X2/Meteors/spaceMeteors_001.png" type="Texture" id=2]
+
+
+
 
 [sub_resource type="PhysicsMaterial" id=1]
 
