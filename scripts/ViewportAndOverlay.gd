@@ -10,12 +10,17 @@ var circular_viewport_scene = preload("res://objects/CircularViewport.tscn")
 var view_world = null
 var view_centered_on = null
 var view_centered_on_position = null
-var view_targets = {}
+var view_targets = []
+var viewport_target_dict = {}
+
 var colors = {
 	0: Color(1.0,1.0,1.0,1),
 	1: Color(1.0,0.5,0.5,1),
 	2: Color(0.5,1,0.5,1),
-	3: Color(0.5,0.5,1,1)
+	3: Color(0.5,0.5,1,1),
+	4: Color(0.75,0.5,0.75,1),
+	5: Color(0.75,0.75,0.5,1),
+	6: Color(0.5,0.75,0.75,1)
 }
 
 func set_world(world):
@@ -37,7 +42,8 @@ func add_target(target):
 	instance.set_centered_on(target)
 	var color_index = len(view_targets) % len(colors)
 	instance.set_color(colors[color_index])
-	view_targets[target] = instance
+	viewport_target_dict[instance] = target
+	view_targets.append(target)
 
 func get_screen_position(object:Node2D):
 	var relative_position = object.get_position() - view_centered_on.get_position()
@@ -74,8 +80,12 @@ func get_position_clamped_to_screen(position:Vector2):
 	return new_position * ratio
 	
 func update_circular_viewports():
-	for target in view_targets:
-		var circular_viewport = view_targets[target]
+	for circular_viewport in viewport_target_dict:
+		var target = viewport_target_dict[circular_viewport]
+		if target == null or !is_instance_valid(target):
+			viewport_target_dict[circular_viewport] = null
+			circular_viewport.hide()
+			continue
 		var relative_screen_position = get_screen_position(target)
 		var final_screen_position = get_position_clamped_to_screen(relative_screen_position)
 		if should_show_circular_viewport(circular_viewport, relative_screen_position):

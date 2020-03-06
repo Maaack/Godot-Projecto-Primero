@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objects/Space.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/FPSCounter.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=3]
 [ext_resource path="res://objects/ViewportAndOverlay.tscn" type="PackedScene" id=6]
 
@@ -14,17 +15,18 @@ __meta__ = {
 
 [node name="ViewportAndOverlay" parent="." instance=ExtResource( 6 )]
 
-[node name="Rotation" type="Label" parent="."]
+[node name="FPS" type="Label" parent="."]
 margin_left = 24.0
 margin_top = 552.0
 margin_right = 64.0
 margin_bottom = 566.0
-text = "Rotation: "
+text = "FPS: "
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Value" type="Label" parent="Rotation"]
+[node name="Value" type="Label" parent="FPS"]
 margin_left = 61.0
 margin_right = 101.0
 margin_bottom = 14.0
@@ -32,17 +34,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AngleTo" type="Label" parent="."]
+[node name="Asteroids" type="Label" parent="."]
 margin_left = 24.0
 margin_top = 576.0
 margin_right = 85.0
 margin_bottom = 590.0
-text = "Angle: "
+text = "Asteroids: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Value" type="Label" parent="AngleTo"]
+[node name="Value" type="Label" parent="Asteroids"]
 margin_left = 61.0
 margin_right = 101.0
 margin_bottom = 14.0

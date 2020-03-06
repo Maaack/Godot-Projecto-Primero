@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Ahab"
 run/main_scene="res://objects/Game.tscn"
+config/icon="res://icon.png"
 
 [physics]
 
