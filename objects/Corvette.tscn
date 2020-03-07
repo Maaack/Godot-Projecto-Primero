@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/originals/corvette.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Character.gd" type="Script" id=2]
+[ext_resource path="res://objects/BasicWeapon.tscn" type="PackedScene" id=3]
 
 [node name="Corvette" type="RigidBody2D"]
 can_sleep = false
 script = ExtResource( 2 )
 camera_scale = 0.2
+initial_weapon_paths = [ NodePath("FrontWeapon/BasicWeapon") ]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -23,6 +25,8 @@ __meta__ = {
 
 [node name="FrontWeapon" type="Node2D" parent="."]
 position = Vector2( 0, -40 )
+
+[node name="BasicWeapon" parent="FrontWeapon" instance=ExtResource( 3 )]
 
 [node name="ForwardEngine" type="Node2D" parent="."]
 position = Vector2( 0, 17.5 )

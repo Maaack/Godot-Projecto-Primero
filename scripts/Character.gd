@@ -11,6 +11,9 @@ onready var front_weapon = $FrontWeapon
 onready var space = get_parent()
 
 export var camera_scale = 1.0
+export(Array, NodePath) var initial_weapon_paths = []
+var weapons = []
+
 # Player Thrust Commands
 var is_player_thrusting_forward = false
 var is_player_thrusting_backward = false
@@ -33,6 +36,7 @@ var weapon_fire_rate_per_second = 8
 var weapon_tracer_time_delta = 0.0
 var weapon_tracer_rate_per_second = 1
 var weapon_bullet_impulse = 1000.0
+var weapon_bullet_self_destruct_timeout = 10.0
 
 var tracer_list = []
 
@@ -44,6 +48,7 @@ func _ready():
 	can_sleep = false
 	contact_monitor = true
 	contacts_reported = 1
+	init_weapons()
 
 func _physics_process(delta):
 	process_sas()
@@ -82,10 +87,24 @@ func _input(event):
 	elif event.is_action_released("ui_left"):
 		is_player_thrusting_left = false
 	if event.is_action_pressed("ui_select"):
-		is_player_firing_weapon = true
+		# is_player_firing_weapon = true
+		for weapon in weapons:
+			if weapon.has_method("trigger_weapon"):
+				weapon.trigger_weapon(true)
 	elif event.is_action_released("ui_select"):
-		is_player_firing_weapon = false
+#		is_player_firing_weapon = false
+		for weapon in weapons:
+			if weapon.has_method("trigger_weapon"):
+				weapon.trigger_weapon(false)
 	
+func init_weapons():
+	for weapon_path in initial_weapon_paths:
+		var weapon = get_node(weapon_path)
+		weapons.append(weapon)
+		weapon.set_all_owner(self)
+		weapon.set_world_space(space)
+		
+
 func reset_sas():
 	is_sas_thrusting_left = false
 	is_sas_thrusting_right = false
@@ -116,6 +135,7 @@ func spawn_bullet(is_tracer_round:bool):
 	instance.set_rotation(get_rotation())
 	instance.apply_central_impulse(final_bullet_impulse)
 	instance.set_legal_owner(self)
+	instance.set_self_destruct_timeout()
 	if (is_tracer_round):
 		add_tracer(instance)
 	apply_central_impulse(-final_bullet_impulse * ( instance.mass / mass ))
@@ -135,16 +155,19 @@ func get_tracer_list():
 	return tracer_list
 	
 func process_weapons(delta):
-	weapon_fire_time_delta += delta
-	weapon_tracer_time_delta += delta
-	if is_player_firing_weapon:
-		if weapon_fire_time_delta > (1.0 / weapon_fire_rate_per_second) :
-			var is_tracer_round = false
-			if weapon_tracer_time_delta > (1.0 / weapon_tracer_rate_per_second):
-				is_tracer_round = true
-				weapon_tracer_time_delta = 0.0
-			spawn_bullet(is_tracer_round)
-			weapon_fire_time_delta = 0.0
+	for weapon in weapons:
+		if weapon.has_method("process"):
+			weapon.process(delta)
+#	weapon_fire_time_delta += delta
+#	weapon_tracer_time_delta += delta
+#	if is_player_firing_weapon:
+#		if weapon_fire_time_delta > (1.0 / weapon_fire_rate_per_second) :
+#			var is_tracer_round = false
+#			if weapon_tracer_time_delta > (1.0 / weapon_tracer_rate_per_second):
+#				is_tracer_round = true
+#				weapon_tracer_time_delta = 0.0
+#			spawn_bullet(is_tracer_round)
+#			weapon_fire_time_delta = 0.0
 			
 func reward(amount:float):
 	money += amount
