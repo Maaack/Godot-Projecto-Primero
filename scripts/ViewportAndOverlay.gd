@@ -18,15 +18,21 @@ var tracer_tracker_target_dict = {}
 var target_tracer_tracker_dict = {}
 var target_color_index_dict = {}
 
-var colors = {
-	0: Color(1.0,1.0,1.0,1),
-	1: Color(1.0,0.5,0.5,1),
-	2: Color(0.5,1,0.5,1),
-	3: Color(0.5,0.5,1,1),
-	4: Color(0.75,0.5,0.75,1),
-	5: Color(0.75,0.75,0.5,1),
-	6: Color(0.5,0.75,0.75,1)
-}
+export var view_min_zoom_scale_for_overlay = Vector2(1.5625, 1.5625)
+export(Array, Color) var colors = [
+	Color( 0.705882, 0.705882, 0.705882, 1 ),
+	Color( 1, 0.5, 0.5, 1 ),
+	Color( 1, 0.717647, 0.227451, 1 ),
+	Color( 1, 0.952941, 0.239216, 1 ),
+	Color( 0.396078, 1, 0.309804, 1 ),
+	Color( 0.290196, 0.968627, 1, 1 ),
+	Color( 0.431373, 0.505882, 1, 1 ),
+	Color( 0.607843, 0.356863, 0.733333, 1 )
+]
+
+func _physics_process(_delta):
+	update_circular_viewports()
+	update_tracer_trackers()
 
 func set_world(world):
 	view_world = world
@@ -82,6 +88,9 @@ func should_show_circular_viewport(circular_viewport, relative_position):
 	if not is_position_on_screen(relative_position):
 		return true
 	return (circular_viewport.get_zoom() <= viewport.camera_2d.get_zoom())
+	
+func should_show_overlay_elements():
+	return (viewport.camera_2d.get_zoom() > view_min_zoom_scale_for_overlay)
 	
 func is_position_on_screen(position:Vector2):
 	var screen_size = centered_container.get_size()
@@ -140,7 +149,9 @@ func hide_all_tracer_trackers():
 		tracer_tracker.hide()
 
 func update_tracer_trackers():
-	if not is_instance_valid(view_ship) or not view_ship.has_method("get_tracer_list"):
+	if not should_show_overlay_elements() \
+	or not is_instance_valid(view_ship) \
+	or not view_ship.has_method("get_tracer_list"):
 		hide_all_tracer_trackers()
 		return
 	reset_tracer_trackers()
@@ -148,7 +159,3 @@ func update_tracer_trackers():
 	for tracer in tracer_list:
 		var tracer_tracker = get_tracer_tracker(tracer)
 		tracer_tracker.set_position(get_screen_position(tracer))
-
-func _physics_process(_delta):
-	update_circular_viewports()
-	update_tracer_trackers()
