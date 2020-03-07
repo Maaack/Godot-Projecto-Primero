@@ -6,12 +6,17 @@ onready var centered_container = $Overlay/MarginContainer/CenterContainer
 onready var centered_overlay = $Overlay/MarginContainer/CenterContainer/CenteredOverlay
 
 var circular_viewport_scene = preload("res://objects/CircularViewport.tscn")
+var tracker_tracer_scene = preload("res://objects/TracerTracker.tscn")
 
 var view_world = null
 var view_centered_on = null
 var view_centered_on_position = null
+var view_ship = null
 var view_targets = []
 var viewport_target_dict = {}
+var tracer_tracker_target_dict = {}
+var target_tracer_tracker_dict = {}
+var target_color_index_dict = {}
 
 var colors = {
 	0: Color(1.0,1.0,1.0,1),
@@ -30,6 +35,7 @@ func set_world(world):
 func set_centered_on(target):
 	if target.get_position() != null:
 		view_centered_on = target
+		view_ship = target
 		viewport.set_centered_on(target)
 
 func set_centered_on_position(position):
@@ -40,10 +46,32 @@ func add_target(target):
 	centered_overlay.add_child(instance)
 	instance.set_world(view_world)
 	instance.set_centered_on(target)
-	var color_index = len(view_targets) % len(colors)
+	var color_index = view_targets.size() % colors.size()
+	target_color_index_dict[target] = color_index
 	instance.set_color(colors[color_index])
 	viewport_target_dict[instance] = target
 	view_targets.append(target)
+	return instance
+	
+func get_tracer_tracker(target):
+	var instance = null
+	if target_tracer_tracker_dict.has(target):
+		return target_tracer_tracker_dict[target]
+	reset_tracer_trackers()
+	for tracer_tracker in tracer_tracker_target_dict:
+		var current_target = tracer_tracker_target_dict[tracer_tracker]
+		if current_target == null:
+			instance = tracer_tracker
+			break
+	if instance == null:
+		instance = tracker_tracer_scene.instance()
+		centered_overlay.add_child(instance)
+		var color_index = tracer_tracker_target_dict.size() % colors.size()
+		instance.set_color(colors[color_index])
+	instance.show()
+	tracer_tracker_target_dict[instance] = target
+	target_tracer_tracker_dict[target] = instance
+	return instance
 
 func get_screen_position(object:Node2D):
 	var relative_position = object.get_position() - view_centered_on.get_position()
@@ -99,5 +127,28 @@ func update_circular_viewports():
 		else:
 			circular_viewport.hide()
 	
+func reset_tracer_trackers():
+	for tracer_tracker in tracer_tracker_target_dict:
+		var target = tracer_tracker_target_dict[tracer_tracker]
+		if not is_instance_valid(target):
+			target_tracer_tracker_dict.erase(target)
+			tracer_tracker_target_dict[tracer_tracker] = null
+			tracer_tracker.hide()
+			
+func hide_all_tracer_trackers():
+	for tracer_tracker in tracer_tracker_target_dict:
+		tracer_tracker.hide()
+
+func update_tracer_trackers():
+	if not is_instance_valid(view_ship) or not view_ship.has_method("get_tracer_list"):
+		hide_all_tracer_trackers()
+		return
+	reset_tracer_trackers()
+	var tracer_list = view_ship.get_tracer_list()
+	for tracer in tracer_list:
+		var tracer_tracker = get_tracer_tracker(tracer)
+		tracer_tracker.set_position(get_screen_position(tracer))
+
 func _physics_process(_delta):
 	update_circular_viewports()
+	update_tracer_trackers()

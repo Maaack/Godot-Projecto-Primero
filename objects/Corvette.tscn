@@ -25,8 +25,8 @@ rotating = true
 current = true
 zoom = Vector2( 0.2, 0.2 )
 
-[node name="BulletSpawn" type="Node2D" parent="."]
-position = Vector2( 0.157784, -34.2214 )
+[node name="FrontWeapon" type="Node2D" parent="."]
+position = Vector2( 0, -40 )
 
 [node name="ForwardEngine" type="Node2D" parent="."]
 position = Vector2( 0, 17.5 )
