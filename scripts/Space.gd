@@ -17,7 +17,7 @@ onready var planet8 = $Planet8
 onready var space_whale = $SpaceWhale
 
 var time_since_last_spawn = 1250.0
-var asteroid_preload = preload("res://objects/Meteor.tscn")
+var asteroid_preload = preload("res://objects/Asteroid.tscn")
 var asteroid_counter = 0
 
 
