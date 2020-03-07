@@ -16,8 +16,11 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-linear_delta_limit = 50.0
-angular_delta_limit = 50.0
+camera_scale = 20.0
+linear_delta_limit = 100.0
+angular_delta_limit = 100.0
+health = 100000.0
+prize = 100000.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 20, 20 )
@@ -31,11 +34,6 @@ shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="Camera2D" type="Camera2D" parent="."]
-rotating = true
-current = true
-zoom = Vector2( 20, 20 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0, -54.7212 )

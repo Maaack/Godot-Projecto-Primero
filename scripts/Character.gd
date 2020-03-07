@@ -6,11 +6,11 @@ const REVERSE_THRUST_MAX = 3.0
 const SAS_ANGULAR_VELOCITY_ABS = 10
 const SAS_ANGULAR_VELOCITY_ABS_EMERGENCY = 50
 
-onready var camera_2d = $Camera2D
 onready var forward_engine = $ForwardEngine
 onready var front_weapon = $FrontWeapon
 onready var space = get_parent()
 
+export var camera_scale = 1.0
 # Player Thrust Commands
 var is_player_thrusting_forward = false
 var is_player_thrusting_backward = false
@@ -35,6 +35,10 @@ var weapon_tracer_rate_per_second = 1
 var weapon_bullet_impulse = 1000.0
 
 var tracer_list = []
+
+# Currency
+export var money = 0.0
+
 
 func _ready():
 	can_sleep = false
@@ -111,6 +115,7 @@ func spawn_bullet(is_tracer_round:bool):
 	instance.set_linear_velocity(get_linear_velocity())
 	instance.set_rotation(get_rotation())
 	instance.apply_central_impulse(final_bullet_impulse)
+	instance.set_legal_owner(self)
 	if (is_tracer_round):
 		add_tracer(instance)
 	apply_central_impulse(-final_bullet_impulse * ( instance.mass / mass ))
@@ -140,3 +145,6 @@ func process_weapons(delta):
 				weapon_tracer_time_delta = 0.0
 			spawn_bullet(is_tracer_round)
 			weapon_fire_time_delta = 0.0
+			
+func reward(amount:float):
+	money += amount

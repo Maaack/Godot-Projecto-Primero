@@ -4,6 +4,7 @@ onready var world_viewport = $WorldViewportContainer/WorldViewport
 onready var space = $WorldViewportContainer/WorldViewport/Space
 onready var viewport_and_overlay = $ViewportAndOverlay
 onready var asteroid_counter = $Asteroids/Value
+onready var money_counter = $Money/Value
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,5 +17,6 @@ func _ready():
 	viewport_and_overlay.add_target(space.space_whale)
 	viewport_and_overlay.set_centered_on(space.character)
 
-func _process(delta):
+func _process(_delta):
 	asteroid_counter.set_text(str(space.asteroid_counter))
+	money_counter.set_text(str(space.character.money))

@@ -22,7 +22,7 @@ func set_is_pointing(flag):
 func get_is_pointing():
 	return is_pointing
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if view_centered_on != null and is_instance_valid(view_centered_on):
 		camera_2d.set_position(view_centered_on.get_position())
 		camera_2d.set_rotation(view_centered_on.get_rotation())
@@ -31,9 +31,10 @@ func set_world(world):
 	viewport.set_world_2d(world)
 	
 func get_zoom():
-	if view_centered_on.camera_2d != null:
-		return view_centered_on.camera_2d.get_zoom() * SCALE_MOD
-	return Vector2(1.0, 1.0)
+	var final_zoom = Vector2(1.0, 1.0)
+	if view_centered_on.camera_scale != null:
+		final_zoom *= view_centered_on.camera_scale
+	return final_zoom * SCALE_MOD
 
 func set_centered_on(target):
 	if target.get_position() != null:

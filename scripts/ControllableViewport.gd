@@ -12,7 +12,7 @@ onready var viewport = $ViewportContainer/Viewport
 var view_centered_on = null
 var view_zoom_level = 3
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if view_centered_on != null and is_instance_valid(view_centered_on):
 		camera_2d.set_position(view_centered_on.get_position())
 		camera_2d.set_rotation(view_centered_on.get_rotation())

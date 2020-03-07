@@ -6,6 +6,7 @@
 [node name="Corvette" type="RigidBody2D"]
 can_sleep = false
 script = ExtResource( 2 )
+camera_scale = 0.2
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -19,11 +20,6 @@ polygon = PoolVector2Array( 0.237946, -30.5279, 30.9737, 29.6495, -0.0855865, 16
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="Camera2D" type="Camera2D" parent="."]
-rotating = true
-current = true
-zoom = Vector2( 0.2, 0.2 )
 
 [node name="FrontWeapon" type="Node2D" parent="."]
 position = Vector2( 0, -40 )

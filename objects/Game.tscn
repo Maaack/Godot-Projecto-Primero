@@ -27,8 +27,8 @@ __meta__ = {
 }
 
 [node name="Value" type="Label" parent="FPS"]
-margin_left = 61.0
-margin_right = 101.0
+margin_left = 66.0
+margin_right = 106.0
 margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,8 +45,23 @@ __meta__ = {
 }
 
 [node name="Value" type="Label" parent="Asteroids"]
-margin_left = 61.0
-margin_right = 101.0
+margin_left = 66.0
+margin_right = 106.0
+margin_bottom = 14.0
+
+[node name="Money" type="Label" parent="."]
+margin_left = 905.94
+margin_top = 573.563
+margin_right = 966.94
+margin_bottom = 587.563
+text = "Money:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Money"]
+margin_left = 66.0
+margin_right = 106.0
 margin_bottom = 14.0
 
 [node name="WorldViewportContainer" type="ViewportContainer" parent="."]

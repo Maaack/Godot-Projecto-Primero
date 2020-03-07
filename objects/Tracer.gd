@@ -5,7 +5,7 @@ onready var space = get_parent()
 var attached_to = null
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if attached_to == null or not is_instance_valid(attached_to):
 		remove_self()
 		return
