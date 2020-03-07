@@ -16,10 +16,12 @@ __meta__ = {
 [node name="ViewportAndOverlay" parent="." instance=ExtResource( 6 )]
 
 [node name="FPS" type="Label" parent="."]
-margin_left = 24.0
-margin_top = 552.0
-margin_right = 64.0
-margin_bottom = 566.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 30.3252
+margin_top = -48.0
+margin_right = 70.3252
+margin_bottom = -34.0
 text = "FPS: "
 script = ExtResource( 2 )
 __meta__ = {
@@ -35,10 +37,12 @@ __meta__ = {
 }
 
 [node name="Asteroids" type="Label" parent="."]
-margin_left = 24.0
-margin_top = 576.0
-margin_right = 85.0
-margin_bottom = 590.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = -28.0
+margin_right = 96.8561
+margin_bottom = -14.0
 text = "Asteroids: "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,10 +54,14 @@ margin_right = 106.0
 margin_bottom = 14.0
 
 [node name="Money" type="Label" parent="."]
-margin_left = 905.94
-margin_top = 573.563
-margin_right = 966.94
-margin_bottom = 587.563
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -116.094
+margin_top = -28.8898
+margin_right = -55.0938
+margin_bottom = -14.8898
 text = "Money:"
 __meta__ = {
 "_edit_use_anchors_": false
