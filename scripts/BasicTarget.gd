@@ -1,6 +1,4 @@
-extends RigidBody2D
-
-onready var space = get_parent()
+extends "res://scripts/WorldSpace/RigidBody2D.gd"
 
 export var camera_scale = 1.0
 export var linear_delta_limit = 25.0
@@ -14,13 +12,9 @@ var last_linear_velocity = null
 var last_angular_velocity = null
 
 var last_damaged_by = null
-
-func _process(delta):
-	time_since_spawn += delta
-	if not space.is_in_world(position):
-		remove_self()
 		
-func _physics_process(_delta):
+func _physics_process(delta):
+	time_since_spawn += delta
 	process_physical_limitations()
 	last_linear_velocity = get_linear_velocity()
 	last_angular_velocity = get_angular_velocity()
@@ -32,10 +26,10 @@ func can_remove():
 
 func remove_self():
 	if can_remove():
-		space.remove_object_path(get_parent(), get_path())
+		queue_free()
 
-func within_game_space():
-	return space.is_in_world(get_position())
+func within_world_space():
+	return get_world_space().is_position_in_world_space(get_position_in_world_space())
 
 func within_linear_velocity_delta():
 	if last_linear_velocity == null:
@@ -55,7 +49,7 @@ func has_health():
 func process_physical_limitations():
 	if not within_linear_velocity_delta() \
 	or not within_angular_velocity_delta() \
-	or not within_game_space() \
+	or not within_world_space() \
 	or not has_health():
 		remove_self()
 		
