@@ -13,14 +13,10 @@ var physics_owner = null setget set_physics_owner
 var bullet_scene = preload("res://objects/Bullet.tscn")
 var tracer_scene = preload("res://objects/Tracer.tscn")
 
-var is_weapon_triggered = false
+var is_weapon_triggered_continuous = false
+var is_weapon_triggered_once = false
 var fire_time_delta = 0.0
 var tracer_time_delta = 0.0
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func set_legal_owner(object:Node2D):
 	if is_instance_valid(object):
@@ -30,7 +26,7 @@ func set_tracer_list_owner(object:Node2D):
 	if is_instance_valid(object):
 		tracer_list_owner = object
 		
-func set_physics_owner(object:Node2D):
+func set_physics_owner(object:RigidBody2D):
 	if is_instance_valid(object):
 		physics_owner = object
 		
@@ -40,37 +36,63 @@ func set_all_owner(object:Node2D):
 		set_tracer_list_owner(object)
 		set_physics_owner(object)
 
-func trigger_weapon(trigger:bool):
-	is_weapon_triggered = trigger
+func trigger_weapon(trigger_once = false):
+	if not trigger_once:
+		is_weapon_triggered_continuous = true
+	is_weapon_triggered_once = true	
 
+func untrigger_weapon():
+	is_weapon_triggered_continuous = false
+	is_weapon_triggered_once = false
+
+func reset_trigger():
+	fire_time_delta = 0.0
+	is_weapon_triggered_once = is_weapon_triggered_continuous
+	
+func reset_tracer_trigger():
+	tracer_time_delta = 0.0
+	
 func add_tracer(object:Node2D):
 	var instance = tracer_scene.instance()
 	get_world_space().add_child(instance)
 	instance.set_attached_to(object)
 	tracer_list_owner.get_tracer_list().append(instance)
 	
-func spawn_bullet(is_tracer_round:bool):
-	var instance = bullet_scene.instance()
-	var final_bullet_impulse = Vector2(0,-1).rotated(get_rotation_in_world_space()) * initial_bullet_impulse
-	get_world_space().add_child(instance)
-	instance.set_position(get_position_in_world_space())
-	instance.set_linear_velocity(physics_owner.get_linear_velocity())
-	instance.set_rotation(get_rotation_in_world_space())
-	instance.apply_central_impulse(final_bullet_impulse)
-	instance.set_legal_owner(legal_owner)
+func shoot_bullet(is_tracer_round:bool):
+	var instance = spawn_bullet()
 	instance.set_self_destruct_timeout(bullet_self_destruct_timeout)
+	instance.set_legal_owner(legal_owner)
+	push_bullet(instance)
+	reset_trigger()
 	if (is_tracer_round):
 		add_tracer(instance)
-	legal_owner.apply_central_impulse(-final_bullet_impulse * ( instance.mass / physics_owner.mass ))
+		reset_tracer_trigger()
+	
+func spawn_bullet():
+	var instance = bullet_scene.instance()
+	get_world_space().add_child(instance)
+	instance.set_position(get_position_in_world_space())
+	instance.set_rotation(get_rotation_in_world_space())
+	instance.set_linear_velocity(physics_owner.get_linear_velocity())
+	return instance
+	
+func push_bullet(instance:RigidBody2D):
+	var bullet_impulse = Vector2(0,-1).rotated(get_rotation_in_world_space()) * initial_bullet_impulse
+	instance.apply_central_impulse(bullet_impulse)
+	push_back_physics_owner(bullet_impulse, instance)
+	
+func push_back_physics_owner(bullet_impulse:Vector2, instance:RigidBody2D):
+	var impulse_offset = get_position_in_ancestor(physics_owner).rotated(get_rotation_in_world_space())
+	var owner_impulse = -bullet_impulse * ( instance.get_mass() / physics_owner.get_mass() )
+	physics_owner.apply_impulse(impulse_offset, owner_impulse)
 	
 func process(delta):
 	fire_time_delta += delta
 	tracer_time_delta += delta
-	if is_weapon_triggered:
+	if is_weapon_triggered_once:
 		if fire_time_delta > (1.0 / fire_rate_per_second) :
 			var is_tracer_round = false
 			if tracer_time_delta > (1.0 / tracer_rate_per_second):
 				is_tracer_round = true
 				tracer_time_delta = 0.0
-			spawn_bullet(is_tracer_round)
-			fire_time_delta = 0.0
+			shoot_bullet(is_tracer_round)

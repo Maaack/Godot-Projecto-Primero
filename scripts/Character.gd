@@ -6,19 +6,23 @@ const REVERSE_THRUST_MAX = 3.0
 const SAS_ANGULAR_VELOCITY_ABS = 10
 const SAS_ANGULAR_VELOCITY_ABS_EMERGENCY = 50
 
+const FIRE_GROUP_MODE_ALL = 0
+const FIRE_GROUP_MODE_CYCLE = 1
 onready var forward_engine = $ForwardEngine
-onready var front_weapon = $FrontWeapon
 onready var space = get_parent()
 
 export var camera_scale = 1.0
 export(Array, NodePath) var initial_weapon_paths = []
 var weapons = []
+var next_weapon_index = 0
+var fire_group_mode = FIRE_GROUP_MODE_ALL
 
 # Player Thrust Commands
 var is_player_thrusting_forward = false
 var is_player_thrusting_backward = false
 var is_player_thrusting_right = false
 var is_player_thrusting_left = false
+var is_player_firing = false
 
 # Stability Augmentation System (SAS)
 var is_sas_enabled = true
@@ -26,7 +30,6 @@ var is_sas_thrusting_forward = false
 var is_sas_thrusting_backward = false
 var is_sas_thrusting_right = false
 var is_sas_thrusting_left = false
-
 
 var tracer_list = []
 
@@ -42,6 +45,7 @@ func _ready():
 
 func _physics_process(delta):
 	process_sas()
+	process_weapon_groups()
 	process_weapons(delta)
 	
 func _integrate_forces(state):
@@ -58,7 +62,6 @@ func _integrate_forces(state):
 		state.apply_impulse(Vector2(0,1).rotated(rotation), Vector2(2,0).rotated(rotation))
 		state.apply_impulse(Vector2(0,-1).rotated(rotation), Vector2(-2,0).rotated(rotation))
 		
-	
 func _input(event):
 	if event.is_action_pressed("ui_up"):
 		is_player_thrusting_forward = true
@@ -77,22 +80,23 @@ func _input(event):
 	elif event.is_action_released("ui_left"):
 		is_player_thrusting_left = false
 	if event.is_action_pressed("ui_select"):
-		# is_player_firing_weapon = true
-		for weapon in weapons:
-			if weapon.has_method("trigger_weapon"):
-				weapon.trigger_weapon(true)
+		is_player_firing = true
 	elif event.is_action_released("ui_select"):
-#		is_player_firing_weapon = false
+		is_player_firing = false
 		for weapon in weapons:
-			if weapon.has_method("trigger_weapon"):
-				weapon.trigger_weapon(false)
+			if weapon.has_method("untrigger_weapon"):
+				weapon.untrigger_weapon()
 	
 func init_weapons():
 	for weapon_path in initial_weapon_paths:
 		var weapon = get_node(weapon_path)
 		weapons.append(weapon)
 		weapon.set_all_owner(self)
+	if next_weapon_index > weapons.size():
+		next_weapon_index = 0
 		
+func cycle_weapon():
+	next_weapon_index = (next_weapon_index + 1) % weapons.size()
 
 func reset_sas():
 	is_sas_thrusting_left = false
@@ -122,6 +126,18 @@ func get_tracer_list():
 	tracer_list = new_tracer_list
 	return tracer_list
 	
+func process_weapon_groups():
+	if is_player_firing:
+		if fire_group_mode == FIRE_GROUP_MODE_ALL:
+			for weapon in weapons:
+				if weapon.has_method("trigger_weapon"):
+					weapon.trigger_weapon()
+		elif fire_group_mode == FIRE_GROUP_MODE_CYCLE:
+			var weapon = weapons[next_weapon_index]
+			if weapon != null and weapon.has_method("trigger_weapon"):
+				weapon.trigger_weapon(true)
+			cycle_weapon()
+
 func process_weapons(delta):
 	for weapon in weapons:
 		if weapon.has_method("process"):

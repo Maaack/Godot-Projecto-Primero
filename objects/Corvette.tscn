@@ -9,7 +9,7 @@
 can_sleep = false
 script = ExtResource( 2 )
 camera_scale = 0.2
-initial_weapon_paths = [ NodePath("FrontWeapon/BasicWeapon") ]
+initial_weapon_paths = [ NodePath("FrontWeapon1/BasicWeapon"), NodePath("FrontWeapon2/BasicWeapon2") ]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -24,11 +24,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="FrontWeapon" type="Node2D" parent="."]
-position = Vector2( 0, -40 )
+[node name="FrontWeapon1" type="Node2D" parent="."]
+position = Vector2( -8, -40 )
 script = ExtResource( 4 )
 
-[node name="BasicWeapon" parent="FrontWeapon" instance=ExtResource( 3 )]
+[node name="BasicWeapon" parent="FrontWeapon1" instance=ExtResource( 3 )]
+
+[node name="FrontWeapon2" type="Node2D" parent="."]
+position = Vector2( 8, -40 )
+script = ExtResource( 4 )
+
+[node name="BasicWeapon2" parent="FrontWeapon2" instance=ExtResource( 3 )]
 
 [node name="ForwardEngine" type="Node2D" parent="."]
 position = Vector2( 0, 17.5 )
