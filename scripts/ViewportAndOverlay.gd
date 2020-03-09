@@ -62,7 +62,9 @@ func add_target(target):
 func get_tracer_tracker(target):
 	var instance = null
 	if target_tracer_tracker_dict.has(target):
-		return target_tracer_tracker_dict[target]
+		instance = target_tracer_tracker_dict[target]
+		instance.show()
+		return instance
 	reset_tracer_trackers()
 	for tracer_tracker in tracer_tracker_target_dict:
 		var current_target = tracer_tracker_target_dict[tracer_tracker]
