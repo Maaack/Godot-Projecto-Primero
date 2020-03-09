@@ -54,9 +54,10 @@ func process_physical_limitations():
 		remove_self()
 		
 func damage(amount:float, from:Node2D):
+	var had_health = has_health()
 	health -= amount
 	last_damaged_by = from
-	if health < 0.0:
+	if not has_health() and had_health:
 		if last_damaged_by.has_method("reward"):
 			last_damaged_by.reward(prize)
 		remove_self()
