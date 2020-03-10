@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objects/Component/ProjectileWeapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/Component/ConfigurableTriggerSystem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/Component/Weapon.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Component/SimpleMount.gd" type="Script" id=4]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="TriggerSystemMount" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="ConfigurableTriggerSystem" parent="TriggerSystemMount" instance=ExtResource( 2 )]
+trigger_setting = 1
+initial_trigger_output_paths = [ NodePath("../../ProjectileSystemMount") ]
+
+[node name="ProjectileSystemMount" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="ProjectileWeapon" parent="ProjectileSystemMount" instance=ExtResource( 1 )]
+fire_rate_per_second = 4

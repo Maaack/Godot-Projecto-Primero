@@ -6,18 +6,16 @@ const REVERSE_THRUST_MAX = 3.0
 const SAS_ANGULAR_VELOCITY_ABS = 10
 const SAS_ANGULAR_VELOCITY_ABS_EMERGENCY = 50
 
-const FIRE_GROUP_MODE_ALL = 0
-const FIRE_GROUP_MODE_CYCLE = 1
 onready var forward_engine = $ForwardEngine
 onready var space = get_parent()
 
 export var camera_scale = 1.0
-export(Array, NodePath) var initial_weapon_paths = []
-var weapons = []
-var next_weapon_index = 0
-var fire_group_mode = FIRE_GROUP_MODE_ALL
 
-onready var weapon_system = $WeaponsSystem
+onready var weapons_system = $WeaponsSystem
+onready var weapon_mounts = [
+	$FrontLeftHardpoint,
+	$FrontRightHardpoint
+]
 
 # Player Thrust Commands
 var is_player_thrusting_forward = false
@@ -46,6 +44,9 @@ func _ready():
 
 func _physics_process(delta):
 	process_sas()
+	weapons_system.process(delta)
+	for weapon_mount in weapon_mounts:
+		weapon_mount.process(delta)
 
 	
 func _integrate_forces(state):
@@ -81,10 +82,10 @@ func _input(event):
 		is_player_thrusting_left = false
 	if event.is_action_pressed("ui_select"):
 		is_player_firing = true
-		weapon_system.trigger_on()
+		weapons_system.trigger_on()
 	elif event.is_action_released("ui_select"):
 		is_player_firing = false
-		weapon_system.trigger_off()
+		weapons_system.trigger_off()
 
 func reset_sas():
 	is_sas_thrusting_left = false
@@ -116,3 +117,6 @@ func get_tracer_list():
 
 func reward(amount:float):
 	money += amount
+
+func get_physical_owner():
+	return self

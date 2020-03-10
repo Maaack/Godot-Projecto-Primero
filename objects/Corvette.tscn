@@ -2,15 +2,14 @@
 
 [ext_resource path="res://assets/originals/corvette.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Character.gd" type="Script" id=2]
-[ext_resource path="res://objects/BasicWeapon.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/WorldSpace/Node2D.gd" type="Script" id=4]
+[ext_resource path="res://objects/Component/Weapon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Component/SimpleMount.gd" type="Script" id=4]
 [ext_resource path="res://objects/Component/WeaponsSystem.tscn" type="PackedScene" id=5]
 
 [node name="Corvette" type="RigidBody2D"]
 can_sleep = false
 script = ExtResource( 2 )
 camera_scale = 0.2
-initial_weapon_paths = [ NodePath("FrontWeapon1/BasicWeapon"), NodePath("FrontWeapon2/BasicWeapon2") ]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -29,16 +28,16 @@ __meta__ = {
 position = Vector2( -8, -40 )
 script = ExtResource( 4 )
 
-[node name="BasicWeapon" parent="FrontLeftHardpoint" instance=ExtResource( 3 )]
+[node name="Weapon" parent="FrontLeftHardpoint" instance=ExtResource( 3 )]
 
 [node name="FrontRightHardpoint" type="Node2D" parent="."]
 position = Vector2( 8, -40 )
 script = ExtResource( 4 )
 
-[node name="BasicWeapon" parent="FrontRightHardpoint" instance=ExtResource( 3 )]
+[node name="Weapon" parent="FrontRightHardpoint" instance=ExtResource( 3 )]
 
 [node name="ForwardEngine" type="Node2D" parent="."]
 position = Vector2( 0, 17.5 )
 
 [node name="WeaponsSystem" parent="." instance=ExtResource( 5 )]
-initial_weapon_paths = [ NodePath("../FrontLeftHardpoint/BasicWeapon"), NodePath("../FrontRightHardpoint/BasicWeapon") ]
+initial_weapon_paths = [ NodePath("../FrontLeftHardpoint"), NodePath("../FrontRightHardpoint") ]
