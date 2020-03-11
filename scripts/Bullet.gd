@@ -1,5 +1,7 @@
 extends "res://scripts/BasicTarget.gd"
 
+
+const BASE_ORIENTATION = PI/2
 export(float) var self_destruct_timeout = 20.0
 var physical_owner = null setget set_physical_owner, get_physical_owner
 
