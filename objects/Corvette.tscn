@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/originals/corvette.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Character.gd" type="Script" id=2]
@@ -7,8 +7,13 @@
 [ext_resource path="res://objects/Component/WeaponsSystem.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/Component/WeaponHardpoint.gd" type="Script" id=6]
 [ext_resource path="res://objects/Component/TracerLoadingSystem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/Component/4GroupEnginesMount.gd" type="Script" id=8]
+[ext_resource path="res://objects/Component/FourGroupEngineSystem.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/Component/GenericEngine.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scripts/Component/GenericEngineMount.gd" type="Script" id=11]
 
 [node name="Corvette" type="RigidBody2D"]
+mass = 5.0
 can_sleep = false
 script = ExtResource( 2 )
 camera_scale = 0.2
@@ -29,20 +34,75 @@ __meta__ = {
 [node name="FrontLeftHardpoint" type="Node2D" parent="."]
 position = Vector2( -8, -40 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Weapon" parent="FrontLeftHardpoint" instance=ExtResource( 3 )]
 
 [node name="FrontRightHardpoint" type="Node2D" parent="."]
 position = Vector2( 8, -40 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Weapon" parent="FrontRightHardpoint" instance=ExtResource( 3 )]
 
-[node name="ForwardEngine" type="Node2D" parent="."]
-position = Vector2( 0, 17.5 )
+[node name="ForwardCenterEngineMount" type="Node2D" parent="."]
+position = Vector2( 0, 24 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GenericEngine" parent="ForwardCenterEngineMount" instance=ExtResource( 10 )]
+
+[node name="ForwardLeftEngineMount" type="Node2D" parent="."]
+position = Vector2( -24, 32 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GenericEngine" parent="ForwardLeftEngineMount" instance=ExtResource( 10 )]
+position = Vector2( 0, 3.8147e-06 )
+
+[node name="ForwardRightEngineMount" type="Node2D" parent="."]
+position = Vector2( 24, 32 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GenericEngine" parent="ForwardRightEngineMount" instance=ExtResource( 10 )]
+
+[node name="ReverseLeftEngineMount" type="Node2D" parent="."]
+position = Vector2( -24, 8 )
+rotation = 3.14159
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GenericEngine" parent="ReverseLeftEngineMount" instance=ExtResource( 10 )]
+
+[node name="ReverseRightEngineMount" type="Node2D" parent="."]
+position = Vector2( 24, 8 )
+rotation = 3.14159
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GenericEngine" parent="ReverseRightEngineMount" instance=ExtResource( 10 )]
 
 [node name="WeaponsSystemMount" type="Node2D" parent="."]
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 initial_output_mounts = [ NodePath("../FrontLeftHardpoint"), NodePath("../FrontRightHardpoint") ]
 
 [node name="WeaponsSystem" parent="WeaponsSystemMount" instance=ExtResource( 5 )]
@@ -50,9 +110,26 @@ initial_tracer_loader_path = NodePath("../../TracerLoadingMount")
 
 [node name="TracerLoadingMount" type="Node2D" parent="."]
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 initial_output_mounts = [ NodePath("../FrontLeftHardpoint"), NodePath("../FrontRightHardpoint") ]
 
 [node name="TracerLoadingSystem" parent="TracerLoadingMount" instance=ExtResource( 7 )]
 custom_munition = {
 "is_tracer_round": true
 }
+
+[node name="FourGroupEnginesMount" type="Node2D" parent="."]
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+initial_forward_engine_paths = [ NodePath("../ForwardCenterEngineMount"), NodePath("../ForwardLeftEngineMount"), NodePath("../ForwardRightEngineMount") ]
+initial_reverse_engine_paths = [ NodePath("../ReverseLeftEngineMount"), NodePath("../ReverseRightEngineMount") ]
+initial_right_spin_engine_paths = [ NodePath("../ForwardLeftEngineMount"), NodePath("../ReverseRightEngineMount") ]
+initial_left_spin_engine_paths = [ NodePath("../ForwardRightEngineMount"), NodePath("../ReverseLeftEngineMount") ]
+
+[node name="FourGroupEngineSystem" parent="FourGroupEnginesMount" instance=ExtResource( 9 )]

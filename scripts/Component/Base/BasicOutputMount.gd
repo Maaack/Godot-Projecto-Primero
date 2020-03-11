@@ -7,7 +7,9 @@ var output_mounts = []
 
 func _ready():
 	for output_path in initial_output_mounts:
-		output_mounts.append(get_node(output_path))
+		var output_mount_node = get_node(output_path)
+		if is_instance_valid(output_mount_node):
+			output_mounts.append(output_mount_node)
 	link_mounted_outputs()
 
 func link_mounted_outputs():

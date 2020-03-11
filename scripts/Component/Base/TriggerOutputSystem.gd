@@ -39,7 +39,7 @@ func set_trigger_once(value = true):
 	if trigger_setting == TriggerSettingEnum.CONFIGURABLE:
 		trigger_once = value
 
-func set_trigger_contiunous(value = true):
+func set_trigger_continuous(value = true):
 	set_trigger_once(!value)
 
 func reset_trigger():
