@@ -1,14 +1,12 @@
 extends "res://scripts/Component/Base/CyclingOutputSystem.gd"
 	
 	
-const FIRE_GROUP_MODE_ALL = 0
-const FIRE_GROUP_MODE_CYCLE = 1
+export(NodePath) var initial_tracer_loader_path = null
+enum FireGroupSettingEnum {ALL, CYCLE}
+export(FireGroupSettingEnum) var fire_group_setting
 
 onready var timer_trigger = $TimerTriggerMount
-
-export(NodePath) var initial_tracer_loader_path = null
 var tracer_loader_node = null
-var fire_group_mode = FIRE_GROUP_MODE_ALL
 var is_triggered = false
 onready var all_owner = get_parent()
 
@@ -34,11 +32,11 @@ func process_weapon_groups(delta):
 	var weapons = get_all_weapons()
 	if is_triggered:
 		timer_trigger.process(delta)
-		if fire_group_mode == FIRE_GROUP_MODE_ALL:
+		if fire_group_setting == FireGroupSettingEnum.ALL:
 			for weapon in weapons:
 				if weapon.has_method("trigger_on"):
 					weapon.trigger_on()
-		elif fire_group_mode == FIRE_GROUP_MODE_CYCLE:
+		elif fire_group_setting == FireGroupSettingEnum.CYCLE:
 			var weapon = get_current_weapon()
 			if weapon != null and weapon.has_method("trigger_off"):
 				weapon.trigger_on()
