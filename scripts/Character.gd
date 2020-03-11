@@ -11,7 +11,7 @@ onready var space = get_parent()
 
 export var camera_scale = 1.0
 
-onready var weapons_system = $WeaponsSystem
+onready var weapons_system = $WeaponsSystemMount
 onready var weapon_mounts = [
 	$FrontLeftHardpoint,
 	$FrontRightHardpoint

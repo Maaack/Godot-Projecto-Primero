@@ -1,8 +1,6 @@
-extends "res://scripts/WorldSpace/Node2D.gd"
+extends "res://scripts/Component/Base/BasicSystem.gd"
 
 
-export var fire_rate_per_second = 8
-export var tracer_rate_per_second = 1
 export var initial_bullet_impulse = 1000.0
 export var bullet_self_destruct_timeout = 10.0
 
@@ -12,8 +10,8 @@ var tracer_list_owner = null setget set_tracer_list_owner
 var bullet_scene = preload("res://objects/Bullet.tscn")
 var tracer_scene = preload("res://objects/Tracer.tscn")
 
+var loaded_munition = null
 var fire_time_delta = 0.0
-var tracer_time_delta = 0.0
 var is_triggered = false
 
 func set_legal_owner(object:Node2D):
@@ -34,28 +32,32 @@ func trigger_on():
 	
 func trigger_off():
 	is_triggered = false
-
-func reset_bullet_trigger():
-	fire_time_delta = 0.0
 	
-func reset_tracer_trigger():
-	tracer_time_delta = 0.0
+func is_munition_loaded():
+	return loaded_munition != null
+	
+func load_munition(settings_dict = {}):
+	if loaded_munition == null:
+		loaded_munition = settings_dict
+		return true
+	return false
+		
+func fire_munition():
+	if loaded_munition != null:
+		var instance = spawn_bullet()
+		instance.set_self_destruct_timeout(bullet_self_destruct_timeout)
+		instance.set_physical_owner(get_physical_owner())
+		if (loaded_munition.has('is_tracer_round')):
+			add_tracer(instance)
+		loaded_munition = null
+		fire_time_delta = 0.0
+		return instance
 	
 func add_tracer(object:Node2D):
 	var instance = tracer_scene.instance()
 	get_world_space().add_child(instance)
 	instance.set_attached_to(object)
 	get_physical_owner().get_tracer_list().append(instance)
-	
-func shoot_bullet(is_tracer_round:bool):
-	var instance = spawn_bullet()
-	instance.set_self_destruct_timeout(bullet_self_destruct_timeout)
-	instance.set_physical_owner(get_physical_owner())
-	push_bullet(instance)
-	reset_bullet_trigger()
-	if (is_tracer_round):
-		add_tracer(instance)
-		reset_tracer_trigger()
 	
 func spawn_bullet():
 	var instance = bullet_scene.instance()
@@ -78,14 +80,6 @@ func push_back_physical_owner(bullet_impulse:Vector2, instance:RigidBody2D):
 	
 func process(delta):
 	fire_time_delta += delta
-	tracer_time_delta += delta
-	if is_triggered:
-		if fire_time_delta > (1.0 / fire_rate_per_second) :
-			var is_tracer_round = false
-			if tracer_time_delta > (1.0 / tracer_rate_per_second):
-				is_tracer_round = true
-				tracer_time_delta = 0.0
-			shoot_bullet(is_tracer_round)
-
-func get_physical_owner():
-	return get_parent().get_physical_owner()
+	if is_triggered and is_munition_loaded():
+		var munition = fire_munition()
+		push_bullet(munition)

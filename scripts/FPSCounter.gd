@@ -1,5 +1,6 @@
 extends Label
 
+
 onready var value_label = $Value
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

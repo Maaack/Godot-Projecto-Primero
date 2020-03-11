@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/originals/corvette.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Character.gd" type="Script" id=2]
 [ext_resource path="res://objects/Component/Weapon.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/Component/SimpleMount.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Component/Base/TriggerOutputMount.gd" type="Script" id=4]
 [ext_resource path="res://objects/Component/WeaponsSystem.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Component/WeaponHardpoint.gd" type="Script" id=6]
+[ext_resource path="res://objects/Component/TracerLoadingSystem.tscn" type="PackedScene" id=7]
 
 [node name="Corvette" type="RigidBody2D"]
 can_sleep = false
@@ -26,18 +28,31 @@ __meta__ = {
 
 [node name="FrontLeftHardpoint" type="Node2D" parent="."]
 position = Vector2( -8, -40 )
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 
 [node name="Weapon" parent="FrontLeftHardpoint" instance=ExtResource( 3 )]
 
 [node name="FrontRightHardpoint" type="Node2D" parent="."]
 position = Vector2( 8, -40 )
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 
 [node name="Weapon" parent="FrontRightHardpoint" instance=ExtResource( 3 )]
 
 [node name="ForwardEngine" type="Node2D" parent="."]
 position = Vector2( 0, 17.5 )
 
-[node name="WeaponsSystem" parent="." instance=ExtResource( 5 )]
-initial_weapon_paths = [ NodePath("../FrontLeftHardpoint"), NodePath("../FrontRightHardpoint") ]
+[node name="WeaponsSystemMount" type="Node2D" parent="."]
+script = ExtResource( 4 )
+initial_output_mounts = [ NodePath("../FrontLeftHardpoint"), NodePath("../FrontRightHardpoint") ]
+
+[node name="WeaponsSystem" parent="WeaponsSystemMount" instance=ExtResource( 5 )]
+initial_tracer_loader_path = NodePath("../../TracerLoadingMount")
+
+[node name="TracerLoadingMount" type="Node2D" parent="."]
+script = ExtResource( 4 )
+initial_output_mounts = [ NodePath("../FrontLeftHardpoint"), NodePath("../FrontRightHardpoint") ]
+
+[node name="TracerLoadingSystem" parent="TracerLoadingMount" instance=ExtResource( 7 )]
+custom_munition = {
+"is_tracer_round": true
+}

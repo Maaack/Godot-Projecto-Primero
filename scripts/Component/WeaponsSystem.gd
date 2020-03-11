@@ -1,36 +1,45 @@
-extends "res://scripts/WorldSpace/Node2D.gd"
+extends "res://scripts/Component/Base/CyclingOutputSystem.gd"
 	
 	
 const FIRE_GROUP_MODE_ALL = 0
 const FIRE_GROUP_MODE_CYCLE = 1
 
-export(Array, NodePath) var initial_weapon_paths = []
-var weapons = []
-var next_weapon_index = 0
+onready var timer_trigger = $TimerTriggerMount
+
+export(NodePath) var initial_tracer_loader_path = null
+var tracer_loader_node = null
 var fire_group_mode = FIRE_GROUP_MODE_ALL
 var is_triggered = false
 onready var all_owner = get_parent()
 
 func _ready():
-	for weapon_path in initial_weapon_paths:
-		var weapon = get_node(weapon_path)
-		add_weapon(weapon)
-		
+	if initial_tracer_loader_path != null:
+		tracer_loader_node = get_node(initial_tracer_loader_path)
+		timer_trigger.set_output_nodes(tracer_loader_node)
+
 func process(delta):
-	process_weapon_groups()
+	process_weapon_groups(delta)
 	process_weapons(delta)
 	
 func cycle_weapon():
-	next_weapon_index = (next_weapon_index + 1) % weapons.size()
-	
-func process_weapon_groups():
+	cycle_output_node()
+
+func get_all_weapons():
+	return get_output_nodes()
+
+func get_current_weapon():
+	return get_current_output_node()
+
+func process_weapon_groups(delta):
+	var weapons = get_all_weapons()
 	if is_triggered:
+		timer_trigger.process(delta)
 		if fire_group_mode == FIRE_GROUP_MODE_ALL:
 			for weapon in weapons:
 				if weapon.has_method("trigger_on"):
 					weapon.trigger_on()
 		elif fire_group_mode == FIRE_GROUP_MODE_CYCLE:
-			var weapon = weapons[next_weapon_index]
+			var weapon = get_current_weapon()
 			if weapon != null and weapon.has_method("trigger_off"):
 				weapon.trigger_on()
 			cycle_weapon()
@@ -38,32 +47,16 @@ func process_weapon_groups():
 		for weapon in weapons:
 			if weapon.has_method("trigger_off"):
 				weapon.trigger_off()
-				
+
 func process_weapons(delta):
+	var weapons = get_all_weapons()
 	for weapon in weapons:
 		if weapon.has_method("process"):
 			weapon.process(delta)
-			
+
 func trigger_on():
 	is_triggered = true
-	
+
 func trigger_off():
 	is_triggered = false
-	
-func add_weapon(weapon:Node2D):
-	if not weapons.has(weapon):
-		weapons.append(weapon)
-	
-func remove_weapon(weapon:Node2D):
-	if weapons.has(weapon):
-		var index = weapons.find(weapon)
-		weapons.remove(index)
 
-func reset_weapons():
-	var new_weapons = []
-	for weapon in weapons:
-		if is_instance_valid(weapon):
-			new_weapons.append(weapon)
-	weapons = new_weapons
-	if next_weapon_index > weapons.size():
-		next_weapon_index = 0
