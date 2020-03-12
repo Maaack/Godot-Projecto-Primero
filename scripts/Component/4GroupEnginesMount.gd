@@ -45,23 +45,23 @@ func link_mounted_outputs():
 
 func process_engines(delta):
 	if is_mounted() and mounted_system.has_method("process_engines"):
-		return mounted_system.process_engines()
+		return mounted_system.process_engines(delta)
 
 func set_forward_engines(engines):
 	if is_mounted() and mounted_system.has_method("set_forward_engines"):
-		return mounted_system.set_forward_engines()
+		return mounted_system.set_forward_engines(engines)
 
 func set_reverse_engines(engines):
 	if is_mounted() and mounted_system.has_method("set_reverse_engines"):
-		return mounted_system.set_reverse_engines()
+		return mounted_system.set_reverse_engines(engines)
 
 func set_right_spin_engines(engines):
 	if is_mounted() and mounted_system.has_method("set_right_spin_engines"):
-		return mounted_system.set_right_spin_engines()
+		return mounted_system.set_right_spin_engines(engines)
 
 func set_left_spin_engines(engines):
 	if is_mounted() and mounted_system.has_method("set_left_spin_engines"):
-		return mounted_system.set_left_spin_engines()
+		return mounted_system.set_left_spin_engines(engines)
 
 func trigger_forward_on():
 	if is_mounted() and mounted_system.has_method("trigger_forward_on"):
