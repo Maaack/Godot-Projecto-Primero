@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/originals/corvette.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Character.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://objects/Component/FourGroupEngineSystem.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/Component/GenericEngine.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scripts/Component/GenericEngineMount.gd" type="Script" id=11]
+[ext_resource path="res://objects/Component/SmallEngine.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/Component/MiniEngine.tscn" type="PackedScene" id=13]
 
 [node name="Corvette" type="RigidBody2D"]
 mass = 5.0
@@ -65,8 +67,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="GenericEngine" parent="ForwardLeftEngineMount" instance=ExtResource( 10 )]
-position = Vector2( 0, 3.8147e-06 )
+[node name="SmallEngine" parent="ForwardLeftEngineMount" instance=ExtResource( 12 )]
 
 [node name="ForwardRightEngineMount" type="Node2D" parent="."]
 position = Vector2( 24, 32 )
@@ -75,7 +76,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="GenericEngine" parent="ForwardRightEngineMount" instance=ExtResource( 10 )]
+[node name="SmallEngine" parent="ForwardRightEngineMount" instance=ExtResource( 12 )]
 
 [node name="ReverseLeftEngineMount" type="Node2D" parent="."]
 position = Vector2( -24, 8 )
@@ -85,7 +86,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="GenericEngine" parent="ReverseLeftEngineMount" instance=ExtResource( 10 )]
+[node name="MiniEngine" parent="ReverseLeftEngineMount" instance=ExtResource( 13 )]
 
 [node name="ReverseRightEngineMount" type="Node2D" parent="."]
 position = Vector2( 24, 8 )
@@ -95,7 +96,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="GenericEngine" parent="ReverseRightEngineMount" instance=ExtResource( 10 )]
+[node name="MiniEngine" parent="ReverseRightEngineMount" instance=ExtResource( 13 )]
 
 [node name="WeaponsSystemMount" type="Node2D" parent="."]
 script = ExtResource( 4 )
