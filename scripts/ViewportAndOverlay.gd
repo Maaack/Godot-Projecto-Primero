@@ -8,7 +8,7 @@ onready var centered_overlay = $Overlay/MarginContainer/CenterContainer/Centered
 var circular_viewport_scene = preload("res://objects/CircularViewport.tscn")
 var tracker_tracer_scene = preload("res://objects/TracerTracker.tscn")
 
-var view_world = null
+var view_scene_instance = null
 var view_centered_on = null
 var view_centered_on_position = null
 var view_ship = null
@@ -34,10 +34,10 @@ func _physics_process(_delta):
 	update_circular_viewports()
 	update_tracer_trackers()
 
-func set_world(world):
-	view_world = world
-	viewport.set_world(world)
-	
+func attach_scene_instance(scene_instance):
+	view_scene_instance = scene_instance
+	viewport.attach_scene_instance(scene_instance)
+
 func set_centered_on(target):
 	if target.get_position() != null:
 		view_centered_on = target
@@ -50,7 +50,7 @@ func set_centered_on_position(position):
 func add_target(target):
 	var instance = circular_viewport_scene.instance()
 	centered_overlay.add_child(instance)
-	instance.set_world(view_world)
+	instance.set_world(view_scene_instance.get_world_2d())
 	instance.set_centered_on(target)
 	var color_index = view_targets.size() % colors.size()
 	target_color_index_dict[target] = color_index

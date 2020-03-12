@@ -17,6 +17,10 @@ func _physics_process(_delta):
 		camera_2d.set_position(view_centered_on.get_position())
 		camera_2d.set_rotation(view_centered_on.get_rotation())
 
+func attach_scene_instance(scene_instance):
+	viewport.add_child(scene_instance)
+	return viewport.get_world_2d()
+
 func set_world(world):
 	viewport.set_world_2d(world)
 	
