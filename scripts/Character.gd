@@ -43,13 +43,11 @@ var tracer_list = []
 export var money = 0.0
 
 func _physics_process(delta):
-#	process_sas()
 	weapons_system.process(delta)
 	for weapon_mount in weapon_mounts:
 		weapon_mount.process(delta)
 	engine_system.process(delta)
 
-	
 func _integrate_forces(state):
 	for engine_mount in engine_mounts:
 		engine_mount.integrate_forces(state)
@@ -76,26 +74,9 @@ func _input(event):
 	elif event.is_action_released("ui_select"):
 		weapons_system.trigger_off()
 
-#func reset_sas():
-#	is_sas_thrusting_left = false
-#	is_sas_thrusting_right = false
-#
-#func process_sas():
-#	reset_sas()
-#	var recommend_thrust_right = false
-#	var recommend_thrust_left = false
-#	if angular_velocity > 0.0:
-#		recommend_thrust_left = true
-#	if angular_velocity < 0.0:
-#		recommend_thrust_right = true
-#	if is_sas_enabled:
-#		if not is_player_thrusting_left and not is_player_thrusting_right:
-#			is_sas_thrusting_right = recommend_thrust_right
-#			is_sas_thrusting_left = recommend_thrust_left
-
 func get_angle_to_target(target_node):
 	return get_angle_to(target_node.position)
-	
+
 func get_tracer_list():
 	var new_tracer_list = []
 	for tracer in tracer_list:
