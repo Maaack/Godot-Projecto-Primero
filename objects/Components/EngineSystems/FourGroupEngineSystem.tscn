@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://objects/Components/TriggerMultiOutputsSystem.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/Component/4GroupEnginesSystem.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Component/FourGroupEnginesSystem.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Component/Base/TriggerOutputMount.gd" type="Script" id=3]
+
 
 [node name="FourGroupEngineSystem" type="Node2D"]
 script = ExtResource( 2 )

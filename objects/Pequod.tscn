@@ -8,7 +8,7 @@
 [ext_resource path="res://scripts/Component/WeaponHardpoint.gd" type="Script" id=6]
 [ext_resource path="res://objects/Components/WeaponSystems/TracerLoadingSystem.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/Components/EngineSystems/ThreeGroupEngineSystem.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scripts/Pequod.gd" type="Script" id=9]
+[ext_resource path="res://scripts/Component/Base/Ownable/CombatShip.gd" type="Script" id=9]
 [ext_resource path="res://objects/Components/Engines/BFEngine.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scripts/Component/GenericEngineMount.gd" type="Script" id=11]
 [ext_resource path="res://objects/Components/Engines/SmallEngine.tscn" type="PackedScene" id=12]
@@ -27,6 +27,10 @@ mass = 20.0102
 can_sleep = false
 script = ExtResource( 9 )
 camera_scale = 0.6
+initial_engines_system_mount_path = NodePath("ThreeGroupEnginesMount")
+initial_engine_mount_paths = [ NodePath("ForwardCenterEngineMount"), NodePath("FrontLeftEngineMount"), NodePath("FrontRightEngineMount"), NodePath("BackLeftEngineMount"), NodePath("BackRightEngineMount") ]
+initial_weapons_system_mount_path = NodePath("WeaponsSystemMount")
+initial_weapon_mount_paths = [ NodePath("FrontCenterHardpoint") ]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -54,7 +58,7 @@ position = Vector2( 0, -24 )
 shape = SubResource( 3 )
 
 [node name="FrontCenterHardpoint" type="Node2D" parent="."]
-position = Vector2( 0, -128 )
+position = Vector2( 0, -136 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true

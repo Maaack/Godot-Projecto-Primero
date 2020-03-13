@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/originals/corvette.png" type="Texture" id=1]
-[ext_resource path="res://scripts/Corvette.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Component/Base/Ownable/CombatShip.gd" type="Script" id=2]
 [ext_resource path="res://objects/Components/Weapons/Weapon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/Component/Base/TriggerOutputMount.gd" type="Script" id=4]
 [ext_resource path="res://objects/Components/WeaponSystems/WeaponsSystem.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/Component/WeaponHardpoint.gd" type="Script" id=6]
 [ext_resource path="res://objects/Components/WeaponSystems/TracerLoadingSystem.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scripts/Component/4GroupEnginesMount.gd" type="Script" id=8]
+[ext_resource path="res://scripts/Component/FourGroupEnginesMount.gd" type="Script" id=8]
 [ext_resource path="res://objects/Components/EngineSystems/FourGroupEngineSystem.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/Components/Engines/GenericEngine.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scripts/Component/GenericEngineMount.gd" type="Script" id=11]
@@ -20,6 +20,10 @@ mass = 5.0
 can_sleep = false
 script = ExtResource( 2 )
 camera_scale = 0.2
+initial_engines_system_mount_path = NodePath("FourGroupEnginesMount")
+initial_engine_mount_paths = [ NodePath("ForwardCenterEngineMount"), NodePath("ForwardLeftEngineMount"), NodePath("ForwardRightEngineMount"), NodePath("ReverseLeftEngineMount"), NodePath("ReverseRightEngineMount") ]
+initial_weapons_system_mount_path = NodePath("WeaponsSystemMount")
+initial_weapon_mount_paths = [ NodePath("FrontLeftHardpoint"), NodePath("FrontRightHardpoint") ]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

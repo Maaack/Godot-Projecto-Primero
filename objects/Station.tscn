@@ -13,17 +13,12 @@ angular_delta_limit = 50.0
 prize = -10000.0
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1.19209e-07, 4.76837e-07 )
+position = Vector2( 0, 145 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 388, 324, 160, 308 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 145 )
 scale = Vector2( 4, 4 )
 polygon = PoolVector2Array( 8, 8, 8, -40, 24, -40, 32, -64, 32, -72, 24, -72, 16, -80, 8, -88, 0, -88, -8, -88, -16, -80, -24, -72, -32, -72, -32, -64, -24, -40, -8, -40, -8, 8, -8, 56, 0, 88, 8, 56 )
-__meta__ = {
-"_edit_lock_": true
-}
