@@ -22,9 +22,10 @@ func cycle_rounds():
 	next_munition = default_munition
 	
 func process(delta):
-	reload_time_delta += delta
+	var chamber = get_current_chamber()
+	if chamber.is_empty():
+		reload_time_delta += delta
 	if reload_time_delta > (1.0 / reload_rate_per_second):
-		var chamber = get_current_chamber()
 		if chamber != null and chamber.has_method("load_munition"):
 			var loaded = chamber.load_munition(next_munition)
 			if loaded:

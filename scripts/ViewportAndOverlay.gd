@@ -11,7 +11,7 @@ var tracker_tracer_scene = preload("res://objects/TracerTracker.tscn")
 var view_scene_instance = null
 var view_centered_on = null
 var view_centered_on_position = null
-var view_ship = null
+var view_target = null
 var view_targets = []
 var viewport_target_dict = {}
 var tracer_tracker_target_dict = {}
@@ -34,14 +34,14 @@ func _physics_process(_delta):
 	update_circular_viewports()
 	update_tracer_trackers()
 
-func attach_scene_instance(scene_instance):
+func set_scene_instance(scene_instance):
 	view_scene_instance = scene_instance
-	viewport.attach_scene_instance(scene_instance)
+	viewport.set_scene_instance(scene_instance)
 
 func set_centered_on(target):
 	if target.get_position() != null:
 		view_centered_on = target
-		view_ship = target
+		view_target = target
 		viewport.set_centered_on(target)
 
 func set_centered_on_position(position):
@@ -151,13 +151,18 @@ func hide_all_tracer_trackers():
 		tracer_tracker.hide()
 
 func update_tracer_trackers():
+	var ship_node
+	if is_instance_valid(view_target):
+		ship_node = view_target.ship_node
+	else:
+		hide_all_tracer_trackers()
+		return
 	if not should_show_overlay_elements() \
-	or not is_instance_valid(view_ship) \
-	or not view_ship.has_method("get_tracer_list"):
+	or not ship_node.has_method("get_tracer_list"):
 		hide_all_tracer_trackers()
 		return
 	reset_tracer_trackers()
-	var tracer_list = view_ship.get_tracer_list()
+	var tracer_list = ship_node.get_tracer_list()
 	for tracer in tracer_list:
 		var tracer_tracker = get_tracer_tracker(tracer)
 		tracer_tracker.set_position(get_screen_position(tracer))

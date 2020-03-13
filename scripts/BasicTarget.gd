@@ -1,4 +1,4 @@
-extends "res://scripts/WorldSpace/RigidBody2D.gd"
+extends "res://scripts/Component/Base/Ownable/RigidBody2D.gd"
 
 export var camera_scale = 1.0
 export var linear_delta_limit = 25.0

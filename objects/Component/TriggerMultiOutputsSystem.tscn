@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://scripts/Component/Base/QuickTriggerOutputSystem.gd" type="Script" id=1]
-
-[node name="TriggerMultiOutputsSystem" type="Node2D"]
-script = ExtResource( 1 )
-output_count_setting = 1

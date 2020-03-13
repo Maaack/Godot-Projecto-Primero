@@ -1,4 +1,4 @@
-extends "res://scripts/Component/Base/BasicSystem.gd"
+extends "res://scripts/Component/Base/Ownable/Node2D.gd"
 
 
 onready var trigger_system_mount = $TriggerOutputMount

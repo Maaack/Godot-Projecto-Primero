@@ -1,7 +1,8 @@
 extends "res://scripts/WorldSpace/WorldSpace.gd"
 
-onready var character = $Corvette
+onready var character = $Character
 onready var corvette = $Corvette
+onready var simple_rocket = $SimpleRocket
 onready var pequod = $Pequod
 onready var station = $Station
 onready var planet8 = $Planet8
@@ -35,7 +36,3 @@ func _process(delta):
 			instance.set_position(get_random_position_in_world_space())
 			instance.set_axis_velocity(get_random_space_whale_start_velocity())
 			asteroid_counter += 1
-
-func remove_object_path(parent_node, object_path):
-	parent_node.get_node(object_path).queue_free()
-	

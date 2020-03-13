@@ -23,3 +23,6 @@ func get_rotation_in_ancestor(node:Node2D):
 	elif get_parent().has_method("get_rotation_in_ancestor"):
 		return get_parent().get_rotation_in_ancestor(node) + get_rotation()
 	return 0.0
+
+func get_angle_to_target(node:Node2D):
+	return get_angle_to(node.position)

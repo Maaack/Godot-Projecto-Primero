@@ -16,8 +16,8 @@ func update_pos_and_rot():
 	set_rotation(attached_to.get_rotation())
 
 func remove_self():
-	space.remove_object_path(get_parent(), get_path())
-	
+	queue_free()
+
 func set_attached_to(target):
 	if is_instance_valid(target) and target.get_position() != null:
 		attached_to = target

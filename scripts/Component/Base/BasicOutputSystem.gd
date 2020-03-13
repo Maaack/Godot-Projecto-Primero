@@ -1,4 +1,5 @@
-extends "res://scripts/Component/Base/BasicSystem.gd"
+extends "res://scripts/Component/Base/Ownable/Node2D.gd"
+
 
 enum OutputCountSettingEnum {LIMITED, UNLIMITED}
 export(OutputCountSettingEnum) var output_count_setting

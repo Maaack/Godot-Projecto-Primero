@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://objects/Corvette.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Space.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://objects/Planet8.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/Pequod.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/originals/background_1.png" type="Texture" id=7]
+[ext_resource path="res://objects/SimpleRocket.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/Character.tscn" type="PackedScene" id=9]
 
 [node name="Space" type="Node2D"]
 script = ExtResource( 2 )
@@ -38,3 +40,9 @@ position = Vector2( 63193, 18083.9 )
 
 [node name="SpaceWhale" parent="." instance=ExtResource( 4 )]
 position = Vector2( -66666, 66600 )
+
+[node name="SimpleRocket" parent="." instance=ExtResource( 8 )]
+position = Vector2( -248, 0 )
+
+[node name="Character" parent="." instance=ExtResource( 9 )]
+initial_ship_path = NodePath("../SimpleRocket")

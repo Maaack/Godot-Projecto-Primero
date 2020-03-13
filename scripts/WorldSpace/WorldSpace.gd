@@ -39,7 +39,6 @@ func get_random_position_in_world_space():
 	var start_position_y = rand_range(top_left_corner.y, bottom_right_corner.y)
 	return Vector2(start_position_x, start_position_y)
 
-
 func is_position_in_world_space(a_position:Vector2):
 	var top_left_corner = get_top_left_corner()
 	var bottom_right_corner = get_bottom_right_corner()
@@ -53,6 +52,3 @@ func is_position_in_world_space(a_position:Vector2):
 		return false
 	return true
 
-func remove_object_path(parent_node, object_path):
-	parent_node.get_node(object_path).queue_free()
-	

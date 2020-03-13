@@ -1,4 +1,4 @@
-extends "res://scripts/Component/Base/BasicSystem.gd"
+extends "res://scripts/Component/Base/Ownable/Node2D.gd"
 
 
 var mounted_system = null
