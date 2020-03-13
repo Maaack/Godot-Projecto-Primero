@@ -1,24 +1,148 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/originals/pequod_v2.png" type="Texture" id=1]
-[ext_resource path="res://scripts/BasicTarget.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Component/ThreeGroupEngineMount.gd" type="Script" id=2]
+[ext_resource path="res://objects/Components/Weapons/Weapon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Component/Base/TriggerOutputMount.gd" type="Script" id=4]
+[ext_resource path="res://objects/Components/WeaponSystems/WeaponsSystem.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Component/WeaponHardpoint.gd" type="Script" id=6]
+[ext_resource path="res://objects/Components/WeaponSystems/TracerLoadingSystem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/Components/EngineSystems/ThreeGroupEngineSystem.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/Pequod.gd" type="Script" id=9]
+[ext_resource path="res://objects/Components/Engines/BFEngine.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scripts/Component/GenericEngineMount.gd" type="Script" id=11]
+[ext_resource path="res://objects/Components/Engines/SmallEngine.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.2045, 125.749 )
+extents = Vector2( 32, 24 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 44 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 24, 16 )
 
 [node name="Pequod" type="RigidBody2D"]
-script = ExtResource( 2 )
-camera_scale = 0.5
-linear_delta_limit = 40.0
-angular_delta_limit = 40.0
-health = 30.0
-prize = -500.0
+mass = 20.0102
+can_sleep = false
+script = ExtResource( 9 )
+camera_scale = 0.6
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+region_rect = Rect2( 388, 324, 160, 308 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -32, 40, -16, 64, -16, 88, -8, 96, -8, 128, 8, 128, 8, 96, 16, 88, 16, 64, 32, 40 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 16 )
 shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -84 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -24 )
+shape = SubResource( 3 )
+
+[node name="FrontCenterHardpoint" type="Node2D" parent="."]
+position = Vector2( 0, -128 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Weapon" parent="FrontCenterHardpoint" instance=ExtResource( 3 )]
+
+[node name="ForwardCenterEngineMount" type="Node2D" parent="."]
+position = Vector2( 0, 128 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BFEngine" parent="ForwardCenterEngineMount" instance=ExtResource( 10 )]
+
+[node name="FrontLeftEngineMount" type="Node2D" parent="."]
+position = Vector2( -8, -96 )
+rotation = 1.5708
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SmallEngine" parent="FrontLeftEngineMount" instance=ExtResource( 12 )]
+
+[node name="FrontRightEngineMount" type="Node2D" parent="."]
+position = Vector2( 8, -96 )
+rotation = -1.5708
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SmallEngine" parent="FrontRightEngineMount" instance=ExtResource( 12 )]
+
+[node name="BackLeftEngineMount" type="Node2D" parent="."]
+position = Vector2( -8, 96 )
+rotation = 1.5708
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SmallEngine" parent="BackLeftEngineMount" instance=ExtResource( 12 )]
+
+[node name="BackRightEngineMount" type="Node2D" parent="."]
+position = Vector2( 8, 96 )
+rotation = -1.5708
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SmallEngine" parent="BackRightEngineMount" instance=ExtResource( 12 )]
+
+[node name="WeaponsSystemMount" type="Node2D" parent="."]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+initial_output_mounts = [ NodePath("../FrontCenterHardpoint") ]
+
+[node name="WeaponsSystem" parent="WeaponsSystemMount" instance=ExtResource( 5 )]
+initial_tracer_loader_path = NodePath("../../TracerLoadingMount")
+
+[node name="TracerLoadingMount" type="Node2D" parent="."]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+initial_output_mounts = [ NodePath("../FrontCenterHardpoint") ]
+
+[node name="TracerLoadingSystem" parent="TracerLoadingMount" instance=ExtResource( 7 )]
+custom_munition = {
+"is_tracer_round": true
+}
+
+[node name="ThreeGroupEnginesMount" type="Node2D" parent="."]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+initial_forward_engine_paths = [ NodePath("../ForwardCenterEngineMount") ]
+initial_right_spin_engine_paths = [ NodePath("../FrontLeftEngineMount"), NodePath("../BackRightEngineMount") ]
+initial_left_spin_engine_paths = [ NodePath("../FrontRightEngineMount"), NodePath("../BackLeftEngineMount") ]
+
+[node name="ThreeGroupEngineSystem" parent="ThreeGroupEnginesMount" instance=ExtResource( 8 )]
