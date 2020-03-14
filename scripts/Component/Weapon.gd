@@ -18,3 +18,9 @@ func process(delta):
 	
 func load_munition(settings:Dictionary):
 	return munitions_loading_system_mount.load_munition(settings)
+	
+func set_next_munition(settings:Dictionary):
+	return munitions_loading_system_mount.set_next_munition(settings)
+	
+func get_munitions_stored():
+	return munitions_loading_system_mount.get_munitions_stored()

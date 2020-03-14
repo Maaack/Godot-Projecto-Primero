@@ -136,7 +136,7 @@ initial_output_mounts = [ NodePath("../FrontCenterHardpoint") ]
 
 [node name="TracerLoadingSystem" parent="TracerLoadingMount" instance=ExtResource( 7 )]
 custom_munition = {
-"is_tracer_round": true
+"type": "TRACERS"
 }
 
 [node name="ThreeGroupEnginesMount" type="Node2D" parent="."]

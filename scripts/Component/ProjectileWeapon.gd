@@ -47,7 +47,7 @@ func fire_munition():
 		var instance = spawn_bullet()
 		instance.set_self_destruct_timeout(bullet_self_destruct_timeout)
 		instance.set_legal_owner(get_legal_owner())
-		if (firing_munition.has('is_tracer_round')):
+		if (firing_munition.has('type') and firing_munition['type'] == 'TRACERS'):
 			add_tracer(instance)
 		fire_time_delta = 0.0
 		return instance

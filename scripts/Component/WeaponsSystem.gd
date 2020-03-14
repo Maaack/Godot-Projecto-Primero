@@ -27,6 +27,18 @@ func get_all_weapons():
 
 func get_current_weapon():
 	return get_current_output_node()
+	
+func get_munitions_stored():
+	var total_munitions = {}
+	var weapons = get_all_weapons()
+	for weapon in weapons:
+		if weapon.has_method("get_munitions_stored"):
+			var weapon_munitions = weapon.get_munitions_stored()
+			for weapon_munition_type in weapon_munitions:
+				if not total_munitions.has(weapon_munition_type):
+					total_munitions[weapon_munition_type] = 0
+				total_munitions[weapon_munition_type] += weapon_munitions[weapon_munition_type]
+	return total_munitions
 
 func process_weapon_groups(delta):
 	var weapons = get_all_weapons()

@@ -177,8 +177,10 @@ func update_tracer_trackers():
 		tracer_tracker.set_position(get_screen_position(tracer))
 
 func update_counters():
+	var ship_node = get_commanded_ship_node()
+	var munitions = ship_node.get_munitions_stored()
 	currency_counter.set_counter(view_scene_instance.character.money)
-	bullet_counter.set_counter(0)
-	tracer_counter.set_counter(get_ship_tracer_list().size())
+	bullet_counter.set_counter(munitions['BULLETS'])
+	tracer_counter.set_counter(munitions['TRACERS'])
 	fuel_counter.set_counter(view_scene_instance.asteroid_counter)
 	

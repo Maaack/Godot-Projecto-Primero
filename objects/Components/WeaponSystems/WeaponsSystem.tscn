@@ -4,7 +4,6 @@
 [ext_resource path="res://objects/Components/TimerTriggerSystem.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/Component/Base/BasicOutputMount.gd" type="Script" id=5]
 
-
 [node name="WeaponsSystem" type="Node2D"]
 script = ExtResource( 1 )
 

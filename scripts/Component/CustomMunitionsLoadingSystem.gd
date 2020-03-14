@@ -18,8 +18,8 @@ func cycle_munition_loader():
 	
 func trigger_on():
 	var munition_loader = get_next_munition_loader()
-	if munition_loader != null and munition_loader.has_method("load_munition"):
-		munition_loader.load_munition(custom_munition)
+	if munition_loader != null and munition_loader.has_method("set_next_munition"):
+		munition_loader.set_next_munition(custom_munition)
 
 func get_physical_owner():
 	var parent = get_parent()
