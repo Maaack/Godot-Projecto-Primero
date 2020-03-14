@@ -16,11 +16,11 @@ func process(delta):
 	projectile_system_mount.process(delta)
 	munitions_loading_system_mount.process(delta)
 	
-func load_munition(settings:Dictionary):
-	return munitions_loading_system_mount.load_munition(settings)
+func load_munition(munition):
+	return munitions_loading_system_mount.load_munition(munition)
 	
-func set_next_munition(settings:Dictionary):
-	return munitions_loading_system_mount.set_next_munition(settings)
+func set_next_munition(munition):
+	return munitions_loading_system_mount.set_next_munition(munition)
 	
 func get_munitions_stored():
 	return munitions_loading_system_mount.get_munitions_stored()

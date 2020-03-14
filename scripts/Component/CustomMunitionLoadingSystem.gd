@@ -3,7 +3,6 @@ extends "res://scripts/Component/Base/CyclingOutputSystem.gd"
 
 export var custom_munition = {}
 
-
 func cycle_munition_loader():
 	cycle_output_node()
 
