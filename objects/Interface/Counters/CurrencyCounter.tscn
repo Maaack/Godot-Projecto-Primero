@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/Interface/Counters/Counter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/originals/interface/icons/24x24/currency_1.png" type="Texture" id=2]
+
+
+
+[node name="CurrencyCounter" instance=ExtResource( 1 )]
+margin_left = 1.0
+margin_right = 137.0
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource( 2 )

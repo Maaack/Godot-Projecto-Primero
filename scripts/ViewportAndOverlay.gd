@@ -4,9 +4,13 @@ extends Control
 onready var viewport = $ControllableViewport
 onready var centered_container = $Overlay/MarginContainer/CenterContainer
 onready var centered_overlay = $Overlay/MarginContainer/CenterContainer/CenteredOverlay
+onready var currency_counter = $Overlay/GridContainer/CurrencyCounter
+onready var bullet_counter = $Overlay/GridContainer/BulletCounter
+onready var tracer_counter = $Overlay/GridContainer/TracerBulletCounter
+onready var fuel_counter = $Overlay/GridContainer/FuelCounter
 
-var circular_viewport_scene = preload("res://objects/CircularViewport.tscn")
-var tracker_tracer_scene = preload("res://objects/TracerTracker.tscn")
+var circular_viewport_scene = preload("res://objects/Interface/CircularViewport.tscn")
+var tracker_tracer_scene = preload("res://objects/Interface/TracerTracker.tscn")
 
 var view_scene_instance = null
 var view_centered_on = null
@@ -30,9 +34,10 @@ export(Array, Color) var colors = [
 	Color( 0.607843, 0.356863, 0.733333, 1 )
 ]
 
-func _physics_process(_delta):
+func _process(_delta):
 	update_circular_viewports()
 	update_tracer_trackers()
+	update_counters()
 
 func set_scene_instance(scene_instance):
 	view_scene_instance = scene_instance
@@ -150,19 +155,30 @@ func hide_all_tracer_trackers():
 	for tracer_tracker in tracer_tracker_target_dict:
 		tracer_tracker.hide()
 
-func update_tracer_trackers():
-	var ship_node
-	if is_instance_valid(view_target):
-		ship_node = view_target.ship_node
-	else:
-		hide_all_tracer_trackers()
+func get_commanded_ship_node():
+	if not is_instance_valid(view_target):
 		return
-	if not should_show_overlay_elements() \
-	or not ship_node.has_method("get_tracer_list"):
+	return view_target.ship_node
+
+func get_ship_tracer_list():
+	var ship_node = get_commanded_ship_node()
+	if not ship_node.has_method("get_tracer_list"):
+		return
+	return ship_node.get_tracer_list()
+
+func update_tracer_trackers():
+	var tracer_list = get_ship_tracer_list()
+	if tracer_list == null or not should_show_overlay_elements():
 		hide_all_tracer_trackers()
 		return
 	reset_tracer_trackers()
-	var tracer_list = ship_node.get_tracer_list()
 	for tracer in tracer_list:
 		var tracer_tracker = get_tracer_tracker(tracer)
 		tracer_tracker.set_position(get_screen_position(tracer))
+
+func update_counters():
+	currency_counter.set_counter(view_scene_instance.character.money)
+	bullet_counter.set_counter(0)
+	tracer_counter.set_counter(get_ship_tracer_list().size())
+	fuel_counter.set_counter(view_scene_instance.asteroid_counter)
+	

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/FPSCounter.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=3]
-[ext_resource path="res://objects/ViewportAndOverlay.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/Interface/ViewportAndOverlay.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Control"]
 anchor_right = 1.0
@@ -17,10 +17,10 @@ __meta__ = {
 [node name="FPS" type="Label" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 30.3252
-margin_top = -48.0
-margin_right = 70.3252
-margin_bottom = -34.0
+margin_left = 8.0
+margin_top = -22.0
+margin_right = 48.0
+margin_bottom = -8.0
 text = "FPS: "
 script = ExtResource( 2 )
 __meta__ = {
@@ -34,39 +34,3 @@ margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Asteroids" type="Label" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 30.0
-margin_top = -28.0
-margin_right = 96.8561
-margin_bottom = -14.0
-text = "Asteroids: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="Asteroids"]
-margin_left = 66.0
-margin_right = 106.0
-margin_bottom = 14.0
-
-[node name="Money" type="Label" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -116.094
-margin_top = -28.8898
-margin_right = -55.0938
-margin_bottom = -14.8898
-text = "Money:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="Money"]
-margin_left = 66.0
-margin_right = 106.0
-margin_bottom = 14.0

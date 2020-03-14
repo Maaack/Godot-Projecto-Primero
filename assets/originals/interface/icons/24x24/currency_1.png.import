@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/circular_viewport.png-f3556f3f146c9076f8d67cebce77c3e4.stex"
+path="res://.import/currency_1.png-65fd4f82ccee4bb5c7a21cfce3d884a8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/originals/circular_viewport.png"
-dest_files=[ "res://.import/circular_viewport.png-f3556f3f146c9076f8d67cebce77c3e4.stex" ]
+source_file="res://assets/originals/interface/icons/24x24/currency_1.png"
+dest_files=[ "res://.import/currency_1.png-65fd4f82ccee4bb5c7a21cfce3d884a8.stex" ]
 
 [params]
 
