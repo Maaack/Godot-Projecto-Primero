@@ -1,6 +1,8 @@
 extends "res://scripts/WorldSpace/Node2D.gd"
 
 
+const ASTEROID_GROUP_NAME = "asteroids"
+
 onready var gravity_space = $Area2D
 onready var gravity_space_collider = $Area2D/CollisionShape2D
 onready var planet = $Planet8
@@ -53,7 +55,6 @@ func get_orbital_velocity(start_position:Vector2):
 	else:
 		print('Error: Not a valid orbit direction!')
 	orbit_vector = orbit_vector.rotated(get_angle_to(start_position))
-	var angle = get_angle_to(start_position)
 	var gravity_force = gravity_space.get_gravity()
 	var distance = get_position().distance_to(start_position)
 	var vector_scale = sqrt(gravity_force*distance) * vector_scale_mod
@@ -66,6 +67,7 @@ func _process(delta):
 			time_since_last_spawn -= asteroid_spawn_delay
 			var instance = asteroid_preload.instance()
 			world_space.add_child(instance)
+			instance.add_to_group(ASTEROID_GROUP_NAME)
 			var relative_start_position = get_random_orbit_position()
 			var start_position = get_position_in_world_space() + relative_start_position
 			instance.set_position(start_position)
