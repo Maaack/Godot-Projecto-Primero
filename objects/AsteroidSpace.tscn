@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://objects/Planet8.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/AsteroidSpace.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 112067.0
+
+[node name="AsteroidSpace" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+asteroid_spawn_distance_from_surface = 20000.0
+asteroid_spawn_distance_from_edge = 20000.0
+orbit_force_mod = 14.0
+
+[node name="Area2D" type="Area2D" parent="."]
+space_override = 3
+gravity_point = true
+gravity_vec = Vector2( 0, 0 )
+gravity = 256.308
+linear_damp = 0.0
+angular_damp = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Planet8" parent="." instance=ExtResource( 2 )]

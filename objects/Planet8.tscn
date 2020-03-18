@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/BasicTarget.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 25779.6
+radius = 25757.0
 
 [node name="Planet8" type="RigidBody2D"]
 position = Vector2( 0, -22.8486 )

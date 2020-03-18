@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/Space.gd" type="Script" id=2]
 [ext_resource path="res://objects/Station.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/SpaceWhale.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/Planet8.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/AsteroidSpace.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/Pequod.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/originals/background_1.png" type="Texture" id=7]
 [ext_resource path="res://objects/SimpleRocket.tscn" type="PackedScene" id=8]
@@ -15,6 +15,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
+world_space_size_mod = Vector2( 80, 80 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
@@ -25,24 +26,29 @@ motion_mirroring = Vector2( 2048, 2048 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Stars"]
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Station" parent="." instance=ExtResource( 3 )]
-position = Vector2( -961.705, -374.349 )
+position = Vector2( -58124.9, -374.347 )
 
 [node name="Corvette" parent="." instance=ExtResource( 1 )]
+position = Vector2( -57163.2, 0.00195312 )
 
 [node name="Pequod" parent="." instance=ExtResource( 6 )]
-position = Vector2( -113.136, -23.3271 )
+position = Vector2( -57276.3, -23.3251 )
 mass = 4.33
-
-[node name="Planet8" parent="." instance=ExtResource( 5 )]
-position = Vector2( 63193, 18083.9 )
 
 [node name="SpaceWhale" parent="." instance=ExtResource( 4 )]
 position = Vector2( -66666, 66600 )
 
 [node name="SimpleRocket" parent="." instance=ExtResource( 8 )]
-position = Vector2( -248, 0 )
+position = Vector2( -57411.2, 0.00195312 )
 
 [node name="Character" parent="." instance=ExtResource( 9 )]
+position = Vector2( -57163.2, 0.00195312 )
 initial_ship_path = NodePath("../SimpleRocket")
+
+[node name="AsteroidSpace" parent="." instance=ExtResource( 5 )]
+asteroid_spawn_distance_from_surface = 10000.0

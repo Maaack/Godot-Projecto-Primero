@@ -31,7 +31,6 @@ func get_bottom_right_corner():
 	else: 
 		return world_space_size
 	
-
 func get_random_position_in_world_space():
 	var top_left_corner = get_top_left_corner()
 	var bottom_right_corner = get_bottom_right_corner()

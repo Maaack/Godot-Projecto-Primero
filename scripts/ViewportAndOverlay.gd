@@ -182,5 +182,5 @@ func update_counters():
 	currency_counter.set_counter(view_scene_instance.character.money)
 	bullet_counter.set_counter(munitions['BULLETS'])
 	tracer_counter.set_counter(munitions['TRACERS'])
-	fuel_counter.set_counter(view_scene_instance.asteroid_counter)
+	fuel_counter.set_counter(view_scene_instance.asteroid_space.asteroid_counter)
 	
