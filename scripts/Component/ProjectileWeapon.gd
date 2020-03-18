@@ -49,9 +49,8 @@ func fire_munition():
 		instance.set_legal_owner(get_legal_owner())
 		if (firing_munition.has('type') and firing_munition['type'] == 'TRACERS'):
 			add_tracer(instance)
-		fire_time_delta = 0.0
 		return instance
-	
+
 func add_tracer(object:Node2D):
 	var instance = tracer_scene.instance()
 	get_world_space().add_child(instance)
@@ -75,3 +74,4 @@ func process(delta):
 	if is_triggered and is_loaded():
 		var munition = fire_munition()
 		push_bullet(munition)
+		fire_time_delta = 0.0

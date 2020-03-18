@@ -16,8 +16,7 @@ func _ready():
 		timer_trigger.set_output_nodes(tracer_loader_node)
 
 func process(delta):
-	process_weapon_groups(delta)
-	process_weapons(delta)
+	process_weapon_triggers(delta)
 	
 func cycle_weapon():
 	cycle_output_node()
@@ -40,7 +39,7 @@ func get_munitions_stored():
 				total_munitions[weapon_munition_type] += weapon_munitions[weapon_munition_type]
 	return total_munitions
 
-func process_weapon_groups(delta):
+func process_weapon_triggers(delta):
 	var weapons = get_all_weapons()
 	if is_triggered:
 		timer_trigger.process(delta)
@@ -57,12 +56,6 @@ func process_weapon_groups(delta):
 		for weapon in weapons:
 			if weapon.has_method("trigger_off"):
 				weapon.trigger_off()
-
-func process_weapons(delta):
-	var weapons = get_all_weapons()
-	for weapon in weapons:
-		if weapon.has_method("process"):
-			weapon.process(delta)
 
 func trigger_on():
 	is_triggered = true

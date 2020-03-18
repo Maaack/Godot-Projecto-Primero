@@ -15,7 +15,7 @@ func _ready():
 	if initial_ship_node != null and is_instance_valid(initial_ship_node):
 		command_ship(initial_ship_node)
 
-func _process(delta):
+func _physics_process(delta):
 	set_position(ship_node.get_position())
 	set_rotation(ship_node.get_rotation())
 

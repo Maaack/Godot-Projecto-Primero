@@ -29,4 +29,3 @@ script = ExtResource( 7 )
 initial_output_mounts = [ NodePath("../ProjectileSystemMount") ]
 
 [node name="MunitionsLoadingSystem" parent="MunitionsLoadingMount" instance=ExtResource( 5 )]
-reload_rate_per_second = 4

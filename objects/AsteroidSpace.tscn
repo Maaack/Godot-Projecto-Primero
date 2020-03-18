@@ -17,7 +17,7 @@ time_since_last_spawn = 1000.0
 space_override = 3
 gravity_point = true
 gravity_vec = Vector2( 0, 0 )
-gravity = 20.0
+gravity = 480.0
 linear_damp = 0.0
 angular_damp = 0.0
 __meta__ = {
@@ -26,5 +26,9 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Planet8" parent="." instance=ExtResource( 2 )]
+camera_scale = 165.0

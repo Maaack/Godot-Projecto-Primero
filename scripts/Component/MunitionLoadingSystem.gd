@@ -7,7 +7,7 @@ export var default_munitions_stored = {
 	BASIC_ROUNDS_TYPE: 400,
 	TRACER_ROUNDS_TYPE: 80
 }
-export var reload_rate_per_second = 8
+export var reload_rate_per_second = 1
 export var default_munition = {'type': BASIC_ROUNDS_TYPE}
 
 var munitions_stored = null

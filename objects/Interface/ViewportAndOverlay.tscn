@@ -16,6 +16,7 @@ __meta__ = {
 }
 
 [node name="ControllableViewport" parent="." instance=ExtResource( 2 )]
+process_priority = 1
 
 [node name="Overlay" type="Control" parent="."]
 anchor_right = 1.0
