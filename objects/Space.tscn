@@ -31,23 +31,23 @@ __meta__ = {
 }
 
 [node name="Station" parent="." instance=ExtResource( 3 )]
-position = Vector2( -58124.9, -374.347 )
+position = Vector2( -79260.9, -470.419 )
 
 [node name="Corvette" parent="." instance=ExtResource( 1 )]
-position = Vector2( -57163.2, 0.00195312 )
+position = Vector2( -78299.2, -96.0703 )
 
 [node name="Pequod" parent="." instance=ExtResource( 6 )]
-position = Vector2( -57276.3, -23.3251 )
+position = Vector2( -78412.3, -119.397 )
 mass = 4.33
 
 [node name="SpaceWhale" parent="." instance=ExtResource( 4 )]
 position = Vector2( -66666, 66600 )
 
 [node name="SimpleRocket" parent="." instance=ExtResource( 8 )]
-position = Vector2( -57411.2, 0.00195312 )
+position = Vector2( -78547.2, -96.0703 )
 
 [node name="Character" parent="." instance=ExtResource( 9 )]
-position = Vector2( -57163.2, 0.00195312 )
+position = Vector2( -78299.2, -96.0703 )
 initial_ship_path = NodePath("../SimpleRocket")
 
 [node name="AsteroidSpace" parent="." instance=ExtResource( 5 )]

@@ -10,7 +10,7 @@ onready var world_space = get_world_space()
 export var asteroid_spawn_distance_from_surface = 20000.0
 export var asteroid_spawn_distance_from_edge = 20000.0
 export var asteroid_spawn_delay = 5
-export var asteroid_spawn_max = 300
+export var asteroid_spawn_max = 200
 export var time_since_last_spawn = 1000.0
 enum OrbitDirectionSetting{CLOCKWISE, COUNTER_CLOCKWISE, EITHER}
 export(OrbitDirectionSetting) var orbit_direction
