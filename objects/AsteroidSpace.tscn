@@ -11,15 +11,12 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-asteroid_spawn_distance_from_surface = 20000.0
-asteroid_spawn_distance_from_edge = 20000.0
-orbit_force_mod = 14.0
 
 [node name="Area2D" type="Area2D" parent="."]
 space_override = 3
 gravity_point = true
 gravity_vec = Vector2( 0, 0 )
-gravity = 256.308
+gravity = 50.0
 linear_damp = 0.0
 angular_damp = 0.0
 __meta__ = {

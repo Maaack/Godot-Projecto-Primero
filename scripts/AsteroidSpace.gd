@@ -7,14 +7,14 @@ onready var planet = $Planet8
 onready var planet_collider = $Planet8/CollisionShape2D
 onready var world_space = get_world_space()
 
-export var asteroid_spawn_distance_from_surface = 1000.0
-export var asteroid_spawn_distance_from_edge = 1000.0
+export var asteroid_spawn_distance_from_surface = 20000.0
+export var asteroid_spawn_distance_from_edge = 20000.0
 export var asteroid_spawn_delay = 5
 export var asteroid_spawn_max = 300
 export var time_since_last_spawn = 1000.0
 enum OrbitDirectionSetting{CLOCKWISE, COUNTER_CLOCKWISE, EITHER}
 export(OrbitDirectionSetting) var orbit_direction
-export var orbit_force_mod = 40.0
+export var vector_scale_mod = 1.0
 
 var asteroid_preload = preload("res://objects/Asteroid.tscn")
 var asteroid_counter = 0
@@ -47,15 +47,17 @@ func get_orbital_velocity(start_position:Vector2):
 		orbit_direction = orbit_directions.pop_front()
 	var orbit_vector = null
 	if orbit_direction == OrbitDirectionSetting.CLOCKWISE:
-		orbit_vector = Vector2(0,-1)
-	elif orbit_direction == OrbitDirectionSetting.COUNTER_CLOCKWISE:
 		orbit_vector = Vector2(0,1)
+	elif orbit_direction == OrbitDirectionSetting.COUNTER_CLOCKWISE:
+		orbit_vector = Vector2(0,-1)
 	else:
 		print('Error: Not a valid orbit direction!')
-	var angle = get_angle_to(start_position)
 	orbit_vector = orbit_vector.rotated(get_angle_to(start_position))
-	var orbit_force = gravity_space.get_gravity()
-	return orbit_vector * orbit_force * orbit_force_mod
+	var angle = get_angle_to(start_position)
+	var gravity_force = gravity_space.get_gravity()
+	var distance = get_position().distance_to(start_position)
+	var vector_scale = sqrt(gravity_force*distance) * vector_scale_mod
+	return orbit_vector * vector_scale
 
 func _process(delta):
 	time_since_last_spawn += delta
@@ -64,7 +66,8 @@ func _process(delta):
 			time_since_last_spawn -= asteroid_spawn_delay
 			var instance = asteroid_preload.instance()
 			world_space.add_child(instance)
-			var start_position = get_random_orbit_position_in_world_space()
+			var relative_start_position = get_random_orbit_position()
+			var start_position = get_position_in_world_space() + relative_start_position
 			instance.set_position(start_position)
-			instance.set_axis_velocity(get_orbital_velocity(start_position))
+			instance.set_axis_velocity(get_orbital_velocity(relative_start_position))
 			asteroid_counter += 1
