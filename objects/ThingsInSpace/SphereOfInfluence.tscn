@@ -7,6 +7,7 @@
 radius = 112067.0
 
 [node name="SphereOfInfluence" type="Node2D"]
+position = Vector2( 96.0703, 0 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true

@@ -30,23 +30,23 @@ __meta__ = {
 }
 
 [node name="Station" parent="." instance=ExtResource( 3 )]
-position = Vector2( -82390.1, -374.347 )
+position = Vector2( -93475.6, 0 )
 
 [node name="Corvette" parent="." instance=ExtResource( 1 )]
-position = Vector2( -81342, 0 )
+position = Vector2( -93840.6, 280 )
 
 [node name="Pequod" parent="." instance=ExtResource( 6 )]
-position = Vector2( -81541.5, 0 )
+position = Vector2( -94110.6, 0 )
 mass = 4.33
 
 [node name="SimpleRocket" parent="." instance=ExtResource( 8 )]
-position = Vector2( -81754.6, 0 )
+position = Vector2( -93116.3, 0 )
 
 [node name="Character" parent="." instance=ExtResource( 9 )]
-position = Vector2( -81342, 0 )
+position = Vector2( -93116.6, 0 )
 initial_ship_path = NodePath("../SimpleRocket")
 
 [node name="SphereOfInfluence" parent="." instance=ExtResource( 5 )]
+position = Vector2( 60.7578, 2.09502 )
 asteroid_spawn_distance_from_surface = 10000.0
-asteroid_spawn_distance_from_edge = 20000.0
 player_character_path = NodePath("../Character")
