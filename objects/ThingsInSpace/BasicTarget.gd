@@ -1,11 +1,14 @@
 extends "res://scripts/Component/Base/Ownable/RigidBody2D.gd"
 
+
+export(PackedScene) var self_scene
+export var node_group_name = 'TARGET' setget set_group_name, get_group_name
 export var camera_scale = 1.0
-export var linear_delta_limit = 25.0
-export var angular_delta_limit = 25.0
 export var health = 1000.0
 export var prize = 0.0
-
+export var linear_delta_limit = 25.0
+export var angular_delta_limit = 5.0
+ 
 var spawn_safe_timeout = 0.1
 var time_since_spawn = 0.0
 var last_linear_velocity = null
@@ -19,6 +22,20 @@ func _physics_process(delta):
 	process_physical_limitations()
 	last_linear_velocity = get_linear_velocity()
 	last_angular_velocity = get_angular_velocity()
+
+func set_group_name(value:String):
+	node_group_name = value
+	
+func get_group_name():
+	return node_group_name
+
+func disable_colliders(disable=true):
+	for child in get_children():
+		if child.has_method("set_disabled"):
+			child.set_disabled(disable)
+
+func enable_colliders():
+	disable_colliders(false)
 
 func can_destroy():
 	if destroyed:

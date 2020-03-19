@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/Corvette.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Space.gd" type="Script" id=2]
 [ext_resource path="res://objects/Station.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/SpaceWhale.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/AsteroidSpace.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/ThingsInSpace/SphereOfInfluence.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/Pequod.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/originals/background_1.png" type="Texture" id=7]
 [ext_resource path="res://objects/SimpleRocket.tscn" type="PackedScene" id=8]
@@ -31,25 +30,23 @@ __meta__ = {
 }
 
 [node name="Station" parent="." instance=ExtResource( 3 )]
-position = Vector2( -79260.9, -470.419 )
+position = Vector2( -82390.1, -374.347 )
 
 [node name="Corvette" parent="." instance=ExtResource( 1 )]
-position = Vector2( -78299.2, -96.0703 )
+position = Vector2( -81342, 0 )
 
 [node name="Pequod" parent="." instance=ExtResource( 6 )]
-position = Vector2( -78412.3, -119.397 )
+position = Vector2( -81541.5, 0 )
 mass = 4.33
 
-[node name="SpaceWhale" parent="." instance=ExtResource( 4 )]
-position = Vector2( -66666, 66600 )
-
 [node name="SimpleRocket" parent="." instance=ExtResource( 8 )]
-position = Vector2( -78547.2, -96.0703 )
+position = Vector2( -81754.6, 0 )
 
 [node name="Character" parent="." instance=ExtResource( 9 )]
-position = Vector2( -78299.2, -96.0703 )
+position = Vector2( -81342, 0 )
 initial_ship_path = NodePath("../SimpleRocket")
 
-[node name="AsteroidSpace" parent="." instance=ExtResource( 5 )]
+[node name="SphereOfInfluence" parent="." instance=ExtResource( 5 )]
 asteroid_spawn_distance_from_surface = 10000.0
+asteroid_spawn_distance_from_edge = 20000.0
 player_character_path = NodePath("../Character")

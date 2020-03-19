@@ -52,7 +52,7 @@ func set_centered_on(target):
 func set_centered_on_position(position):
 		view_centered_on_position = position
 
-func add_target(target):
+func add_target(target:Node2D):
 	var instance = circular_viewport_scene.instance()
 	centered_overlay.add_child(instance)
 	instance.set_world(view_scene_instance.get_world_2d())
@@ -182,5 +182,5 @@ func update_counters():
 	currency_counter.set_counter(view_scene_instance.character.money)
 	bullet_counter.set_counter(munitions['BULLETS'])
 	tracer_counter.set_counter(munitions['TRACERS'])
-	fuel_counter.set_counter(view_scene_instance.asteroid_space.asteroid_counter)
+	fuel_counter.set_counter(view_scene_instance.asteroid_counter)
 	

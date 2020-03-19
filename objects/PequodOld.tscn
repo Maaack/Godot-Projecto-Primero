@@ -1,7 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/originals/pequod_v2.png" type="Texture" id=1]
-[ext_resource path="res://scripts/BasicTarget.gd" type="Script" id=2]
+[ext_resource path="res://objects/ThingsInSpace/BasicTarget.gd" type="Script" id=2]
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.2045, 125.749 )

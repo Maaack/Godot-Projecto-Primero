@@ -33,7 +33,7 @@ func load_munition(settings_dict = {}):
 		
 func spawn_bullet():
 	var instance = bullet_scene.instance()
-	get_world_space().add_child(instance)
+	world_space.add_child(instance)
 	instance.set_position(get_position_in_world_space())
 	instance.set_rotation(get_rotation_in_world_space())
 	instance.set_linear_velocity(get_physical_owner().get_linear_velocity())
@@ -53,7 +53,7 @@ func fire_munition():
 
 func add_tracer(object:Node2D):
 	var instance = tracer_scene.instance()
-	get_world_space().add_child(instance)
+	world_space.add_child(instance)
 	instance.set_attached_to(object)
 	get_physical_owner().get_tracer_list().append(instance)
 

@@ -36,7 +36,7 @@ func get_zoom():
 		final_zoom *= view_centered_on.camera_scale
 	return final_zoom * SCALE_MOD
 
-func set_centered_on(target):
+func set_centered_on(target:Node2D):
 	if target.get_position() != null:
 		view_centered_on = target
 		camera_2d.set_zoom(get_zoom())

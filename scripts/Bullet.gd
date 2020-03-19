@@ -1,4 +1,4 @@
-extends "res://scripts/BasicTarget.gd"
+extends "res://objects/ThingsInSpace/BasicTarget.gd"
 
 
 const BASE_ORIENTATION = PI/2

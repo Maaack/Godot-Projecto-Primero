@@ -1,6 +1,8 @@
 extends RigidBody2D
 
 
+onready var world_space = get_world_space()
+
 func get_world_space():
 	return get_parent().get_world_space()
 

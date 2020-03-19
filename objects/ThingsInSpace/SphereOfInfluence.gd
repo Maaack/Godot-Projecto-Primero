@@ -7,21 +7,18 @@ onready var gravity_space = $Area2D
 onready var gravity_space_collider = $Area2D/CollisionShape2D
 onready var planet = $Planet8
 onready var planet_collider = $Planet8/CollisionShape2D
-onready var world_space = get_world_space()
 
-export var asteroid_spawn_distance_from_surface = 20000.0
-export var asteroid_spawn_distance_from_edge = 20000.0
-export var asteroid_spawn_delay = 5
-export var asteroid_spawn_max = 200
-export var time_since_last_spawn = 1000.0
+export var asteroid_spawn_distance_from_surface = 15000.0
+export var asteroid_spawn_distance_from_edge = 15000.0
 export var orbiting_asteroid_max = 1000
 enum OrbitDirectionSetting{CLOCKWISE, COUNTER_CLOCKWISE, EITHER}
 export(OrbitDirectionSetting) var orbit_direction
 export var vector_scale_mod = 1.0
 
-var asteroid_preload = preload("res://objects/Asteroid.tscn")
-var asteroid_counter = 0
-var orbiting_asteroid_preload = preload("res://objects/OrbitingAsteroid.tscn")
+var orbiting_node_scene = preload("res://objects/ThingsInSpace/OrbitingNode2D.tscn")
+var asteroid_scene = preload("res://objects/ThingsInSpace/Asteroid.tscn")
+var asteroid_texture = preload("res://assets/kenney_spaceshooterextension/PNG/Sprites X2/Meteors/spaceMeteors_004.png")
+
 export(NodePath) var player_character_path
 var player_character
 
@@ -64,33 +61,21 @@ func get_orbital_velocity(start_position:Vector2):
 	var vector_scale = sqrt(gravity_force*distance) * vector_scale_mod
 	return orbit_vector * vector_scale
 
-func spawn_asteroid(relative_position:Vector2):
-	var instance = asteroid_preload.instance()
-	world_space.add_child(instance)
-	instance.add_to_group(ASTEROID_GROUP_NAME)
-	var start_position = get_position_in_world_space() + relative_position
-	instance.set_position(start_position)
-	instance.set_rotation(start_position.angle())
-	instance.set_axis_velocity(get_orbital_velocity(relative_position))
-	asteroid_counter += 1
-			
+func spawn_orbiting_sprite(object_scene:PackedScene, object_sprite:Sprite, object_position:Vector2):
+	var instance = orbiting_node_scene.instance()
+	instance.orbit_direction = orbit_direction
+	instance.orbit_position = object_position
+	instance.orbit_gravity_force = gravity_space.get_gravity()
+	instance.orbit_object_scene = object_scene
+	instance.orbit_object_texture = object_sprite.texture
+	instance.orbit_object_texture_scale = object_sprite.scale
+	instance.player_character = player_character
+	add_child(instance)
+
 func _ready():
 	if player_character_path != null:
 		player_character = get_node(player_character_path)
+	var asteroid_instance = asteroid_scene.instance()
+	var sprite = asteroid_instance.get_node("Sprite")
 	for i in range(orbiting_asteroid_max):
-		var instance = orbiting_asteroid_preload.instance()
-		instance.initial_position = get_random_orbit_position()
-		instance.initial_gravity_force = gravity_space.get_gravity()
-		instance.player_character = player_character
-		add_child(instance)
-
-func process_asteroid_spawning(delta):
-	time_since_last_spawn += delta
-	if asteroid_counter < asteroid_spawn_max:
-		if time_since_last_spawn >= asteroid_spawn_delay:
-			time_since_last_spawn -= asteroid_spawn_delay
-			spawn_asteroid(get_random_orbit_position())
-
-func _process(delta):
-	pass
-	#process_asteroid_spawning(delta)
+		spawn_orbiting_sprite(asteroid_scene, sprite, get_random_orbit_position())
