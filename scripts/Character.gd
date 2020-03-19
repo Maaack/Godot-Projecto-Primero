@@ -19,9 +19,6 @@ func _process(delta):
 	set_position(ship_node.get_position())
 	set_rotation(ship_node.get_rotation())
 
-func _input(event):
-	ship_node.input(event)
-
 func reward(amount:float):
 	money += amount
 

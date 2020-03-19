@@ -1,6 +1,6 @@
 extends "res://scripts/WorldSpace/WorldSpace.gd"
 
-onready var character = $Character
+onready var character = $PlayerCharacter
 onready var corvette = $Corvette
 onready var simple_rocket = $SimpleRocket
 onready var pequod = $Pequod
