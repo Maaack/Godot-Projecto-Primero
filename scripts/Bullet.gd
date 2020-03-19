@@ -6,7 +6,7 @@ export(float) var self_destruct_timeout = 20.0
 
 func _process(_delta):
 	if time_since_spawn > self_destruct_timeout:
-		remove_self()
+		destroy_self()
 
 func set_self_destruct_timeout(value:float):
 	self_destruct_timeout = value

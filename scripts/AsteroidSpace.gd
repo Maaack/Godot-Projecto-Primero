@@ -14,12 +14,16 @@ export var asteroid_spawn_distance_from_edge = 20000.0
 export var asteroid_spawn_delay = 5
 export var asteroid_spawn_max = 200
 export var time_since_last_spawn = 1000.0
+export var orbiting_asteroid_max = 1000
 enum OrbitDirectionSetting{CLOCKWISE, COUNTER_CLOCKWISE, EITHER}
 export(OrbitDirectionSetting) var orbit_direction
 export var vector_scale_mod = 1.0
 
 var asteroid_preload = preload("res://objects/Asteroid.tscn")
 var asteroid_counter = 0
+var orbiting_asteroid_preload = preload("res://objects/OrbitingAsteroid.tscn")
+export(NodePath) var player_character_path
+var player_character
 
 func get_space_radius():
 	return gravity_space_collider.shape.radius
@@ -60,16 +64,33 @@ func get_orbital_velocity(start_position:Vector2):
 	var vector_scale = sqrt(gravity_force*distance) * vector_scale_mod
 	return orbit_vector * vector_scale
 
-func _process(delta):
+func spawn_asteroid(relative_position:Vector2):
+	var instance = asteroid_preload.instance()
+	world_space.add_child(instance)
+	instance.add_to_group(ASTEROID_GROUP_NAME)
+	var start_position = get_position_in_world_space() + relative_position
+	instance.set_position(start_position)
+	instance.set_rotation(start_position.angle())
+	instance.set_axis_velocity(get_orbital_velocity(relative_position))
+	asteroid_counter += 1
+			
+func _ready():
+	if player_character_path != null:
+		player_character = get_node(player_character_path)
+	for i in range(orbiting_asteroid_max):
+		var instance = orbiting_asteroid_preload.instance()
+		instance.initial_position = get_random_orbit_position()
+		instance.initial_gravity_force = gravity_space.get_gravity()
+		instance.player_character = player_character
+		add_child(instance)
+
+func process_asteroid_spawning(delta):
 	time_since_last_spawn += delta
 	if asteroid_counter < asteroid_spawn_max:
 		if time_since_last_spawn >= asteroid_spawn_delay:
 			time_since_last_spawn -= asteroid_spawn_delay
-			var instance = asteroid_preload.instance()
-			world_space.add_child(instance)
-			instance.add_to_group(ASTEROID_GROUP_NAME)
-			var relative_start_position = get_random_orbit_position()
-			var start_position = get_position_in_world_space() + relative_start_position
-			instance.set_position(start_position)
-			instance.set_axis_velocity(get_orbital_velocity(relative_start_position))
-			asteroid_counter += 1
+			spawn_asteroid(get_random_orbit_position())
+
+func _process(delta):
+	pass
+	#process_asteroid_spawning(delta)

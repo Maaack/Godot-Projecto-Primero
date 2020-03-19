@@ -52,3 +52,4 @@ initial_ship_path = NodePath("../SimpleRocket")
 
 [node name="AsteroidSpace" parent="." instance=ExtResource( 5 )]
 asteroid_spawn_distance_from_surface = 10000.0
+player_character_path = NodePath("../Character")

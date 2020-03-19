@@ -10,6 +10,7 @@ var spawn_safe_timeout = 0.1
 var time_since_spawn = 0.0
 var last_linear_velocity = null
 var last_angular_velocity = null
+var destroyed = false
 
 var last_damaged_by = null
 		
@@ -19,13 +20,16 @@ func _physics_process(delta):
 	last_linear_velocity = get_linear_velocity()
 	last_angular_velocity = get_angular_velocity()
 
-func can_remove():
+func can_destroy():
+	if destroyed:
+		return false
 	if spawn_safe_timeout > time_since_spawn:
 		return false
 	return true
 
-func remove_self():
-	if can_remove():
+func destroy_self():
+	if can_destroy():
+		destroyed = true
 		queue_free()
 
 func within_world_space():
@@ -51,7 +55,7 @@ func process_physical_limitations():
 	or not within_angular_velocity_delta() \
 	or not within_world_space() \
 	or not has_health():
-		remove_self()
+		destroy_self()
 		
 func damage(amount:float, from:Node2D):
 	var had_health = has_health()
@@ -60,7 +64,7 @@ func damage(amount:float, from:Node2D):
 	if not has_health() and had_health:
 		if last_damaged_by.has_method("reward"):
 			last_damaged_by.reward(prize)
-		remove_self()
+		destroy_self()
 	
 func impact(relative_velocity: Vector2, object_mass: float, from: Node2D):
 	var impact_force = 0.5 * object_mass * relative_velocity.length_squared()
