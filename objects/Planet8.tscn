@@ -7,7 +7,6 @@
 radius = 12891.0
 
 [node name="Planet8" type="RigidBody2D"]
-position = Vector2( 0, -22.8486 )
 mass = 65535.0
 script = ExtResource( 2 )
 __meta__ = {
