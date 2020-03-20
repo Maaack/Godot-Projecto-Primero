@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Resource",
+"class": "PhysicalObject",
+"language": "GDScript",
+"path": "res://Resources/PhysicalObjects/PhysicalObject.gd"
+}, {
+"base": "Resource",
+"class": "PlanetaryRing",
+"language": "GDScript",
+"path": "res://Resources/PlanetaryRings/PlanetaryRing.gd"
+} ]
 _global_script_class_icons={
-
+"PhysicalObject": "",
+"PlanetaryRing": ""
 }
 
 [application]

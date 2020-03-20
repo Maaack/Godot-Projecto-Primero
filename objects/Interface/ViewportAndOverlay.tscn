@@ -49,17 +49,13 @@ margin_top = 236.0
 margin_right = 448.0
 margin_bottom = 236.0
 
-[node name="GridContainer" type="GridContainer" parent="Overlay"]
+[node name="GridContainer" type="VBoxContainer" parent="Overlay"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -136.0
 margin_top = -140.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
 
 [node name="CurrencyCounter" parent="Overlay/GridContainer" instance=ExtResource( 1 )]
 margin_left = 0.0

@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://Resources/PlanetaryRings/YellowAsteroidRing.tres" type="Resource" id=1]
 [ext_resource path="res://objects/Planet8.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/ThingsInSpace/SphereOfInfluence.gd" type="Script" id=3]
+[ext_resource path="res://Resources/PlanetaryRings/VioletAsteroidRing.tres" type="Resource" id=4]
+[ext_resource path="res://Resources/PlanetaryRings/RedAsteroidRing.tres" type="Resource" id=5]
+[ext_resource path="res://Resources/PlanetaryRings/OrangeAsteroidRing.tres" type="Resource" id=6]
+[ext_resource path="res://Resources/PlanetaryRings/BlueAsteroidRing.tres" type="Resource" id=7]
+[ext_resource path="res://Resources/PlanetaryRings/GreenAsteroidRing.tres" type="Resource" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 112067.0
@@ -11,6 +17,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+rings = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ]
 
 [node name="Area2D" type="Area2D" parent="."]
 space_override = 3

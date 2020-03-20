@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+
+
+class_name PlanetaryRing
+
+export(String) var group_name
+export(String) var readable_name
+export(Resource) var physical_object
+
+export(Color) var color
+export(int) var count
+export(float) var inner_radius
+export(float) var outer_radius
+"
+
+[resource]
+script = SubResource( 1 )
+group_name = "ASTEROID_BELT"
+readable_name = "Asteroid Belt"
+color = Color( 0, 0, 0, 1 )
+count = 0
+inner_radius = 0.0
+outer_radius = 0.0
