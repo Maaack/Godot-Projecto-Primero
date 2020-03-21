@@ -2,7 +2,7 @@ extends Control
 
 onready var viewport_and_overlay = $ViewportAndOverlay
 
-var space_instance = preload("res://objects/Space.tscn").instance() 
+var space_instance = preload("res://Objects/Space.tscn").instance() 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

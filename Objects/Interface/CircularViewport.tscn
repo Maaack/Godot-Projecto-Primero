@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/CircularViewport.gd" type="Script" id=1]
+[ext_resource path="res://shaders/CircularViewport.tres" type="Material" id=2]
+[ext_resource path="res://assets/originals/interface/circular_viewport.png" type="Texture" id=3]
+[ext_resource path="res://assets/originals/interface/circular_viewport_pointing.png" type="Texture" id=4]
+
+[node name="CircularViewport" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+material = ExtResource( 2 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+stretch = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 64, 64 )
+transparent_bg = true
+handle_input_locally = false
+hdr = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera2D" type="Camera2D" parent="ViewportContainer/Viewport"]
+rotating = true
+current = true
+
+[node name="PointingCircleSprite" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+offset = Vector2( 4, 0 )
+
+[node name="CircleSprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )

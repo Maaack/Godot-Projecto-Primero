@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Interface/FPSCounter.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://Objects/Interface/ViewportAndOverlay.tscn" type="PackedScene" id=6]
+
+[node name="Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportAndOverlay" parent="." instance=ExtResource( 6 )]
+
+[node name="FPS" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -22.0
+margin_right = 48.0
+margin_bottom = -8.0
+text = "FPS: "
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="FPS"]
+margin_left = 66.0
+margin_right = 106.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

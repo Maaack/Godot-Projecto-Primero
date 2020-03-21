@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Objects/ThingsInSpace/BasicTarget.gd" type="Script" id=1]
+[ext_resource path="res://assets/kenney_spaceshooterextension/PNG/Sprites/Station/spaceStation_020.png" type="Texture" id=2]
+
+[node name="Station" type="RigidBody2D"]
+position = Vector2( -424, 0 )
+mass = 1024.0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 145 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 388, 324, 160, 308 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 145 )
+scale = Vector2( 4, 4 )
+polygon = PoolVector2Array( 8, 8, 8, -40, 24, -40, 32, -64, 32, -72, 24, -72, 16, -80, 8, -88, 0, -88, -8, -88, -16, -80, -24, -72, -32, -72, -32, -64, -24, -40, -8, -40, -8, 8, -8, 56, 0, 88, 8, 56 )

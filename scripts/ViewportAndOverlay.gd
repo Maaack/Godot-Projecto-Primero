@@ -9,8 +9,8 @@ onready var bullet_counter = $Overlay/GridContainer/BulletCounter
 onready var tracer_counter = $Overlay/GridContainer/TracerBulletCounter
 onready var fuel_counter = $Overlay/GridContainer/FuelCounter
 
-var circular_viewport_scene = preload("res://objects/Interface/CircularViewport.tscn")
-var tracker_tracer_scene = preload("res://objects/Interface/TracerTracker.tscn")
+var circular_viewport_scene = preload("res://Objects/Interface/CircularViewport.tscn")
+var tracker_tracer_scene = preload("res://Objects/Interface/TracerTracker.tscn")
 
 var view_scene_instance = null
 var view_centered_on = null

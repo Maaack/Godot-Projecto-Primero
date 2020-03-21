@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Components/TimerSystems/RepeatingTwoSecondTimer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Component/Base/BasicOutputMount.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Component/WeaponsSystem.gd" type="Script" id=3]
+
+[node name="WeaponsSystem" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="TimerTriggerMount" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="RepeatingTwoSecondTimer" parent="TimerTriggerMount" instance=ExtResource( 1 )]

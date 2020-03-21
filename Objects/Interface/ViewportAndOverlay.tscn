@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Objects/Interface/Counters/CurrencyCounter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Interface/ControllableViewport.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/ViewportAndOverlay.gd" type="Script" id=3]
+[ext_resource path="res://Objects/Interface/Counters/TracerBulletCounter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Interface/Counters/BulletCounter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Interface/Counters/FuelCounter.tscn" type="PackedScene" id=6]
+
+
+
+[node name="ViewportAndOverlay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControllableViewport" parent="." instance=ExtResource( 2 )]
+process_priority = 1
+
+[node name="Overlay" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = -64.0
+margin_bottom = -64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Overlay/MarginContainer"]
+margin_right = 896.0
+margin_bottom = 472.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenteredOverlay" type="Control" parent="Overlay/MarginContainer/CenterContainer"]
+margin_left = 448.0
+margin_top = 236.0
+margin_right = 448.0
+margin_bottom = 236.0
+
+[node name="GridContainer" type="VBoxContainer" parent="Overlay"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -136.0
+margin_top = -140.0
+
+[node name="CurrencyCounter" parent="Overlay/GridContainer" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_right = 136.0
+
+[node name="BulletCounter" parent="Overlay/GridContainer" instance=ExtResource( 5 )]
+margin_top = 36.0
+margin_bottom = 68.0
+
+[node name="TracerBulletCounter" parent="Overlay/GridContainer" instance=ExtResource( 4 )]
+margin_top = 72.0
+margin_bottom = 104.0
+
+[node name="FuelCounter" parent="Overlay/GridContainer" instance=ExtResource( 6 )]
+margin_top = 108.0
+margin_bottom = 140.0

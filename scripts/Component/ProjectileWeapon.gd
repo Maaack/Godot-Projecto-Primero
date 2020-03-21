@@ -6,8 +6,8 @@ const BASE_ORIENTATION = -PI/2
 export var initial_bullet_impulse = 800.0
 export var bullet_self_destruct_timeout = 10.0
 
-var bullet_scene = preload("res://objects/Bullet.tscn")
-var tracer_scene = preload("res://objects/Tracer.tscn")
+var bullet_scene = preload("res://Objects/Bullet.tscn")
+var tracer_scene = preload("res://Objects/Tracer.tscn")
 
 var loaded_munition = null
 var fire_time_delta = 0.0
