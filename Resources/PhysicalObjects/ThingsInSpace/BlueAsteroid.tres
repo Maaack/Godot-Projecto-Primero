@@ -4,8 +4,6 @@
 [ext_resource path="res://Resources/PhysicalObjects/PhysicalObject.gd" type="Script" id=2]
 [ext_resource path="res://assets/kenney_spaceshooterextension/PNG/Sprites X2/Meteors/spaceMeteors_004.png" type="Texture" id=3]
 
-
-
 [resource]
 resource_local_to_scene = true
 script = ExtResource( 2 )
@@ -14,7 +12,7 @@ readable_name = ""
 packed_scene = ExtResource( 1 )
 texture = ExtResource( 3 )
 scale = Vector2( 2, 2 )
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.505882, 0.501961, 1, 1 )
 parent_path = NodePath("")
 position = Vector2( 0, 0 )
 linear_velocity = Vector2( 0, 0 )

@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "PlanetaryRing",
 "language": "GDScript",
-"path": "res://Resources/PlanetaryRings/PlanetaryRing.gd"
+"path": "res://Resources/Collections/PlanetaryRings/PlanetaryRing.gd"
 } ]
 _global_script_class_icons={
 "PhysicalObject": "",

@@ -1,4 +1,4 @@
-extends "res://objects/ThingsInSpace/BasicTarget.gd"
+extends "res://objects/ThingsInSpace/Destructable.gd"
 
 
 const LOAD_OUT_DISTANCE = 15000.0
@@ -12,7 +12,6 @@ func set_physical_object(resource:PhysicalObject):
 	if resource != null:
 		.set_physical_object(resource)
 		sprite.modulate = resource.color
-	
 
 func _physics_process(delta):
 	if position.distance_to(world_space.character.position) > LOAD_OUT_DISTANCE:

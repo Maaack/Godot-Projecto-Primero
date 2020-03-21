@@ -6,7 +6,6 @@
 
 [node name="BasicTarget" type="RigidBody2D"]
 script = ExtResource( 1 )
-self_scene = null
 
 [node name="Sprite" type="Sprite" parent="."]
 

@@ -32,6 +32,7 @@ func spawn_rigid_body_2d(physical_object:PhysicalObject):
 	instance.physical_object = physical_object
 	if physical_object.group_name == 'ASTEROID':
 		asteroid_counter += 1
+	return instance
 
 func put_in_orbit(resource:PhysicalObject):
 	sphere_of_influence.spawn_orbiting_sprite(resource)

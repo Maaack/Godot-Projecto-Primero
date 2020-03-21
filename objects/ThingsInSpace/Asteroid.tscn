@@ -10,7 +10,6 @@ radius = 434.548
 [node name="Asteroid" instance=ExtResource( 2 )]
 mass = 200.0
 script = ExtResource( 3 )
-node_group_name = "ASTEROID"
 camera_scale = 2.5
 health = 80.0
 prize = 100.0

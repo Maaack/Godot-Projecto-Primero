@@ -72,8 +72,7 @@ func spawn_orbiting_rings():
 				var random_orbit_radius = rand_range(ring.inner_radius, ring.outer_radius)
 				random_orbit_radius += min_spawn_radius
 				physical_object.position = get_random_vector() * random_orbit_radius
-				var instance = spawn_orbiting_sprite(physical_object)
-				instance.sprite.modulate = ring.color
+				spawn_orbiting_sprite(physical_object)
 
 func _ready():
 	if player_character_path != null:
