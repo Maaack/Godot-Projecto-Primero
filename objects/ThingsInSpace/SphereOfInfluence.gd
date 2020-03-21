@@ -54,29 +54,25 @@ func get_orbital_velocity(start_position:Vector2):
 	var vector_scale = sqrt(gravity_force*distance) * vector_scale_mod
 	return orbit_vector * vector_scale
 
-func spawn_orbiting_sprite(object_scene:PackedScene, object_sprite:Sprite, object_position:Vector2):
+func spawn_orbiting_sprite(physical_object:PhysicalObject):
 	var instance = orbiting_node_scene.instance()
-	instance.orbit_direction = orbit_direction
-	instance.orbit_position = object_position
-	instance.orbit_gravity_force = gravity_space.get_gravity()
-	instance.orbit_object_scene = object_scene
-	instance.orbit_object_texture = object_sprite.texture
-	instance.orbit_object_texture_scale = object_sprite.scale
-	instance.player_character = player_character
 	add_child(instance)
+	instance.gravity_force = gravity_space.get_gravity()
+	instance.orbit_direction = orbit_direction
+	instance.physical_object = physical_object
+	instance.player_character = player_character
 	return instance
 
 func spawn_orbiting_rings():
 	var min_spawn_radius = get_min_spawn_radius()
-	var asteroid_instance = asteroid_scene.instance()
-	var sprite = asteroid_instance.get_node("Sprite")
 	for ring in rings:
 		if ring is PlanetaryRing:
+			var physical_object = ring.physical_object
 			for _i in range(ring.count):
 				var random_orbit_radius = rand_range(ring.inner_radius, ring.outer_radius)
 				random_orbit_radius += min_spawn_radius
-				var random_position = get_random_vector() * random_orbit_radius
-				var instance = spawn_orbiting_sprite(asteroid_scene, sprite, random_position)
+				physical_object.position = get_random_vector() * random_orbit_radius
+				var instance = spawn_orbiting_sprite(physical_object)
 				instance.sprite.modulate = ring.color
 
 func _ready():

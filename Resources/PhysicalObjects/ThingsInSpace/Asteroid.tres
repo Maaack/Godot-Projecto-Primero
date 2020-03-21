@@ -1,16 +1,21 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://objects/ThingsInSpace/Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/PhysicalObjects/PhysicalObject.gd" type="Script" id=2]
-
+[ext_resource path="res://assets/kenney_spaceshooterextension/PNG/Sprites X2/Meteors/spaceMeteors_004.png" type="Texture" id=3]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource( 2 )
 group_name = "ASTEROID"
 readable_name = ""
 packed_scene = ExtResource( 1 )
-container = NodePath("")
+texture = ExtResource( 3 )
+scale = Vector2( 2, 2 )
+color = Color( 1, 1, 1, 1 )
+parent_path = NodePath("")
 position = Vector2( 0, 0 )
-velocity = Vector2( 0, 0 )
+linear_velocity = Vector2( 0, 0 )
 rotation = 0.0
-mass = 0.0
+angular_velocity = 0.0
+mass = 100.0

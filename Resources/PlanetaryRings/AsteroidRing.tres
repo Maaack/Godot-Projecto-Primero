@@ -1,4 +1,6 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Resources/PhysicalObjects/ThingsInSpace/Asteroid.tres" type="Resource" id=1]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Resource
@@ -20,6 +22,7 @@ export(float) var outer_radius
 script = SubResource( 1 )
 group_name = "ASTEROID_BELT"
 readable_name = "Asteroid Belt"
+physical_object = ExtResource( 1 )
 color = Color( 0, 0, 0, 1 )
 count = 0
 inner_radius = 0.0

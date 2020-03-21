@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scripts/OrbitingNode2D.gd" type="Script" id=1]
+[ext_resource path="res://objects/ThingsInSpace/OrbitingNode2D.gd" type="Script" id=1]
 [ext_resource path="res://scripts/WorldSpace/Node2D.gd" type="Script" id=3]
 
 [node name="OrbitingNode2D" type="Node2D"]

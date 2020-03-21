@@ -1,7 +1,8 @@
 extends "res://scripts/Component/Base/Ownable/RigidBody2D.gd"
 
 
-export(PackedScene) var self_scene
+onready var sprite = $Sprite
+
 export var node_group_name = 'TARGET' setget set_group_name, get_group_name
 export var camera_scale = 1.0
 export var health = 1000.0

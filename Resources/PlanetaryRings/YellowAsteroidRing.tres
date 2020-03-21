@@ -1,11 +1,13 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Resources/PlanetaryRings/PlanetaryRing.gd" type="Script" id=1]
+[ext_resource path="res://Resources/PhysicalObjects/ThingsInSpace/Asteroid.tres" type="Resource" id=2]
 
 [resource]
 script = ExtResource( 1 )
 group_name = "ASTEROID_BELT"
 readable_name = "Asteroid Belt"
+physical_object = ExtResource( 2 )
 color = Color( 0.835294, 0.870588, 0.211765, 1 )
 count = 200
 inner_radius = 6000.0
