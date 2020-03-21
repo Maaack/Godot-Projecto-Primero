@@ -13,9 +13,6 @@ __meta__ = {
 "_edit_group_": true
 }
 camera_scale = 80.0
-health = 1e+08
-linear_delta_limit = 1000.0
-angular_delta_limit = 1000.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 10, 10 )
