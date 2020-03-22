@@ -13,7 +13,6 @@
 [ext_resource path="res://scripts/Component/ThreeGroupEngineMount.gd" type="Script" id=11]
 [ext_resource path="res://assets/originals/simple_rocket_1.png" type="Texture" id=12]
 
-
 [node name="SimpleRocket" type="RigidBody2D"]
 mass = 2.0
 can_sleep = false
@@ -115,9 +114,6 @@ __meta__ = {
 initial_output_mounts = [ NodePath("../FrontCenterHardpoint") ]
 
 [node name="TracerLoadingSystem" parent="TracerLoadingMount" instance=ExtResource( 2 )]
-custom_munition = {
-"type": "TRACERS"
-}
 
 [node name="ThreeGroupEnginesMount" type="Node2D" parent="."]
 script = ExtResource( 11 )

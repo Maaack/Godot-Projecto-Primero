@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/ThingsInSpace/BasicTarget/Destructable/Destructable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/ThingsInSpace/BasicTarget/Destructable/Munition/Munition.gd" type="Script" id=2]
+[ext_resource path="res://assets/originals/bullet_v1.png" type="Texture" id=3]
+
+[node name="Bullet" instance=ExtResource( 1 )]
+mass = 0.01
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+[connection signal="body_shape_entered" from="." to="." method="_on_Bullet_body_shape_entered"]

@@ -1,25 +1,20 @@
 extends "res://scripts/Component/Base/CyclingOutputSystem.gd"
 
 
-const BASIC_ROUNDS_TYPE = "BULLETS"
-const TRACER_ROUNDS_TYPE = "TRACERS"
-export var default_munitions_stored = {
-	BASIC_ROUNDS_TYPE: 400,
-	TRACER_ROUNDS_TYPE: 80
-}
 export var reload_rate_per_second = 1
-export var default_munition = {'type': BASIC_ROUNDS_TYPE}
 
 export(Array, Resource) var munitions
+export(Resource) var default_munition
+export(Resource) var next_munition
 
-var munitions_stored = null
-var next_munition = null
 var reload_time_delta = 0.0
-onready var all_owner = get_parent()
 
 func _ready():
+	var new_munitions = []
+	for munition_collection in munitions:
+		new_munitions.append(munition_collection.duplicate())
+	munitions = new_munitions
 	refresh_munition()
-	munitions_stored = default_munitions_stored.duplicate()
 	
 func cycle_chamber():
 	cycle_output_node()
@@ -42,21 +37,25 @@ func process(delta):
 				refresh_munition()
 				cycle_chamber()
 
-func set_next_munition(settings_dict:Dictionary):
-	next_munition = settings_dict
+func set_next_munition(munition:Ownable):
+	next_munition = munition
 	return true
 
 func unload_next_munition():
-	if not next_munition.has('type'):
-		return
-	var munition_type = next_munition['type']
-	if munitions_stored.has(munition_type) and munitions_stored[munition_type] > 0:
-		munitions_stored[munition_type] -= 1
-		return next_munition
-	elif munitions_stored[BASIC_ROUNDS_TYPE] > 0:
-		munitions_stored[BASIC_ROUNDS_TYPE] -= 1
-		return {'type': TRACER_ROUNDS_TYPE}
+	var munition = unload_munition_type(next_munition)
+	if munition != null:
+		return munition
+	return unload_default_munition()
 	
+func unload_default_munition():
+	return unload_munition_type(default_munition)
+
+func unload_munition_type(munition:Ownable):
+	for munition_collection in munitions:
+		if munition_collection.physical_object == munition and munition_collection.count > 0:
+			munition_collection.count -= 1
+			return munition_collection.physical_object
+
 func get_munitions_stored():
-	return munitions_stored
+	return munitions
 

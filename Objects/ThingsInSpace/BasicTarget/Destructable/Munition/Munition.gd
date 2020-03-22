@@ -1,6 +1,5 @@
 extends "res://Objects/ThingsInSpace/BasicTarget/Destructable/Destructable.gd"
 
-
 const BASE_ORIENTATION = PI/2
 export(float) var self_destruct_timeout = 20.0
 

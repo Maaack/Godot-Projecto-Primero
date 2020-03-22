@@ -6,9 +6,6 @@ const BASE_ORIENTATION = -PI/2
 export var initial_bullet_impulse = 800.0
 export var bullet_self_destruct_timeout = 10.0
 
-var bullet_scene = preload("res://Objects/Bullet.tscn")
-var tracer_scene = preload("res://Objects/Tracer.tscn")
-
 var loaded_munition = null
 var fire_time_delta = 0.0
 var is_triggered = false
@@ -25,13 +22,13 @@ func is_loaded():
 func is_empty():
 	return loaded_munition == null
 	
-func load_munition(settings_dict = {}):
+func load_munition(munition:Ownable):
 	if loaded_munition == null:
-		loaded_munition = settings_dict
+		loaded_munition = munition
 		return true
 	return false
 		
-func spawn_bullet():
+func spawn_bullet(bullet_scene:PackedScene):
 	var instance = bullet_scene.instance()
 	world_space.add_child(instance)
 	instance.set_position(get_position_in_world_space())
@@ -44,18 +41,15 @@ func fire_munition():
 		trigger_off()
 		var firing_munition = loaded_munition
 		loaded_munition = null
-		var instance = spawn_bullet()
+		var instance = spawn_bullet(firing_munition.packed_scene)
 		instance.set_self_destruct_timeout(bullet_self_destruct_timeout)
 		instance.set_legal_owner(get_legal_owner())
-		if (firing_munition.has('type') and firing_munition['type'] == 'TRACERS'):
+		if firing_munition.group_name == "TRACER_BULLET":
 			add_tracer(instance)
 		return instance
 
 func add_tracer(object:Node2D):
-	var instance = tracer_scene.instance()
-	world_space.add_child(instance)
-	instance.set_attached_to(object)
-	get_physical_owner().get_tracer_list().append(instance)
+	get_physical_owner().get_tracer_list().append(object)
 
 func push_bullet(instance:RigidBody2D):
 	var bullet_impulse = (BASE_IMPULSE_VECTOR * initial_bullet_impulse).rotated(get_rotation_in_world_space()).rotated(BASE_ORIENTATION)

@@ -13,7 +13,6 @@
 [ext_resource path="res://Objects/Components/Engines/BFEngine.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/originals/pequod_v2.png" type="Texture" id=12]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 24 )
 
@@ -136,9 +135,6 @@ __meta__ = {
 initial_output_mounts = [ NodePath("../FrontCenterHardpoint") ]
 
 [node name="TracerLoadingSystem" parent="TracerLoadingMount" instance=ExtResource( 2 )]
-custom_munition = {
-"type": "TRACERS"
-}
 
 [node name="ThreeGroupEnginesMount" type="Node2D" parent="."]
 script = ExtResource( 10 )

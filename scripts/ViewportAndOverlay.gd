@@ -180,7 +180,7 @@ func update_counters():
 	var ship_node = get_commanded_ship_node()
 	var munitions = ship_node.get_munitions_stored()
 	currency_counter.set_counter(view_scene_instance.character.money)
-	bullet_counter.set_counter(munitions['BULLETS'])
-	tracer_counter.set_counter(munitions['TRACERS'])
+	bullet_counter.set_counter(munitions[0].count)
+	tracer_counter.set_counter(munitions[1].count)
 	fuel_counter.set_counter(view_scene_instance.asteroid_counter)
 	

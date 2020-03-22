@@ -41,6 +41,9 @@ func set_orbit(resource:PhysicalObject):
 	node_2d.position = resource.position - get_position_in_world_space()
 	node_2d.rotation = resource.rotation - get_rotation_in_world_space()
 	orbit_distance = resource.position.length()
+	if gravity_force * orbit_distance == 0:
+		orbit_theta = 0
+		return
 	orbit_theta = gravity_force / sqrt(orbit_distance * gravity_force) * get_orbit_direction_mod()
 
 func set_sprite(resource:PhysicalObject):
