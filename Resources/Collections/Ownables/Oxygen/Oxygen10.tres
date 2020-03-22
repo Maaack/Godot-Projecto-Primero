@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Collections/Ownables/Ownables.gd" type="Script" id=1]
+[ext_resource path="res://assets/originals/interface/icons/24x24/molecular_oxygen.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+group_name = "OXYGEN"
+readable_name = "Oxygen"
+count = 20
+icon = ExtResource( 2 )

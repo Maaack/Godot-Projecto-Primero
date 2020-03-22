@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/Space.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Station.tscn" type="PackedScene" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Resources/PhysicalObjects/Ownable/TracerBullet.tres" type="Resource" id=13]
 [ext_resource path="res://assets/originals/interface/icons/24x24/tracer_bullets.png" type="Texture" id=14]
 [ext_resource path="res://Objects/ThingsInSpace/Collectable/TracerBulletLootBox.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Objects/ThingsInSpace/Collectable/OxygenLootBox.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Objects/ThingsInSpace/Collectable/HydrogenLootBox.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Resource" id=1]
 resource_local_to_scene = true
@@ -79,10 +81,19 @@ collection = SubResource( 1 )
 position = Vector2( -92992, -192 )
 collection = SubResource( 1 )
 
-[node name="SphereOfInfluence" parent="." instance=ExtResource( 4 )]
-asteroid_spawn_distance_from_surface = 10000.0
-player_character_path = NodePath("../Character")
-
 [node name="TracerBulletLootBox" parent="." instance=ExtResource( 15 )]
 position = Vector2( -93120, -192 )
 collection = SubResource( 2 )
+
+[node name="OxygenLootBox" parent="." instance=ExtResource( 16 )]
+position = Vector2( -93312, -448 )
+
+[node name="OxygenLootBox2" parent="." instance=ExtResource( 16 )]
+position = Vector2( -93440, -448 )
+
+[node name="HydrogenLootBox" parent="." instance=ExtResource( 17 )]
+position = Vector2( -93568, -448 )
+
+[node name="SphereOfInfluence" parent="." instance=ExtResource( 4 )]
+asteroid_spawn_distance_from_surface = 10000.0
+player_character_path = NodePath("../Character")
