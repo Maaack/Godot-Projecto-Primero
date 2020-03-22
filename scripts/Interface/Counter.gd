@@ -1,9 +1,6 @@
 extends NinePatchRect
 
-enum CounterSetting {NORMAL, DIVIDED_BY, PERCENT}
-export(CounterSetting) var counter_setting
-export(float) var value = 0.0
-export(float) var divided_by = null
+
 export(Resource) var collection setget set_collection, get_collection
 onready var label_node = $Label
 onready var texture_node = $Texture

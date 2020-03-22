@@ -5,8 +5,6 @@ onready var viewport = $ControllableViewport
 onready var centered_container = $Overlay/MarginContainer/CenterContainer
 onready var centered_overlay = $Overlay/MarginContainer/CenterContainer/CenteredOverlay
 onready var currency_counter = $Overlay/GridContainer/CurrencyCounter
-onready var bullet_counter = $Overlay/GridContainer/BulletCounter
-onready var tracer_counter = $Overlay/GridContainer/TracerBulletCounter
 onready var fuel_counter = $Overlay/GridContainer/FuelCounter
 onready var grid_container_node = $Overlay/GridContainer
 
