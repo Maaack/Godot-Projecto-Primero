@@ -34,3 +34,4 @@ margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="world_space_ready" from="ViewportAndOverlay" to="." method="_on_ViewportAndOverlay_world_space_ready"]

@@ -36,6 +36,8 @@ export(Array, Color) var colors = [
 
 var counter_nodes = []
 
+signal world_space_ready
+
 func _ready():
 	set_counters()
 
@@ -43,11 +45,13 @@ func _process(_delta):
 	update_circular_viewports()
 	update_tracer_trackers()
 	update_counters()
-	
 
-func set_scene_instance(scene_instance):
-	view_scene_instance = scene_instance
+func set_scene_instance(scene_instance:Node2D):
 	viewport.set_scene_instance(scene_instance)
+	view_scene_instance = scene_instance
+
+func _on_ControllableViewport_world_space_ready():
+	emit_signal("world_space_ready")
 
 func set_centered_on(target):
 	if target.get_position() != null:
@@ -167,7 +171,7 @@ func get_commanded_ship_node():
 
 func get_ship_tracer_list():
 	var ship_node = get_commanded_ship_node()
-	if not ship_node.has_method("get_tracer_list"):
+	if ship_node == null or not ship_node.has_method("get_tracer_list"):
 		return
 	return ship_node.get_tracer_list()
 

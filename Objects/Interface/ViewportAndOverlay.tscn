@@ -67,3 +67,4 @@ margin_bottom = 264.0
 [node name="FuelCounter" parent="Overlay/GridContainer" instance=ExtResource( 6 )]
 margin_top = 268.0
 margin_bottom = 300.0
+[connection signal="world_space_ready" from="ControllableViewport" to="." method="_on_ControllableViewport_world_space_ready"]

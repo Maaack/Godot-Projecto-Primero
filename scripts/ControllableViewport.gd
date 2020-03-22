@@ -14,18 +14,26 @@ var view_centered_on = null
 var view_zoom_level = 3
 var view_scene_instance = null
 
+signal world_space_ready
+
 func _physics_process(_delta):
 	if view_centered_on != null and is_instance_valid(view_centered_on):
 		camera_2d.set_position(view_centered_on.get_position())
 		camera_2d.set_rotation(view_centered_on.get_rotation())
 
-func set_scene_instance(scene_instance):
+func set_scene_instance(scene_instance:Node2D):
 	if view_scene_instance != null:
+		view_scene_instance.disconnect("ready", self, "_on_World_Space_ready")
 		view_scene_instance.queue_free()
 		if not is_instance_valid(view_scene_instance):
 			view_scene_instance = null
+	scene_instance.connect("ready", self, "_on_World_Space_ready")
 	viewport.add_child(scene_instance)
 	view_scene_instance = scene_instance
+	return scene_instance
+	
+func _on_World_Space_ready():
+	emit_signal("world_space_ready")
 	
 func set_centered_on(target):
 	if target.position != null:
@@ -37,6 +45,8 @@ func get_zoom_ratio():
 	return pow(ZOOM_RATIO, view_zoom_level)
 
 func get_scene_position(viewport_position:Vector2):
+	if view_centered_on == null:
+		return
 	var position_from_center = viewport_position - get_parent_area_size()/2
 	position_from_center = position_from_center.rotated(view_centered_on.get_rotation())
 	return (position_from_center * get_zoom_ratio()) + view_centered_on.get_position()
@@ -46,10 +56,14 @@ func _input(event):
 		if event.is_pressed():
 			if event.button_index == BUTTON_LEFT:
 				var scene_click_position = get_scene_position(get_local_mouse_position())
+				if scene_click_position == null:
+					return
 				var click_range_total = pow(click_range,2) * get_zoom_ratio()
 				for scene_node in view_scene_instance.get_children():
 					if is_instance_valid(scene_node) and scene_node.has_method("get_position"):
 						var scene_node_position = scene_node.get_position()
+						if scene_node_position == null:
+							return
 						if (scene_node_position - scene_click_position).length_squared() < click_range_total:
 							view_centered_on.command_ship(scene_node)
 			if event.button_index == BUTTON_WHEEL_UP:
