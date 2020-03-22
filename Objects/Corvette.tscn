@@ -18,6 +18,7 @@
 
 [node name="Corvette" type="RigidBody2D"]
 input_pickable = true
+collision_layer = 3
 mass = 5.0
 can_sleep = false
 script = ExtResource( 6 )

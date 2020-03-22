@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/originals/simple_rocket_1.png" type="Texture" id=12]
 
 [node name="SimpleRocket" type="RigidBody2D"]
+collision_layer = 3
 mass = 2.0
 can_sleep = false
 script = ExtResource( 6 )
