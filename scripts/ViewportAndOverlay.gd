@@ -61,7 +61,6 @@ func set_centered_on_position(position):
 func add_target(target:Node2D):
 	var instance = circular_viewport_scene.instance()
 	centered_overlay.add_child(instance)
-	instance.set_world(view_scene_instance.get_world_2d())
 	instance.set_centered_on(target)
 	var color_index = view_targets.size() % colors.size()
 	target_color_index_dict[target] = color_index

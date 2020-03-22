@@ -27,9 +27,6 @@ func _physics_process(_delta):
 		camera_2d.set_position(view_centered_on.get_position())
 		camera_2d.set_rotation(view_centered_on.get_rotation())
 
-func set_world(world):
-	viewport.set_world_2d(world)
-	
 func get_zoom():
 	var final_zoom = Vector2(1.0, 1.0)
 	if view_centered_on.camera_scale != null:
@@ -39,6 +36,7 @@ func get_zoom():
 func set_centered_on(target:Node2D):
 	if target.get_position() != null:
 		view_centered_on = target
+		viewport.set_world_2d(target.get_world_2d())
 		camera_2d.set_zoom(get_zoom())
 
 func set_pointing_direction(rotation):

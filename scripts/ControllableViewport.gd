@@ -26,10 +26,6 @@ func set_scene_instance(scene_instance):
 			view_scene_instance = null
 	viewport.add_child(scene_instance)
 	view_scene_instance = scene_instance
-	return viewport.get_world_2d()
-
-func set_world(world):
-	viewport.set_world_2d(world)
 	
 func set_centered_on(target):
 	if target.position != null:
