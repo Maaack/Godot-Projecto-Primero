@@ -7,7 +7,7 @@ var space_instance = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var instance = start_game()
+	start_game()
 
 func start_game():
 	space_instance = space_scene.instance()
