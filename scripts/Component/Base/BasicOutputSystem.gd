@@ -1,4 +1,4 @@
-extends "res://scripts/Component/Base/Ownable/Node2D.gd"
+extends "res://Objects/Ownable/Node2D.gd"
 
 
 enum OutputCountSettingEnum {LIMITED, UNLIMITED}

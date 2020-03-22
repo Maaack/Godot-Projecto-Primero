@@ -8,8 +8,8 @@ export(String) var readable_name
 export(PackedScene) var packed_scene
 
 export(Texture) var texture
-export(Vector2) var scale
-export(Color) var color
+export(Vector2) var scale = Vector2(1.0, 1.0)
+export(Color) var color = Color(1.0, 1.0, 1.0, 1.0)
 
 export(NodePath) var parent_path
 export(Vector2) var position

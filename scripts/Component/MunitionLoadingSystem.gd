@@ -10,6 +10,8 @@ export var default_munitions_stored = {
 export var reload_rate_per_second = 1
 export var default_munition = {'type': BASIC_ROUNDS_TYPE}
 
+export(Array, Resource) var munitions
+
 var munitions_stored = null
 var next_munition = null
 var reload_time_delta = 0.0

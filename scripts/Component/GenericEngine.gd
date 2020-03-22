@@ -1,4 +1,4 @@
-extends "res://scripts/Component/Base/Ownable/Node2D.gd"
+extends "res://Objects/Ownable/Node2D.gd"
 
 
 const BASE_IMPULSE_VECTOR = Vector2(1, 0)

@@ -9,17 +9,35 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "PhysicalObject",
+"class": "Ownable",
+"language": "GDScript",
+"path": "res://Resources/PhysicalObjects/Ownable/Ownable.gd"
+}, {
+"base": "PhysicalCollection",
+"class": "Ownables",
+"language": "GDScript",
+"path": "res://Resources/Collections/Ownables/Ownables.gd"
+}, {
+"base": "Resource",
+"class": "PhysicalCollection",
+"language": "GDScript",
+"path": "res://Resources/Collections/PhysicalCollection.gd"
+}, {
 "base": "Resource",
 "class": "PhysicalObject",
 "language": "GDScript",
 "path": "res://Resources/PhysicalObjects/PhysicalObject.gd"
 }, {
-"base": "Resource",
+"base": "PhysicalCollection",
 "class": "PlanetaryRing",
 "language": "GDScript",
 "path": "res://Resources/Collections/PlanetaryRings/PlanetaryRing.gd"
 } ]
 _global_script_class_icons={
+"Ownable": "",
+"Ownables": "",
+"PhysicalCollection": "",
 "PhysicalObject": "",
 "PlanetaryRing": ""
 }

@@ -1,4 +1,4 @@
-extends "res://scripts/Component/Base/Ownable/RigidBody2D.gd"
+extends "res://Objects/Ownable/RigidBody2D.gd"
 
 
 onready var sprite = $Sprite

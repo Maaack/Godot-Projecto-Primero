@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Resources/Collections/PlanetaryRings/YellowAsteroidRing.tres" type="Resource" id=1]
+[ext_resource path="res://Resources/Collections/PlanetaryRings/RedAsteroidRing.tres" type="Resource" id=2]
+[ext_resource path="res://Resources/Collections/PlanetaryRings/VioletAsteroidRing.tres" type="Resource" id=3]
+[ext_resource path="res://Resources/Collections/PlanetaryRings/OrangeAsteroidRing.tres" type="Resource" id=4]
+[ext_resource path="res://Resources/Collections/PlanetaryRings/BlueAsteroidRing.tres" type="Resource" id=5]
+[ext_resource path="res://Objects/ThingsInSpace/SphereOfInfluence/SphereOfInfluence.gd" type="Script" id=6]
+[ext_resource path="res://Objects/Planet8.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Resources/Collections/PlanetaryRings/GreenAsteroidRing.tres" type="Resource" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 112067.0
+
+[node name="SphereOfInfluence" type="Node2D"]
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+rings = [ ExtResource( 5 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ]
+
+[node name="Area2D" type="Area2D" parent="."]
+space_override = 3
+gravity_point = true
+gravity_vec = Vector2( 0, 0 )
+gravity = 480.0
+linear_damp = 0.0
+angular_damp = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Planet8" parent="." instance=ExtResource( 7 )]
