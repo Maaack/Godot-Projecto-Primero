@@ -4,16 +4,28 @@ enum CounterSetting {NORMAL, DIVIDED_BY, PERCENT}
 export(CounterSetting) var counter_setting
 export(float) var value = 0.0
 export(float) var divided_by = null
+export(Resource) var collection setget set_collection, get_collection
 onready var label_node = $Label
+onready var texture_node = $Texture
 
-func _ready():
-	set_counter(value)
+func _process(delta):
+	update_counter()
 
-func set_counter(new_value):
-	var counter_string = str(new_value)
-	if counter_setting == CounterSetting.DIVIDED_BY and divided_by > 0:
-		counter_string += '/' + str(divided_by)
-	elif counter_setting == CounterSetting.PERCENT:
-		counter_string += '%'
-	label_node.set_text(counter_string)
-	value = new_value
+func set_collection(ownables:Ownables):
+	if ownables == null:
+		return
+	collection = ownables
+	texture_node.texture = ownables.icon
+	label_node.set_text(str(collection.count))
+
+func get_collection():
+	return collection
+
+func update_counter():
+	if collection == null:
+		return
+	label_node.set_text(str(collection.count))
+
+func set_counter(value):
+	label_node.set_text(str(value))
+	

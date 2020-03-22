@@ -8,9 +8,11 @@ onready var currency_counter = $Overlay/GridContainer/CurrencyCounter
 onready var bullet_counter = $Overlay/GridContainer/BulletCounter
 onready var tracer_counter = $Overlay/GridContainer/TracerBulletCounter
 onready var fuel_counter = $Overlay/GridContainer/FuelCounter
+onready var grid_container_node = $Overlay/GridContainer
 
 var circular_viewport_scene = preload("res://Objects/Interface/CircularViewport.tscn")
 var tracker_tracer_scene = preload("res://Objects/Interface/TracerTracker.tscn")
+var counter_scene = preload("res://Objects/Interface/Counters/Counter.tscn")
 
 var view_scene_instance = null
 var view_centered_on = null
@@ -34,10 +36,16 @@ export(Array, Color) var colors = [
 	Color( 0.607843, 0.356863, 0.733333, 1 )
 ]
 
+var counter_nodes = []
+
+func _ready():
+	set_counters()
+
 func _process(_delta):
 	update_circular_viewports()
 	update_tracer_trackers()
 	update_counters()
+	
 
 func set_scene_instance(scene_instance):
 	view_scene_instance = scene_instance
@@ -177,10 +185,29 @@ func update_tracer_trackers():
 		tracer_tracker.set_position(get_screen_position(tracer))
 
 func update_counters():
-	var ship_node = get_commanded_ship_node()
-	var munitions = ship_node.get_munitions_stored()
 	currency_counter.set_counter(view_scene_instance.character.money)
-	bullet_counter.set_counter(munitions[0].count)
-	tracer_counter.set_counter(munitions[1].count)
 	fuel_counter.set_counter(view_scene_instance.asteroid_counter)
+	set_counters()
 	
+func set_counters():
+	var ship_node = get_commanded_ship_node()
+	if ship_node == null:
+		return
+	var contents = ship_node.get_contents()
+	for content in contents:
+		var has_counter = false
+		if not content is Ownables:
+			continue
+		for counter_node in counter_nodes:
+			if counter_node.collection == content:
+				has_counter = true
+				break
+		if has_counter:
+			continue
+		add_counter(content)
+		
+func add_counter(collection):
+	var counter_instance = counter_scene.instance()
+	grid_container_node.add_child(counter_instance)
+	counter_instance.set_collection(collection)
+	counter_nodes.append(counter_instance)

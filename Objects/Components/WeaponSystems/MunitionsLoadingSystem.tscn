@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/Component/MunitionLoadingSystem.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Collections/Ownables/Munitions/Bullets/Bullets400.tres" type="Resource" id=2]
-[ext_resource path="res://Resources/Collections/Ownables/Munitions/TracerBullets/TracerBullets80.tres" type="Resource" id=3]
 [ext_resource path="res://Resources/PhysicalObjects/Ownable/Bullet.tres" type="Resource" id=4]
 
 [node name="MunitionsLoadingSystem" type="Node2D"]
 script = ExtResource( 1 )
-munitions = [ ExtResource( 2 ), ExtResource( 3 ) ]
 default_munition = ExtResource( 4 )

@@ -16,7 +16,3 @@ func is_loaded():
 func is_empty():
 	if mounted_system != null and mounted_system.has_method('is_empty'):
 		return mounted_system.is_empty()
-
-func get_munitions_stored():
-	if mounted_system != null and mounted_system.has_method('get_munitions_stored'):
-		return mounted_system.get_munitions_stored()

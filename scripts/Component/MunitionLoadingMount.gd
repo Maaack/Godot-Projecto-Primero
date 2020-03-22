@@ -8,7 +8,3 @@ func load_munition(munition):
 func set_next_munition(munition):
 	if mounted_system != null and mounted_system.has_method('set_next_munition'):
 		return mounted_system.set_next_munition(munition)
-
-func get_munitions_stored():
-	if mounted_system != null and mounted_system.has_method('get_munitions_stored'):
-		return mounted_system.get_munitions_stored()

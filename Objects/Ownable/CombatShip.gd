@@ -37,7 +37,3 @@ func refresh_tracer_list():
 		if is_instance_valid(tracer):
 			new_tracer_list.append(tracer)
 	tracer_list = new_tracer_list
-	
-func get_munitions_stored():
-	if weapons_system_mount.has_method("get_munitions_stored"):
-		return weapons_system_mount.get_munitions_stored()

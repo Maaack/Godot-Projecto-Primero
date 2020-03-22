@@ -11,20 +11,21 @@ onready var sphere_of_influence = $SphereOfInfluence
 
 var asteroid_counter = 0
 
-onready var set_orbits = [
-	corvette,
-	simple_rocket,
-	pequod,
-	station,
+onready var ignore_orbit = [
+	character,
+	sphere_of_influence,
+	$ParallaxBackground
 ]
 
 func _ready():
 	var sphere_of_influence_position = sphere_of_influence.get_position_in_world_space()
-	for set_orbit_node in set_orbits:
-		var relative_position = set_orbit_node.get_position_in_world_space() - sphere_of_influence_position
+	for child in get_children():
+		if ignore_orbit.has(child) or not child.has_method("set_axis_velocity"):
+			continue
+		var relative_position = child.get_position_in_world_space() - sphere_of_influence_position
 		var new_velocity = sphere_of_influence.get_orbital_velocity(relative_position)
-		set_orbit_node.set_axis_velocity(new_velocity)
-		
+		child.set_axis_velocity(new_velocity)
+
 func spawn_rigid_body_2d(physical_object:PhysicalObject):
 	var instance = physical_object.packed_scene.instance()
 	add_child(instance)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Collections/Ownables/Munitions/Bullets/Bullets50.tres" type="Resource" id=1]
+[ext_resource path="res://Objects/ThingsInSpace/Collectable/Collectable.tscn" type="PackedScene" id=2]
+
+[node name="BulletLootBox" instance=ExtResource( 2 )]
+collection = ExtResource( 1 )

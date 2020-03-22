@@ -1,16 +1,15 @@
-extends "res://Objects/ThingsInSpace/BasicTarget.gd"
+extends "res://Objects/ThingsInSpace/BasicTarget/BasicTarget.gd"
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var icon = $Sprite/Icon
 
+export(Resource) var collection
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	collection = collection.duplicate()
+	icon.texture = collection.icon
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_Area2D_body_entered(body):
+	if body.has_method("collect"):
+		body.collect(collection)
+		queue_free()
