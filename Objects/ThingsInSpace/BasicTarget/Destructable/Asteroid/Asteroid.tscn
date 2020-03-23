@@ -11,7 +11,7 @@ radius = 434.548
 mass = 200.0
 script = ExtResource( 1 )
 camera_scale = 2.5
-health = 80.0
+health = 10.0
 prize = 100.0
 linear_delta_limit = 400.0
 

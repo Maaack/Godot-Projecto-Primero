@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Objects/Interface/Counters/CurrencyCounter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Interface/ControllableViewport.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/ViewportAndOverlay.gd" type="Script" id=3]
-[ext_resource path="res://Objects/Interface/Counters/FuelCounter.tscn" type="PackedScene" id=6]
 
 [node name="ViewportAndOverlay" type="Control"]
 anchor_right = 1.0
@@ -59,12 +58,6 @@ __meta__ = {
 }
 
 [node name="CurrencyCounter" parent="Overlay/GridContainer" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 232.0
-margin_right = 136.0
-margin_bottom = 264.0
-
-[node name="FuelCounter" parent="Overlay/GridContainer" instance=ExtResource( 6 )]
 margin_top = 268.0
 margin_bottom = 300.0
 [connection signal="world_space_ready" from="ControllableViewport" to="." method="_on_ControllableViewport_world_space_ready"]

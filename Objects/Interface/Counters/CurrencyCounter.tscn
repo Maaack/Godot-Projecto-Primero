@@ -5,8 +5,6 @@
 [ext_resource path="res://interface/base_theme.tres" type="Theme" id=3]
 
 [node name="CurrencyCounter" instance=ExtResource( 1 )]
-margin_left = 1.0
-margin_right = 137.0
 
 [node name="Texture" parent="." index="0"]
 texture = ExtResource( 2 )

@@ -5,7 +5,6 @@ onready var viewport = $ControllableViewport
 onready var centered_container = $Overlay/MarginContainer/CenterContainer
 onready var centered_overlay = $Overlay/MarginContainer/CenterContainer/CenteredOverlay
 onready var currency_counter = $Overlay/GridContainer/CurrencyCounter
-onready var fuel_counter = $Overlay/GridContainer/FuelCounter
 onready var grid_container_node = $Overlay/GridContainer
 
 var circular_viewport_scene = preload("res://Objects/Interface/CircularViewport.tscn")
@@ -189,7 +188,6 @@ func update_tracer_trackers():
 
 func update_counters():
 	currency_counter.set_counter(view_scene_instance.character.money)
-	fuel_counter.set_counter(view_scene_instance.asteroid_counter)
 	set_counters()
 	
 func set_counters():
