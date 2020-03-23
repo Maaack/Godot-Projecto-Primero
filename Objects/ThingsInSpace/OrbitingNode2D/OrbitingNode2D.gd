@@ -1,4 +1,4 @@
-extends "res://scripts/WorldSpace/Node2D.gd"
+extends "res://Objects/WorldSpace/Node2D.gd"
 
 
 const LOAD_IN_DISTANCE = 10000.0

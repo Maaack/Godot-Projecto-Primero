@@ -1,4 +1,4 @@
-extends "res://Objects/Ownable/RigidBody2D.gd"
+extends "res://Objects/WorldSpace/Ownable/RigidBody2D.gd"
 
 
 export(Array, Resource) var contents = []

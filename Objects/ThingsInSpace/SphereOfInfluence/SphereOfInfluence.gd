@@ -1,4 +1,4 @@
-extends "res://scripts/WorldSpace/Node2D.gd"
+extends "res://Objects/WorldSpace/Node2D.gd"
 
 
 const ASTEROID_GROUP_NAME = "asteroids"

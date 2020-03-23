@@ -1,4 +1,4 @@
-extends "res://scripts/WorldSpace/Node2D.gd"
+extends "res://Objects/WorldSpace/Node2D.gd"
 
 export var world_space_size_base = Vector2(4096.0, 4096.0)
 export var world_space_size_mod = Vector2(40.0, 40.0)

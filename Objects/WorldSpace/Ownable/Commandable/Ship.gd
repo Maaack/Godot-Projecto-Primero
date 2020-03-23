@@ -1,4 +1,4 @@
-extends "res://Objects/Ownable/Commandable.gd"
+extends "res://Objects/WorldSpace/Ownable/Commandable/Commandable.gd"
 
 
 const BASE_ORIENTATION = PI/2
