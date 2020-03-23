@@ -42,6 +42,8 @@ func _ready():
 	set_counters()
 
 func _process(_delta):
+	if view_scene_instance == null:
+		return
 	update_circular_viewports()
 	update_tracer_trackers()
 	update_counters()

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/originals/interface/icons/24x24/molecular_oxygen.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Interface/Counter.gd" type="Script" id=2]
-[ext_resource path="res://interface/base_theme.tres" type="Theme" id=3]
+[ext_resource path="res://interface/window_theme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/originals/interface/ui_box_2.png" type="Texture" id=4]
 
 [node name="Counter" type="NinePatchRect"]

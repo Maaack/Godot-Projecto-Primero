@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/originals/interface/ui_box.png" type="Texture" id=1]
+[ext_resource path="res://interface/window_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/originals/interface/ui_box_2.png" type="Texture" id=3]
+[ext_resource path="res://Objects/Interface/StartMenu.gd" type="Script" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 48.0
+margin_right = -48.0
+margin_bottom = -48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+margin_right = 928.0
+margin_bottom = 504.0
+texture = ExtResource( 1 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/NinePatchRect/MarginContainer"]
+margin_right = 912.0
+margin_bottom = 488.0
+texture = ExtResource( 3 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect/MarginContainer"]
+margin_right = 848.0
+margin_bottom = 424.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+margin_top = 91.0
+margin_right = 848.0
+margin_bottom = 118.0
+size_flags_vertical = 6
+theme = ExtResource( 2 )
+text = "Would you like to start a game?"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+margin_top = 214.0
+margin_right = 848.0
+margin_bottom = 424.0
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 848.0
+margin_bottom = 210.0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+text = "Yes"
+[connection signal="pressed" from="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
