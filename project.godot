@@ -29,6 +29,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/PhysicalObjects/PhysicalObject.gd"
 }, {
+"base": "Resource",
+"class": "PhysicalQuantity",
+"language": "GDScript",
+"path": "res://Resources/New/PhysicalQuantity.gd"
+}, {
+"base": "Resource",
+"class": "PhysicalUnit",
+"language": "GDScript",
+"path": "res://Resources/New/PhysicalUnit.gd"
+}, {
 "base": "PhysicalCollection",
 "class": "PlanetaryRing",
 "language": "GDScript",
@@ -39,6 +49,8 @@ _global_script_class_icons={
 "Ownables": "",
 "PhysicalCollection": "",
 "PhysicalObject": "",
+"PhysicalQuantity": "",
+"PhysicalUnit": "",
 "PlanetaryRing": ""
 }
 
