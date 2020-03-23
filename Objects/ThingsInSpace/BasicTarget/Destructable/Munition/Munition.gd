@@ -9,8 +9,9 @@ func _process(_delta):
 
 func set_self_destruct_timeout(value:float):
 	self_destruct_timeout = value
-		
-func _on_Bullet_body_shape_entered(_body_id, body, _body_shape, _local_shape):
+
+
+func _on_Bullet_body_entered(body):
 	if body.has_method("impact") and last_linear_velocity != null:
 		var relative_velocity = last_linear_velocity - body.get_linear_velocity()
 		body.impact(relative_velocity, mass, legal_owner)
