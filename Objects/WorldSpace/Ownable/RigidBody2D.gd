@@ -1,4 +1,4 @@
-extends "res://scripts/WorldSpace/RigidBody2D.gd"
+extends "res://Objects/WorldSpace/RigidBody2D.gd"
 
 export(Resource) var physical_object setget set_physical_object, get_physical_object
 var legal_owner = null setget set_legal_owner, get_legal_owner

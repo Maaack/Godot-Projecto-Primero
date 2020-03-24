@@ -4,12 +4,14 @@ extends Control
 onready var viewport = $ControllableViewport
 onready var centered_container = $Overlay/MarginContainer/CenterContainer
 onready var centered_overlay = $Overlay/MarginContainer/CenterContainer/CenteredOverlay
-onready var currency_counter = $Overlay/GridContainer/CurrencyCounter
-onready var grid_container_node = $Overlay/GridContainer
+onready var currency_counter = $Overlay/RightGridContainer/CurrencyCounter
+onready var right_grid_container_node = $Overlay/RightGridContainer
+onready var left_grid_container_node = $Overlay/LeftGridContainer
 
 var circular_viewport_scene = preload("res://Objects/Interface/CircularViewport.tscn")
 var tracker_tracer_scene = preload("res://Objects/Interface/TracerTracker.tscn")
 var counter_scene = preload("res://Objects/Interface/Counters/Counter.tscn")
+var progress_bar_scene = preload("res://Objects/Interface/ProgressBar.tscn")
 
 var view_scene_instance = null
 var view_centered_on = null
@@ -34,6 +36,7 @@ export(Array, Color) var colors = [
 ]
 
 var counter_nodes = []
+var progress_bar_nodes = []
 
 signal world_space_ready
 
@@ -168,6 +171,8 @@ func hide_all_tracer_trackers():
 func get_commanded_ship_node():
 	if not is_instance_valid(view_target):
 		return
+	if not is_instance_valid(view_target.ship_node):
+		return
 	return view_target.ship_node
 
 func get_ship_tracer_list():
@@ -194,21 +199,30 @@ func set_counters():
 	var ship_node = get_commanded_ship_node()
 	if ship_node == null:
 		return
-	var contents = ship_node.get_contents()
-	for content in contents:
-		var has_counter = false
-		if not content is Ownables:
-			continue
-		for counter_node in counter_nodes:
-			if counter_node.collection == content:
-				has_counter = true
-				break
-		if has_counter:
-			continue
-		add_counter(content)
+	if ship_node.has_method("get_contents"):
+		var contents = ship_node.get_contents()
+		for content in contents:
+			var has_counter = false
+			if not content is Ownables:
+				continue
+			for counter_node in counter_nodes:
+				if counter_node.collection == content:
+					has_counter = true
+					break
+			if has_counter:
+				continue
+			add_counter(content)
+	if progress_bar_nodes.size() < 1:
+		add_progress_bar(ship_node.destructable_manager.destructable_object)
 		
 func add_counter(collection):
 	var counter_instance = counter_scene.instance()
-	grid_container_node.add_child(counter_instance)
+	right_grid_container_node.add_child(counter_instance)
 	counter_instance.set_collection(collection)
 	counter_nodes.append(counter_instance)
+	
+func add_progress_bar(destructable_object:DestructableObject):
+	var progress_bar_instance = progress_bar_scene.instance()
+	left_grid_container_node.add_child(progress_bar_instance)
+	progress_bar_instance.set_collection(destructable_object)
+	progress_bar_nodes.append(progress_bar_instance)

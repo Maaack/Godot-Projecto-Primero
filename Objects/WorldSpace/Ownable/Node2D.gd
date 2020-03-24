@@ -1,4 +1,4 @@
-extends "res://scripts/WorldSpace/Node2D.gd"
+extends "res://Objects/WorldSpace/Node2D.gd"
 
 
 var legal_owner = null setget set_legal_owner, get_legal_owner

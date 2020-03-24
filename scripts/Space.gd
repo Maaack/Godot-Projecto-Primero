@@ -1,4 +1,4 @@
-extends "res://scripts/WorldSpace/WorldSpace.gd"
+extends "res://Objects/WorldSpace/WorldSpace.gd"
 
 
 onready var character = $Character

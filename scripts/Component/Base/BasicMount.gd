@@ -1,4 +1,4 @@
-extends "res://Objects/Ownable/Node2D.gd"
+extends "res://Objects/WorldSpace/Ownable/Node2D.gd"
 
 
 var mounted_system = null
