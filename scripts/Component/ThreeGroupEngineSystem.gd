@@ -6,9 +6,9 @@ onready var right_spin_engines = $RightSpinEngineTriggerMount
 onready var left_spin_engines = $LeftSpinEngineTriggerMount
 
 export(bool) var is_sas_enabled = true
-var sas_angular_velocity_min = PI/66
-var sas_angular_velocity_max = PI*4
-var sas_angular_velocity_emergency_reset = PI*2
+var sas_angular_velocity_min = PI * 0.015
+var sas_angular_velocity_max = PI * 2.20
+var sas_angular_velocity_emergency_reset = PI * 1.60
 var is_forward_triggered = false
 var is_right_spin_triggered = false
 var is_left_spin_triggered = false

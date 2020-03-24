@@ -168,6 +168,8 @@ func hide_all_tracer_trackers():
 func get_commanded_ship_node():
 	if not is_instance_valid(view_target):
 		return
+	if not is_instance_valid(view_target.ship_node):
+		return
 	return view_target.ship_node
 
 func get_ship_tracer_list():
@@ -194,18 +196,19 @@ func set_counters():
 	var ship_node = get_commanded_ship_node()
 	if ship_node == null:
 		return
-	var contents = ship_node.get_contents()
-	for content in contents:
-		var has_counter = false
-		if not content is Ownables:
-			continue
-		for counter_node in counter_nodes:
-			if counter_node.collection == content:
-				has_counter = true
-				break
-		if has_counter:
-			continue
-		add_counter(content)
+	if ship_node.has_method("get_contents"):
+		var contents = ship_node.get_contents()
+		for content in contents:
+			var has_counter = false
+			if not content is Ownables:
+				continue
+			for counter_node in counter_nodes:
+				if counter_node.collection == content:
+					has_counter = true
+					break
+			if has_counter:
+				continue
+			add_counter(content)
 		
 func add_counter(collection):
 	var counter_instance = counter_scene.instance()

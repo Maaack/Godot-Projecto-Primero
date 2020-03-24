@@ -16,10 +16,16 @@ func _ready():
 		command_ship(initial_ship_node)
 
 func _physics_process(delta):
+	if not is_instance_valid(ship_node):
+		ship_node = null
+		return # Dead?
 	set_position(ship_node.get_position())
 	set_rotation(ship_node.get_rotation())
 
 func _input(event):
+	if not is_instance_valid(ship_node):
+		ship_node = null
+		return
 	ship_node.input(event)
 
 func reward(amount:float):
