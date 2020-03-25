@@ -69,9 +69,10 @@ func add_quantity(value:PhysicalQuantity):
 	value = value.duplicate()
 	var empty_space = get_empty_space()
 	if empty_space != null:
-		var area_mod = get_area_mod(value)
-		var max_space = min(empty_space, value.quantity * area_mod)
-		value.quantity = max_space / get_unit_area(value)
+		var unit_area = get_unit_area(value)
+		var quantity_space = value.quantity * unit_area
+		var max_space = min(empty_space, quantity_space)
+		value.quantity = max_space / unit_area
 		if value.physical_unit.numerical_unit == value.physical_unit.NumericalUnitSetting.DISCRETE:
 			value.quantity = floor(value.quantity)
 	var key = get_quantity_key(value)

@@ -5,7 +5,7 @@ export(Resource) var quantity setget set_quantity
 onready var label_node = $Label
 onready var texture_node = $Texture
 
-var texture_desired_size = Vector2(28.0, 28.0)
+var texture_desired_size = Vector2(32.0, 32.0)
 
 func _process(delta):
 	update_counter()
@@ -28,7 +28,12 @@ func set_icon(value:PhysicalUnit):
 func update_counter():
 	if quantity == null:
 		return
-	set_counter(round(quantity.quantity))
+	var value = quantity.quantity
+	if quantity.physical_unit.numerical_unit == quantity.physical_unit.NumericalUnitSetting.DISCRETE:
+		value = str(round(value))
+	else:
+		value = "%3.2f" % value
+	set_counter(value)
 
 func set_counter(value):
 	label_node.set_text(str(value))

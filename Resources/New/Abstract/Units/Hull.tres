@@ -8,6 +8,6 @@ script = ExtResource( 1 )
 group_name = "HULL_HEALTH"
 readable_name = "Hull"
 icon = ExtResource( 2 )
-size = Vector2( 1, 1 )
+size = Vector2( 100, 100 )
 mass = 0.0
 numerical_unit = 0

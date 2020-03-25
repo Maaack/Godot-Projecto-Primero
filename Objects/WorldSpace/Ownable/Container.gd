@@ -8,13 +8,11 @@ func set_contents(value:PhysicalCollection):
 		contents = value.duplicate()
 	else:
 		contents = PhysicalCollection.new()
-		
+
 func get_contents_array():
 	if contents == null:
 		return
 	return contents.physical_quantities
-	
+
 func add_quantity_to_contents(quantity:PhysicalQuantity):
 	contents.add_quantity(quantity)
-	for content in contents.physical_quantities:
-		print(content.physical_unit.group_name, content.quantity)
