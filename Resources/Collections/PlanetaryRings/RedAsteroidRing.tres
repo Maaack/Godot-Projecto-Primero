@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Resources/Collections/PlanetaryRings/PlanetaryRing.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Collections/PlanetaryRings/PlanetaryRingOld.gd" type="Script" id=1]
 [ext_resource path="res://Resources/PhysicalObjects/ThingsInSpace/RedAsteroid.tres" type="Resource" id=2]
 
 [resource]

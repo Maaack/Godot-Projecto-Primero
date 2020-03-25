@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/PhysicalObjects/Ownable/Ownable.gd"
 }, {
-"base": "PhysicalCollection",
+"base": "PhysicalCollectionOld",
 "class": "Ownables",
 "language": "GDScript",
 "path": "res://Resources/Collections/Ownables/Ownables.gd"
@@ -27,7 +27,17 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "PhysicalCollection",
 "language": "GDScript",
-"path": "res://Resources/Collections/PhysicalCollection.gd"
+"path": "res://Resources/New/Abstract/PhysicalCollection.gd"
+}, {
+"base": "Resource",
+"class": "PhysicalCollection2",
+"language": "GDScript",
+"path": "res://Resources/New/Abstract/PhysicalCollection2.gd"
+}, {
+"base": "Resource",
+"class": "PhysicalCollectionOld",
+"language": "GDScript",
+"path": "res://Resources/Collections/PhysicalCollectionOld.gd"
 }, {
 "base": "Resource",
 "class": "PhysicalObject",
@@ -37,27 +47,35 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "PhysicalQuantity",
 "language": "GDScript",
-"path": "res://Resources/New/PhysicalQuantity.gd"
+"path": "res://Resources/New/Abstract/PhysicalQuantity.gd"
 }, {
 "base": "Resource",
 "class": "PhysicalUnit",
 "language": "GDScript",
-"path": "res://Resources/New/PhysicalUnit.gd"
+"path": "res://Resources/New/Abstract/PhysicalUnit.gd"
 }, {
 "base": "PhysicalCollection",
 "class": "PlanetaryRing",
 "language": "GDScript",
-"path": "res://Resources/Collections/PlanetaryRings/PlanetaryRing.gd"
+"path": "res://Resources/New/Abstract/Collections/PlanetaryRing.gd"
+}, {
+"base": "PhysicalCollectionOld",
+"class": "PlanetaryRingOld",
+"language": "GDScript",
+"path": "res://Resources/Collections/PlanetaryRings/PlanetaryRingOld.gd"
 } ]
 _global_script_class_icons={
 "DestructableObject": "",
 "Ownable": "",
 "Ownables": "",
 "PhysicalCollection": "",
+"PhysicalCollection2": "",
+"PhysicalCollectionOld": "",
 "PhysicalObject": "",
 "PhysicalQuantity": "",
 "PhysicalUnit": "",
-"PlanetaryRing": ""
+"PlanetaryRing": "",
+"PlanetaryRingOld": ""
 }
 
 [application]

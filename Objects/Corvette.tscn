@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Objects/Components/WeaponSystems/WeaponsSystem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Components/WeaponSystems/TracerLoadingSystem.tscn" type="PackedScene" id=2]
@@ -15,8 +15,7 @@
 [ext_resource path="res://Objects/Components/EngineSystems/FourGroupEngineSystem.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Resources/Collections/Ownables/Munitions/TracerBullets/TracerBullets80.tres" type="Resource" id=14]
 [ext_resource path="res://Resources/Collections/Ownables/Munitions/Bullets/Bullets400.tres" type="Resource" id=15]
-
-
+[ext_resource path="res://Resources/New/Present/Collections/Hull.tres" type="Resource" id=16]
 
 [node name="Corvette" type="RigidBody2D"]
 input_pickable = true
@@ -30,6 +29,7 @@ initial_engines_system_mount_path = NodePath("FourGroupEnginesMount")
 initial_engine_mount_paths = [ NodePath("ForwardCenterEngineMount"), NodePath("ForwardLeftEngineMount"), NodePath("ForwardRightEngineMount"), NodePath("ReverseLeftEngineMount"), NodePath("ReverseRightEngineMount") ]
 initial_weapons_system_mount_path = NodePath("WeaponsSystemMount")
 initial_weapon_mount_paths = [ NodePath("FrontLeftHardpoint"), NodePath("FrontRightHardpoint") ]
+hull = ExtResource( 16 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 11 )

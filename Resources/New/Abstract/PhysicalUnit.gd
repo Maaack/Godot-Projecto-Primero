@@ -5,8 +5,9 @@ class_name PhysicalUnit
 
 export(String) var group_name
 export(String) var readable_name
+export(Texture) var icon
 
-export(Vector2) var size
+export(Vector2) var size = Vector2(1.0, 1.0)
 export(float) var mass
-enum NumericalUnitSetting{ DISCRETE, CONTINUOUS }
+enum NumericalUnitSetting{ CONTINUOUS, DISCRETE }
 export(NumericalUnitSetting) var numerical_unit

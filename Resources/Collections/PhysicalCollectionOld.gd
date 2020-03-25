@@ -1,7 +1,7 @@
 extends Resource
 
 
-class_name PhysicalCollection
+class_name PhysicalCollectionOld
 
 export(String) var group_name
 export(String) var readable_name

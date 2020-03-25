@@ -1,3 +1,5 @@
+const HULL_HEALTH_GROUP_NAME = 'HULL_HEALTH'
+
 var destructable_object
 
 var last_linear_velocity
@@ -6,8 +8,12 @@ var last_damaged_by
 var destroyed = false
 var destroyable = true
 
-func _init():
+func _init(init_hull=null):
+	if init_hull != null:
+		print(init_hull, init_hull.get_quantity_by_key(HULL_HEALTH_GROUP_NAME))
 	destructable_object = DestructableObject.new()
+	if init_hull != null and init_hull is PhysicalCollection:
+		destructable_object.hull = init_hull
 
 func physics_process(delta, object:RigidBody2D, sprite:Sprite):
 	var linear_force = get_linear_force(delta, object)
@@ -47,8 +53,6 @@ func get_centripital_force(delta, object:RigidBody2D, sprite:Sprite):
 	var edge_velocity = get_edge_velocity2(delta, object, radius)
 	return ( mass / 2 ) * pow(edge_velocity, 2) / radius
 
-
-
 func get_edge_velocity(delta, object:RigidBody2D, sprite:Sprite):
 	var size = Vector2(1.0, 1.0)
 	if sprite != null and sprite.texture != null:
@@ -62,13 +66,21 @@ func get_edge_velocity2(delta, object:RigidBody2D, radius:float):
 	var position_delta = (radius_vector.rotated(total_angular_velocity) - radius_vector).length()
 	return position_delta / delta
 
+func get_health():
+	if is_instance_valid(destructable_object) and is_instance_valid(destructable_object.hull):
+		return destructable_object.hull.get_quantity_by_key(HULL_HEALTH_GROUP_NAME)
+	return 0.0
 
 func has_health():
-	return destructable_object.health > 0.0
+	return get_health() > 0.0
+
+func add_to_health(value:float):
+	if is_instance_valid(destructable_object) and is_instance_valid(destructable_object.hull):
+		return destructable_object.hull.add_units_by_key(HULL_HEALTH_GROUP_NAME, value)
 
 func damage(amount:float, from:Node2D):
 	var had_health = has_health()
-	destructable_object.health -= amount
+	add_to_health(-amount)
 	last_damaged_by = from
 	if not has_health() and had_health:
 		destroy_self()

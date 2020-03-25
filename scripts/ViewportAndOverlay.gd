@@ -213,7 +213,7 @@ func set_counters():
 				continue
 			add_counter(content)
 	if progress_bar_nodes.size() < 1:
-		add_progress_bar(ship_node.destructable_manager.destructable_object)
+		add_progress_bar(ship_node.hull, 'HULL_HEALTH')
 		
 func add_counter(collection):
 	var counter_instance = counter_scene.instance()
@@ -221,8 +221,8 @@ func add_counter(collection):
 	counter_instance.set_collection(collection)
 	counter_nodes.append(counter_instance)
 	
-func add_progress_bar(destructable_object:DestructableObject):
+func add_progress_bar(collection:PhysicalCollection, key:String):
 	var progress_bar_instance = progress_bar_scene.instance()
 	left_grid_container_node.add_child(progress_bar_instance)
-	progress_bar_instance.set_collection(destructable_object)
+	progress_bar_instance.setup(collection, key)
 	progress_bar_nodes.append(progress_bar_instance)

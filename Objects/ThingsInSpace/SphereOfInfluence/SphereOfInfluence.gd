@@ -65,7 +65,7 @@ func spawn_orbiting_sprite(physical_object:PhysicalObject):
 func spawn_orbiting_rings():
 	var min_spawn_radius = get_min_spawn_radius()
 	for ring in rings:
-		if ring is PlanetaryRing:
+		if ring is PlanetaryRingOld:
 			var physical_object = ring.physical_object
 			for _i in range(ring.count):
 				var random_orbit_radius = rand_range(ring.inner_radius, ring.outer_radius)

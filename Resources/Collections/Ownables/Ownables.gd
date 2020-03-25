@@ -1,4 +1,4 @@
-extends PhysicalCollection
+extends PhysicalCollectionOld
 
 
 class_name Ownables
