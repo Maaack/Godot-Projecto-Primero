@@ -60,15 +60,17 @@ func add_units_by_key(key:String, value:float):
 	if physical_quantity.quantity == -0:
 		physical_quantity.quantity = 0
 	if key != EMPTY_GROUP_NAME:
-		fill_space(physical_quantity)
+		var physical_quantity_dup = physical_quantity.duplicate()
+		physical_quantity_dup.quantity = value
+		fill_space(physical_quantity_dup)
 	return physical_quantity.quantity
 
-func add_quantity(value:PhysicalQuantity):
+func add_physical_quantity(value:PhysicalQuantity):
 	if value == null:
 		return
 	value = value.duplicate()
 	var empty_space = get_empty_space()
-	if empty_space != null:
+	if empty_space != null and value.quantity > 0:
 		var unit_area = get_unit_area(value)
 		var quantity_space = value.quantity * unit_area
 		var max_space = min(empty_space, quantity_space)

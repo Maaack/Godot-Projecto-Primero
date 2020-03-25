@@ -5,7 +5,7 @@ export(Resource) var quantity setget set_quantity
 onready var label_node = $Label
 onready var texture_node = $Texture
 
-var texture_desired_size = Vector2(32.0, 32.0)
+var texture_desired_size = Vector2(24.0, 24.0)
 
 func _process(delta):
 	update_counter()

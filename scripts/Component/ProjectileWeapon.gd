@@ -22,7 +22,7 @@ func is_loaded():
 func is_empty():
 	return loaded_munition == null
 	
-func load_munition(munition:Ownable):
+func load_munition(munition:PackedSceneUnit):
 	if loaded_munition == null:
 		loaded_munition = munition
 		return true

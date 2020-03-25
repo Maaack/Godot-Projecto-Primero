@@ -15,4 +15,4 @@ func get_contents_array():
 	return contents.physical_quantities
 
 func add_quantity_to_contents(quantity:PhysicalQuantity):
-	contents.add_quantity(quantity)
+	contents.add_physical_quantity(quantity)

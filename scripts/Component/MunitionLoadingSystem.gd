@@ -31,7 +31,9 @@ func process(delta):
 				refresh_munition()
 				cycle_chamber()
 
-func set_next_munition(munition:Ownable):
+func set_next_munition(munition:PackedSceneUnit):
+	if munition == null:
+		return
 	next_munition = munition
 	return true
 
@@ -44,12 +46,13 @@ func unload_next_munition():
 func unload_default_munition():
 	return unload_munition_type(default_munition)
 
-func unload_munition_type(munition:Ownable):
+func unload_munition_type(munition:PackedSceneUnit):
 	var contents = get_physical_owner().contents
 	if contents == null:
 		return
-	return contents # TODO: Extend PhysicalUnit to have a packed_scene
-#	for collection in contents:
-#		if collection.physical_object == munition and collection.count > 0:
-#			collection.count -= 1
-#			return collection.physical_object
+	var quantity = contents.get_physical_quantity(munition.group_name)
+	if quantity == null:
+		return
+	var bullets_to_shoot = PhysicalQuantity.new(munition, -1)
+	contents.add_physical_quantity(bullets_to_shoot)
+	return munition
