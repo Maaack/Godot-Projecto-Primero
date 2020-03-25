@@ -1,23 +1,20 @@
-extends "res://Objects/WorldSpace/Ownable/RigidBody2D.gd"
+extends "res://Objects/WorldSpace/ObjectInSpace.gd"
 
 
-export(Array, Resource) var contents = []
+export(Resource) var contents setget set_contents
 
-func _ready():
-	var new_contents = []
-	for content in contents:
-		new_contents.append(content.duplicate())
-	contents = new_contents
-
-func get_contents():
-	return contents
-
-func add_contents(collection:Ownables):
-	for content in contents:
-		if content.group_name == collection.group_name:
-			content.count += collection.count
-			return
-	contents.append(collection)
+func set_contents(value:PhysicalCollection):
+	if value != null:
+		contents = value.duplicate()
+	else:
+		contents = PhysicalCollection.new()
+		
+func get_contents_array():
+	if contents == null:
+		return
+	return contents.physical_quantities
 	
-func collect(collection:Ownables):
-	add_contents(collection)
+func add_quantity_to_contents(quantity:PhysicalQuantity):
+	contents.add_quantity(quantity)
+	for content in contents.physical_quantities:
+		print(content.physical_unit.group_name, content.quantity)

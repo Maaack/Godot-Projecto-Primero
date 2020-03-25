@@ -3,13 +3,10 @@ extends "res://Objects/ThingsInSpace/BasicTarget/BasicTarget.gd"
 
 onready var icon = $Sprite/Icon
 
-export(Resource) var collection
+export(Resource) var physical_quantity setget set_physical_quantity
 
-func _ready():
-	collection = collection.duplicate()
-	icon.texture = collection.icon
+func set_physical_quantity(value:PhysicalQuantity):
+	physical_quantity = value.duplicate()
+	icon.texture = physical_quantity.physical_unit.icon
 
-func _on_Area2D_body_entered(body):
-	if body.has_method("collect"):
-		body.collect(collection)
-		queue_free()
+

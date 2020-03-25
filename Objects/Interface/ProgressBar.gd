@@ -1,34 +1,43 @@
 extends HBoxContainer
 
 
-export(Resource) var physical_collection setget set_collection, get_collection
-export(String) var key
+export(Resource) var collection setget set_collection
+export(String) var unit_key setget set_unit_key
 onready var counter_node = $Counter
 onready var progress_node = $TextureProgress
 
 func _process(delta):
 	update_progress_bar()
 
-func setup(setup_collection:PhysicalCollection, setup_key:String):
-	set_collection(setup_collection)
-	key = setup_key
+func set_all(physical_collection:PhysicalCollection, key:String):
+	set_collection(physical_collection)
+	set_unit_key(key)
 	
-func set_collection(collection:PhysicalCollection):
-	if collection == null:
+func set_collection(value:PhysicalCollection):
+	if value == null:
 		return
-	physical_collection = collection
+	collection = value
+	set_counters()
 
-func get_collection():
-	return physical_collection
+func set_unit_key(value:String):
+	if value == null:
+		return
+	unit_key = value
+	set_counters()
+	
+func set_counters():
+	if collection == null or unit_key == null:
+		return
+	progress_node.max_value = collection.get_total_quantity_value()
+	counter_node.quantity = collection.get_physical_quantity(unit_key)
 
 func update_progress_bar():
-	if physical_collection == null or key == null:
+	if collection == null or unit_key == null:
 		return
-	var progress = physical_collection.get_quantity_by_key(key)
+	var progress = collection.get_quantity_value(unit_key)
 	if progress != null:
 		set_progress_bar(round(progress))
 
 func set_progress_bar(value):
 	progress_node.value = value
-	counter_node.set_counter(value)
 	

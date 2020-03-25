@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/Space.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Station.tscn" type="PackedScene" id=2]
@@ -8,33 +8,10 @@
 [ext_resource path="res://Objects/SimpleRocket.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Pequod.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/originals/background_1.png" type="Texture" id=8]
-[ext_resource path="res://Resources/PhysicalObjects/Ownable/Bullet.tres" type="Resource" id=9]
-[ext_resource path="res://Resources/Collections/Ownables/Ownables.gd" type="Script" id=10]
-[ext_resource path="res://assets/originals/interface/icons/24x24/bullets.png" type="Texture" id=11]
-[ext_resource path="res://Objects/ThingsInSpace/Collectable/BulletLootBox.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Resources/PhysicalObjects/Ownable/TracerBullet.tres" type="Resource" id=13]
-[ext_resource path="res://assets/originals/interface/icons/24x24/tracer_bullets.png" type="Texture" id=14]
-[ext_resource path="res://Objects/ThingsInSpace/Collectable/TracerBulletLootBox.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Objects/ThingsInSpace/Collectable/OxygenLootBox.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Objects/ThingsInSpace/Collectable/HydrogenLootBox.tscn" type="PackedScene" id=17]
-
-[sub_resource type="Resource" id=1]
-resource_local_to_scene = true
-script = ExtResource( 10 )
-group_name = "BULLETS"
-readable_name = "Bullets"
-physical_object = ExtResource( 9 )
-count = 50
-icon = ExtResource( 11 )
-
-[sub_resource type="Resource" id=2]
-resource_local_to_scene = true
-script = ExtResource( 10 )
-group_name = "TRACER_BULLETS"
-readable_name = "Tracer Bullets"
-physical_object = ExtResource( 13 )
-count = 10
-icon = ExtResource( 14 )
+[ext_resource path="res://Objects/WorldSpace/Collectable/TracerBulletLootBox.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/WorldSpace/Collectable/HydrogenLootBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/WorldSpace/Collectable/OxygenLootBox.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Objects/WorldSpace/Collectable/BulletLootBox.tscn" type="PackedScene" id=18]
 
 [node name="Space" type="Node2D"]
 script = ExtResource( 1 )
@@ -42,6 +19,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 world_space_size_mod = Vector2( 80, 80 )
+
+[node name="TracerBulletLootBox2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -93056, -256 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
@@ -73,27 +53,27 @@ position = Vector2( -93116.3, 0 )
 position = Vector2( -93116.6, 0 )
 initial_ship_path = NodePath("../SimpleRocket")
 
-[node name="BulletLootBox" parent="." instance=ExtResource( 12 )]
-position = Vector2( -93248, -192 )
-collection = SubResource( 1 )
-
-[node name="BulletLootBox2" parent="." instance=ExtResource( 12 )]
-position = Vector2( -92992, -192 )
-collection = SubResource( 1 )
-
-[node name="TracerBulletLootBox" parent="." instance=ExtResource( 15 )]
-position = Vector2( -93120, -192 )
-collection = SubResource( 2 )
-
-[node name="OxygenLootBox" parent="." instance=ExtResource( 16 )]
-position = Vector2( -93312, -448 )
-
-[node name="OxygenLootBox2" parent="." instance=ExtResource( 16 )]
-position = Vector2( -93440, -448 )
-
-[node name="HydrogenLootBox" parent="." instance=ExtResource( 17 )]
-position = Vector2( -93568, -448 )
-
 [node name="SphereOfInfluence" parent="." instance=ExtResource( 4 )]
 asteroid_spawn_distance_from_surface = 10000.0
 player_character_path = NodePath("../Character")
+
+[node name="BulletLootBox3" parent="." instance=ExtResource( 18 )]
+position = Vector2( -93088, -192 )
+
+[node name="BulletLootBox1" parent="." instance=ExtResource( 18 )]
+position = Vector2( -93216, -192 )
+
+[node name="BulletLootBox2" parent="." instance=ExtResource( 18 )]
+position = Vector2( -93152, -192 )
+
+[node name="BulletLootBox4" parent="." instance=ExtResource( 18 )]
+position = Vector2( -93024, -192 )
+
+[node name="TracerBulletLootBox" parent="." instance=ExtResource( 9 )]
+position = Vector2( -93184, -256 )
+
+[node name="OxygenLootBox" parent="." instance=ExtResource( 11 )]
+position = Vector2( -93376, -256 )
+
+[node name="HydrogenLootBox" parent="." instance=ExtResource( 10 )]
+position = Vector2( -93376, -320 )

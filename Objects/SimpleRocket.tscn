@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Objects/Components/WeaponSystems/WeaponsSystem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Components/WeaponSystems/TracerLoadingSystem.tscn" type="PackedScene" id=2]
@@ -12,19 +12,22 @@
 [ext_resource path="res://Objects/Components/EngineSystems/ThreeGroupEngineSystem.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scripts/Component/ThreeGroupEngineMount.gd" type="Script" id=11]
 [ext_resource path="res://assets/originals/simple_rocket_1.png" type="Texture" id=12]
-[ext_resource path="res://Resources/New/Present/Collections/Hull.tres" type="Resource" id=13]
+[ext_resource path="res://Resources/New/Present/Destructables/ShipHull.tres" type="Resource" id=13]
+[ext_resource path="res://Resources/New/Present/Collections/SmallCargoBay.tres" type="Resource" id=14]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 64.0
 
 [node name="SimpleRocket" type="RigidBody2D"]
-collision_layer = 3
 mass = 2.0
 can_sleep = false
 script = ExtResource( 6 )
-camera_scale = 0.15
+destructable = ExtResource( 13 )
+contents = ExtResource( 14 )
 initial_engines_system_mount_path = NodePath("ThreeGroupEnginesMount")
 initial_engine_mount_paths = [ NodePath("ForwardCenterEngineMount"), NodePath("FrontLeftEngineMount"), NodePath("FrontRightEngineMount"), NodePath("BackLeftEngineMount"), NodePath("BackRightEngineMount") ]
 initial_weapons_system_mount_path = NodePath("WeaponsSystemMount")
 initial_weapon_mount_paths = [ NodePath("FrontCenterHardpoint") ]
-hull = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 12 )
@@ -129,3 +132,11 @@ initial_right_spin_engine_paths = [ NodePath("../FrontLeftEngineMount"), NodePat
 initial_left_spin_engine_paths = [ NodePath("../FrontRightEngineMount"), NodePath("../BackLeftEngineMount") ]
 
 [node name="ThreeGroupEngineSystem" parent="ThreeGroupEnginesMount" instance=ExtResource( 10 )]
+
+[node name="CollectableArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableArea"]
+shape = SubResource( 1 )
+[connection signal="body_entered" from="CollectableArea" to="." method="_on_CollectableArea_body_entered"]

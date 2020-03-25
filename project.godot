@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "SpecificContainer",
+"class": "Destructable",
+"language": "GDScript",
+"path": "res://Resources/New/Abstract/Destructable.gd"
+}, {
 "base": "Resource",
 "class": "DestructableObject",
 "language": "GDScript",
@@ -24,15 +29,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/Collections/Ownables/Ownables.gd"
 }, {
+"base": "PhysicalUnit",
+"class": "PackedSceneUnit",
+"language": "GDScript",
+"path": "res://Resources/New/Abstract/PackedSceneUnit.gd"
+}, {
 "base": "Resource",
 "class": "PhysicalCollection",
 "language": "GDScript",
 "path": "res://Resources/New/Abstract/PhysicalCollection.gd"
-}, {
-"base": "Resource",
-"class": "PhysicalCollection2",
-"language": "GDScript",
-"path": "res://Resources/New/Abstract/PhysicalCollection2.gd"
 }, {
 "base": "Resource",
 "class": "PhysicalCollectionOld",
@@ -63,19 +68,26 @@ _global_script_classes=[ {
 "class": "PlanetaryRingOld",
 "language": "GDScript",
 "path": "res://Resources/Collections/PlanetaryRings/PlanetaryRingOld.gd"
+}, {
+"base": "Resource",
+"class": "SpecificContainer",
+"language": "GDScript",
+"path": "res://Resources/New/Abstract/SpecificContainer.gd"
 } ]
 _global_script_class_icons={
+"Destructable": "",
 "DestructableObject": "",
 "Ownable": "",
 "Ownables": "",
+"PackedSceneUnit": "",
 "PhysicalCollection": "",
-"PhysicalCollection2": "",
 "PhysicalCollectionOld": "",
 "PhysicalObject": "",
 "PhysicalQuantity": "",
 "PhysicalUnit": "",
 "PlanetaryRing": "",
-"PlanetaryRingOld": ""
+"PlanetaryRingOld": "",
+"SpecificContainer": ""
 }
 
 [application]

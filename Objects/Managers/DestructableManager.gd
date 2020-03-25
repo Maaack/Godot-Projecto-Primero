@@ -1,6 +1,4 @@
-const HULL_HEALTH_GROUP_NAME = 'HULL_HEALTH'
-
-var destructable_object
+var destructable
 
 var last_linear_velocity
 var last_damaged_by
@@ -8,23 +6,19 @@ var last_damaged_by
 var destroyed = false
 var destroyable = true
 
-func _init(init_hull=null):
-	if init_hull != null:
-		print(init_hull, init_hull.get_quantity_by_key(HULL_HEALTH_GROUP_NAME))
-	destructable_object = DestructableObject.new()
-	if init_hull != null and init_hull is PhysicalCollection:
-		destructable_object.hull = init_hull
+func _init(init_destructable=null):
+	if init_destructable != null and init_destructable is Destructable:
+		destructable = init_destructable
 
 func physics_process(delta, object:RigidBody2D, sprite:Sprite):
 	var linear_force = get_linear_force(delta, object)
 	var centripital_force = get_centripital_force(delta, object, sprite)
 	var total_forces = linear_force + centripital_force
-	if total_forces > destructable_object.force_tolerance:
-		var total_damage = (total_forces - destructable_object.force_tolerance) * destructable_object.force_damage
+	if total_forces > destructable.force_tolerance:
+		var total_damage = (total_forces - destructable.force_tolerance) * destructable.force_damage
 		damage(total_damage, null)
 	set_last_values(object)
-	
-	
+
 func set_last_values(object:RigidBody2D):
 	last_linear_velocity = object.linear_velocity
 
@@ -67,16 +61,16 @@ func get_edge_velocity2(delta, object:RigidBody2D, radius:float):
 	return position_delta / delta
 
 func get_health():
-	if is_instance_valid(destructable_object) and is_instance_valid(destructable_object.hull):
-		return destructable_object.hull.get_quantity_by_key(HULL_HEALTH_GROUP_NAME)
+	if is_instance_valid(destructable):
+		return destructable.physical_collection.get_quantity_value(destructable.unit_key)
 	return 0.0
 
 func has_health():
 	return get_health() > 0.0
 
 func add_to_health(value:float):
-	if is_instance_valid(destructable_object) and is_instance_valid(destructable_object.hull):
-		return destructable_object.hull.add_units_by_key(HULL_HEALTH_GROUP_NAME, value)
+	if is_instance_valid(destructable):
+		return destructable.physical_collection.add_units_by_key(destructable.unit_key, value)
 
 func damage(amount:float, from:Node2D):
 	var had_health = has_health()

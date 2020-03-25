@@ -3,7 +3,6 @@ extends "res://Objects/WorldSpace/Ownable/Commandable/Commandable.gd"
 
 const BASE_ORIENTATION = PI/2
 
-export var camera_scale = 1.0
 export(NodePath) var initial_engines_system_mount_path = null
 export(Array, NodePath) var initial_engine_mount_paths = []
 var engines_system_mount = null

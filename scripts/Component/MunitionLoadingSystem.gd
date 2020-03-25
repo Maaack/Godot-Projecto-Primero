@@ -46,7 +46,10 @@ func unload_default_munition():
 
 func unload_munition_type(munition:Ownable):
 	var contents = get_physical_owner().contents
-	for collection in contents:
-		if collection.physical_object == munition and collection.count > 0:
-			collection.count -= 1
-			return collection.physical_object
+	if contents == null:
+		return
+	return contents # TODO: Extend PhysicalUnit to have a packed_scene
+#	for collection in contents:
+#		if collection.physical_object == munition and collection.count > 0:
+#			collection.count -= 1
+#			return collection.physical_object

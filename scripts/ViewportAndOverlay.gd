@@ -1,6 +1,8 @@
 extends Control
 
 
+const HULL_HEALTH_GROUP_NAME = 'HULL_HEALTH'
+
 onready var viewport = $ControllableViewport
 onready var centered_container = $Overlay/MarginContainer/CenterContainer
 onready var centered_overlay = $Overlay/MarginContainer/CenterContainer/CenteredOverlay
@@ -199,30 +201,31 @@ func set_counters():
 	var ship_node = get_commanded_ship_node()
 	if ship_node == null:
 		return
-	if ship_node.has_method("get_contents"):
-		var contents = ship_node.get_contents()
-		for content in contents:
-			var has_counter = false
-			if not content is Ownables:
-				continue
-			for counter_node in counter_nodes:
-				if counter_node.collection == content:
-					has_counter = true
-					break
-			if has_counter:
-				continue
-			add_counter(content)
+	if ship_node.has_method('get_contents_array'):
+		var quantities_array = ship_node.get_contents_array()
+		if quantities_array.size() > 0:
+			for quantity in quantities_array:
+				var has_counter = false
+				if not quantity is PhysicalQuantity:
+					continue
+				for counter_node in counter_nodes:
+					if counter_node.quantity == quantity:
+						has_counter = true
+						break
+				if has_counter:
+					continue
+				add_counter(quantity)
 	if progress_bar_nodes.size() < 1:
-		add_progress_bar(ship_node.hull, 'HULL_HEALTH')
+		add_progress_bar(ship_node.destructable)
 		
-func add_counter(collection):
+func add_counter(quantity:PhysicalQuantity):
 	var counter_instance = counter_scene.instance()
 	right_grid_container_node.add_child(counter_instance)
-	counter_instance.set_collection(collection)
+	counter_instance.quantity = quantity
 	counter_nodes.append(counter_instance)
 	
-func add_progress_bar(collection:PhysicalCollection, key:String):
+func add_progress_bar(specific_container:SpecificContainer):
 	var progress_bar_instance = progress_bar_scene.instance()
 	left_grid_container_node.add_child(progress_bar_instance)
-	progress_bar_instance.setup(collection, key)
+	progress_bar_instance.set_all(specific_container.physical_collection, specific_container.unit_key)
 	progress_bar_nodes.append(progress_bar_instance)
