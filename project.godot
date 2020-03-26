@@ -19,16 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/PhysicalObjects/DestructableObject.gd"
 }, {
-"base": "PhysicalObject",
-"class": "Ownable",
-"language": "GDScript",
-"path": "res://Resources/PhysicalObjects/Ownable/Ownable.gd"
-}, {
-"base": "PhysicalCollectionOld",
-"class": "Ownables",
-"language": "GDScript",
-"path": "res://Resources/Collections/Ownables/Ownables.gd"
-}, {
 "base": "PhysicalUnit",
 "class": "PackedSceneUnit",
 "language": "GDScript",
@@ -77,8 +67,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Destructable": "",
 "DestructableObject": "",
-"Ownable": "",
-"Ownables": "",
 "PackedSceneUnit": "",
 "PhysicalCollection": "",
 "PhysicalCollectionOld": "",
