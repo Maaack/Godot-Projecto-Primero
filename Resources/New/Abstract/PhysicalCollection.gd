@@ -72,24 +72,33 @@ func add_physical_quantity(value:PhysicalQuantity):
 	var key = get_quantity_key(value)
 	var empty_space = get_empty_space()
 	if value.quantity > 0 and empty_space != null:
-		var unit_area = get_unit_area(value)
-		var quantity_space = value.quantity * unit_area
-		var max_space = min(empty_space, quantity_space)
-		value.quantity = max_space / unit_area
+		value.quantity = get_max_quantity_from_empty_space(value)
 	elif value.quantity < 0:
-		if not physical_quantities_dict.has(key):
+		var max_quantity = get_max_quantity_from_existing_quantity(key, value)
+		if max_quantity == null:
 			return
-		var current_quantity = physical_quantities_dict[key]
-		value.quantity = max(-current_quantity.quantity, value.quantity)
-	if value.physical_unit.numerical_unit == value.physical_unit.NumericalUnitSetting.DISCRETE:
-		value.quantity = floor(value.quantity)
+		value.quantity = max_quantity
 	var total = add_units_by_key(key, value.quantity)
 	if total == null:
 		if value.quantity > 0:
 			physical_quantities.append(value)
 			physical_quantities_dict[key] = value
 			fill_space(value)
+			return value
 
+func get_max_quantity_from_empty_space(value:PhysicalQuantity):
+	var empty_space = get_empty_space()
+	var unit_area = get_unit_area(value)
+	var quantity_space = value.quantity * unit_area
+	var max_space = min(empty_space, quantity_space)
+	return max_space / unit_area
+
+func get_max_quantity_from_existing_quantity(key, value:PhysicalQuantity):
+	if not physical_quantities_dict.has(key):
+		return
+	var current_quantity = physical_quantities_dict[key]
+	return max(-current_quantity.quantity, value.quantity)
+		
 func fill_space(value:PhysicalQuantity):
 	var area_mod = get_area_mod(value)
 	var quantity_space = value.quantity * area_mod

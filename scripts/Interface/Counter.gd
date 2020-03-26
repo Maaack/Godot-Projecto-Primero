@@ -30,7 +30,7 @@ func update_counter():
 		return
 	var value = quantity.quantity
 	if quantity.physical_unit.numerical_unit == quantity.physical_unit.NumericalUnitSetting.DISCRETE:
-		value = str(round(value))
+		value = round(value)
 	else:
 		var value_str = "%.*f"
 		var precision = 0
@@ -43,7 +43,7 @@ func update_counter():
 			if abs_value < 1:
 				precision += 1
 		value = value_str % [precision, value]
-		set_counter(value)
+	set_counter(value)
 
 func set_counter(value):
 	label_node.set_text(str(value))

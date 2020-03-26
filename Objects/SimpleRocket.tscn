@@ -14,7 +14,8 @@
 [ext_resource path="res://assets/originals/simple_rocket_1.png" type="Texture" id=12]
 [ext_resource path="res://Resources/New/Present/Destructables/ShipHull.tres" type="Resource" id=13]
 [ext_resource path="res://Resources/New/Present/Collections/SmallCargoBay.tres" type="Resource" id=14]
-[ext_resource path="res://Resources/New/Abstract/Units/TracerBullet.tres" type="Resource" id=15]
+[ext_resource path="res://Resources/New/Abstract/Units/Munitions/TracerBullet.tres" type="Resource" id=15]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 64.0
