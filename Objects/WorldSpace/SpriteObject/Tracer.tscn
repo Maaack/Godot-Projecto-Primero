@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/originals/tracer.png" type="Texture" id=1]
-[ext_resource path="res://Objects/ThingsInSpace/SpriteObject/SpriteObject.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/WorldSpace/SpriteObject/SpriteObject.tscn" type="PackedScene" id=2]
 
 [node name="Tracer" instance=ExtResource( 2 )]
 

@@ -203,7 +203,7 @@ func set_counters():
 		return
 	if ship_node.has_method('get_contents_array'):
 		var quantities_array = ship_node.get_contents_array()
-		if quantities_array.size() > 0:
+		if quantities_array != null and quantities_array.size() > 0:
 			for quantity in quantities_array:
 				var has_counter = false
 				if not quantity is PhysicalQuantity:

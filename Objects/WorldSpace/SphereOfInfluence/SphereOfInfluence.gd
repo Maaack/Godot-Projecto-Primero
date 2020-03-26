@@ -14,7 +14,7 @@ enum OrbitDirectionSetting{CLOCKWISE, COUNTER_CLOCKWISE, EITHER}
 export(OrbitDirectionSetting) var orbit_direction
 export var vector_scale_mod = 1.0
 
-var orbiting_node_scene = preload("res://Objects/ThingsInSpace/OrbitingNode2D/OrbitingNode2D.tscn")
+var orbiting_node_scene = preload("res://Objects/WorldSpace/OrbitingNode2D/OrbitingNode2D.tscn")
 
 export(Array, Resource) var rings
 
