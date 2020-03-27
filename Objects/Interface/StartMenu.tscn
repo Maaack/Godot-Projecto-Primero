@@ -72,12 +72,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
-margin_top = 91.0
+margin_top = 72.0
 margin_right = 848.0
-margin_bottom = 118.0
+margin_bottom = 138.0
 size_flags_vertical = 6
 theme = ExtResource( 2 )
-text = "Would you like to start a game?"
+text = "Life is hard
+
+Try to be happy"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
@@ -91,5 +93,5 @@ margin_right = 848.0
 margin_bottom = 210.0
 size_flags_horizontal = 3
 theme = ExtResource( 2 )
-text = "Yes"
+text = "Okay"
 [connection signal="pressed" from="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
