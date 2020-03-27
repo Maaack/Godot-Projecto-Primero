@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://interface/base_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Objects/Interface/Theme/base_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Objects/Interface/Counter/Counter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/originals/interface/icons/24x24/currency_1.png" type="Texture" id=3]
+
 
 [node name="CurrencyCounter" instance=ExtResource( 2 )]
 
