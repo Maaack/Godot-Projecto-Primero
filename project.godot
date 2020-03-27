@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/New/Abstract/Destructable.gd"
 }, {
-"base": "Resource",
-"class": "DestructableObject",
-"language": "GDScript",
-"path": "res://Resources/PhysicalObjects/DestructableObject.gd"
-}, {
 "base": "PhysicalUnit",
 "class": "PackedSceneUnit",
 "language": "GDScript",
@@ -28,11 +23,6 @@ _global_script_classes=[ {
 "class": "PhysicalCollection",
 "language": "GDScript",
 "path": "res://Resources/New/Abstract/PhysicalCollection.gd"
-}, {
-"base": "Resource",
-"class": "PhysicalObject",
-"language": "GDScript",
-"path": "res://Resources/PhysicalObjects/PhysicalObject.gd"
 }, {
 "base": "Resource",
 "class": "PhysicalQuantity",
@@ -56,10 +46,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Destructable": "",
-"DestructableObject": "",
 "PackedSceneUnit": "",
 "PhysicalCollection": "",
-"PhysicalObject": "",
 "PhysicalQuantity": "",
 "PhysicalUnit": "",
 "PlanetaryRing": "",
