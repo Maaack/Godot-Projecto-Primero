@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Present/Collections/HullSmall.tres" type="Resource" id=1]
+[ext_resource path="res://Resources/Abstract/Destructable.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+physical_collection = ExtResource( 1 )
+unit_key = "HULL_HEALTH"
+force_tolerance = 1e+08
+force_damage = 0.0005
+force_start_delay_time = 1.0
