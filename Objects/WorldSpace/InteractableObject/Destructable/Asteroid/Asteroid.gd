@@ -1,4 +1,4 @@
-extends "res://Objects/ThingsInSpace/Destructable/Destructable.gd"
+extends "res://Objects/WorldSpace/InteractableObject/Destructable/Destructable.gd"
 
 
 func destroy_self():

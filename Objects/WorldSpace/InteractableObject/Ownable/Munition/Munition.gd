@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/Ownable/RigidBody2D.gd"
+extends "res://Objects/WorldSpace/InteractableObject/RigidBody2D.gd"
 
 const BASE_ORIENTATION = PI/2
 export(float) var self_destruct_timeout = 20.0

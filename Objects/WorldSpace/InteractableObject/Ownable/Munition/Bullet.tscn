@@ -1,9 +1,12 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/Present/Destructables/BulletHull.tres" type="Resource" id=1]
-[ext_resource path="res://Objects/ThingsInSpace/Destructable/Destructable.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Objects/WorldSpace/Ownable/Munition/Munition.gd" type="Script" id=3]
-[ext_resource path="res://assets/originals/bullet_v1.png" type="Texture" id=4]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/RigidBody2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/originals/bullet_v1.png" type="Texture" id=3]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Ownable/Munition/Munition.gd" type="Script" id=4]
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
@@ -12,11 +15,11 @@ extents = Vector2( 4, 4 )
 mass = 0.01
 contacts_reported = 1
 contact_monitor = true
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 destructable = ExtResource( 1 )
 
 [node name="Sprite" parent="." index="0"]
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )

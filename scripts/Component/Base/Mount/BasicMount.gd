@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/Ownable/Node2D.gd"
+extends "res://Objects/WorldSpace/InteractableObject/Node2D.gd"
 
 
 var mounted_system = null
@@ -30,3 +30,7 @@ func unmount():
 func process(delta):
 	if is_mounted() and mounted_system.has_method("process"):
 		mounted_system.process(delta)
+
+func get_contents():
+	if is_mounted() and mounted_system.has_method("get_contents"):
+		return mounted_system.get_contents()

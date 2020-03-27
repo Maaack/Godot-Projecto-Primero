@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://Objects/WorldSpace/Ownable/Munition/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Ownable/Munition/Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/Abstract/PackedSceneUnit.gd" type="Script" id=2]
 [ext_resource path="res://assets/originals/interface/icons/24x24/bullets.png" type="Texture" id=3]
 

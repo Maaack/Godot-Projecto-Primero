@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/ObjectInSpace.gd"
+extends "res://Objects/WorldSpace/InteractableObject/RigidBody2D.gd"
 
 
 onready var icon_node = $Sprite/Icon

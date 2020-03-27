@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/Ownable/Node2D.gd"
+extends "res://Objects/WorldSpace/InteractableObject/Node2D.gd"
 
 
 enum OutputCountSettingEnum {LIMITED, UNLIMITED}

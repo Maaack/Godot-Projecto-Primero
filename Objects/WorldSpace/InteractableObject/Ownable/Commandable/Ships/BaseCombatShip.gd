@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/Ownable/Commandable/CombatShip.gd"
+extends "res://Objects/WorldSpace/InteractableObject/Ownable/Commandable/CombatShip.gd"
 
 
 func _on_CollectableArea_body_entered(body):

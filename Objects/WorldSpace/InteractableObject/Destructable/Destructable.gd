@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/Ownable/RigidBody2D.gd"
+extends "res://Objects/WorldSpace/InteractableObject/RigidBody2D.gd"
 
 
 export var health = 1000.0
