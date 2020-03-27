@@ -40,3 +40,7 @@ func command_ship(ship:Node2D):
 	if ship.has_method("input"):
 		ship_node = ship
 		ship.set_commander(self)
+
+func _on_PhysicsArea_body_exited(body):
+	if body.has_method('exit_physics_area'):
+		body.exit_physics_area()

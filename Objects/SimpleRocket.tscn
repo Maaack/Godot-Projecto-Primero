@@ -46,7 +46,8 @@ __meta__ = {
 position = Vector2( 0, -40 )
 script = ExtResource( 5 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Weapon" parent="FrontCenterHardpoint" instance=ExtResource( 3 )]
@@ -55,7 +56,8 @@ __meta__ = {
 position = Vector2( 0, 32 )
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="GenericEngine" parent="ForwardCenterEngineMount" instance=ExtResource( 8 )]
@@ -65,7 +67,8 @@ position = Vector2( -8, -16 )
 rotation = 1.5708
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="MiniEngine" parent="FrontLeftEngineMount" instance=ExtResource( 9 )]
@@ -75,7 +78,8 @@ position = Vector2( 8, -16 )
 rotation = -1.5708
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="MiniEngine" parent="FrontRightEngineMount" instance=ExtResource( 9 )]
@@ -85,7 +89,8 @@ position = Vector2( -8, 16 )
 rotation = 1.5708
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="MiniEngine" parent="BackLeftEngineMount" instance=ExtResource( 9 )]
@@ -95,7 +100,8 @@ position = Vector2( 8, 16 )
 rotation = -1.5708
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="MiniEngine" parent="BackRightEngineMount" instance=ExtResource( 9 )]
@@ -138,5 +144,15 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableArea"]
+position = Vector2( 0, -0.17218 )
+shape = SubResource( 1 )
+
+[node name="CollectableArea2" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableArea2"]
+position = Vector2( 0, -0.17218 )
 shape = SubResource( 1 )
 [connection signal="body_entered" from="CollectableArea" to="." method="_on_CollectableArea_body_entered"]
+[connection signal="body_entered" from="CollectableArea2" to="." method="_on_CollectableArea_body_entered"]
