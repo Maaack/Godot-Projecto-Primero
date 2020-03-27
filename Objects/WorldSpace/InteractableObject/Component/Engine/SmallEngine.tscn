@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/originals/engine_wake.png" type="Texture" id=1]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/GenericEngine.gd" type="Script" id=2]
+
+[node name="SmallEngine" type="Node2D"]
+script = ExtResource( 2 )
+max_engine_impulse = 2.5
+
+[node name="EngineWake" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 16 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )

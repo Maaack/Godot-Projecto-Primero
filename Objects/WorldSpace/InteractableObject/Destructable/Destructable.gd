@@ -3,10 +3,10 @@ extends "res://Objects/WorldSpace/InteractableObject/RigidBody2D.gd"
 
 export var prize = 0.0
 
-func impact(relative_velocity: Vector2, object_mass: float, from: Node2D):
+func impact(relative_velocity: Vector2, from: Node2D):
 	if destructable_manager == null:
 		return
-	return destructable_manager.impact(relative_velocity, object_mass, from)
+	return destructable_manager.impact(relative_velocity, self, from)
 
 func destroy_self():
 	if not destroyed:

@@ -29,6 +29,7 @@ func _input(event):
 	ship_node.input(event)
 
 func reward(amount:float):
+	print("PC received: ", amount, " X8X")
 	money += amount
 
 func get_physical_owner():

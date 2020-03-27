@@ -27,8 +27,7 @@ func process_all_forces(delta, object:RigidBody2D, sprite:Sprite):
 	var total_forces = linear_force + centripital_force
 	if total_forces > destructable.force_tolerance:
 		var total_damage = (total_forces - destructable.force_tolerance) * destructable.force_damage
-		print("Damaging ", str(object.get_path()).get_file(), " with ", total_damage)
-		damage(total_damage, null)
+		damage(total_damage, object, null)
 
 func set_last_values(delta, object:RigidBody2D):
 	if last_linear_velocity:
@@ -92,14 +91,18 @@ func add_to_health(value:float):
 		health_quantity.quantity = value
 		return destructable.physical_collection.add_physical_quantity(health_quantity)
 
-func damage(amount:float, from:Node2D):
+func damage(amount:float, object:RigidBody2D, from:Node2D):
+	var from_path = "forces"
+	if from:
+		from_path = str(from.get_path()).get_file()
+	print("Damaging ", str(object.get_path()).get_file(), " with ", amount, " from " , from_path)
 	add_to_health(-amount)
 	last_damaged_by = from
 	if not has_health():
 		destroy_self()
 	
-func impact(relative_velocity: Vector2, object_mass: float, from: Node2D):
-	var impact_force = 0.5 * object_mass * relative_velocity.length_squared()
+func impact(relative_velocity: Vector2, object: RigidBody2D, from:Node2D):
+	var impact_force = 0.5 * object.mass * relative_velocity.length_squared()
 	var damage = impact_force/1000
 	if damage > 0:
-		damage(damage, from)
+		damage(damage, object, from)

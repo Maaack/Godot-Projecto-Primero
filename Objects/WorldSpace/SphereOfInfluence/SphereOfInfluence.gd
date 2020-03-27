@@ -1,8 +1,6 @@
 extends "res://Objects/WorldSpace/Node2D.gd"
 
 
-const ASTEROID_GROUP_NAME = "asteroids"
-
 onready var gravity_space = $Area2D
 onready var gravity_space_collider = $Area2D/CollisionShape2D
 onready var planet = $Planet8
