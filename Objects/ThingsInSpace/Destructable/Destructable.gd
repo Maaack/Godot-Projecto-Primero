@@ -1,4 +1,4 @@
-extends "res://Objects/ThingsInSpace/BasicTarget/BasicTarget.gd"
+extends "res://Objects/WorldSpace/Ownable/RigidBody2D.gd"
 
 
 export var health = 1000.0

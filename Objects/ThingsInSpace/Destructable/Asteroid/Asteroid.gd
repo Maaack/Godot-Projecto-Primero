@@ -1,4 +1,4 @@
-extends "res://Objects/ThingsInSpace/BasicTarget/Destructable/Destructable.gd"
+extends "res://Objects/ThingsInSpace/Destructable/Destructable.gd"
 
 
 const LOAD_OUT_DISTANCE = 15000.0
