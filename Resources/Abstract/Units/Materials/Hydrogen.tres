@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Abstract/PhysicalUnit.gd" type="Script" id=1]
+[ext_resource path="res://assets/originals/interface/icons/24x24/molecular_hydrogen.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+group_name = "HYDROGEN"
+readable_name = "Hydrogen"
+icon = ExtResource( 2 )
+size = Vector2( 100, 10 )
+mass = 0.01
+numerical_unit = 0

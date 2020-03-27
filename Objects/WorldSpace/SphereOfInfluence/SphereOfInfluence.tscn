@@ -1,13 +1,14 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Resources/New/Present/Collections/PlanetaryRings/OrangeAsteroidRing.tres" type="Resource" id=1]
-[ext_resource path="res://Resources/New/Present/Collections/PlanetaryRings/YellowAsteroidRing.tres" type="Resource" id=2]
-[ext_resource path="res://Resources/New/Present/Collections/PlanetaryRings/RedAsteroidRing.tres" type="Resource" id=3]
-[ext_resource path="res://Resources/New/Present/Collections/PlanetaryRings/VioletAsteroidRing.tres" type="Resource" id=4]
+[ext_resource path="res://Resources/Present/Collections/PlanetaryRings/OrangeAsteroidRing.tres" type="Resource" id=1]
+[ext_resource path="res://Resources/Present/Collections/PlanetaryRings/YellowAsteroidRing.tres" type="Resource" id=2]
+[ext_resource path="res://Resources/Present/Collections/PlanetaryRings/RedAsteroidRing.tres" type="Resource" id=3]
+[ext_resource path="res://Resources/Present/Collections/PlanetaryRings/VioletAsteroidRing.tres" type="Resource" id=4]
 [ext_resource path="res://Objects/WorldSpace/SphereOfInfluence/SphereOfInfluence.gd" type="Script" id=5]
-[ext_resource path="res://Resources/New/Present/Collections/PlanetaryRings/GreenAsteroidRing.tres" type="Resource" id=6]
+[ext_resource path="res://Resources/Present/Collections/PlanetaryRings/GreenAsteroidRing.tres" type="Resource" id=6]
 [ext_resource path="res://Objects/Planet8.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Resources/New/Present/Collections/PlanetaryRings/BlueAsteroidRing.tres" type="Resource" id=8]
+[ext_resource path="res://Resources/Present/Collections/PlanetaryRings/BlueAsteroidRing.tres" type="Resource" id=8]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 112067.0
