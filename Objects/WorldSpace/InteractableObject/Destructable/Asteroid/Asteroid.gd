@@ -2,9 +2,8 @@ extends "res://Objects/WorldSpace/InteractableObject/Destructable/Destructable.g
 
 
 func destroy_self():
-	if can_destroy():
-		world_space.asteroid_counter -= 1
-		.destroy_self()
+	world_space.asteroid_counter -= 1
+	.destroy_self()
 
 func set_physical_unit(value:PhysicalUnit):
 	if value == null:

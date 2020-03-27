@@ -1,26 +1,44 @@
 var destructable
 
 var last_linear_velocity
+var last_linear_acceleration
 var last_damaged_by
 
 var destroyed = false
 var destroyable = true
 
+var ignore_first_seconds = 0.001
+
 func _init(init_destructable=null):
 	if init_destructable != null and init_destructable is Destructable:
 		destructable = init_destructable
+		ignore_first_seconds = destructable.force_start_delay_time
 
 func physics_process(delta, object:RigidBody2D, sprite:Sprite):
+	if ignore_first_seconds > 0.0:
+		ignore_first_seconds -= delta
+	else:
+		process_all_forces(delta, object, sprite)
+	set_last_values(delta, object)
+
+func process_all_forces(delta, object:RigidBody2D, sprite:Sprite):
 	var linear_force = get_linear_force(delta, object)
 	var centripital_force = get_centripital_force(delta, object, sprite)
 	var total_forces = linear_force + centripital_force
 	if total_forces > destructable.force_tolerance:
 		var total_damage = (total_forces - destructable.force_tolerance) * destructable.force_damage
+		print("Damaging ", str(object.get_path()).get_file(), " with ", total_damage)
 		damage(total_damage, null)
-	set_last_values(object)
 
-func set_last_values(object:RigidBody2D):
+func set_last_values(delta, object:RigidBody2D):
+	if last_linear_velocity:
+		last_linear_acceleration = get_linear_acceleration(delta, object)
 	last_linear_velocity = object.linear_velocity
+
+func get_linear_acceleration(delta, object):
+	if last_linear_velocity == null:
+		return
+	return (object.linear_velocity - last_linear_velocity) / delta
 
 func can_destroy():
 	if destroyed:
@@ -32,11 +50,11 @@ func destroy_self():
 		destroyed = true
 
 func get_linear_force(delta, object:RigidBody2D):
-	if last_linear_velocity == null:
+	if last_linear_acceleration == null:
 		return 0.0
-	var linear_velocity_delta = (last_linear_velocity - object.linear_velocity).length()
+	var jerk = (last_linear_acceleration - get_linear_acceleration(delta, object)).length()
 	var mass = object.mass
-	return mass * (linear_velocity_delta / delta)
+	return mass * jerk
 
 func get_centripital_force(delta, object:RigidBody2D, sprite:Sprite):
 	var mass = object.mass

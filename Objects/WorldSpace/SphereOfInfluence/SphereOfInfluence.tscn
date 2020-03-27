@@ -9,7 +9,6 @@
 [ext_resource path="res://Objects/Planet8.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Resources/Present/Collections/PlanetaryRings/BlueAsteroidRing.tres" type="Resource" id=8]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 112067.0
 
@@ -24,7 +23,7 @@ rings = [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 1 )
 space_override = 3
 gravity_point = true
 gravity_vec = Vector2( 0, 0 )
-gravity = 360.0
+gravity = 100.0
 linear_damp = 0.0
 angular_damp = 0.0
 __meta__ = {

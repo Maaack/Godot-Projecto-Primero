@@ -9,3 +9,4 @@ physical_collection = ExtResource( 1 )
 unit_key = "HULL_HEALTH"
 force_tolerance = 10000.0
 force_damage = 0.0005
+force_start_delay_time = 0.05

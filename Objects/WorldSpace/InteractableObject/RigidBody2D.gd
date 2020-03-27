@@ -8,9 +8,11 @@ export var camera_scale = 1.0
 
 var DestructableManager = preload("res://Objects/Managers/DestructableManager.gd")
 var destructable_manager
+var destroyed = false
 var last_linear_velocity
 var legal_owner = null setget set_legal_owner, get_legal_owner
 
+signal destroyed
 
 func set_destructable(value:Destructable):
 	if value == null:
@@ -18,11 +20,18 @@ func set_destructable(value:Destructable):
 	destructable = value.duplicate()
 	destructable_manager = DestructableManager.new(destructable)
 
+func destroy_self():
+	if not destroyed:
+		destroyed = true
+		queue_free()
+		emit_signal("destroyed", self)
+
 func _physics_process(delta):
-	if destructable != null and destructable_manager != null:
+	if destructable != null and destructable_manager != null and not destroyed:
 		destructable_manager.physics_process(delta, self, sprite)
-		if destructable_manager.destroyed == true:
-			queue_free()
+		var now_destroyed = destructable_manager.destroyed
+		if now_destroyed:
+			destroy_self()
 	last_linear_velocity = linear_velocity
 
 func get_legal_owner():
