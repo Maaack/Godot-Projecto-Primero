@@ -2,6 +2,25 @@ extends RigidBody2D
 
 
 onready var world_space = get_world_space()
+var physical_unit setget set_physical_unit, get_physical_unit
+
+func set_physical_unit(value:PhysicalUnit):
+	if value == null:
+		return
+	physical_unit = value.duplicate()
+	position = physical_unit.position
+	rotation = physical_unit.rotation
+	linear_velocity = physical_unit.linear_velocity
+	angular_velocity = physical_unit.angular_velocity
+
+func get_physical_unit():
+	if physical_unit == null:
+		return
+	physical_unit.position = position
+	physical_unit.rotation = rotation
+	physical_unit.linear_velocity = linear_velocity
+	physical_unit.angular_velocity = angular_velocity
+	return physical_unit
 
 func get_world_space():
 	var parent = get_parent()

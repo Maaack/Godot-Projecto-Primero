@@ -8,12 +8,11 @@
 radius = 434.548
 
 [node name="Asteroid" instance=ExtResource( 3 )]
-mass = 200.0
+mass = 10000.0
 script = ExtResource( 1 )
-camera_scale = 2.5
 health = 10.0
 prize = 100.0
-linear_delta_limit = 400.0
+linear_delta_limit = 4000.0
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 2, 2 )

@@ -26,8 +26,8 @@ func process(delta):
 		if chamber.has_method("is_empty") and chamber.is_empty():
 			reload_time_delta += delta
 		if reload_time_delta > (1.0 / reload_rate_per_second):
-			if chamber.has_method("load_munition"):
-				chamber.load_munition(unload_next_munition())
+			if chamber.has_method("load_munitions"):
+				chamber.load_munitions(unload_next_munition())
 				refresh_munition()
 				cycle_chamber()
 
@@ -46,13 +46,16 @@ func unload_next_munition():
 func unload_default_munition():
 	return unload_munition_type(default_munition)
 
-func unload_munition_type(munition:PackedSceneUnit):
+func unload_munition_type(munition:PackedSceneUnit, amount=1.0):
 	var contents = get_physical_owner().contents
 	if contents == null:
 		return
 	var quantity = contents.get_physical_quantity(munition.group_name)
-	if quantity == null:
+	if quantity == null or quantity.quantity < amount:
 		return
-	var bullets_to_shoot = PhysicalQuantity.new(munition, -1)
-	contents.add_physical_quantity(bullets_to_shoot)
-	return munition
+	var bullets_to_load = PhysicalQuantity.new(munition, -amount)
+	var bullets_loaded = contents.add_physical_quantity(bullets_to_load)
+	if bullets_loaded == null:
+		return
+	bullets_loaded.quantity = -(bullets_loaded.quantity)
+	return bullets_loaded

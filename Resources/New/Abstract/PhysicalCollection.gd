@@ -16,7 +16,7 @@ func set_physical_quantities(value:Array):
 	reset_key_map()
 	
 func get_quantity_key(value:PhysicalQuantity):
-	if value == null:
+	if value == null or value.physical_unit == null:
 		return
 	return value.physical_unit.group_name
 
@@ -25,6 +25,8 @@ func reset_key_map():
 	for physical_quantity in physical_quantities:
 		if physical_quantity.physical_unit != null:
 			var key = get_quantity_key(physical_quantity)
+			if key == null:
+				continue
 			physical_quantities_dict[key] = physical_quantity
 
 func get_physical_quantity(key:String):
@@ -50,7 +52,7 @@ func get_empty_quantity_value():
 func get_empty_quantity():
 	return get_physical_quantity(EMPTY_GROUP_NAME)
 
-func add_units_by_key(key:String, value:float):
+func add_quantity_value(key:String, value:float):
 	if not physical_quantities_dict.has(key):
 		return
 	if value == 0.0:
@@ -65,29 +67,42 @@ func add_units_by_key(key:String, value:float):
 		fill_space(physical_quantity_dup)
 	return physical_quantity.quantity
 
+func append_physical_quantity(value:PhysicalQuantity, key=null):
+	if value == null:
+		return
+	if key == null:
+		key = get_quantity_key(value)
+		if key == null:
+			return
+	physical_quantities.append(value)
+	physical_quantities_dict[key] = value
+	fill_space(value)
+	return value
+
 func add_physical_quantity(value:PhysicalQuantity):
 	if value == null:
 		return
 	value = value.duplicate()
 	var key = get_quantity_key(value)
-	var empty_space = get_empty_space()
-	if value.quantity > 0 and empty_space != null:
+	if value.quantity > 0:
 		value.quantity = get_max_quantity_from_empty_space(value)
 	elif value.quantity < 0:
 		var max_quantity = get_max_quantity_from_existing_quantity(key, value)
 		if max_quantity == null:
 			return
 		value.quantity = max_quantity
-	var total = add_units_by_key(key, value.quantity)
-	if total == null:
-		if value.quantity > 0:
-			physical_quantities.append(value)
-			physical_quantities_dict[key] = value
-			fill_space(value)
-			return value
+	if value.quantity == 0:
+		return value
+	var total = add_quantity_value(key, value.quantity)
+	if total != null:
+		return value
+	if value.quantity > 0:
+		return append_physical_quantity(value, key)
 
 func get_max_quantity_from_empty_space(value:PhysicalQuantity):
 	var empty_space = get_empty_space()
+	if empty_space == null:
+		return value.quantity
 	var unit_area = get_unit_area(value)
 	var quantity_space = value.quantity * unit_area
 	var max_space = min(empty_space, quantity_space)
@@ -101,8 +116,8 @@ func get_max_quantity_from_existing_quantity(key, value:PhysicalQuantity):
 		
 func fill_space(value:PhysicalQuantity):
 	var area_mod = get_area_mod(value)
-	var quantity_space = value.quantity * area_mod
-	add_units_by_key(EMPTY_GROUP_NAME, -(quantity_space))
+	var quantity_empty = value.quantity * area_mod
+	add_quantity_value(EMPTY_GROUP_NAME, -(quantity_empty))
 
 func get_area_mod(value:PhysicalQuantity):
 	var empty_quantity = get_empty_quantity()

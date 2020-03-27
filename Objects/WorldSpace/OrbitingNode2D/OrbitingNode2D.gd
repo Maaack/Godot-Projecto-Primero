@@ -8,8 +8,6 @@ onready var sprite = $Node2D/Sprite
 
 export(float) var gravity_force
 
-export(Resource) var physical_object setget set_physical_object, get_physical_object
-
 enum OrbitDirectionSetting{CLOCKWISE, COUNTER_CLOCKWISE}
 export(OrbitDirectionSetting) var orbit_direction
 
@@ -18,16 +16,20 @@ var orbit_theta
 var player_character
 
 
-func set_physical_object(resource:PhysicalObject):
-	set_orbit(resource)
-	set_sprite(resource)
-	physical_object = resource
+func set_physical_unit(value:PhysicalUnit):
+	if value == null:
+		return
+	if not value is PackedSceneUnit:
+		return
+	set_orbit(value)
+	set_sprite(value)
 
-func get_physical_object():
-	physical_object.position = node_2d.position + get_position_in_world_space()
-	physical_object.rotation = sprite.rotation + get_rotation_in_world_space()
-	physical_object.linear_velocity = get_parent().get_orbital_velocity(node_2d.position)
-	return physical_object
+func get_physical_unit():
+	var value = node_2d.get_physical_unit()
+	if value == null:
+		return
+	value.linear_velocity = get_parent().get_orbital_velocity(node_2d.position)
+	return value
 
 func get_orbit_direction_mod():
 	if orbit_direction == OrbitDirectionSetting.CLOCKWISE:
@@ -37,19 +39,20 @@ func get_orbit_direction_mod():
 	else:
 		print('Error: Not a valid orbit direction!')
 
-func set_orbit(resource:PhysicalObject):
-	node_2d.position = resource.position - get_position_in_world_space()
-	node_2d.rotation = resource.rotation - get_rotation_in_world_space()
-	orbit_distance = resource.position.length()
+func set_orbit(value:PackedSceneUnit):
+	value.position -= get_position_in_world_space()
+	value.rotation -= get_rotation_in_world_space()
+	node_2d.physical_unit = value
+	orbit_distance = node_2d.position.length()
 	if gravity_force * orbit_distance == 0:
 		orbit_theta = 0
 		return
 	orbit_theta = gravity_force / sqrt(orbit_distance * gravity_force) * get_orbit_direction_mod()
 
-func set_sprite(resource:PhysicalObject):
-	sprite.texture = resource.texture
-	sprite.scale = resource.scale
-	sprite.modulate = resource.color
+func set_sprite(value:PhysicalUnit):
+	sprite.texture = value.texture
+	sprite.scale = value.scale
+	sprite.modulate = value.color
 
 func _physics_process(delta):
 	var rotation_speed = delta * orbit_theta
@@ -57,5 +60,5 @@ func _physics_process(delta):
 	if is_instance_valid(player_character):
 		var player_distance = node_2d.position.distance_to(player_character.position)
 		if player_distance <= LOAD_IN_DISTANCE:
-			world_space.spawn_rigid_body_2d(get_physical_object())
+			world_space.spawn_rigid_body_2d(get_physical_unit())
 			queue_free()

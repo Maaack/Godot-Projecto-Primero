@@ -1,9 +1,9 @@
 extends "res://scripts/Component/Base/TriggerOutputMount.gd"
 
 
-func load_munition(munition):
-	if mounted_system != null and mounted_system.has_method('load_munition'):
-		return mounted_system.load_munition(munition)
+func load_munitions(munitions):
+	if mounted_system != null and mounted_system.has_method('load_munitions'):
+		return mounted_system.load_munitions(munitions)
 
 func set_next_munition(munition):
 	if mounted_system != null and mounted_system.has_method('set_next_munition'):

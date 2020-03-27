@@ -26,15 +26,18 @@ func _ready():
 		var new_velocity = sphere_of_influence.get_orbital_velocity(relative_position)
 		child.set_axis_velocity(new_velocity)
 
-func spawn_rigid_body_2d(physical_object:PhysicalObject):
-	var instance = physical_object.packed_scene.instance()
+func spawn_rigid_body_2d(physical_unit:PackedSceneUnit):
+	if physical_unit == null:
+		print("Error: Spawn rigid body called with null!")
+		return
+	var instance = physical_unit.packed_scene.instance()
 	add_child(instance)
-	instance.add_to_group(physical_object.group_name)
-	instance.physical_object = physical_object
-	if physical_object.group_name == 'ASTEROID':
+	instance.add_to_group(physical_unit.group_name)
+	instance.physical_unit = physical_unit
+	if physical_unit.group_name == 'ASTEROID':
 		asteroid_counter += 1
 	return instance
 
-func put_in_orbit(resource:PhysicalObject):
+func put_in_orbit(resource:PhysicalUnit):
 	sphere_of_influence.spawn_orbiting_sprite(resource)
 	

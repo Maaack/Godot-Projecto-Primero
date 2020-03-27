@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/ObjectInSpace.gd"
+extends "res://Objects/WorldSpace/Ownable/RigidBody2D.gd"
 
 
 export(Resource) var contents setget set_contents

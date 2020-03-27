@@ -13,7 +13,8 @@
 [ext_resource path="res://assets/originals/corvette.png" type="Texture" id=11]
 [ext_resource path="res://Objects/Components/Engines/MiniEngine.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Objects/Components/EngineSystems/FourGroupEngineSystem.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Resources/New/Present/Collections/Hull.tres" type="Resource" id=16]
+[ext_resource path="res://Resources/New/Present/Collections/HullStandard.tres" type="Resource" id=16]
+
 
 [node name="Corvette" type="RigidBody2D"]
 input_pickable = true

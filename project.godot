@@ -30,11 +30,6 @@ _global_script_classes=[ {
 "path": "res://Resources/New/Abstract/PhysicalCollection.gd"
 }, {
 "base": "Resource",
-"class": "PhysicalCollectionOld",
-"language": "GDScript",
-"path": "res://Resources/Collections/PhysicalCollectionOld.gd"
-}, {
-"base": "Resource",
 "class": "PhysicalObject",
 "language": "GDScript",
 "path": "res://Resources/PhysicalObjects/PhysicalObject.gd"
@@ -54,11 +49,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/New/Abstract/Collections/PlanetaryRing.gd"
 }, {
-"base": "PhysicalCollectionOld",
-"class": "PlanetaryRingOld",
-"language": "GDScript",
-"path": "res://Resources/Collections/PlanetaryRings/PlanetaryRingOld.gd"
-}, {
 "base": "Resource",
 "class": "SpecificContainer",
 "language": "GDScript",
@@ -69,18 +59,16 @@ _global_script_class_icons={
 "DestructableObject": "",
 "PackedSceneUnit": "",
 "PhysicalCollection": "",
-"PhysicalCollectionOld": "",
 "PhysicalObject": "",
 "PhysicalQuantity": "",
 "PhysicalUnit": "",
 "PlanetaryRing": "",
-"PlanetaryRingOld": "",
 "SpecificContainer": ""
 }
 
 [application]
 
-config/name="Ahab"
+config/name="Projecto Primero"
 run/main_scene="res://Objects/Game.tscn"
 config/icon="res://icon.png"
 

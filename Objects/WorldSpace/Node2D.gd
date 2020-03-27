@@ -2,7 +2,22 @@ extends Node2D
 
 
 onready var world_space = get_world_space()
+var physical_unit setget set_physical_unit, get_physical_unit
 
+func set_physical_unit(value:PhysicalUnit):
+	if value == null:
+		return
+	physical_unit = value.duplicate()
+	position = physical_unit.position
+	rotation = physical_unit.rotation
+
+func get_physical_unit():
+	if physical_unit == null:
+		return
+	physical_unit.position = position
+	physical_unit.rotation = rotation
+	return physical_unit
+	
 func get_world_space():
 	var parent = get_parent()
 	if parent != null and parent.has_method("get_world_space"):

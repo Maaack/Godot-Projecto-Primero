@@ -75,10 +75,9 @@ func add_to_health(value:float):
 		return destructable.physical_collection.add_physical_quantity(health_quantity)
 
 func damage(amount:float, from:Node2D):
-	var had_health = has_health()
 	add_to_health(-amount)
 	last_damaged_by = from
-	if not has_health() and had_health:
+	if not has_health():
 		destroy_self()
 	
 func impact(relative_velocity: Vector2, object_mass: float, from: Node2D):

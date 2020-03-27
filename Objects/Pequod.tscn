@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Objects/Components/WeaponSystems/WeaponsSystem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Components/WeaponSystems/TracerLoadingSystem.tscn" type="PackedScene" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://scripts/Component/ThreeGroupEngineMount.gd" type="Script" id=10]
 [ext_resource path="res://Objects/Components/Engines/BFEngine.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/originals/pequod_v2.png" type="Texture" id=12]
-[ext_resource path="res://Resources/New/Present/Collections/Hull.tres" type="Resource" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 24 )
@@ -32,7 +31,6 @@ initial_engines_system_mount_path = NodePath("ThreeGroupEnginesMount")
 initial_engine_mount_paths = [ NodePath("ForwardCenterEngineMount"), NodePath("FrontLeftEngineMount"), NodePath("FrontRightEngineMount"), NodePath("BackLeftEngineMount"), NodePath("BackRightEngineMount") ]
 initial_weapons_system_mount_path = NodePath("WeaponsSystemMount")
 initial_weapon_mount_paths = [ NodePath("FrontCenterHardpoint") ]
-hull = ExtResource( 15 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 12 )

@@ -8,7 +8,6 @@ export var angular_delta_limit = 5.0
  
 var spawn_safe_timeout = 0.1
 var time_since_spawn = 0.0
-var last_linear_velocity = null
 var last_angular_velocity = null
 var destroyed = false
 

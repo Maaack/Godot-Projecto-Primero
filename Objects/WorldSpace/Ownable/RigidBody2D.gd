@@ -1,23 +1,7 @@
-extends "res://Objects/WorldSpace/RigidBody2D.gd"
+extends "res://Objects/WorldSpace/ObjectInSpace.gd"
 
-export(Resource) var physical_object setget set_physical_object, get_physical_object
+
 var legal_owner = null setget set_legal_owner, get_legal_owner
-
-func set_physical_object(value:PhysicalObject):
-	if value != null:
-		position = value.position
-		rotation = value.rotation
-		linear_velocity = value.linear_velocity
-		angular_velocity = value.angular_velocity
-		physical_object = value
-
-func get_physical_object():
-	if physical_object != null:
-		physical_object.position = position
-		physical_object.rotation = rotation
-		physical_object.linear_velocity = linear_velocity
-		physical_object.angular_velocity = angular_velocity
-	return physical_object
 
 func get_legal_owner():
 	var parent = get_parent()
