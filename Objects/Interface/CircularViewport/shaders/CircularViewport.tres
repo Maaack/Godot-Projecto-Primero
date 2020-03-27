@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Objects/Interface/CircularViewport/shaders/CircularViewport.shader" type="Shader" id=1]
+[ext_resource path="res://assets/originals/interface/circular_vieport_mask.png" type="Texture" id=2]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/ramp = 1.0
+shader_param/mask = ExtResource( 2 )

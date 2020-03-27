@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Projecto Primero"
-run/main_scene="res://Objects/Game.tscn"
+run/main_scene="res://Objects/Game/Game.tscn"
 config/icon="res://icon.png"
 
 [physics]

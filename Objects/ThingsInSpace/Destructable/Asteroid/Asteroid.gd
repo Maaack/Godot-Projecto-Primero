@@ -13,5 +13,6 @@ func set_physical_unit(value:PhysicalUnit):
 	.set_physical_unit(value)
 
 func exit_physics_area():
-	world_space.put_in_orbit(get_physical_unit())
-	destroy_self()
+	if not destroyed:
+		world_space.put_in_orbit(get_physical_unit())
+		destroy_self()

@@ -24,5 +24,8 @@ func set_icon(value:PhysicalUnit):
 	icon_node.scale = scale_mod
 
 func collect():
+	var return_physical_quantity = physical_quantity
+	physical_quantity = null
 	queue_free()
-	return physical_quantity
+	return return_physical_quantity
+	return return_physical_quantity
