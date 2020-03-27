@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Resources/New/Abstract/PackedSceneUnit.gd" type="Script" id=1]
+[ext_resource path="res://assets/kenney_spaceshooterextension/PNG/Sprites X2/Meteors/spaceMeteors_004.png" type="Texture" id=2]
+[ext_resource path="res://Objects/ThingsInSpace/BasicTarget/Destructable/Asteroid/Asteroid.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+group_name = "ASTEROID"
+readable_name = "Asteroid"
+size = Vector2( 10000, 10000 )
+mass = 10000.0
+numerical_unit = 1
+packed_scene = ExtResource( 3 )
+texture = ExtResource( 2 )
+scale = Vector2( 2, 2 )
+color = Color( 0.505882, 0.501961, 1, 1 )
+position = Vector2( 0, 0 )
+linear_velocity = Vector2( 0, 0 )
+rotation = 0.0
+angular_velocity = 0.0
