@@ -2,8 +2,9 @@
 
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/RigidBody2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/Present/Destructables/BulletHull.tres" type="Resource" id=2]
-[ext_resource path="res://assets/originals/bullet_v1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/originals/bullet_v1.png" type="Texture" id=3]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Munition/Munition.gd" type="Script" id=4]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )

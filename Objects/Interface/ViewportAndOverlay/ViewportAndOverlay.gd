@@ -175,7 +175,6 @@ func get_commanded_ship_node():
 		return
 	return view_target.ship_node
 
-
 func get_ship_tracer_list():
 	var ship_node = get_commanded_ship_node()
 	if not is_instance_valid(ship_node) or not ship_node.has_method("get_tracer_list"):
@@ -202,12 +201,6 @@ func set_counters():
 			return
 		for vital in vitals:
 			add_progress_bar(vital)
-
-func add_counter(quantity:PhysicalQuantity):
-	var counter_instance = counter_scene.instance()
-	right_grid_container_node.add_child(counter_instance)
-	counter_instance.quantity = quantity
-	counter_nodes.append(counter_instance)
 
 func add_progress_bar(specific_container:SpecificContainer):
 	var progress_bar_instance = progress_bar_scene.instance()

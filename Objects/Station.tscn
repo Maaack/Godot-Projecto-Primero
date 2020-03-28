@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/RigidBody2D.gd" type="Script" id=1]
-[ext_resource path="res://assets/kenney_spaceshooterextension/PNG/Sprites/Station/spaceStation_020.png" type="Texture" id=2]
+[ext_resource path="res://Assets/kenney_spaceshooterextension/PNG/Sprites/Station/spaceStation_020.png" type="Texture" id=2]
+
 
 [node name="Station" type="RigidBody2D"]
 position = Vector2( -424, 0 )

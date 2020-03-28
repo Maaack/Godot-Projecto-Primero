@@ -7,13 +7,14 @@
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/MiniEngine.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Resources/Present/Collections/SmallCargoBay.tres" type="Resource" id=6]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/EngineSystem/ThreeGroupEngineSystem.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/originals/simple_rocket_1.png" type="Texture" id=8]
+[ext_resource path="res://Assets/originals/simple_rocket_1.png" type="Texture" id=8]
 [ext_resource path="res://Resources/Present/Destructables/ShipHull.tres" type="Resource" id=9]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/ThreeGroupEngineMount.gd" type="Script" id=10]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/GenericEngineMount.gd" type="Script" id=11]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/TriggerOutputMount.gd" type="Script" id=12]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/WeaponSystemMount/WeaponHardpoint.gd" type="Script" id=13]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/BaseCombatShip.gd" type="Script" id=14]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 64.0

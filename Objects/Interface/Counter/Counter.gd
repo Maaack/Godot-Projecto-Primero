@@ -15,7 +15,7 @@ func set_quantity(value:PhysicalQuantity):
 		return
 	quantity = value
 	set_icon(value.physical_unit)
-	label_node.set_text(str(quantity.quantity))
+	update_counter()
 
 func set_icon(value:PhysicalUnit):
 	if value == null:

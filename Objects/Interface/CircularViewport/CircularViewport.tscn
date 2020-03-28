@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/originals/interface/circular_viewport.png" type="Texture" id=1]
+[ext_resource path="res://Assets/originals/interface/circular_viewport.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Interface/CircularViewport/shaders/CircularViewport.tres" type="Material" id=2]
 [ext_resource path="res://Objects/Interface/CircularViewport/CircularViewport.gd" type="Script" id=3]
-[ext_resource path="res://assets/originals/interface/circular_viewport_pointing.png" type="Texture" id=4]
+[ext_resource path="res://Assets/originals/interface/circular_viewport_pointing.png" type="Texture" id=4]
+
 
 
 [node name="CircularViewport" type="Node2D"]

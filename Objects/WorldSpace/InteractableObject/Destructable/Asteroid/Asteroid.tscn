@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Destructable/Asteroid/Asteroid.gd" type="Script" id=1]
-[ext_resource path="res://assets/kenney_spaceshooterextension/PNG/Sprites X2/Meteors/spaceMeteors_004.png" type="Texture" id=2]
+[ext_resource path="res://Assets/kenney_spaceshooterextension/PNG/Sprites X2/Meteors/spaceMeteors_004.png" type="Texture" id=2]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/RigidBody2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Present/Destructables/AsteroidHull.tres" type="Resource" id=4]
 [ext_resource path="res://Resources/Present/Collections/CreditPrize100.tres" type="Resource" id=5]
