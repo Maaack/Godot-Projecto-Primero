@@ -34,6 +34,11 @@ func get_contents_array():
 		contents_array += ship_node.get_contents_array()
 	return contents_array
 
+func get_vitals_array():
+	if ship_node == null:
+		return
+	return [ship_node.destructable]
+
 func reward(quantities_array:Array):
 	if quantities_array == null or quantities_array.size() == 0:
 		return

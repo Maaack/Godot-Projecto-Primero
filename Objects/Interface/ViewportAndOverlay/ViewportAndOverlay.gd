@@ -50,7 +50,7 @@ func _process(_delta):
 		return
 	update_circular_viewports()
 	update_tracer_trackers()
-	update_counters()
+	set_counters()
 
 func set_scene_instance(scene_instance:Node2D):
 	viewport.set_scene_instance(scene_instance)
@@ -192,39 +192,23 @@ func update_tracer_trackers():
 		var tracer_tracker = get_tracer_tracker(tracer)
 		tracer_tracker.set_position(get_screen_position(tracer))
 
-func update_counters():
-	set_counters()
-	
 func set_counters():
-	return right_grid_container_node.display_inventory(view_centered_on)
-
-func set_counters2():
-	var ship_node = get_commanded_ship_node()
-	if is_instance_valid(ship_node):
+	if view_centered_on == null:
 		return
-	if ship_node.has_method('get_contents_array'):
-		var quantities_array = ship_node.get_contents_array()
-		if quantities_array != null and quantities_array.size() > 0:
-			for quantity in quantities_array:
-				var has_counter = false
-				if not quantity is PhysicalQuantity:
-					continue
-				for counter_node in counter_nodes:
-					if counter_node.quantity == quantity:
-						has_counter = true
-						break
-				if has_counter:
-					continue
-				add_counter(quantity)
-	if progress_bar_nodes.size() < 1:
-		add_progress_bar(ship_node.destructable)
-		
+	right_grid_container_node.display_inventory(view_centered_on)
+	if progress_bar_nodes.size() < 1 and view_centered_on.has_method("get_vitals_array"):
+		var vitals = view_centered_on.get_vitals_array()
+		if vitals == null:
+			return
+		for vital in vitals:
+			add_progress_bar(vital)
+
 func add_counter(quantity:PhysicalQuantity):
 	var counter_instance = counter_scene.instance()
 	right_grid_container_node.add_child(counter_instance)
 	counter_instance.quantity = quantity
 	counter_nodes.append(counter_instance)
-	
+
 func add_progress_bar(specific_container:SpecificContainer):
 	var progress_bar_instance = progress_bar_scene.instance()
 	left_grid_container_node.add_child(progress_bar_instance)

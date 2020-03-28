@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Resources/Abstract/PhysicalUnit.gd" type="Script" id=1]
-[ext_resource path="res://assets/gui.svg/icons/ffffff/000000/1x1/delapouite/square.svg" type="Texture" id=2]
+[ext_resource path="res://assets/originals/interface/icons/empty_open_box_round.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
