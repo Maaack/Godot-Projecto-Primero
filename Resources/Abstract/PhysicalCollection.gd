@@ -39,12 +39,32 @@ func get_quantity_value(key:String):
 		return physical_quantity.quantity
 	return 0.0
 
-func get_total_quantity_value():
-	var total_quantity = 0.0
-	for key in physical_quantities_dict:
-		var physical_quantity = physical_quantities_dict[key]
-		total_quantity += physical_quantity.quantity
-	return total_quantity
+func get_sum_quantity():
+	var sum_quantity = 0.0
+	if physical_quantities == null:
+		return sum_quantity
+	for physical_quantity in physical_quantities:
+		if physical_quantity is PhysicalQuantity:
+			sum_quantity += physical_quantity.quantity
+	return sum_quantity
+
+func get_mass():
+	var sum_mass = 0.0
+	if physical_quantities == null:
+		return sum_mass
+	for physical_quantity in physical_quantities:
+		if physical_quantity is PhysicalQuantity:
+			sum_mass += physical_quantity.get_mass()
+	return sum_mass
+
+func get_area():
+	var sum_area = 0.0
+	if physical_quantities == null:
+		return sum_area
+	for physical_quantity in physical_quantities:
+		if physical_quantity is PhysicalQuantity:
+			sum_area += physical_quantity.get_area()
+	return sum_area
 
 func get_empty_quantity_value():
 	return get_quantity_value(EMPTY_GROUP_NAME)

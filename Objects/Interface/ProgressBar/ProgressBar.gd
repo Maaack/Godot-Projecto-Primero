@@ -28,7 +28,7 @@ func set_unit_key(value:String):
 func set_counters():
 	if collection == null or unit_key == null:
 		return
-	progress_node.max_value = collection.get_total_quantity_value()
+	progress_node.max_value = collection.get_sum_quantity()
 	counter_node.quantity = collection.get_physical_quantity(unit_key)
 
 func update_progress_bar():
