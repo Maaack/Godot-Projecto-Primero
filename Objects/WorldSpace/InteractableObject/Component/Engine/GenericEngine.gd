@@ -4,7 +4,7 @@ extends "res://Objects/WorldSpace/InteractableObject/Node2D.gd"
 const BASE_IMPULSE_VECTOR = Vector2(1, 0)
 const BASE_ORIENTATION = -PI/2
 
-export var max_engine_impulse = 5.0
+export var max_engine_impulse = 1000.0
 onready var engine_wake = $EngineWake
 var is_triggered = false
 

@@ -6,9 +6,7 @@ const BASE_ORIENTATION = PI/2
 export var camera_scale = 0.2
 export(NodePath) var initial_ship_path
 var ship_node = null
-
-# Currency
-export var money = 0.0
+var kilogram_resource = preload("res://Resources/Abstract/Quantities/Kilograms.tres")
 
 func _ready():
 	var initial_ship_node = get_node(initial_ship_path)
@@ -22,6 +20,11 @@ func _physics_process(delta):
 	set_position(ship_node.get_position())
 	set_rotation(ship_node.get_rotation())
 
+func _process(_delta):
+	if $Counter == null:
+		return
+	$Counter.quantity = get_mass_quantity()
+
 func _input(event):
 	if not is_instance_valid(ship_node):
 		ship_node = null
@@ -30,8 +33,12 @@ func _input(event):
 
 func get_contents_array():
 	var contents_array = .get_contents_array()
+	if contents_array == null:
+		return
 	if is_instance_valid(ship_node) and ship_node.has_method("get_contents_array"):
-		contents_array += ship_node.get_contents_array()
+		var ship_contents_array = ship_node.get_contents_array()
+		if ship_contents_array != null:
+			contents_array += ship_node.get_contents_array()
 	return contents_array
 
 func get_mass():
@@ -41,6 +48,11 @@ func get_mass():
 		if quantity is PhysicalQuantity:
 			sum_mass += quantity.get_mass()
 	return sum_mass
+
+func get_mass_quantity():
+	var mass_quantity = kilogram_resource.duplicate()
+	mass_quantity.quantity = get_mass()
+	return mass_quantity
 
 func get_vitals_array():
 	if ship_node == null:

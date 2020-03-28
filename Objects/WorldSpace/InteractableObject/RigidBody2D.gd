@@ -1,6 +1,7 @@
 extends "res://Objects/WorldSpace/RigidBody2D.gd"
 
 
+const GRAVITY_CONST = 9.8
 onready var sprite = $Sprite
 
 export(Resource) var destructable setget set_destructable
@@ -25,6 +26,9 @@ func destroy_self():
 		destroyed = true
 		queue_free()
 		emit_signal("destroyed", self)
+
+func _ready():
+	weight = mass * GRAVITY_CONST * gravity_scale
 
 func _physics_process(delta):
 	if destructable != null and destructable_manager != null and not destroyed:

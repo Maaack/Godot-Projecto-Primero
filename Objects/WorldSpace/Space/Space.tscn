@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Objects/WorldSpace/Collectable/TracerBulletLootBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/originals/background_1.png" type="Texture" id=2]
-[ext_resource path="res://Objects/Pequod.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Pequod.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Corvette.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Station.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/SimpleRocket.tscn" type="PackedScene" id=6]
@@ -12,9 +12,6 @@
 [ext_resource path="res://Objects/WorldSpace/Space/Space.gd" type="Script" id=10]
 [ext_resource path="res://Objects/WorldSpace/Collectable/BulletLootBox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Objects/WorldSpace/Collectable/HydrogenLootBox.tscn" type="PackedScene" id=12]
-
-
-
 
 [node name="Space" type="Node2D"]
 script = ExtResource( 10 )
@@ -47,7 +44,6 @@ position = Vector2( -93840.6, 280 )
 
 [node name="Pequod" parent="." instance=ExtResource( 3 )]
 position = Vector2( -94110.6, 0 )
-mass = 4.33
 
 [node name="SimpleRocket" parent="." instance=ExtResource( 6 )]
 position = Vector2( -93116.3, 0 )

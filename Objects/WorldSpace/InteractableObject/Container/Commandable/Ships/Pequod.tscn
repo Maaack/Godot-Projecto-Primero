@@ -13,25 +13,6 @@
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/BFEngine.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/originals/pequod_v2.png" type="Texture" id=12]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 24 )
 
@@ -42,7 +23,7 @@ extents = Vector2( 32, 44 )
 extents = Vector2( 24, 16 )
 
 [node name="Pequod" type="RigidBody2D"]
-mass = 20.0102
+mass = 10000.0
 can_sleep = false
 script = ExtResource( 6 )
 camera_scale = 0.6

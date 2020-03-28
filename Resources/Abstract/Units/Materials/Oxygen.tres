@@ -9,5 +9,5 @@ group_name = "OXYGEN"
 readable_name = "Oxygen"
 icon = ExtResource( 2 )
 size = Vector2( 100, 10 )
-mass = 0.01
+mass = 20.0
 numerical_unit = 0

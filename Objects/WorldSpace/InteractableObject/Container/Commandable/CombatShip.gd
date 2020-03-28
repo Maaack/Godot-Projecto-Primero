@@ -40,6 +40,8 @@ func refresh_tracer_list():
 
 func get_contents_array():
 	var contents_array = .get_contents_array()
+	if contents_array == null:
+		return
 	for weapon_mount in weapon_mounts:
 		var weapon_contents = weapon_mount.get_contents()
 		if weapon_contents != null:
