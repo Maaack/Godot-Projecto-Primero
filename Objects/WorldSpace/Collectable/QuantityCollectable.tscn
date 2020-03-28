@@ -4,15 +4,14 @@
 [ext_resource path="res://assets/originals/interface/ui_box.png" type="Texture" id=2]
 [ext_resource path="res://Objects/WorldSpace/Collectable/QuantityCollectable.gd" type="Script" id=3]
 
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
 
 [node name="QuantityCollectable" instance=ExtResource( 1 )]
 collision_layer = 3
 collision_mask = 3
+continuous_cd = 2
+can_sleep = false
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]

@@ -20,6 +20,7 @@ radius = 64.0
 
 [node name="SimpleRocket" type="RigidBody2D"]
 mass = 2.0
+continuous_cd = 2
 can_sleep = false
 script = ExtResource( 14 )
 destructable = ExtResource( 9 )
@@ -144,15 +145,5 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableArea"]
-position = Vector2( 0, -0.17218 )
-shape = SubResource( 1 )
-
-[node name="CollectableArea2" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableArea2"]
-position = Vector2( 0, -0.17218 )
 shape = SubResource( 1 )
 [connection signal="body_entered" from="CollectableArea" to="." method="_on_CollectableArea_body_entered"]
-[connection signal="body_entered" from="CollectableArea2" to="." method="_on_CollectableArea_body_entered"]

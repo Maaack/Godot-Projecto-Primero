@@ -28,4 +28,3 @@ func collect():
 	physical_quantity = null
 	queue_free()
 	return return_physical_quantity
-	return return_physical_quantity
