@@ -21,3 +21,6 @@ func load_munition(munition):
 	
 func set_next_munition(munition):
 	return munitions_loading_system_mount.set_next_munition(munition)
+
+func get_contents():
+	return projectile_system_mount.get_contents()

@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/InteractableObject/Node2D.gd"
+extends "res://Objects/WorldSpace/InteractableObject/Container/Node2D.gd"
 
 
 const BASE_ORIENTATION = PI/2
@@ -28,9 +28,19 @@ func _input(event):
 		return
 	ship_node.input(event)
 
-func reward(amount:float):
-	print("PC received: ", amount, " X8X")
-	money += amount
+func get_contents_array():
+	var contents_array = .get_contents_array()
+	if is_instance_valid(ship_node) and ship_node.has_method("get_contents_array"):
+		contents_array += ship_node.get_contents_array()
+	return contents_array
+
+func reward(quantities_array:Array):
+	if quantities_array == null or quantities_array.size() == 0:
+		return
+	if contents == null:
+		contents = PhysicalCollection.new()
+	for quantity in quantities_array:
+		contents.add_physical_quantity(quantity)
 
 func get_physical_owner():
 	return self

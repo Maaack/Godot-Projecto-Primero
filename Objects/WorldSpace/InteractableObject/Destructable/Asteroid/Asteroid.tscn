@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Destructable/Asteroid/Asteroid.gd" type="Script" id=1]
 [ext_resource path="res://assets/kenney_spaceshooterextension/PNG/Sprites X2/Meteors/spaceMeteors_004.png" type="Texture" id=2]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/RigidBody2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Present/Destructables/AsteroidHull.tres" type="Resource" id=4]
+[ext_resource path="res://Resources/Present/Collections/CreditPrize100.tres" type="Resource" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 434.548
@@ -12,7 +13,7 @@ radius = 434.548
 mass = 10000.0
 script = ExtResource( 1 )
 destructable = ExtResource( 4 )
-prize = 100.0
+contents = ExtResource( 5 )
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 2, 2 )

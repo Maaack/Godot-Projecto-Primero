@@ -76,3 +76,9 @@ func process(delta):
 	if is_triggered and is_loaded():
 		fire_munitions()
 		fire_time_delta = 0.0
+
+func get_contents():
+	var collection = PhysicalCollection.new()
+	if loaded_munitions:
+		collection.set_physical_quantities([loaded_munitions])
+	return collection

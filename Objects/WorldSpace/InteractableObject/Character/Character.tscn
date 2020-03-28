@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Objects/Character/Character.gd" type="Script" id=1]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Character/Character.gd" type="Script" id=1]
 [ext_resource path="res://assets/originals/astronaut.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Present/Collections/EmptyWallet.tres" type="Resource" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16000.0
 
 [node name="Character" type="Node2D"]
 script = ExtResource( 1 )
+contents = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )

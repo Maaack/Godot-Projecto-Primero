@@ -173,13 +173,12 @@ func hide_all_tracer_trackers():
 func get_commanded_ship_node():
 	if not is_instance_valid(view_target):
 		return
-	if not is_instance_valid(view_target.ship_node):
-		return
 	return view_target.ship_node
+
 
 func get_ship_tracer_list():
 	var ship_node = get_commanded_ship_node()
-	if ship_node == null or not ship_node.has_method("get_tracer_list"):
+	if not is_instance_valid(ship_node) or not ship_node.has_method("get_tracer_list"):
 		return
 	return ship_node.get_tracer_list()
 
@@ -194,12 +193,14 @@ func update_tracer_trackers():
 		tracer_tracker.set_position(get_screen_position(tracer))
 
 func update_counters():
-	currency_counter.set_counter(view_scene_instance.character.money)
 	set_counters()
 	
 func set_counters():
+	return right_grid_container_node.display_inventory(view_centered_on)
+
+func set_counters2():
 	var ship_node = get_commanded_ship_node()
-	if ship_node == null:
+	if is_instance_valid(ship_node):
 		return
 	if ship_node.has_method('get_contents_array'):
 		var quantities_array = ship_node.get_contents_array()

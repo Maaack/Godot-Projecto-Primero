@@ -12,7 +12,7 @@ func set_contents(value:PhysicalCollection):
 func get_contents_array():
 	if contents == null:
 		return
-	return contents.physical_quantities
+	return contents.physical_quantities.duplicate()
 
 func add_quantity_to_contents(quantity:PhysicalQuantity):
 	contents.add_physical_quantity(quantity)

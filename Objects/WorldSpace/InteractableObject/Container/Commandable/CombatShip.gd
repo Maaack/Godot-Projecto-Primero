@@ -30,10 +30,18 @@ func input(event):
 func get_tracer_list():
 	refresh_tracer_list()
 	return tracer_list
-	
+
 func refresh_tracer_list():
 	var new_tracer_list = []
 	for tracer in tracer_list:
 		if is_instance_valid(tracer):
 			new_tracer_list.append(tracer)
 	tracer_list = new_tracer_list
+
+func get_contents_array():
+	var contents_array = .get_contents_array()
+	for weapon_mount in weapon_mounts:
+		var weapon_contents = weapon_mount.get_contents()
+		if weapon_contents != null:
+			contents_array += weapon_contents.physical_quantities
+	return contents_array
