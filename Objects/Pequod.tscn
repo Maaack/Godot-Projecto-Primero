@@ -5,13 +5,14 @@
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Weapon/Weapon.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/TriggerOutputMount.gd" type="Script" id=4]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/WeaponSystemMount/WeaponHardpoint.gd" type="Script" id=5]
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Ownable/Commandable/Ships/BaseCombatShip.gd" type="Script" id=6]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/BaseCombatShip.gd" type="Script" id=6]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/GenericEngineMount.gd" type="Script" id=7]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/SmallEngine.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/EngineSystem/ThreeGroupEngineSystem.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/ThreeGroupEngineMount.gd" type="Script" id=10]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/BFEngine.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/originals/pequod_v2.png" type="Texture" id=12]
+
 
 
 

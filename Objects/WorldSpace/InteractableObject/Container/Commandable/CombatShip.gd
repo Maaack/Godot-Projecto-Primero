@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/InteractableObject/Ownable/Commandable/Ship.gd"
+extends "res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ship.gd"
 
 
 export(NodePath) var initial_weapons_system_mount_path = null

@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/InteractableObject/Ownable/Container.gd"
+extends "res://Objects/WorldSpace/InteractableObject/Container/RigidBody2D.gd"
 
 
 var current_commander = null
