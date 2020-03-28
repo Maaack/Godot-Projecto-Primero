@@ -6,7 +6,6 @@ const HULL_HEALTH_GROUP_NAME = 'HULL_HEALTH'
 onready var viewport = $ControllableViewport
 onready var centered_container = $Overlay/MarginContainer/CenterContainer
 onready var centered_overlay = $Overlay/MarginContainer/CenterContainer/CenteredOverlay
-onready var currency_counter = $Overlay/RightGridContainer/CurrencyCounter
 onready var right_grid_container_node = $Overlay/RightGridContainer
 onready var left_grid_container_node = $Overlay/LeftGridContainer
 
