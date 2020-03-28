@@ -20,3 +20,12 @@ func set_quantity(value:float):
 	quantity = value
 	if physical_unit != null and physical_unit.numerical_unit == physical_unit.NumericalUnitSetting.DISCRETE:
 		quantity = floor(quantity)
+
+func get_unit_area():
+	return physical_unit.get_area()
+
+func get_mass():
+	return quantity * physical_unit.mass
+
+func get_area():
+	return quantity * get_unit_area()

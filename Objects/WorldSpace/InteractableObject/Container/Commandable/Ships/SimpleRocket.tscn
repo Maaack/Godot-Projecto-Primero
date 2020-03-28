@@ -15,7 +15,6 @@
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/WeaponSystemMount/WeaponHardpoint.gd" type="Script" id=13]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/BaseCombatShip.gd" type="Script" id=14]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 64.0
 

@@ -116,8 +116,8 @@ func get_max_quantity_from_empty_space(value:PhysicalQuantity):
 	var empty_space = get_empty_space()
 	if empty_space == null:
 		return value.quantity
-	var unit_area = get_unit_area(value)
-	var quantity_space = value.quantity * unit_area
+	var unit_area = value.get_unit_area()
+	var quantity_space = value.get_area()
 	var max_space = min(empty_space, quantity_space)
 	return max_space / unit_area
 
@@ -136,13 +136,10 @@ func get_area_mod(value:PhysicalQuantity):
 	var empty_quantity = get_empty_quantity()
 	if empty_quantity == null:
 		return 1
-	return get_unit_area(value) / get_unit_area(empty_quantity)
-
-func get_unit_area(value:PhysicalQuantity):
-	return value.physical_unit.size.x * value.physical_unit.size.y
+	return value.get_unit_area() / empty_quantity.get_unit_area()
 
 func get_empty_space():
 	var empty_quantity = get_empty_quantity()
 	if empty_quantity == null:
 		return
-	return get_unit_area(empty_quantity) * empty_quantity.quantity
+	return empty_quantity.get_area()

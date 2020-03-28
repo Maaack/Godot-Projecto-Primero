@@ -34,6 +34,14 @@ func get_contents_array():
 		contents_array += ship_node.get_contents_array()
 	return contents_array
 
+func get_mass():
+	var contents_array = get_contents_array()
+	var sum_mass = 0.0
+	for quantity in contents_array:
+		if quantity is PhysicalQuantity:
+			sum_mass += quantity.get_mass()
+	return sum_mass
+
 func get_vitals_array():
 	if ship_node == null:
 		return
