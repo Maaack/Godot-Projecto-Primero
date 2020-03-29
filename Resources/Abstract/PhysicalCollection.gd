@@ -9,12 +9,16 @@ export(Array, Resource) var physical_quantities setget set_physical_quantities
 
 var physical_quantities_dict = {}
 
+func _init(init_physical_quantities=null):
+	if init_physical_quantities != null:
+		set_physical_quantities(init_physical_quantities)
+
 func set_physical_quantities(value:Array):
 	if value == null:
 		return
 	physical_quantities = value
 	reset_key_map()
-	
+
 func get_quantity_key(value:PhysicalQuantity):
 	if value == null or value.physical_unit == null:
 		return
@@ -108,9 +112,17 @@ func add_physical_collection(value:PhysicalCollection, ignore_empty=false):
 	if value == null:
 		return
 	value = value.duplicate()
-	for physical_quantity in value.physical_quantities:
-		add_physical_quantity(physical_quantity, ignore_empty)
+	var resulting_quantities = add_physical_quantities(value.physical_quantities, ignore_empty)
+	value.physical_quantities = resulting_quantities
 	return value
+
+func add_physical_quantities(value:Array, ignore_empty=false):
+	var remaining_values = []
+	for physical_quantity in value:
+		var remaining_quantity = add_physical_quantity(physical_quantity, ignore_empty)
+		if remaining_quantity != null:
+			remaining_values.append(remaining_quantity)
+	return remaining_values
 
 func add_physical_quantity(value:PhysicalQuantity, ignore_empty=false):
 	if value == null:

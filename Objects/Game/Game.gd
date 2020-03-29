@@ -19,7 +19,5 @@ func _on_ViewportAndOverlay_world_space_ready():
 	viewport_and_overlay.add_target(space_instance.planet8)
 	viewport_and_overlay.set_centered_on(space_instance.character)
 
-
-
 func _on_StartMenu_start_game_triggered():
 	start_game()
