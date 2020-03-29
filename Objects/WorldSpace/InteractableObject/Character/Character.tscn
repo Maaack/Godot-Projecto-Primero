@@ -15,11 +15,24 @@ contents = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PhysicsArea" type="Area2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsArea"]
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Counter" parent="." instance=ExtResource( 4 )]
+margin_left = 8.0
+margin_top = 8.25954
+margin_right = 144.0
+margin_bottom = 40.2595
 [connection signal="body_exited" from="PhysicsArea" to="." method="_on_PhysicsArea_body_exited"]

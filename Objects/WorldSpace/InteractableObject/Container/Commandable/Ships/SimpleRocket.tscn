@@ -24,6 +24,7 @@ continuous_cd = 2
 can_sleep = false
 script = ExtResource( 14 )
 destructable = ExtResource( 9 )
+camera_scale = 0.2
 contents = ExtResource( 6 )
 initial_engines_system_mount_path = NodePath("ThreeGroupEnginesMount")
 initial_engine_mount_paths = [ NodePath("ForwardCenterEngineMount"), NodePath("FrontLeftEngineMount"), NodePath("FrontRightEngineMount"), NodePath("BackLeftEngineMount"), NodePath("BackRightEngineMount") ]
