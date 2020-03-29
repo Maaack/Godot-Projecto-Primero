@@ -24,8 +24,8 @@ func trigger_off():
 	is_triggered = false
 
 func integrate_forces(state):
+	engine_wake.hide()
 	if not is_triggered:
-		engine_wake.hide()
 		return
 	var final_fuel_requirement = get_fuel_requirement()
 	var burned_fuel = burn_fuel()
