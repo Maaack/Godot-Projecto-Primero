@@ -16,7 +16,9 @@ func _init(init_physical_quantities=null):
 func set_physical_quantities(value:Array):
 	if value == null:
 		return
-	physical_quantities = value
+	physical_quantities = []
+	for physical_quantity in value:
+		physical_quantities.append(physical_quantity.duplicate())
 	reset_key_map()
 
 func get_quantity_key(value:PhysicalQuantity):
