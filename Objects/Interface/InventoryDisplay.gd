@@ -26,7 +26,7 @@ func sum_up_contents(quantities_array:Array):
 		return null
 	var collection = PhysicalCollection.new()
 	for quantity in quantities_array:
-		if quantity.physical_unit.group_name != EMPTY_GROUP_NAME:
+		if quantity.get_group_name() != EMPTY_GROUP_NAME:
 			collection.add_physical_quantity(quantity)
 	return collection
 

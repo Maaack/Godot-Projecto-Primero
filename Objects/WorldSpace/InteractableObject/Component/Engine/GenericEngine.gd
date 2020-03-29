@@ -27,11 +27,13 @@ func integrate_forces(state):
 	engine_wake.hide()
 	if not is_triggered:
 		return
-	var final_fuel_requirement = get_fuel_requirement()
+	var fuels_required = get_fuel_requirement()
+	if fuels_required == null:
+		return
 	var burned_fuel = burn_fuel()
 	if burned_fuel == null:
 		return
-	var burned_ratio = burned_fuel.get_mass() / final_fuel_requirement.get_mass()
+	var burned_ratio = burned_fuel.get_mass() / fuels_required.get_mass()
 	if burned_ratio < minimum_throttle:
 		return
 	engine_wake.show()
@@ -43,6 +45,23 @@ func integrate_forces(state):
 	var impulse_offset = get_position_in_ancestor(physical_owner).rotated(rotate_offset)
 	physical_owner.apply_impulse(impulse_offset, engine_impulse_vector)
 	trigger_off()
+
+func get_mixed_ratio(fuels_available:PhysicalCollection, fuels_required:PhysicalCollection):
+	var fuels_mixed = fuels_available.duplicate()
+	var max_ratio = 1.0
+	for fuel_required in fuels_required.physical_quantities:
+		var key = fuel_required.get_group_name()
+		if key == null:
+			continue
+		var fuel_available = fuels_available.get_physical_quantity(key)
+		if fuel_available == null:
+			max_ratio = 0.0
+			break
+		var available_ratio = fuel_available.quantity/fuel_required.quantity
+		max_ratio = min(available_ratio, max_ratio)
+	for fuel_mix in fuels_mixed.physical_quantities:
+		fuel_mix.quantity *= max_ratio
+	return fuels_mixed
 
 func get_fuel_requirement():
 	if fuel_requirement == null:
@@ -61,10 +80,9 @@ func burn_fuel():
 	var ship_contents = get_physical_owner().contents
 	if ship_contents == null:
 		return
-	var final_fuel_requirement = get_fuel_requirement()
-	if fuel_requirement == null:
+	var fuels_required = get_fuel_requirement()
+	if fuels_required == null:
 		return
-	final_fuel_requirement.negate_values()
-	var burned_fuel = ship_contents.add_physical_collection(final_fuel_requirement)
-	burned_fuel.negate_values()
-	return burned_fuel
+	var fuels_available = ship_contents.subtract_physical_quantities(fuels_required)
+	var mixed_fuels = get_mixed_ratio(fuels_available, fuels_required)
+	return mixed_fuels

@@ -79,7 +79,10 @@ func get_edge_velocity2(delta, object:RigidBody2D, radius:float):
 
 func get_health():
 	if is_instance_valid(destructable):
-		return destructable.physical_collection.get_quantity_value(destructable.unit_key)
+		var health_quantity = destructable.physical_collection.get_physical_quantity(destructable.unit_key)
+		if health_quantity == null:
+			return 0.0
+		return health_quantity.quantity
 	return 0.0
 
 func has_health():
