@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Resources/Present/Quantities/Hydrogen5.tres" type="Resource" id=1]
+[ext_resource path="res://Resources/Present/Quantities/Hydrogen/Hydrogen5.tres" type="Resource" id=1]
 [ext_resource path="res://Objects/WorldSpace/Collectable/QuantityCollectable.tscn" type="PackedScene" id=2]
+
 
 
 [node name="HydrogenLootBox" instance=ExtResource( 2 )]
