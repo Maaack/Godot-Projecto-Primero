@@ -17,8 +17,6 @@
 [node name="MiniEngine" parent="FrontLeftEngineMount" index="0" instance=ExtResource( 7 )]
 
 [node name="MiniEngine" parent="FrontRightEngineMount" index="0" instance=ExtResource( 7 )]
-position = Vector2( -16, -8.00006 )
-rotation = 1.5708
 
 [node name="MiniEngine" parent="BackLeftEngineMount" index="0" instance=ExtResource( 7 )]
 
