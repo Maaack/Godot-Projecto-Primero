@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Resources/Abstract/PackedSceneUnit.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Abstract/PackedScenesUnit.gd" type="Script" id=1]
 [ext_resource path="res://Assets/originals/interface/icons/system.png" type="Texture" id=2]
 
 [resource]

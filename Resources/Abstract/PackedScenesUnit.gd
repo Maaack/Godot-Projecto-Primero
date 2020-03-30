@@ -1,7 +1,7 @@
 extends PhysicalUnit
 
 
-class_name PackedSceneUnit
+class_name PackedScenesUnit
 
 export(PackedScene) var packed_scene
 export(Texture) var texture

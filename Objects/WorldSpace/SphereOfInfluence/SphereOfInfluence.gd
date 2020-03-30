@@ -51,7 +51,7 @@ func get_orbital_velocity(start_position:Vector2):
 	var vector_scale = sqrt(gravity_force*distance) * vector_scale_mod
 	return orbit_vector * vector_scale
 
-func spawn_orbiting_sprite(physical_unit:PackedSceneUnit):
+func spawn_orbiting_sprite(physical_unit:PackedScenesUnit):
 	var instance = orbiting_node_scene.instance()
 	add_child(instance)
 	instance.gravity_force = gravity_space.get_gravity()

@@ -19,7 +19,7 @@ var player_character
 func set_physical_unit(value:PhysicalUnit):
 	if value == null:
 		return
-	if not value is PackedSceneUnit:
+	if not value is PackedScenesUnit:
 		return
 	set_orbit(value)
 	set_sprite(value)
@@ -39,7 +39,7 @@ func get_orbit_direction_mod():
 	else:
 		print('Error: Not a valid orbit direction!')
 
-func set_orbit(value:PackedSceneUnit):
+func set_orbit(value:PackedScenesUnit):
 	value.position -= get_position_in_world_space()
 	value.rotation -= get_rotation_in_world_space()
 	node_2d.physical_unit = value

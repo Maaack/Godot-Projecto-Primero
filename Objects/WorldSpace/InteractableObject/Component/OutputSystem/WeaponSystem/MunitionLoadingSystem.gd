@@ -31,7 +31,7 @@ func process(delta):
 				refresh_munition()
 				cycle_chamber()
 
-func set_next_munition(munition:PackedSceneUnit):
+func set_next_munition(munition:PackedScenesUnit):
 	if munition == null:
 		return
 	next_munition = munition
@@ -46,7 +46,7 @@ func unload_next_munition():
 func unload_default_munition():
 	return unload_munition_type(default_munition)
 
-func unload_munition_type(munition:PackedSceneUnit, amount=1.0):
+func unload_munition_type(munition:PackedScenesUnit, amount=1.0):
 	var contents = get_physical_owner().contents
 	if contents == null:
 		return

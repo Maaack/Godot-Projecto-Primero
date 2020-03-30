@@ -15,9 +15,9 @@ _global_script_classes=[ {
 "path": "res://Resources/Abstract/Destructable.gd"
 }, {
 "base": "PhysicalUnit",
-"class": "PackedSceneUnit",
+"class": "PackedScenesUnit",
 "language": "GDScript",
-"path": "res://Resources/Abstract/PackedSceneUnit.gd"
+"path": "res://Resources/Abstract/PackedScenesUnit.gd"
 }, {
 "base": "PhysicalQuantities",
 "class": "PhysicalCollection",
@@ -51,7 +51,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Destructable": "",
-"PackedSceneUnit": "",
+"PackedScenesUnit": "",
 "PhysicalCollection": "",
 "PhysicalQuantities": "",
 "PhysicalQuantity": "",

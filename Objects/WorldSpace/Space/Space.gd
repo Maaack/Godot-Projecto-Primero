@@ -26,7 +26,7 @@ func _ready():
 		var new_velocity = sphere_of_influence.get_orbital_velocity(relative_position)
 		child.set_axis_velocity(new_velocity)
 
-func spawn_rigid_body_2d(physical_unit:PackedSceneUnit):
+func spawn_rigid_body_2d(physical_unit:PackedScenesUnit):
 	if physical_unit == null:
 		print("Error: Spawn rigid body called with null!")
 		return

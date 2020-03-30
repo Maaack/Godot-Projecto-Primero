@@ -32,7 +32,7 @@ func load_munitions(munitions:PhysicalQuantity):
 	loaded_munitions = munitions
 	return loaded_munitions
 
-func spawn_bullet(bullet_unit:PackedSceneUnit):
+func spawn_bullet(bullet_unit:PackedScenesUnit):
 	var instance = bullet_unit.packed_scene.instance()
 	bullet_unit.position = get_position_in_world_space()
 	bullet_unit.rotation = get_rotation_in_world_space()
