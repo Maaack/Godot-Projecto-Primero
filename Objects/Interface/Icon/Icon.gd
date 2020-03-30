@@ -3,7 +3,14 @@ extends NinePatchRect
 
 onready var texture_node = $Texture
 
-export var texture_desired_size = Vector2(24.0, 24.0)
+export(Resource) var physical_unit setget set_physical_unit
+export(Vector2) var texture_desired_size = Vector2(24.0, 24.0)
+
+
+func set_physical_unit(value:PhysicalUnit):
+	if value == null:
+		return
+	physical_unit = value
 
 func set_icon(value:Texture):
 	if value == null:
