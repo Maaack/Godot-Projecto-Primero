@@ -6,6 +6,5 @@
 max_engine_impulse = 10000.0
 
 [node name="EngineWake" parent="." index="0"]
-visible = true
 position = Vector2( 0, 128 )
 scale = Vector2( 2, 2 )
