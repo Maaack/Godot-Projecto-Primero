@@ -23,3 +23,12 @@ func _on_ViewportAndOverlay_world_space_ready():
 
 func _on_StartMenu_start_game_triggered():
 	start_game()
+
+func _input(event):
+	if event.is_action_pressed("ui_inspect"):
+		inspector.show_ship(space_instance.character.ship_node)
+		if inspector.visible:
+			inspector.hide()
+		else:
+			inspector.show()
+

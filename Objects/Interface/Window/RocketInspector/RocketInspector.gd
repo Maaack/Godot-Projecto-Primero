@@ -9,15 +9,8 @@ var system_resource = preload("res://Resources/Abstract/Units/Components/System.
 var engine_resource = preload("res://Resources/Abstract/Units/Components/Engine.tres")
 var projectile_weapon_resource = preload("res://Resources/Abstract/Units/Components/ProjectileWeapon.tres")
 
-
-func _input(event):
-	if event.is_action_pressed("ui_inspect"):
-		if visible:
-			hide()
-		else:
-			show()
-
 func show_ship(ship_node:Node2D):
+	reset_ship()
 	texture_node.texture = ship_node.sprite.texture
 	var ship_texture_size = ship_node.sprite.texture.get_size()
 	var maximum_size = texture_node.rect_size
@@ -37,3 +30,7 @@ func show_ship_mounts(ship_node:Node2D, scale_ratio:float):
 				icon_instance.physical_unit = projectile_weapon_resource
 			else:
 				icon_instance.physical_unit = system_resource
+
+func reset_ship():
+	for current_node in centered_node.get_children():
+		current_node.queue_free()

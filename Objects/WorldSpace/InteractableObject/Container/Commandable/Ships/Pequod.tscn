@@ -83,17 +83,17 @@ position = Vector2( 8, 96 )
 [node name="SmallEngine" parent="BackRightEngineMount" index="0" instance=ExtResource( 5 )]
 
 [node name="WeaponsSystemMount" parent="." index="11"]
-position = Vector2( 0, -84.8366 )
+position = Vector2( 0, -72.8366 )
 
 [node name="WeaponsSystem" parent="WeaponsSystemMount" index="0" instance=ExtResource( 3 )]
 
 [node name="TracerLoadingMount" parent="." index="12"]
-position = Vector2( 0, -91.8366 )
+position = Vector2( 0, -56.8366 )
 
 [node name="TracerLoadingSystem" parent="TracerLoadingMount" index="0" instance=ExtResource( 4 )]
 
 [node name="ThreeGroupEnginesMount" parent="." index="13"]
-position = Vector2( 0, 79.1389 )
+position = Vector2( 0, 67.1389 )
 
 [node name="ThreeGroupEngineSystem" parent="ThreeGroupEnginesMount" index="0" instance=ExtResource( 6 )]
 
