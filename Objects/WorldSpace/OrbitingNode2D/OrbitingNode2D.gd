@@ -60,5 +60,5 @@ func _physics_process(delta):
 	if is_instance_valid(player_character):
 		var player_distance = node_2d.position.distance_to(player_character.position)
 		if player_distance <= LOAD_IN_DISTANCE:
-			world_space.spawn_rigid_body_2d(get_physical_unit())
+			world_space.spawn(get_physical_unit())
 			queue_free()
