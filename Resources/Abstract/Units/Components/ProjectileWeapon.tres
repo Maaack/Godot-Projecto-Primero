@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource( 1 )
-group_name = "SYSTEM"
-readable_name = "System"
+group_name = "PROJECTILE_WEAPON"
+readable_name = "Projectile Weapon"
 icon = ExtResource( 2 )
 size = Vector2( 40, 100 )
 mass = 0.01

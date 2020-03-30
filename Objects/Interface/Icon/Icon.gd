@@ -11,6 +11,7 @@ func set_physical_unit(value:PhysicalUnit):
 	if value == null:
 		return
 	physical_unit = value
+	set_icon(value.icon)
 
 func set_icon(value:Texture):
 	if value == null:

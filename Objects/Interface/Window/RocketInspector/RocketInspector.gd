@@ -2,10 +2,13 @@ extends Control
 
 
 onready var texture_node = $MarginContainer/NinePatchRect/MarginContainer/TextureRect
-onready var centered_node = $MarginContainer/NinePatchRect/MarginContainer/CenterContainer/CenteredOverlay
+onready var centered_node = $MarginContainer/NinePatchRect/CenterContainer/CenteredOverlay
 
-var icon_scene = preload("res://Objects/Interface/Icon/FreePositionIcon.tscn")
 var info_dialog_scene = preload("res://Objects/Interface/Window/RocketInspector/InfoDialog/InfoDialog.tscn")
+var system_resource = preload("res://Resources/Abstract/Units/Components/System.tres")
+var engine_resource = preload("res://Resources/Abstract/Units/Components/Engine.tres")
+var projectile_weapon_resource = preload("res://Resources/Abstract/Units/Components/ProjectileWeapon.tres")
+
 
 func _input(event):
 	if event.is_action_pressed("ui_inspect"):
@@ -28,3 +31,9 @@ func show_ship_mounts(ship_node:Node2D, scale_ratio:float):
 			var icon_instance = info_dialog_scene.instance()
 			centered_node.add_child(icon_instance)
 			icon_instance.position = mount.position * scale_ratio
+			if mount.is_in_group('ENGINE'):
+				icon_instance.physical_unit = engine_resource
+			elif mount.is_in_group('PROJECTILE_WEAPON'):
+				icon_instance.physical_unit = projectile_weapon_resource
+			else:
+				icon_instance.physical_unit = system_resource

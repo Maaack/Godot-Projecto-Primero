@@ -46,6 +46,7 @@ __meta__ = {
 
 [node name="FrontCenterHardpoint" type="Node2D" parent="." groups=[
 "MOUNT",
+"PROJECTILE_WEAPON",
 ]]
 position = Vector2( 0, -40 )
 script = ExtResource( 13 )
@@ -57,6 +58,7 @@ __meta__ = {
 [node name="Weapon" parent="FrontCenterHardpoint" instance=ExtResource( 4 )]
 
 [node name="ForwardCenterEngineMount" type="Node2D" parent="." groups=[
+"ENGINE",
 "MOUNT",
 ]]
 position = Vector2( 0, 32 )
@@ -69,6 +71,7 @@ __meta__ = {
 [node name="GenericEngine" parent="ForwardCenterEngineMount" instance=ExtResource( 3 )]
 
 [node name="FrontLeftEngineMount" type="Node2D" parent="." groups=[
+"ENGINE",
 "MOUNT",
 ]]
 position = Vector2( -8, -16 )
@@ -82,6 +85,7 @@ __meta__ = {
 [node name="MiniEngine" parent="FrontLeftEngineMount" instance=ExtResource( 5 )]
 
 [node name="FrontRightEngineMount" type="Node2D" parent="." groups=[
+"ENGINE",
 "MOUNT",
 ]]
 position = Vector2( 8, -16 )
@@ -95,6 +99,7 @@ __meta__ = {
 [node name="MiniEngine" parent="FrontRightEngineMount" instance=ExtResource( 5 )]
 
 [node name="BackLeftEngineMount" type="Node2D" parent="." groups=[
+"ENGINE",
 "MOUNT",
 ]]
 position = Vector2( -8, 16 )
@@ -108,6 +113,7 @@ __meta__ = {
 [node name="MiniEngine" parent="BackLeftEngineMount" instance=ExtResource( 5 )]
 
 [node name="BackRightEngineMount" type="Node2D" parent="." groups=[
+"ENGINE",
 "MOUNT",
 ]]
 position = Vector2( 8, 16 )
