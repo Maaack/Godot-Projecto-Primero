@@ -5,3 +5,13 @@
 
 [node name="InfoDialog" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="Button" parent="." index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 48.0
+margin_bottom = 48.0
