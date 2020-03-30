@@ -8,6 +8,7 @@ var destroyed = false
 var destroyable = true
 
 var ignore_first_seconds = 0.001
+var scale_forces = 0.001
 
 func _init(init_destructable=null):
 	if init_destructable != null and init_destructable is Destructable:
@@ -53,7 +54,7 @@ func get_linear_force(delta, object:RigidBody2D):
 		return 0.0
 	var jerk = (last_linear_acceleration - get_linear_acceleration(delta, object)).length()
 	var mass = object.mass
-	return mass * jerk
+	return mass * jerk * scale_forces
 
 func get_centripital_force(delta, object:RigidBody2D, sprite:Sprite):
 	var mass = object.mass
@@ -62,7 +63,8 @@ func get_centripital_force(delta, object:RigidBody2D, sprite:Sprite):
 		radius = (sprite.texture.get_size() / 2).length()
 		
 	var edge_velocity = get_edge_velocity2(delta, object, radius)
-	return ( mass / 2 ) * pow(edge_velocity, 2) / radius
+	var centripital_force = ( mass / 2 ) * pow(edge_velocity, 2) / radius
+	return centripital_force * scale_forces
 
 func get_edge_velocity(delta, object:RigidBody2D, sprite:Sprite):
 	var size = Vector2(1.0, 1.0)

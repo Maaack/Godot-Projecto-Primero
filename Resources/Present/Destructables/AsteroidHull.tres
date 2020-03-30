@@ -7,6 +7,6 @@
 script = ExtResource( 2 )
 physical_collection = ExtResource( 1 )
 unit_key = "HULL_HEALTH"
-force_tolerance = 1e+08
-force_damage = 0.0005
+force_tolerance = 1e+06
+force_damage = 0.001
 force_start_delay_time = 1.0
