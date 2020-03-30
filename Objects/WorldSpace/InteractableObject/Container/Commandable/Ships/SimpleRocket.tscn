@@ -44,7 +44,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="FrontCenterHardpoint" type="Node2D" parent="."]
+[node name="FrontCenterHardpoint" type="Node2D" parent="." groups=[
+"MOUNT",
+]]
 position = Vector2( 0, -40 )
 script = ExtResource( 13 )
 __meta__ = {
@@ -54,7 +56,9 @@ __meta__ = {
 
 [node name="Weapon" parent="FrontCenterHardpoint" instance=ExtResource( 4 )]
 
-[node name="ForwardCenterEngineMount" type="Node2D" parent="."]
+[node name="ForwardCenterEngineMount" type="Node2D" parent="." groups=[
+"MOUNT",
+]]
 position = Vector2( 0, 32 )
 script = ExtResource( 11 )
 __meta__ = {
@@ -64,7 +68,9 @@ __meta__ = {
 
 [node name="GenericEngine" parent="ForwardCenterEngineMount" instance=ExtResource( 3 )]
 
-[node name="FrontLeftEngineMount" type="Node2D" parent="."]
+[node name="FrontLeftEngineMount" type="Node2D" parent="." groups=[
+"MOUNT",
+]]
 position = Vector2( -8, -16 )
 rotation = 1.5708
 script = ExtResource( 11 )
@@ -75,7 +81,9 @@ __meta__ = {
 
 [node name="MiniEngine" parent="FrontLeftEngineMount" instance=ExtResource( 5 )]
 
-[node name="FrontRightEngineMount" type="Node2D" parent="."]
+[node name="FrontRightEngineMount" type="Node2D" parent="." groups=[
+"MOUNT",
+]]
 position = Vector2( 8, -16 )
 rotation = -1.5708
 script = ExtResource( 11 )
@@ -86,7 +94,9 @@ __meta__ = {
 
 [node name="MiniEngine" parent="FrontRightEngineMount" instance=ExtResource( 5 )]
 
-[node name="BackLeftEngineMount" type="Node2D" parent="."]
+[node name="BackLeftEngineMount" type="Node2D" parent="." groups=[
+"MOUNT",
+]]
 position = Vector2( -8, 16 )
 rotation = 1.5708
 script = ExtResource( 11 )
@@ -97,7 +107,9 @@ __meta__ = {
 
 [node name="MiniEngine" parent="BackLeftEngineMount" instance=ExtResource( 5 )]
 
-[node name="BackRightEngineMount" type="Node2D" parent="."]
+[node name="BackRightEngineMount" type="Node2D" parent="." groups=[
+"MOUNT",
+]]
 position = Vector2( 8, 16 )
 rotation = -1.5708
 script = ExtResource( 11 )
@@ -108,7 +120,10 @@ __meta__ = {
 
 [node name="MiniEngine" parent="BackRightEngineMount" instance=ExtResource( 5 )]
 
-[node name="WeaponsSystemMount" type="Node2D" parent="."]
+[node name="WeaponsSystemMount" type="Node2D" parent="." groups=[
+"MOUNT",
+]]
+position = Vector2( 0, -16 )
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true,
@@ -119,7 +134,10 @@ initial_output_mounts = [ NodePath("../FrontCenterHardpoint") ]
 [node name="WeaponsSystem" parent="WeaponsSystemMount" instance=ExtResource( 2 )]
 initial_tracer_loader_path = NodePath("../../../SimpleRocket/TracerLoadingMount")
 
-[node name="TracerLoadingMount" type="Node2D" parent="."]
+[node name="TracerLoadingMount" type="Node2D" parent="." groups=[
+"MOUNT",
+]]
+position = Vector2( 0, -24 )
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true,
@@ -129,7 +147,9 @@ initial_output_mounts = [ NodePath("../FrontCenterHardpoint") ]
 
 [node name="TracerLoadingSystem" parent="TracerLoadingMount" instance=ExtResource( 1 )]
 
-[node name="ThreeGroupEnginesMount" type="Node2D" parent="."]
+[node name="ThreeGroupEnginesMount" type="Node2D" parent="." groups=[
+"MOUNT",
+]]
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_group_": true,
@@ -144,6 +164,10 @@ initial_left_spin_engine_paths = [ NodePath("../FrontRightEngineMount"), NodePat
 [node name="CollectableArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableArea"]
 shape = SubResource( 1 )

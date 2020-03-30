@@ -13,3 +13,16 @@ margin_bottom = 520.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/NinePatchRect/MarginContainer/TextureRect" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenteredOverlay" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/TextureRect/CenterContainer" index="0"]
+margin_left = 472.0
+margin_top = 260.0
+margin_right = 472.0
+margin_bottom = 260.0
