@@ -4,7 +4,7 @@ extends "res://Objects/WorldSpace/Node2D.gd"
 const LOAD_IN_DISTANCE = 10000.0
 
 onready var node_2d = $Node2D
-onready var sprite = $Node2D/Sprite
+onready var sprite_node = $Node2D/Sprite
 
 export(float) var gravity_force
 
@@ -22,7 +22,7 @@ func set_physical_unit(value:PhysicalUnit):
 	if not value is PackedScenesUnit:
 		return
 	set_orbit(value)
-	set_sprite(value)
+	set_sprite_node(value)
 
 func get_physical_unit():
 	var value = node_2d.get_physical_unit()
@@ -49,10 +49,10 @@ func set_orbit(value:PackedScenesUnit):
 		return
 	orbit_theta = gravity_force / sqrt(orbit_distance * gravity_force) * get_orbit_direction_mod()
 
-func set_sprite(value:PhysicalUnit):
-	sprite.texture = value.texture
-	sprite.scale = value.scale
-	sprite.modulate = value.color
+func set_sprite_node(value:PhysicalUnit):
+	sprite_node.texture = value.texture
+	sprite_node.scale = value.scale
+	sprite_node.modulate = value.color
 
 func _physics_process(delta):
 	var rotation_speed = delta * orbit_theta

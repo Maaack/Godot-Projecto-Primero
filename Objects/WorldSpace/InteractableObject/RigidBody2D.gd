@@ -2,7 +2,7 @@ extends "res://Objects/WorldSpace/RigidBody2D.gd"
 
 
 const GRAVITY_CONST = 9.8
-onready var sprite = $Sprite
+onready var sprite_node = $Sprite
 
 export(Resource) var destructable setget set_destructable
 export var camera_scale = 1.0
@@ -32,7 +32,7 @@ func _ready():
 
 func _physics_process(delta):
 	if destructable != null and destructable_manager != null and not destroyed:
-		destructable_manager.physics_process(delta, self, sprite)
+		destructable_manager.physics_process(delta, self, sprite_node)
 		var now_destroyed = destructable_manager.destroyed
 		if now_destroyed:
 			destroy_self()

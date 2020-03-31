@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Objects/Interface/Window/Window.gd" type="Script" id=1]
 [ext_resource path="res://Assets/originals/interface/ui_box_2.png" type="Texture" id=2]
 [ext_resource path="res://Assets/originals/interface/icons/empty_closed_box_round.png" type="Texture" id=3]
 [ext_resource path="res://Objects/Interface/Theme/window_theme.tres" type="Theme" id=4]
@@ -17,7 +16,6 @@ patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false

@@ -8,7 +8,7 @@ func destroy_self():
 func set_physical_unit(value:PhysicalUnit):
 	if value == null:
 		return
-	sprite.modulate = value.color
+	sprite_node.modulate = value.color
 	.set_physical_unit(value)
 
 func exit_physics_area():

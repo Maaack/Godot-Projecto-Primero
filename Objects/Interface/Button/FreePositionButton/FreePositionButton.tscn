@@ -15,6 +15,7 @@ margin_left = -16.0
 margin_top = -16.1047
 margin_right = 48.0
 margin_bottom = 47.8953
+toggle_mode = true
 [connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
