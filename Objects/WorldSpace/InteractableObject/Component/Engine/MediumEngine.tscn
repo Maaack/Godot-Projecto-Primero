@@ -2,5 +2,4 @@
 
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/BaseEngine.tscn" type="PackedScene" id=1]
 
-[node name="MiniEngine" instance=ExtResource( 1 )]
-max_engine_impulse = 250.0
+[node name="MediumEngine" instance=ExtResource( 1 )]

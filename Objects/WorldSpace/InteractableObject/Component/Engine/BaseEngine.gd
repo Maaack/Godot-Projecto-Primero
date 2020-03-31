@@ -4,18 +4,42 @@ extends "res://Objects/WorldSpace/InteractableObject/Node2D.gd"
 const BASE_IMPULSE_VECTOR = Vector2(1, 0)
 const BASE_ORIENTATION = -PI/2
 const MASS_TO_IMPULSE_RATIO = 0.00001
+const IMPULSE_TO_WAKE_RATIO = 0.001
 
-export var max_engine_impulse = 1000.0
-export(float, 0, 1) var minimum_throttle = 0.1
+onready var engine_wake = $EngineWake/Sprite
+
 export(Resource) var fuel_requirement setget set_fuel_requirement
-onready var engine_wake = $EngineWake
+export var max_engine_impulse = 1000.0 setget set_max_engine_impulse
+export(float, 0, 1) var minimum_throttle = 0.1
 
 var is_triggered = false
+var init_engine_wake_position
+var init_engine_wake_scale
+
+func _ready():
+	init_engine_wake_position = engine_wake.position
+	init_engine_wake_scale = engine_wake.scale
+	set_engine_wake_size()
 
 func set_fuel_requirement(value:PhysicalCollection):
 	if value == null:
 		return 
 	fuel_requirement = value.duplicate()
+
+func set_max_engine_impulse(value:float):
+	if value == null:
+		return
+	max_engine_impulse = value
+	set_engine_wake_size()
+
+func set_engine_wake_size():
+	if engine_wake == null:
+		return
+	if init_engine_wake_scale == null or init_engine_wake_position == null:
+		return
+	var scale_ratio = sqrt(max_engine_impulse * IMPULSE_TO_WAKE_RATIO)
+	engine_wake.scale = init_engine_wake_scale * scale_ratio
+	engine_wake.position = init_engine_wake_position * scale_ratio
 
 func trigger_on():
 	is_triggered = true
