@@ -2,6 +2,6 @@ extends "res://Objects/WorldSpace/InteractableObject/Component/Mount/TriggerOutp
 
 
 func integrate_forces(state):
-	if mounted_system != null and mounted_system.has_method('integrate_forces'):
+	if is_instance_valid(mounted_system) and mounted_system.has_method('integrate_forces'):
 		return mounted_system.integrate_forces(state)
 

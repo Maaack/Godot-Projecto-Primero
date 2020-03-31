@@ -22,14 +22,18 @@ func refresh_munition():
 	
 func process(delta):
 	var chamber = get_current_chamber()
-	if chamber != null:
-		if chamber.has_method("is_empty") and chamber.is_empty():
-			reload_time_delta += delta
-		if reload_time_delta > (1.0 / reload_rate_per_second):
-			if chamber.has_method("load_munitions"):
-				chamber.load_munitions(unload_next_munition())
-				refresh_munition()
-				cycle_chamber()
+	if chamber == null:
+		return
+	if not chamber.has_method("is_empty") or not chamber.is_empty():
+		return
+	reload_time_delta += delta
+	if reload_time_delta < (1.0 / reload_rate_per_second):
+		return
+	if not chamber.has_method("load_munitions"):
+		return
+	chamber.load_munitions(unload_next_munition())
+	refresh_munition()
+	cycle_chamber()
 
 func set_next_munition(munition:PackedScenesUnit):
 	if munition == null:

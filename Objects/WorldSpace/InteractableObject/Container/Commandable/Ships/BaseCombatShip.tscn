@@ -1,10 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
+[ext_resource path="res://Resources/Present/Units/Components/Engines/MiniEngine.tres" type="Resource" id=1]
+[ext_resource path="res://Resources/Present/Units/Components/Engines/MediumEngine.tres" type="Resource" id=2]
+[ext_resource path="res://Resources/Present/Units/Components/EnginesSystems/ThreeGroupEnginesSystem.tres" type="Resource" id=3]
+[ext_resource path="res://Resources/Present/Units/Components/Weapons/BasicProjectileWeapon.tres" type="Resource" id=4]
+[ext_resource path="res://Resources/Present/Units/Components/WeaponsSystems/BasicWeaponsSystem.tres" type="Resource" id=5]
 [ext_resource path="res://Resources/Present/Collections/SmallCargoBay.tres" type="Resource" id=6]
+[ext_resource path="res://Resources/Present/Units/Components/MunitionsSystems/TracerLoadingSystem.tres" type="Resource" id=7]
 [ext_resource path="res://Assets/originals/simple_rocket_1.png" type="Texture" id=8]
 [ext_resource path="res://Resources/Present/Destructables/ShipHull.tres" type="Resource" id=9]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/ThreeGroupEngineMount.gd" type="Script" id=10]
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/GenericEngineMount.gd" type="Script" id=11]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/BaseEngineMount.gd" type="Script" id=11]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/TriggerOutputMount.gd" type="Script" id=12]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/WeaponSystemMount/WeaponHardpoint.gd" type="Script" id=13]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/BaseCombatShip.gd" type="Script" id=14]
@@ -41,13 +47,15 @@ __meta__ = {
 [node name="FrontCenterHardpoint" type="Node2D" parent="." groups=[
 "MOUNT",
 "PROJECTILE_WEAPON",
+"WEAPON",
 ]]
-position = Vector2( 0, -40 )
+position = Vector2( 0, -32 )
 script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+mounted_system = ExtResource( 4 )
 
 [node name="ForwardCenterEngineMount" type="Node2D" parent="." groups=[
 "ENGINE",
@@ -59,6 +67,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+mounted_system = ExtResource( 2 )
 
 [node name="FrontLeftEngineMount" type="Node2D" parent="." groups=[
 "ENGINE",
@@ -71,6 +80,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+mounted_system = ExtResource( 1 )
 
 [node name="FrontRightEngineMount" type="Node2D" parent="." groups=[
 "ENGINE",
@@ -83,6 +93,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+mounted_system = ExtResource( 1 )
 
 [node name="BackLeftEngineMount" type="Node2D" parent="." groups=[
 "ENGINE",
@@ -95,6 +106,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+mounted_system = ExtResource( 1 )
 
 [node name="BackRightEngineMount" type="Node2D" parent="." groups=[
 "ENGINE",
@@ -107,30 +119,36 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+mounted_system = ExtResource( 1 )
 
 [node name="WeaponsSystemMount" type="Node2D" parent="." groups=[
 "MOUNT",
+"WEAPONS_SYSTEM",
 ]]
-position = Vector2( 0, -16 )
+position = Vector2( 0, -10 )
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
-initial_output_mounts = [ NodePath("../FrontCenterHardpoint") ]
+mounted_system = ExtResource( 5 )
+initial_output_mounts = [ NodePath("../FrontCenterHardpoint"), NodePath("../TracerLoadingMount") ]
 
 [node name="TracerLoadingMount" type="Node2D" parent="." groups=[
 "MOUNT",
+"TRACER_LOADER",
 ]]
-position = Vector2( 0, -24 )
+position = Vector2( 0, -21 )
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+mounted_system = ExtResource( 7 )
 initial_output_mounts = [ NodePath("../FrontCenterHardpoint") ]
 
 [node name="ThreeGroupEnginesMount" type="Node2D" parent="." groups=[
+"ENGINES_SYSTEM",
 "MOUNT",
 ]]
 script = ExtResource( 10 )
@@ -138,6 +156,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+mounted_system = ExtResource( 3 )
 initial_forward_engine_paths = [ NodePath("../ForwardCenterEngineMount") ]
 initial_right_spin_engine_paths = [ NodePath("../FrontLeftEngineMount"), NodePath("../BackRightEngineMount") ]
 initial_left_spin_engine_paths = [ NodePath("../FrontRightEngineMount"), NodePath("../BackLeftEngineMount") ]

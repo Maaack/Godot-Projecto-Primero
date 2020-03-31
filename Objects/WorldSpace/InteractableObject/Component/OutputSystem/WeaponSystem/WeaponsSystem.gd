@@ -1,19 +1,17 @@
 extends "res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/CyclingOutputSystem.gd"
 	
 	
-export(NodePath) var initial_tracer_loader_path = null
 enum FireGroupSettingEnum {ALL, CYCLE}
 export(FireGroupSettingEnum) var fire_group_setting
 
 onready var timer_trigger = $TimerTriggerMount
-var tracer_loader_node = null
 var is_triggered = false
 onready var all_owner = get_parent()
 
-func _ready():
-	if initial_tracer_loader_path != null:
-		tracer_loader_node = get_node(initial_tracer_loader_path)
-		timer_trigger.set_output_nodes(tracer_loader_node)
+func post_set_output_nodes(value):
+	for output_node in output_nodes:
+		if output_node.is_in_group('TRACER_LOADER'):
+			timer_trigger.set_output_nodes([output_node])
 
 func process(delta):
 	process_weapon_triggers(delta)
@@ -22,7 +20,11 @@ func cycle_weapon():
 	cycle_output_node()
 
 func get_all_weapons():
-	return get_output_nodes()
+	var weapons = []
+	for node in output_nodes:
+		if node.is_in_group('WEAPON'):
+			weapons.append(node)
+	return weapons
 
 func get_current_weapon():
 	return get_current_output_node()

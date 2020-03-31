@@ -11,3 +11,4 @@ script = ExtResource( 2 )
 script = ExtResource( 1 )
 
 [node name="RepeatingTwoSecondTimer" parent="TimerTriggerMount" instance=ExtResource( 3 )]
+position = Vector2( 0, -0.222523 )

@@ -7,7 +7,7 @@ onready var centered_node = $MarginContainer/NinePatchRect/CenterContainer/Cente
 var info_dialog_scene = preload("res://Objects/Interface/Window/RocketInspector/InfoDialog/InfoDialog.tscn")
 var system_resource = preload("res://Resources/Abstract/Units/Components/System.tres")
 var engine_resource = preload("res://Resources/Abstract/Units/Components/Engines/BaseEngine.tres")
-var projectile_weapon_resource = preload("res://Resources/Abstract/Units/Components/Weapons/ProjectileWeapon.tres")
+var projectile_weapon_resource = preload("res://Resources/Abstract/Units/Components/Weapons/BaseProjectileWeapon.tres")
 
 func show_ship(ship_node:Node2D):
 	reset_ship()

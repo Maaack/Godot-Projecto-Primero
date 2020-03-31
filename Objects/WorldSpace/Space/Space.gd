@@ -2,7 +2,6 @@ extends "res://Objects/WorldSpace/WorldSpace.gd"
 
 
 onready var character = $Character
-onready var corvette = $Corvette
 onready var simple_rocket = $Rocket3MC
 onready var pequod = $Pequod
 onready var station = $Station

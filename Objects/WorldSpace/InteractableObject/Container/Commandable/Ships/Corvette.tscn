@@ -5,9 +5,9 @@
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/BaseCombatShip.gd" type="Script" id=3]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/WeaponSystemMount/WeaponHardpoint.gd" type="Script" id=4]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/TriggerOutputMount.gd" type="Script" id=5]
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Weapon/Weapon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Weapon/ProjectileWeapon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/SmallEngine.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/GenericEngineMount.gd" type="Script" id=8]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/BaseEngineMount.gd" type="Script" id=8]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/BaseEngine.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/MiniEngine.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/FourGroupEnginesMount.gd" type="Script" id=11]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Assets/originals/corvette.png" type="Texture" id=13]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/EngineSystem/FourGroupEngineSystem.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Resources/Present/Collections/SmallCargoBay.tres" type="Resource" id=15]
+
+
 
 
 [node name="Corvette" type="RigidBody2D"]

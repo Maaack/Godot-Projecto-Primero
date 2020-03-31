@@ -37,6 +37,11 @@ func set_output_nodes(value):
 	else:
 		output_nodes = []
 		output_nodes.append(value)
+	post_set_output_nodes(value)
+
+# TODO: Change this to a class and override set_output_nodes 
+func post_set_output_nodes(value):
+	pass
 
 func get_output_nodes():
 	return output_nodes

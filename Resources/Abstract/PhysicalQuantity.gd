@@ -51,6 +51,16 @@ func get_group_name():
 		return
 	return physical_unit.group_name
 
+func get_world_space_scene():
+	if physical_unit == null:
+		return
+	return physical_unit.world_space_scene
+
+func get_component_scene():
+	if physical_unit == null:
+		return
+	return physical_unit.component_scene
+
 func get_quantity_for_area(value:float):
 	var unit_area = get_unit_area()
 	return value / unit_area
