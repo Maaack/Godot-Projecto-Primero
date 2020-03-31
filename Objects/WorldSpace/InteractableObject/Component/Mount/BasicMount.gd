@@ -39,6 +39,7 @@ func set_mounted_system(value:PackedScenesUnit):
 	if value == null:
 		return
 	var component_instance = value.component_scene.instance()
+	component_instance.physical_unit = value
 	unmount()
 	mount(component_instance)
 	
