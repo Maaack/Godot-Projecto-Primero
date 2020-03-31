@@ -1,10 +1,14 @@
 extends Control
 
 
-onready var texture_node = $MarginContainer/NinePatchRect/MarginContainer/TextureRect
-onready var centered_node = $MarginContainer/NinePatchRect/CenterContainer/CenteredOverlay
+onready var texture_node = $MarginContainer/MarginContainer/TextureRect
+onready var mounts_container_node = $MarginContainer/CenterContainer/MountsContainer
+onready var info_box_container_node = $MarginContainer/CenterContainer/InfoBoxContainer
 
-var info_dialog_scene = preload("res://Objects/Interface/Window/RocketInspector/InfoDialog/InfoDialog.tscn")
+export(Vector2) var default_info_box_offset = Vector2(0.0, 60.0)
+
+var mount_button_scene = preload("res://Objects/Interface/Button/FreePositionButton/FreePositionButton.tscn")
+var info_box_scene = preload("res://Objects/Interface/Window/RocketInspector/InfoBox/InfoBox.tscn")
 
 func show_ship(ship_node:Node2D):
 	reset_ship()
@@ -18,14 +22,23 @@ func show_ship(ship_node:Node2D):
 func show_ship_mounts(ship_node:Node2D, scale_ratio:float):
 	for mount in ship_node.get_children():
 		if mount.is_in_group('MOUNT'):
-			var icon_instance = info_dialog_scene.instance()
-			centered_node.add_child(icon_instance)
-			icon_instance.position = mount.position * scale_ratio
+			var mount_button_instance = mount_button_scene.instance()
+			mounts_container_node.add_child(mount_button_instance)
+			mount_button_instance.position = mount.position * scale_ratio
 			var mounted_component = mount.mounted_system
 			if mounted_component == null:
 				continue
-			icon_instance.physical_unit = mounted_component.physical_unit
+			mount_button_instance.physical_unit = mounted_component.physical_unit
+			var info_box_instance = info_box_scene.instance()
+			info_box_container_node.add_child(info_box_instance)
+			info_box_instance.set_physical_unit(mounted_component.physical_unit)
+			var info_box_position = mount.position * scale_ratio
+			info_box_instance.position = info_box_position + default_info_box_offset
+			mount_button_instance.connect("mouse_entered", info_box_instance, "show")
+			mount_button_instance.connect("mouse_exited", info_box_instance, "hide")
 
 func reset_ship():
-	for current_node in centered_node.get_children():
+	for current_node in mounts_container_node.get_children():
+		current_node.queue_free()
+	for current_node in info_box_container_node.get_children():
 		current_node.queue_free()
