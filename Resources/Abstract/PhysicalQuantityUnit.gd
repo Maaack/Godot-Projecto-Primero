@@ -5,7 +5,6 @@ class_name PhysicalQuantityUnit
 
 
 export(float) var quantity = 1.0 setget set_quantity
-export(Resource) var physical_unit # TODO: remove after transitioning
 
 func _to_string():
 	return "[Quantity: [" + ._to_string() + ", " + str(quantity) + "]]"

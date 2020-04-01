@@ -12,7 +12,6 @@ size = Vector2( 10000, 10000 )
 mass = 10000.0
 numerical_unit = 1
 quantity = 1000.0
-physical_unit = ExtResource( 2 )
 world_space_scene = ExtResource( 3 )
 texture = ExtResource( 2 )
 scale = Vector2( 2, 2 )
