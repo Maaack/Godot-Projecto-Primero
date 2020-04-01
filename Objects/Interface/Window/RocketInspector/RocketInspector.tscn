@@ -1,48 +1,65 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Interface/Window/Window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Interface/Window/RocketInspector/RocketInspector.gd" type="Script" id=2]
 [ext_resource path="res://Assets/originals/simple_rocket_1.png" type="Texture" id=3]
+[ext_resource path="res://Objects/Interface/Inventory/Inventory.tscn" type="PackedScene" id=4]
 
 [node name="RocketInspector" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="MarginContainer" parent="MarginContainer" index="1"]
-custom_constants/margin_right = 48
-custom_constants/margin_top = 48
-custom_constants/margin_left = 48
 custom_constants/margin_bottom = 48
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer" index="0"]
-modulate = Color( 0.5, 0.5, 0.5, 1 )
-margin_left = 48.0
-margin_top = 48.0
-margin_right = 960.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer" index="0"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 976.0
 margin_bottom = 536.0
+
+[node name="Inventory" parent="MarginContainer/MarginContainer/HBoxContainer" index="0" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 470.0
+margin_bottom = 504.0
+
+[node name="Container" type="Control" parent="MarginContainer/MarginContainer/HBoxContainer" index="1"]
+margin_left = 474.0
+margin_right = 944.0
+margin_bottom = 504.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/Container" index="0"]
+modulate = Color( 0.5, 0.5, 0.5, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" index="2"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 1016.0
-margin_bottom = 592.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MountsContainer" type="Container" parent="MarginContainer/CenterContainer" index="0"]
-margin_left = 504.0
-margin_top = 292.0
-margin_right = 504.0
-margin_bottom = 292.0
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/HBoxContainer/Container" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InfoBoxContainer" type="Container" parent="MarginContainer/CenterContainer" index="1"]
-margin_left = 504.0
-margin_top = 292.0
-margin_right = 504.0
-margin_bottom = 292.0
+[node name="MountsContainer" type="Container" parent="MarginContainer/MarginContainer/HBoxContainer/Container/CenterContainer" index="0"]
+margin_left = 235.0
+margin_top = 252.0
+margin_right = 235.0
+margin_bottom = 252.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoBoxContainer" type="Container" parent="MarginContainer/MarginContainer/HBoxContainer/Container/CenterContainer" index="1"]
+margin_left = 235.0
+margin_top = 252.0
+margin_right = 235.0
+margin_bottom = 252.0

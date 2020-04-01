@@ -1,9 +1,10 @@
 extends Control
 
 
-onready var texture_node = $MarginContainer/MarginContainer/TextureRect
-onready var mounts_container_node = $MarginContainer/CenterContainer/MountsContainer
-onready var info_box_container_node = $MarginContainer/CenterContainer/InfoBoxContainer
+onready var texture_node = $MarginContainer/MarginContainer/HBoxContainer/Container/TextureRect
+onready var mounts_container_node = $MarginContainer/MarginContainer/HBoxContainer/Container/CenterContainer/MountsContainer
+onready var info_box_container_node = $MarginContainer/MarginContainer/HBoxContainer/Container/CenterContainer/InfoBoxContainer
+onready var inventory_node = $MarginContainer/MarginContainer/HBoxContainer/Inventory
 
 export(Vector2) var default_info_box_offset = Vector2(0.0, 60.0)
 
@@ -21,6 +22,8 @@ func show_ship(ship_node:Node2D):
 	var maximum_size = texture_node.rect_size
 	var scale_ratio_vector = maximum_size / ship_texture_size
 	var scale_ratio = min(scale_ratio_vector.x, scale_ratio_vector.y)
+	var ship_contents = ship_node.get_physical_owner().contents
+	inventory_node.physical_collection = ship_contents
 	show_ship_mounts(ship_node, scale_ratio)
 
 func show_ship_mounts(ship_node:Node2D, scale_ratio:float):

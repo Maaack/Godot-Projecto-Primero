@@ -51,6 +51,11 @@ func get_group_name():
 		return
 	return physical_unit.group_name
 
+func get_readable_name():
+	if physical_unit == null:
+		return
+	return physical_unit.readable_name
+
 func get_world_space_scene():
 	if physical_unit == null:
 		return

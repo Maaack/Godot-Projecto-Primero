@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/Interface/Theme/base_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Objects/Interface/Counter/Counter.gd" type="Script" id=2]
+[ext_resource path="res://Assets/originals/interface/icons/24x24/molecular_oxygen.png" type="Texture" id=3]
+[ext_resource path="res://Assets/originals/interface/ui_box_2.png" type="Texture" id=4]
+
+[node name="Counter" type="NinePatchRect"]
+margin_right = 136.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 136, 32 )
+theme = ExtResource( 1 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.250343
+margin_top = 0.250347
+margin_right = 0.250336
+margin_bottom = 0.250347
+custom_constants/margin_right = 8
+custom_constants/margin_top = 4
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 128.0
+margin_bottom = 28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+margin_right = 24.0
+margin_bottom = 24.0
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_left = 28.0
+margin_top = 2.0
+margin_right = 120.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+text = "100/100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key" type="Label" parent="MarginContainer/HBoxContainer"]
+visible = false
+margin_top = 2.0
+margin_right = 42.0
+margin_bottom = 22.0
+text = "Key"
