@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Objects/Interface/Counter/Counter.tscn" type="PackedScene" id=1]
+
+[node name="WideCounter" instance=ExtResource( 1 )]
+margin_right = 203.0
+
+[node name="HBoxContainer" parent="MarginContainer" index="0"]
+margin_right = 195.0
+
+[node name="Key" parent="MarginContainer/HBoxContainer" index="0"]
+visible = true
+
+[node name="Texture" parent="MarginContainer/HBoxContainer" index="1"]
+margin_left = 46.0
+margin_right = 70.0
+
+[node name="Value" parent="MarginContainer/HBoxContainer" index="2"]
+margin_left = 74.0
+margin_right = 187.0

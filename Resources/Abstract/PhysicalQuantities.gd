@@ -22,6 +22,8 @@ func set_physical_quantities(value:Array):
 		return
 	physical_quantities = []
 	for physical_quantity in value:
+		if physical_quantity == null:
+			continue
 		physical_quantities.append(physical_quantity.duplicate())
 	reset_key_map()
 

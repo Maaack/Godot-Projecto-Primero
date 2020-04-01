@@ -2,12 +2,12 @@
 
 [ext_resource path="res://Resources/Abstract/PackedScenesUnit.gd" type="Script" id=1]
 [ext_resource path="res://Assets/originals/interface/icons/system.png" type="Texture" id=2]
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/WeaponsSystem/WeaponsSystem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/TimerSystem/RepeatingFourSecondTimer.tscn" type="PackedScene" id=3]
 
 [resource]
 script = ExtResource( 1 )
-group_name = "WEAPONS_SYSTEM"
-readable_name = "Weapons System"
+group_name = "OUTPUT_SYSTEM"
+readable_name = "Output System"
 icon = ExtResource( 2 )
 size = Vector2( 5, 5 )
 mass = 0.01

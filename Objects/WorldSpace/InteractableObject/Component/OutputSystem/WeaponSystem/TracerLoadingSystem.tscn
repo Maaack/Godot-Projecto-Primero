@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=2]
-
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/WeaponSystem/CustomMunitionLoadingSystem.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Abstract/Units/Munitions/TracerBullet.tres" type="Resource" id=2]
-
-[node name="TracerLoadingSystem" type="Node2D"]
-script = ExtResource( 1 )
-output_count_setting = 1
-custom_munition = ExtResource( 2 )
