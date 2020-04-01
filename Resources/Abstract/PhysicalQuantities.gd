@@ -30,7 +30,7 @@ func set_physical_quantities(value:Array):
 func _append_physical_quantity(value:PhysicalQuantity):
 	if value == null:
 		return
-	var key = value.get_group_name()
+	var key = value.group_name
 	if key == null:
 		return
 	physical_quantities.append(value)
@@ -40,7 +40,7 @@ func _append_physical_quantity(value:PhysicalQuantity):
 func add_physical_quantity(value:PhysicalQuantity):
 	if value == null:
 		return null
-	var key = value.get_group_name()
+	var key = value.group_name
 	if key == null:
 		return
 	if physical_quantities_dict.has(key):
@@ -53,7 +53,7 @@ func add_physical_quantity(value:PhysicalQuantity):
 func set_physical_quantity(value:PhysicalQuantity):
 	if value == null:
 		return null
-	var key = value.get_group_name()
+	var key = value.group_name
 	if key == null:
 		return
 	if physical_quantities.has(key):	

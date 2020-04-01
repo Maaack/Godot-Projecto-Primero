@@ -74,7 +74,7 @@ func get_mixed_ratio(fuels_available:PhysicalCollection, fuels_required:Physical
 	var fuels_mixed = fuels_available.duplicate()
 	var max_ratio = 1.0
 	for fuel_required in fuels_required.physical_quantities:
-		var key = fuel_required.get_group_name()
+		var key = fuel_required.group_name
 		if key == null:
 			continue
 		var fuel_available = fuels_available.get_physical_quantity(key)

@@ -39,7 +39,7 @@ func get_physical_unit():
 func add_physical_quantity(value:PhysicalQuantityUnit):
 	if value == null:
 		return
-	if value.get_group_name() != get_group_name():
+	if value.group_name != group_name:
 		print("Error: Adding incompatible quantities ", str(value), " and ", str(self))
 		return
 	add_quantity(value.quantity)	
@@ -55,21 +55,6 @@ func get_unit_area():
 
 func get_area():
 	return quantity * .get_area()
-
-#TODO: Remove redundant getters
-func get_group_name():
-	return group_name
-
-func get_readable_name():
-	return readable_name
-
-func get_world_space_scene():
-	print("FIX QuantityUnit: get_world_space_scene")
-	return
-
-func get_component_scene():
-	print("FIX QuantityUnit: get_component_scene")
-	return
 
 func get_quantity_for_area(value:float):
 	var unit_area = .get_area()
