@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/Abstract/PhysicalQuantity.gd"
 }, {
+"base": "PhysicalUnit",
+"class": "PhysicalQuantityUnit",
+"language": "GDScript",
+"path": "res://Resources/Abstract/PhysicalQuantityUnit.gd"
+}, {
 "base": "Resource",
 "class": "PhysicalUnit",
 "language": "GDScript",
@@ -55,6 +60,7 @@ _global_script_class_icons={
 "PhysicalCollection": "",
 "PhysicalQuantities": "",
 "PhysicalQuantity": "",
+"PhysicalQuantityUnit": "",
 "PhysicalUnit": "",
 "PlanetaryRing": "",
 "SpecificContainer": ""

@@ -6,4 +6,3 @@
 [resource]
 script = ExtResource( 2 )
 physical_unit = ExtResource( 1 )
-quantity = 1.0
