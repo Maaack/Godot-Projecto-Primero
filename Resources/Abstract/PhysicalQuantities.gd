@@ -88,7 +88,7 @@ func clear():
 func reset_key_map():
 	physical_quantities_dict.clear()
 	for physical_quantity in physical_quantities:
-		var key = physical_quantity.get_group_name()
+		var key = physical_quantity.group_name
 		if key == null:
 			continue
 		physical_quantities_dict[key] = physical_quantity

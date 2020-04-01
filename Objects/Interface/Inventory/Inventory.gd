@@ -32,7 +32,7 @@ func update_inventory():
 			continue
 		var button_instance = button_scene.instance()
 		grid_node.add_child(button_instance)
-		button_instance.physical_unit = physical_quantity.physical_unit
+		button_instance.physical_unit = physical_quantity
 		
 func clear_inventory():
 	for child in grid_node.get_children():

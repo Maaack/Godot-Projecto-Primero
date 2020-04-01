@@ -12,6 +12,7 @@ icon = ExtResource( 2 )
 size = Vector2( 2, 5 )
 mass = 0.1
 numerical_unit = 1
+quantity = 1.0
 world_space_scene = ExtResource( 3 )
 scale = Vector2( 1, 1 )
 color = Color( 1, 1, 1, 1 )

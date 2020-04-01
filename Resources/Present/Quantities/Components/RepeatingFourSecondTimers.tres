@@ -5,4 +5,10 @@
 
 [resource]
 script = ExtResource( 2 )
+group_name = ""
+readable_name = ""
+size = Vector2( 1, 1 )
+mass = 0.0
+numerical_unit = 0
+quantity = 1.0
 physical_unit = ExtResource( 1 )

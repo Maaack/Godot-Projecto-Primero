@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Resources/Abstract/PhysicalUnit.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Abstract/PhysicalQuantity.gd" type="Script" id=1]
 [ext_resource path="res://Assets/originals/interface/icons/empty_open_box_round.png" type="Texture" id=2]
 
 [resource]
@@ -11,3 +11,4 @@ icon = ExtResource( 2 )
 size = Vector2( 100, 100 )
 mass = 0.0
 numerical_unit = 0
+quantity = 1.0

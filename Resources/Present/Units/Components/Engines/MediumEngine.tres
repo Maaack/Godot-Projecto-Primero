@@ -12,6 +12,7 @@ icon = ExtResource( 2 )
 size = Vector2( 100, 200 )
 mass = 100.0
 numerical_unit = 1
+quantity = 1.0
 component_scene = ExtResource( 3 )
 scale = Vector2( 1, 1 )
 color = Color( 1, 1, 1, 1 )

@@ -11,6 +11,7 @@ readable_name = "Asteroid"
 size = Vector2( 10000, 10000 )
 mass = 10000.0
 numerical_unit = 1
+quantity = 1.0
 world_space_scene = ExtResource( 3 )
 texture = ExtResource( 2 )
 scale = Vector2( 2, 2 )

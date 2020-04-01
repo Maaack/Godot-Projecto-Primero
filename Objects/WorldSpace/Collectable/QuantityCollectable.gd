@@ -8,7 +8,7 @@ export(Resource) var physical_quantity setget set_physical_quantity
 var texture_desired_size = Vector2(24.0, 24.0)
 
 func _ready():
-	set_icon(physical_quantity.physical_unit)
+	set_icon(physical_quantity)
 
 func set_physical_quantity(value:PhysicalQuantity):
 	if value == null:

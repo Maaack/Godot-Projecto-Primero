@@ -5,7 +5,7 @@ class_name PhysicalQuantityUnit
 
 
 export(float) var quantity = 1.0 setget set_quantity
-var physical_unit # TODO: remove after transitioning
+export(Resource) var physical_unit # TODO: remove after transitioning
 
 func _to_string():
 	return "[Quantity: [" + ._to_string() + ", " + str(quantity) + "]]"
@@ -21,6 +21,20 @@ func add_quantity(value:float):
 	if value == null or value == 0.0:
 		return
 	set_quantity(quantity + value)
+
+func split(value:float):
+	if value == null:
+		return
+	var split_quantity = duplicate()
+	value = min(value, quantity)
+	add_quantity(-value)
+	split_quantity.quantity = value
+	return split_quantity
+
+func get_physical_unit():
+	var physical_unit = duplicate()
+	physical_unit.quantity = 1.0
+	return physical_unit
 
 func add_physical_quantity(value:PhysicalQuantityUnit):
 	if value == null:

@@ -1,4 +1,4 @@
-extends PhysicalUnit
+extends PhysicalQuantity
 
 
 class_name PackedScenesUnit

@@ -50,15 +50,18 @@ func unload_next_munition():
 func unload_default_munition():
 	return unload_munition_type(default_munition)
 
-func unload_munition_type(munition:PackedScenesUnit, amount=1.0):
+func unload_munition_type(value:PackedScenesUnit):
+	if value == null:
+		return
+	value = value.duplicate()
 	var contents = get_physical_owner().contents
 	if contents == null:
 		return
-	var quantity = contents.get_physical_quantity(munition.group_name)
-	if quantity == null or quantity.quantity < amount:
+	var quantity = contents.get_physical_quantity(value.group_name)
+	if quantity == null or quantity.quantity < value.quantity:
 		return
-	var bullets_to_load = PhysicalQuantity.new(munition, -amount)
-	var bullets_loaded = contents.add_physical_quantity(bullets_to_load)
+	value.quantity = -(value.quantity)
+	var bullets_loaded = contents.add_physical_quantity(value)
 	if bullets_loaded == null:
 		return
 	bullets_loaded.quantity = -(bullets_loaded.quantity)
