@@ -45,8 +45,7 @@ func fire_munitions():
 	if is_loaded():
 		trigger_off()
 		for i in range(loaded_munitions.quantity):
-			var firing_munition = loaded_munitions.physical_unit
-			loaded_munitions.quantity -= 1
+			var firing_munition = loaded_munitions.split(1)
 			var instance = spawn_bullet(firing_munition)
 			instance.set_self_destruct_timeout(bullet_self_destruct_timeout)
 			instance.set_legal_owner(get_legal_owner())

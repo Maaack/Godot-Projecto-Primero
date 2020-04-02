@@ -1,9 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://Resources/Abstract/Units/Hull.tres" type="Resource" id=1]
-[ext_resource path="res://Resources/Abstract/PhysicalQuantity.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Abstract/PhysicalQuantity.gd" type="Script" id=1]
+[ext_resource path="res://Assets/originals/interface/icons/mechanical_heart.png" type="Texture" id=2]
 
 [resource]
-script = ExtResource( 2 )
-physical_unit = ExtResource( 1 )
+script = ExtResource( 1 )
+group_name = "HULL_HEALTH"
+readable_name = "Hull"
+icon = ExtResource( 2 )
+size = Vector2( 100, 100 )
+mass = 0.0
+numerical_unit = 0
 quantity = 1.0

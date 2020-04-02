@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/Abstract/Destructable.gd"
 }, {
-"base": "PhysicalUnit",
+"base": "PhysicalQuantity",
 "class": "PackedScenesUnit",
 "language": "GDScript",
 "path": "res://Resources/Abstract/PackedScenesUnit.gd"
@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/Abstract/PhysicalQuantities.gd"
 }, {
-"base": "Resource",
+"base": "PhysicalUnit",
 "class": "PhysicalQuantity",
 "language": "GDScript",
 "path": "res://Resources/Abstract/PhysicalQuantity.gd"

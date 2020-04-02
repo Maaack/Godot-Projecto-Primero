@@ -27,12 +27,12 @@ func update_inventory():
 	if physical_collection == null:
 		return
 	for physical_quantity in physical_collection.physical_quantities:
-		if physical_quantity.get_group_name() == EMPTY_GROUP_NAME:
+		if physical_quantity.group_name == EMPTY_GROUP_NAME:
 			set_empty_quantity(physical_quantity)
 			continue
 		var button_instance = button_scene.instance()
 		grid_node.add_child(button_instance)
-		button_instance.physical_unit = physical_quantity.physical_unit
+		button_instance.physical_unit = physical_quantity
 		
 func clear_inventory():
 	for child in grid_node.get_children():

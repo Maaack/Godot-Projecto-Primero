@@ -65,8 +65,8 @@ func spawn_orbiting_rings():
 	for ring in rings:
 		if ring is PlanetaryRing:
 			for physical_quantity in ring.physical_quantities:
-				var physical_unit = physical_quantity.physical_unit
 				for _i in range(physical_quantity.quantity):
+					var physical_unit = physical_quantity.get_physical_unit()
 					var random_orbit_radius = rand_range(ring.inner_radius, ring.outer_radius)
 					random_orbit_radius += min_spawn_radius
 					physical_unit.position = get_random_vector() * random_orbit_radius

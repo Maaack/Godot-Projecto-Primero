@@ -1,9 +1,22 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://Resources/Abstract/PhysicalQuantity.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Present/Units/Asteroids/Colored/BlueAsteroid.tres" type="Resource" id=2]
+[ext_resource path="res://Resources/Abstract/PackedScenesUnit.gd" type="Script" id=1]
+[ext_resource path="res://Assets/kenney_spaceshooterextension/PNG/Sprites X2/Meteors/spaceMeteors_004.png" type="Texture" id=2]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Destructable/Asteroid/Asteroid.tscn" type="PackedScene" id=3]
 
 [resource]
 script = ExtResource( 1 )
-physical_unit = ExtResource( 2 )
+group_name = "ASTEROID"
+readable_name = "Asteroid"
+size = Vector2( 10000, 10000 )
+mass = 10000.0
+numerical_unit = 1
 quantity = 1000.0
+world_space_scene = ExtResource( 3 )
+texture = ExtResource( 2 )
+scale = Vector2( 2, 2 )
+color = Color( 0.505882, 0.501961, 1, 1 )
+position = Vector2( 0, 0 )
+linear_velocity = Vector2( 0, 0 )
+rotation = 0.0
+angular_velocity = 0.0

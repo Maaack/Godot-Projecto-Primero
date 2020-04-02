@@ -31,7 +31,7 @@ func add_physical_quantity(value:PhysicalQuantity, ignore_empty=false):
 	if value == null:
 		return
 	value = value.duplicate()
-	var key = value.get_group_name()
+	var key = value.group_name
 	if value.quantity > 0 and not ignore_empty:
 		value.quantity = get_max_quantity_from_empty_space(value)
 		if value.quantity == 0:
