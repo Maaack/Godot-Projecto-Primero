@@ -8,6 +8,10 @@
 [node name="RocketInspector" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="NinePatchRect" parent="MarginContainer" index="0"]
+margin_right = 1016.0
+margin_bottom = 592.0
+
 [node name="MarginContainer" parent="MarginContainer" index="1"]
 custom_constants/margin_bottom = 48
 
