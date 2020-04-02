@@ -72,7 +72,7 @@ func fill_space(value:PhysicalQuantity):
 		return
 	empty_quantity = empty_quantity.duplicate()
 	var quantity_empty = empty_quantity.get_quantity_for_area(value.get_area())
-	empty_quantity.quantity = quantity_empty
+	empty_quantity.quantity = -quantity_empty
 	return .add_physical_quantity(empty_quantity)
 
 func get_empty_area():
