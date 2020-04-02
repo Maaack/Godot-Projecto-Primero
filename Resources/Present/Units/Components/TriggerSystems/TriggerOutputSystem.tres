@@ -7,11 +7,12 @@
 [resource]
 script = ExtResource( 1 )
 group_name = "OUTPUT_SYSTEM"
-readable_name = "Output System"
+readable_name = "Trigger Output System"
 icon = ExtResource( 2 )
 size = Vector2( 5, 5 )
 mass = 0.01
 numerical_unit = 1
+quantity = 1.0
 component_scene = ExtResource( 3 )
 scale = Vector2( 1, 1 )
 color = Color( 1, 1, 1, 1 )

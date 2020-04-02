@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 group_name = "OUTPUT_SYSTEM"
-readable_name = "Output System"
+readable_name = "Repeating Three Second Timer"
 icon = ExtResource( 2 )
 size = Vector2( 5, 5 )
 mass = 0.01

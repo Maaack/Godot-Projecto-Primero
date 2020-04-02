@@ -6,11 +6,12 @@
 [resource]
 script = ExtResource( 1 )
 group_name = "MUNITIONS_SYSTEM"
-readable_name = "Munitions System"
+readable_name = "Basic Munitions System"
 icon = ExtResource( 2 )
 size = Vector2( 5, 5 )
 mass = 0.01
 numerical_unit = 1
+quantity = 1.0
 scale = Vector2( 1, 1 )
 color = Color( 1, 1, 1, 1 )
 position = Vector2( 0, 0 )

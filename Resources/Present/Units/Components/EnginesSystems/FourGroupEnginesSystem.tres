@@ -7,11 +7,12 @@
 [resource]
 script = ExtResource( 1 )
 group_name = "ENGINES_SYSTEM"
-readable_name = "Engines System"
+readable_name = "Four Group Engines System"
 icon = ExtResource( 3 )
 size = Vector2( 5, 5 )
 mass = 0.01
 numerical_unit = 1
+quantity = 1.0
 component_scene = ExtResource( 2 )
 scale = Vector2( 1, 1 )
 color = Color( 1, 1, 1, 1 )

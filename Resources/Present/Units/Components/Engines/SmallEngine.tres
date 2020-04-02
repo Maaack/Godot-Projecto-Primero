@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 group_name = "ENGINE"
-readable_name = "Engine"
+readable_name = "Small Engine"
 icon = ExtResource( 2 )
 size = Vector2( 80, 160 )
 mass = 80.0
