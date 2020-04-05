@@ -6,7 +6,7 @@ class_name PhysicalCollection
 const EMPTY_GROUP_NAME = 'EMPTY'
 
 func _to_string():
-	var to_string = "[Collection: ["
+	var to_string = "[Collection(" + str(get_instance_id()) + "):"
 	for physical_quantity in physical_quantities:
 		to_string += str(physical_quantity) + ","
 	return to_string + "]]"
@@ -86,4 +86,3 @@ func has_empty_space(value:float):
 	if empty_area == null:
 		return true
 	return empty_area > value
-	

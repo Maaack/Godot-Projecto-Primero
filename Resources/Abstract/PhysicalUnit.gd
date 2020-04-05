@@ -13,7 +13,7 @@ enum NumericalUnitSetting{ CONTINUOUS, DISCRETE }
 export(NumericalUnitSetting) var numerical_unit
 
 func _to_string():
-	return group_name
+	return group_name + "(" + str(get_instance_id()) + ")"
 
 func get_area():
 	return size.x * size.y
