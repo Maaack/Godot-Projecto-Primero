@@ -4,10 +4,13 @@ extends Node2D
 onready var world_space = get_world_space()
 var physical_unit setget set_physical_unit, get_physical_unit
 
-func set_physical_unit(value:PhysicalUnit):
+func set_physical_unit(value:PhysicalUnit, duplicate_flag=true):
 	if value == null:
 		return
-	physical_unit = value.duplicate()
+	if duplicate_flag:
+		physical_unit = value.duplicate()
+	else:
+		physical_unit = value
 	position = physical_unit.position
 	rotation = physical_unit.rotation
 

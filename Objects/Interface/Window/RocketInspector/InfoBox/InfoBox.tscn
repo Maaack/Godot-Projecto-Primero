@@ -5,7 +5,6 @@
 [ext_resource path="res://Objects/Interface/Theme/small_window_theme.tres" type="Theme" id=4]
 
 [node name="InfoBox" type="Node2D"]
-visible = false
 position = Vector2( 0, 40 )
 script = ExtResource( 2 )
 
@@ -28,24 +27,28 @@ margin_bottom = 152.0
 margin_right = 394.0
 margin_bottom = 152.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SmallWindow/MarginContainer/MarginContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SmallWindow/MarginContainer/MarginContainer" index="0"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 378.0
 margin_bottom = 136.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer"]
+margin_right = 370.0
+margin_bottom = 128.0
 size_flags_horizontal = 3
 custom_constants/separation = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="SmallWindow/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_right = 370.0
-margin_bottom = 91.0
+margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="GridContainer" type="GridContainer" parent="SmallWindow/MarginContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
 margin_right = 370.0
 margin_bottom = 77.0
 size_flags_horizontal = 3
@@ -56,27 +59,27 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="NameKey" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="NameKey" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
 margin_right = 177.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "Name Key"
 
-[node name="NameValue" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="NameValue" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
 margin_left = 193.0
 margin_right = 370.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 text = "Name Value"
 
-[node name="MassKey" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="MassKey" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
 margin_top = 31.0
 margin_right = 177.0
 margin_bottom = 46.0
 size_flags_horizontal = 3
 text = "Mass Key"
 
-[node name="MassValue" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="MassValue" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
 margin_left = 193.0
 margin_top = 31.0
 margin_right = 370.0
@@ -84,14 +87,14 @@ margin_bottom = 46.0
 size_flags_horizontal = 3
 text = "Mass Value"
 
-[node name="SizeKey" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="SizeKey" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
 margin_top = 62.0
 margin_right = 177.0
 margin_bottom = 77.0
 size_flags_horizontal = 3
 text = "Size Key"
 
-[node name="SizeValue" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+[node name="SizeValue" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
 margin_left = 193.0
 margin_top = 62.0
 margin_right = 370.0
@@ -99,15 +102,33 @@ margin_bottom = 77.0
 size_flags_horizontal = 3
 text = "Size Value"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SmallWindow/MarginContainer/MarginContainer/VBoxContainer"]
-margin_top = 107.0
+[node name="ComponentPreview" type="VBoxContainer" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer"]
+visible = false
+margin_left = 295.0
 margin_right = 370.0
 margin_bottom = 128.0
+custom_constants/separation = 10
 
-[node name="InspectButton" type="Button" parent="SmallWindow/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ViewportContainer" type="ViewportContainer" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/ComponentPreview"]
 margin_right = 75.0
-margin_bottom = 21.0
+margin_bottom = 97.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/ComponentPreview/ViewportContainer"]
+size = Vector2( 75, 97 )
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/ComponentPreview/ViewportContainer/Viewport"]
+current = true
+
+[node name="InspectButton" type="Button" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/ComponentPreview"]
+margin_top = 107.0
+margin_right = 75.0
+margin_bottom = 128.0
 text = "Inspect"
-[connection signal="pressed" from="SmallWindow/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/InspectButton" to="." method="_on_InspectButton_pressed"]
+[connection signal="pressed" from="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/ComponentPreview/InspectButton" to="." method="_on_InspectButton_pressed"]
 
 [editable path="SmallWindow"]

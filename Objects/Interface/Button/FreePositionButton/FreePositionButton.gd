@@ -13,6 +13,8 @@ signal button_down
 signal button_up
 signal button_pressed
 signal button_toggled
+signal attention_on
+signal attention_off
 
 func set_physical_unit(value:PhysicalUnit):
 	if value == null:
@@ -22,22 +24,27 @@ func set_physical_unit(value:PhysicalUnit):
 
 func _on_Button_mouse_entered():
 	emit_signal("mouse_entered")
+	emit_signal("attention_on", physical_unit)
 
 func _on_Button_mouse_exited():
+	emit_signal("mouse_exited")
 	if not is_button_pressed:
-		emit_signal("mouse_exited")
+		emit_signal("attention_off", physical_unit)
 
 func _on_Button_button_down():
-	emit_signal("button_down")
+	emit_signal("button_down", physical_unit)
 
 func _on_Button_button_up():
-	emit_signal("button_up")
+	emit_signal("button_up", physical_unit)
 
 func _on_Button_pressed():
-	emit_signal("button_pressed")
+	emit_signal("button_pressed", physical_unit)
 
 func _on_Button_toggled(button_pressed):
 	if button_pressed == null:
 		return
 	is_button_pressed = button_pressed
-	emit_signal("button_toggled", button_pressed)
+	emit_signal("button_toggled", button_pressed, physical_unit)
+
+func _on_FreePositionButton_tree_exiting():
+	emit_signal("attention_off", physical_unit)

@@ -73,7 +73,6 @@ mounted_system = ExtResource( 4 )
 [node name="TriggerMultiOutputsSystem" parent="LeftSpinEngineTriggerMount" instance=ExtResource( 2 )]
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true

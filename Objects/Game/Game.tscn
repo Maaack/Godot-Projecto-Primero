@@ -43,5 +43,6 @@ margin_top = 0.0
 margin_bottom = 0.0
 rect_min_size = Vector2( 0, 0 )
 theme = null
+default_info_box_offset = Vector2( 0, 60 )
 [connection signal="world_space_ready" from="ViewportAndOverlay" to="." method="_on_ViewportAndOverlay_world_space_ready"]
 [connection signal="start_game_triggered" from="StartMenu" to="." method="_on_StartMenu_start_game_triggered"]

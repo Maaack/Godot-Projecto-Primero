@@ -125,6 +125,7 @@ mounted_system = ExtResource( 1 )
 "MOUNT",
 "WEAPONS_SYSTEM",
 ]]
+visible = false
 position = Vector2( 0, -10 )
 script = ExtResource( 12 )
 __meta__ = {
@@ -138,6 +139,7 @@ initial_output_mounts = [ NodePath("../FrontCenterHardpoint"), NodePath("../Trac
 "MOUNT",
 "TRACER_LOADER",
 ]]
+visible = false
 position = Vector2( 0, -21 )
 script = ExtResource( 12 )
 __meta__ = {
@@ -151,6 +153,7 @@ initial_output_mounts = [ NodePath("../FrontCenterHardpoint") ]
 "ENGINES_SYSTEM",
 "MOUNT",
 ]]
+visible = false
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_group_": true,

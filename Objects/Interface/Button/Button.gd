@@ -7,6 +7,7 @@ export(Resource) var physical_unit setget set_physical_unit
 
 signal attention_on
 signal attention_off
+signal button_toggled
 
 func _ready():
 	update_icon()
@@ -24,8 +25,14 @@ func update_icon():
 	icon_node.show()
 
 func _on_Button_mouse_entered():
-	emit_signal("attention_on", self)
+	emit_signal("attention_on", physical_unit)
 
 func _on_Button_mouse_exited():
 	if not pressed:
-		emit_signal("attention_off", self)
+		emit_signal("attention_off", physical_unit)
+
+func _on_Button_tree_exiting():
+	emit_signal("attention_off", physical_unit)
+
+func _on_Button_toggled(button_pressed:bool):
+	emit_signal("button_toggled", button_pressed, physical_unit)

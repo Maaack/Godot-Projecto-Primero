@@ -16,7 +16,7 @@ var orbit_theta
 var player_character
 
 
-func set_physical_unit(value:PhysicalUnit):
+func set_physical_unit(value:PhysicalUnit, duplicate_flag=true):
 	if value == null:
 		return
 	if not value is PackedScenesUnit:

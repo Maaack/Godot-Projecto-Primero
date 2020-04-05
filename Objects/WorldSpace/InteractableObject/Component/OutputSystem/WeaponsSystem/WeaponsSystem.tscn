@@ -22,5 +22,4 @@ mounted_system = ExtResource( 5 )
 [node name="RepeatingTwoSecondTimer" parent="TimerTriggerMount" instance=ExtResource( 3 )]
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 4 )
