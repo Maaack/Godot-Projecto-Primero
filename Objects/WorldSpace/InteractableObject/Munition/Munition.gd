@@ -17,3 +17,4 @@ func _on_Bullet_body_entered(body):
 	if body.has_method("impact") and last_linear_velocity != null:
 		var relative_velocity = last_linear_velocity - body.get_linear_velocity()
 		body.impact(relative_velocity, legal_owner)
+		queue_free()
