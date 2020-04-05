@@ -55,7 +55,7 @@ func get_mass_quantity():
 	return mass_quantity
 
 func get_vitals_array():
-	if ship_node == null:
+	if not is_instance_valid(ship_node):
 		return
 	return [ship_node.destructable]
 
