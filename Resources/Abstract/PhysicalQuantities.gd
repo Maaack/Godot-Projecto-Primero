@@ -85,6 +85,12 @@ func clear():
 	physical_quantities_dict.clear()
 	physical_quantities.clear()
 
+func duplicate_contents():
+	var duplicate_quantities = []
+	for quantity in physical_quantities:
+		duplicate_quantities.append(quantity.duplicate())
+	set_physical_quantities(duplicate_quantities)
+
 func reset_key_map():
 	physical_quantities_dict.clear()
 	for physical_quantity in physical_quantities:

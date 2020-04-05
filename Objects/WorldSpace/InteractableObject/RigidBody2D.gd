@@ -19,6 +19,7 @@ func set_destructable(value:Destructable):
 	if value == null:
 		return
 	destructable = value.duplicate()
+	destructable.duplicate_contents()
 	destructable_manager = DestructableManager.new(destructable)
 
 func destroy_self():

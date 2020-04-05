@@ -41,9 +41,6 @@ var progress_bar_nodes = []
 
 signal world_space_ready
 
-func _ready():
-	set_counters()
-
 func _process(_delta):
 	if view_scene_instance == null:
 		return
@@ -194,15 +191,12 @@ func set_counters():
 	if view_centered_on == null:
 		return
 	right_grid_container_node.display_inventory(view_centered_on)
-	if progress_bar_nodes.size() < 1 and view_centered_on.has_method("get_vitals_array"):
-		var vitals = view_centered_on.get_vitals_array()
-		if vitals == null:
-			return
-		for vital in vitals:
-			add_progress_bar(vital)
+	if not view_centered_on.has_method("get_vitals_array"):
+		return
+	var vitals = view_centered_on.get_vitals_array()
+	if vitals == null:
+		return
+	left_grid_container_node.hide_all()
+	for vital in vitals:
+		left_grid_container_node.add_progress_bar(vital)
 
-func add_progress_bar(specific_container:SpecificContainer):
-	var progress_bar_instance = progress_bar_scene.instance()
-	left_grid_container_node.add_child(progress_bar_instance)
-	progress_bar_instance.set_all(specific_container.physical_collection, specific_container.unit_key)
-	progress_bar_nodes.append(progress_bar_instance)
