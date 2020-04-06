@@ -6,7 +6,7 @@ const BASE_ORIENTATION = PI/2
 export var camera_scale = 0.2
 export(NodePath) var initial_ship_path
 var ship_node = null
-var kilogram_resource = preload("res://Resources/Abstract/Quantities/Kilograms.tres")
+var kilogram_resource = preload("res://Resources/Abstract/Units/Kilogram.tres")
 
 func _ready():
 	var initial_ship_node = get_node(initial_ship_path)
@@ -55,7 +55,7 @@ func get_mass_quantity():
 	return mass_quantity
 
 func get_vitals_array():
-	if ship_node == null:
+	if not is_instance_valid(ship_node):
 		return
 	return [ship_node.destructable]
 

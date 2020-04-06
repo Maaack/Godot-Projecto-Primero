@@ -1,10 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/GenericEngine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/BaseEngine.tscn" type="PackedScene" id=1]
 
 [node name="SmallEngine" instance=ExtResource( 1 )]
 max_engine_impulse = 500.0
-
-[node name="EngineWake" parent="." index="0"]
-position = Vector2( 0, 16 )
-scale = Vector2( 0.25, 0.25 )

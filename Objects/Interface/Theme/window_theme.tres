@@ -1,7 +1,6 @@
-[gd_resource type="Theme" load_steps=3 format=2]
+[gd_resource type="Theme" load_steps=2 format=2]
 
 [ext_resource path="res://Objects/Interface/Theme/fonts/window_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Objects/Interface/Theme/fonts/base_font.tres" type="DynamicFont" id=2]
 
 [resource]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
@@ -22,5 +21,5 @@ Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/fonts/font = ExtResource( 2 )
+Label/fonts/font = ExtResource( 1 )
 Label/styles/normal = null

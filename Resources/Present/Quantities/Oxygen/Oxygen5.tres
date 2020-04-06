@@ -1,9 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Resources/Abstract/PhysicalQuantity.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Abstract/Units/Materials/Oxygen.tres" type="Resource" id=2]
+[ext_resource path="res://Assets/originals/interface/icons/24x24/molecular_oxygen.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-physical_unit = ExtResource( 2 )
+group_name = "OXYGEN"
+readable_name = "Oxygen"
+icon = ExtResource( 2 )
+size = Vector2( 100, 16 )
+mass = 1.0
+numerical_unit = 0
 quantity = 5.0

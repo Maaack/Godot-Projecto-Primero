@@ -3,10 +3,9 @@
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/RigidBody2D.gd" type="Script" id=1]
 [ext_resource path="res://Assets/kenney_spaceshooterextension/PNG/Sprites/Station/spaceStation_020.png" type="Texture" id=2]
 
-
 [node name="Station" type="RigidBody2D"]
 position = Vector2( -424, 0 )
-mass = 1024.0
+mass = 40000.0
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

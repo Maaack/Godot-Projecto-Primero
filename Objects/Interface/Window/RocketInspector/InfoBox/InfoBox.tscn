@@ -1,0 +1,134 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Interface/Window/SmallWindow/SmallWindow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Interface/Window/RocketInspector/InfoBox/InfoBox.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Interface/Theme/small_window_theme.tres" type="Theme" id=4]
+
+[node name="InfoBox" type="Node2D"]
+position = Vector2( 0, 40 )
+script = ExtResource( 2 )
+
+[node name="SmallWindow" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -201.0
+margin_top = -1.0
+margin_right = 201.0
+margin_bottom = 159.0
+size_flags_horizontal = 9
+size_flags_vertical = 9
+theme = ExtResource( 4 )
+
+[node name="NinePatchRect" parent="SmallWindow/MarginContainer" index="0"]
+margin_right = 394.0
+margin_bottom = 152.0
+
+[node name="MarginContainer" parent="SmallWindow/MarginContainer" index="1"]
+margin_right = 394.0
+margin_bottom = 152.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SmallWindow/MarginContainer/MarginContainer" index="0"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 378.0
+margin_bottom = 136.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer"]
+margin_right = 370.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+custom_constants/separation = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 370.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GridContainer" type="GridContainer" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
+margin_right = 370.0
+margin_bottom = 77.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 16
+custom_constants/hseparation = 16
+columns = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NameKey" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
+margin_right = 177.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "Name Key"
+
+[node name="NameValue" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
+margin_left = 193.0
+margin_right = 370.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "Name Value"
+
+[node name="MassKey" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 31.0
+margin_right = 177.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+text = "Mass Key"
+
+[node name="MassValue" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
+margin_left = 193.0
+margin_top = 31.0
+margin_right = 370.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+text = "Mass Value"
+
+[node name="SizeKey" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 62.0
+margin_right = 177.0
+margin_bottom = 77.0
+size_flags_horizontal = 3
+text = "Size Key"
+
+[node name="SizeValue" type="Label" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer"]
+margin_left = 193.0
+margin_top = 62.0
+margin_right = 370.0
+margin_bottom = 77.0
+size_flags_horizontal = 3
+text = "Size Value"
+
+[node name="ComponentPreview" type="VBoxContainer" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer"]
+visible = false
+margin_left = 295.0
+margin_right = 370.0
+margin_bottom = 128.0
+custom_constants/separation = 10
+
+[node name="ViewportContainer" type="ViewportContainer" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/ComponentPreview"]
+margin_right = 75.0
+margin_bottom = 97.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/ComponentPreview/ViewportContainer"]
+size = Vector2( 75, 97 )
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/ComponentPreview/ViewportContainer/Viewport"]
+current = true
+
+[node name="InspectButton" type="Button" parent="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/ComponentPreview"]
+margin_top = 107.0
+margin_right = 75.0
+margin_bottom = 128.0
+text = "Inspect"
+[connection signal="pressed" from="SmallWindow/MarginContainer/MarginContainer/HBoxContainer/ComponentPreview/InspectButton" to="." method="_on_InspectButton_pressed"]
+
+[editable path="SmallWindow"]

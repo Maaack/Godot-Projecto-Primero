@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://Resources/Abstract/PackedSceneUnit.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Abstract/PackedScenesUnit.gd" type="Script" id=1]
 [ext_resource path="res://Assets/originals/interface/icons/24x24/tracer_bullets.png" type="Texture" id=2]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Munition/TracerBullet.tscn" type="PackedScene" id=3]
 
@@ -12,7 +12,8 @@ icon = ExtResource( 2 )
 size = Vector2( 2, 5 )
 mass = 0.1
 numerical_unit = 1
-packed_scene = ExtResource( 3 )
+quantity = 1.0
+world_space_scene = ExtResource( 3 )
 scale = Vector2( 1, 1 )
 color = Color( 1, 1, 1, 1 )
 position = Vector2( 0, 0 )

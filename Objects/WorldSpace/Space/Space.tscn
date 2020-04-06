@@ -1,18 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Objects/WorldSpace/Collectable/TracerBulletLootBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/originals/background_1.png" type="Texture" id=2]
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Pequod.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Corvette.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Station.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/SimpleRocket.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/WorldSpace/Collectable/OxygenLootBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Character/Character.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/WorldSpace/SphereOfInfluence/SphereOfInfluence.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/WorldSpace/Space/Space.gd" type="Script" id=10]
 [ext_resource path="res://Objects/WorldSpace/Collectable/BulletLootBox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Objects/WorldSpace/Collectable/HydrogenLootBox.tscn" type="PackedScene" id=12]
-
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Pequod.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Rocket3MC.tscn" type="PackedScene" id=14]
 
 [node name="Space" type="Node2D"]
 script = ExtResource( 10 )
@@ -20,9 +18,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 world_space_size_mod = Vector2( 80, 80 )
-
-[node name="TracerBulletLootBox2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -93056, -256 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
@@ -40,18 +35,10 @@ __meta__ = {
 [node name="Station" parent="." instance=ExtResource( 5 )]
 position = Vector2( -93475.6, 0 )
 
-[node name="Corvette" parent="." instance=ExtResource( 4 )]
-position = Vector2( -93840.6, 280 )
-
-[node name="Pequod" parent="." instance=ExtResource( 3 )]
-position = Vector2( -94110.6, 0 )
-
-[node name="SimpleRocket" parent="." instance=ExtResource( 6 )]
-position = Vector2( -93116.3, 0 )
-
-[node name="Character" parent="." instance=ExtResource( 8 )]
-position = Vector2( -93116.6, 0 )
-initial_ship_path = NodePath("../SimpleRocket")
+[node name="Pequod" parent="." instance=ExtResource( 13 )]
+position = Vector2( -92608.1, 0 )
+initial_engines_system_mount_path = NodePath("../Pequod/ThreeGroupEnginesMount")
+initial_weapons_system_mount_path = NodePath("../Pequod/WeaponsSystemMount")
 
 [node name="SphereOfInfluence" parent="." instance=ExtResource( 9 )]
 asteroid_spawn_distance_from_surface = 10000.0
@@ -72,8 +59,18 @@ position = Vector2( -93024, -192 )
 [node name="TracerBulletLootBox" parent="." instance=ExtResource( 1 )]
 position = Vector2( -93184, -256 )
 
+[node name="TracerBulletLootBox2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -93056, -256 )
+
 [node name="OxygenLootBox" parent="." instance=ExtResource( 7 )]
 position = Vector2( -93376, -256 )
 
 [node name="HydrogenLootBox" parent="." instance=ExtResource( 12 )]
 position = Vector2( -93376, -320 )
+
+[node name="Rocket3MC" parent="." instance=ExtResource( 14 )]
+position = Vector2( -93116.6, 2.86102e-05 )
+
+[node name="Character" parent="." instance=ExtResource( 8 )]
+position = Vector2( -93116.6, 0 )
+initial_ship_path = NodePath("../Rocket3MC")

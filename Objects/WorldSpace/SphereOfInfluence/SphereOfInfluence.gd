@@ -51,7 +51,7 @@ func get_orbital_velocity(start_position:Vector2):
 	var vector_scale = sqrt(gravity_force*distance) * vector_scale_mod
 	return orbit_vector * vector_scale
 
-func spawn_orbiting_sprite(physical_unit:PackedSceneUnit):
+func spawn_orbiting_sprite(physical_unit:PackedScenesUnit):
 	var instance = orbiting_node_scene.instance()
 	add_child(instance)
 	instance.gravity_force = gravity_space.get_gravity()
@@ -65,8 +65,8 @@ func spawn_orbiting_rings():
 	for ring in rings:
 		if ring is PlanetaryRing:
 			for physical_quantity in ring.physical_quantities:
-				var physical_unit = physical_quantity.physical_unit
 				for _i in range(physical_quantity.quantity):
+					var physical_unit = physical_quantity.get_physical_unit()
 					var random_orbit_radius = rand_range(ring.inner_radius, ring.outer_radius)
 					random_orbit_radius += min_spawn_radius
 					physical_unit.position = get_random_vector() * random_orbit_radius

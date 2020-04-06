@@ -14,11 +14,14 @@ func set_quantity(value:PhysicalQuantity):
 	if value == null:
 		return
 	quantity = value
-	set_icon(value.physical_unit)
+	set_icon(value)
 	update_counter()
 
 func set_icon(value:PhysicalUnit):
 	if value == null:
+		return
+	if value.icon == null:
+		print(value, " doesn't have an icon!")
 		return
 	texture_node.texture = value.icon
 	var get_size = texture_node.texture.get_size()
@@ -29,7 +32,7 @@ func update_counter():
 	if quantity == null:
 		return
 	var value = quantity.quantity
-	if quantity.physical_unit.numerical_unit == quantity.physical_unit.NumericalUnitSetting.DISCRETE:
+	if quantity.numerical_unit == quantity.NumericalUnitSetting.DISCRETE:
 		value = round(value)
 	else:
 		var value_str = "%.*f"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Objects/Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Game/FPSCounter.gd" type="Script" id=2]
 [ext_resource path="res://Objects/Interface/ViewportAndOverlay/ViewportAndOverlay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Interface/StartMenu/StartMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Interface/Window/RocketInspector/RocketInspector.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Control"]
 anchor_right = 1.0
@@ -35,5 +36,13 @@ margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RocketInspector" parent="." instance=ExtResource( 5 )]
+visible = false
+margin_top = 0.0
+margin_bottom = 0.0
+rect_min_size = Vector2( 0, 0 )
+theme = null
+default_info_box_offset = Vector2( 0, 60 )
 [connection signal="world_space_ready" from="ViewportAndOverlay" to="." method="_on_ViewportAndOverlay_world_space_ready"]
 [connection signal="start_game_triggered" from="StartMenu" to="." method="_on_StartMenu_start_game_triggered"]

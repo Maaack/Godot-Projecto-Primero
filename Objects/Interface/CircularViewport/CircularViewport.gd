@@ -34,6 +34,8 @@ func get_zoom():
 	return final_zoom * SCALE_MOD
 
 func set_centered_on(target:Node2D):
+	if target == null:
+		return
 	if target.get_position() != null:
 		view_centered_on = target
 		viewport.set_world_2d(target.get_world_2d())

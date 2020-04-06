@@ -1,10 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Resources/Abstract/PhysicalQuantity.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Abstract/Units/Empty.tres" type="Resource" id=2]
-
+[ext_resource path="res://Assets/originals/interface/icons/empty_open_box_round.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-physical_unit = ExtResource( 2 )
+group_name = "EMPTY"
+readable_name = "Empty"
+icon = ExtResource( 2 )
+size = Vector2( 100, 100 )
+mass = 0.0
+numerical_unit = 0
 quantity = 100.0

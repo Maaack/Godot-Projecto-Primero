@@ -22,13 +22,15 @@ func set_physical_quantities(value:Array):
 		return
 	physical_quantities = []
 	for physical_quantity in value:
+		if physical_quantity == null:
+			continue
 		physical_quantities.append(physical_quantity.duplicate())
 	reset_key_map()
 
 func _append_physical_quantity(value:PhysicalQuantity):
 	if value == null:
 		return
-	var key = value.get_group_name()
+	var key = value.group_name
 	if key == null:
 		return
 	physical_quantities.append(value)
@@ -38,7 +40,7 @@ func _append_physical_quantity(value:PhysicalQuantity):
 func add_physical_quantity(value:PhysicalQuantity):
 	if value == null:
 		return null
-	var key = value.get_group_name()
+	var key = value.group_name
 	if key == null:
 		return
 	if physical_quantities_dict.has(key):
@@ -51,7 +53,7 @@ func add_physical_quantity(value:PhysicalQuantity):
 func set_physical_quantity(value:PhysicalQuantity):
 	if value == null:
 		return null
-	var key = value.get_group_name()
+	var key = value.group_name
 	if key == null:
 		return
 	if physical_quantities.has(key):	
@@ -83,10 +85,16 @@ func clear():
 	physical_quantities_dict.clear()
 	physical_quantities.clear()
 
+func duplicate_contents():
+	var duplicate_quantities = []
+	for quantity in physical_quantities:
+		duplicate_quantities.append(quantity.duplicate())
+	set_physical_quantities(duplicate_quantities)
+
 func reset_key_map():
 	physical_quantities_dict.clear()
 	for physical_quantity in physical_quantities:
-		var key = physical_quantity.get_group_name()
+		var key = physical_quantity.group_name
 		if key == null:
 			continue
 		physical_quantities_dict[key] = physical_quantity

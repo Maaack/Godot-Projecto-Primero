@@ -2,6 +2,7 @@ extends Control
 
 
 onready var viewport_and_overlay = $ViewportAndOverlay
+onready var inspector = $RocketInspector
 
 var space_scene = preload("res://Objects/WorldSpace/Space/Space.tscn")
 var space_instance = null
@@ -14,10 +15,19 @@ func start_game():
 func _on_ViewportAndOverlay_world_space_ready():
 	viewport_and_overlay.add_target(space_instance.simple_rocket)
 	viewport_and_overlay.add_target(space_instance.pequod)
-	viewport_and_overlay.add_target(space_instance.corvette)
 	viewport_and_overlay.add_target(space_instance.station)
 	viewport_and_overlay.add_target(space_instance.planet8)
 	viewport_and_overlay.set_centered_on(space_instance.character)
+	inspector.show_ship(space_instance.simple_rocket)
 
 func _on_StartMenu_start_game_triggered():
 	start_game()
+
+func _input(event):
+	if event.is_action_pressed("ui_inspect"):
+		inspector.show_ship(space_instance.character.ship_node)
+		if inspector.visible:
+			inspector.hide()
+		else:
+			inspector.show()
+

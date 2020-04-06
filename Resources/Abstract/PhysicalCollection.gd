@@ -6,7 +6,7 @@ class_name PhysicalCollection
 const EMPTY_GROUP_NAME = 'EMPTY'
 
 func _to_string():
-	var to_string = "[Collection: ["
+	var to_string = "[Collection(" + str(get_instance_id()) + "):"
 	for physical_quantity in physical_quantities:
 		to_string += str(physical_quantity) + ","
 	return to_string + "]]"
@@ -31,7 +31,7 @@ func add_physical_quantity(value:PhysicalQuantity, ignore_empty=false):
 	if value == null:
 		return
 	value = value.duplicate()
-	var key = value.get_group_name()
+	var key = value.group_name
 	if value.quantity > 0 and not ignore_empty:
 		value.quantity = get_max_quantity_from_empty_space(value)
 		if value.quantity == 0:
@@ -72,7 +72,7 @@ func fill_space(value:PhysicalQuantity):
 		return
 	empty_quantity = empty_quantity.duplicate()
 	var quantity_empty = empty_quantity.get_quantity_for_area(value.get_area())
-	empty_quantity.quantity = quantity_empty
+	empty_quantity.quantity = -quantity_empty
 	return .add_physical_quantity(empty_quantity)
 
 func get_empty_area():
@@ -86,4 +86,3 @@ func has_empty_space(value:float):
 	if empty_area == null:
 		return true
 	return empty_area > value
-	

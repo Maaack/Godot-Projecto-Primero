@@ -4,7 +4,7 @@ extends "res://Objects/WorldSpace/Node2D.gd"
 const LOAD_IN_DISTANCE = 10000.0
 
 onready var node_2d = $Node2D
-onready var sprite = $Node2D/Sprite
+onready var sprite_node = $Node2D/Sprite
 
 export(float) var gravity_force
 
@@ -16,13 +16,13 @@ var orbit_theta
 var player_character
 
 
-func set_physical_unit(value:PhysicalUnit):
+func set_physical_unit(value:PhysicalUnit, duplicate_flag=true):
 	if value == null:
 		return
-	if not value is PackedSceneUnit:
+	if not value is PackedScenesUnit:
 		return
 	set_orbit(value)
-	set_sprite(value)
+	set_sprite_node(value)
 
 func get_physical_unit():
 	var value = node_2d.get_physical_unit()
@@ -39,7 +39,7 @@ func get_orbit_direction_mod():
 	else:
 		print('Error: Not a valid orbit direction!')
 
-func set_orbit(value:PackedSceneUnit):
+func set_orbit(value:PackedScenesUnit):
 	value.position -= get_position_in_world_space()
 	value.rotation -= get_rotation_in_world_space()
 	node_2d.physical_unit = value
@@ -49,10 +49,10 @@ func set_orbit(value:PackedSceneUnit):
 		return
 	orbit_theta = gravity_force / sqrt(orbit_distance * gravity_force) * get_orbit_direction_mod()
 
-func set_sprite(value:PhysicalUnit):
-	sprite.texture = value.texture
-	sprite.scale = value.scale
-	sprite.modulate = value.color
+func set_sprite_node(value:PhysicalUnit):
+	sprite_node.texture = value.texture
+	sprite_node.scale = value.scale
+	sprite_node.modulate = value.color
 
 func _physics_process(delta):
 	var rotation_speed = delta * orbit_theta
@@ -60,5 +60,5 @@ func _physics_process(delta):
 	if is_instance_valid(player_character):
 		var player_distance = node_2d.position.distance_to(player_character.position)
 		if player_distance <= LOAD_IN_DISTANCE:
-			world_space.spawn_rigid_body_2d(get_physical_unit())
+			world_space.spawn(get_physical_unit())
 			queue_free()

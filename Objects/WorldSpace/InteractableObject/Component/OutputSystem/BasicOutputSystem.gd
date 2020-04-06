@@ -1,6 +1,8 @@
 extends "res://Objects/WorldSpace/InteractableObject/Node2D.gd"
 
 
+onready var sprite_node = $Sprite
+
 enum OutputCountSettingEnum {LIMITED, UNLIMITED}
 export(OutputCountSettingEnum) var output_count_setting
 export(int) var max_output_count = 1
@@ -37,6 +39,11 @@ func set_output_nodes(value):
 	else:
 		output_nodes = []
 		output_nodes.append(value)
+	post_set_output_nodes(value)
+
+# TODO: Change this to a class and override set_output_nodes 
+func post_set_output_nodes(value):
+	pass
 
 func get_output_nodes():
 	return output_nodes

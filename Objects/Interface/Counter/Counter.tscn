@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Objects/Interface/Theme/window_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Objects/Interface/Theme/base_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/originals/interface/ui_box_2.png" type="Texture" id=2]
 [ext_resource path="res://Objects/Interface/Counter/Counter.gd" type="Script" id=3]
 [ext_resource path="res://Assets/originals/interface/icons/24x24/molecular_oxygen.png" type="Texture" id=4]
@@ -9,6 +9,7 @@
 margin_right = 136.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 136, 32 )
+theme = ExtResource( 1 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 32, 32 )
 patch_margin_left = 8
@@ -40,7 +41,6 @@ anchor_bottom = 0.5
 margin_left = -96.0
 margin_top = -12.0
 margin_bottom = 12.0
-theme = ExtResource( 1 )
 text = "100/100"
 align = 1
 valign = 1

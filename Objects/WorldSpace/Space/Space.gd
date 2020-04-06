@@ -2,8 +2,7 @@ extends "res://Objects/WorldSpace/WorldSpace.gd"
 
 
 onready var character = $Character
-onready var corvette = $Corvette
-onready var simple_rocket = $SimpleRocket
+onready var simple_rocket = $Rocket3MC
 onready var pequod = $Pequod
 onready var station = $Station
 onready var planet8 = $SphereOfInfluence/Planet8
@@ -26,11 +25,11 @@ func _ready():
 		var new_velocity = sphere_of_influence.get_orbital_velocity(relative_position)
 		child.set_axis_velocity(new_velocity)
 
-func spawn_rigid_body_2d(physical_unit:PackedSceneUnit):
+func spawn(physical_unit:PackedScenesUnit):
 	if physical_unit == null:
 		print("Error: Spawn rigid body called with null!")
 		return
-	var instance = physical_unit.packed_scene.instance()
+	var instance = physical_unit.world_space_scene.instance()
 	add_child(instance)
 	instance.add_to_group(physical_unit.group_name)
 	instance.physical_unit = physical_unit

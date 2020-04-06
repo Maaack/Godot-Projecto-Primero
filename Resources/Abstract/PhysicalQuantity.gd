@@ -1,27 +1,19 @@
-extends Resource
+extends PhysicalUnit
 
 
 class_name PhysicalQuantity
 
-export(Resource) var physical_unit
 
 export(float) var quantity = 1.0 setget set_quantity
 
-
-func _init(init_physical_unit=null, init_quantity=null):
-	if init_physical_unit != null and init_physical_unit is PhysicalUnit:
-		physical_unit = init_physical_unit
-	if init_quantity != null:
-		quantity = init_quantity
-
 func _to_string():
-	return "[Quantity: [" + str(physical_unit) + ", " + str(quantity) + "]]"
+	return "[Quantity: [" + ._to_string() + ", " + str(quantity) + "]]"
 
 func set_quantity(value:float):
 	if value == null:
 		return
 	quantity = value
-	if physical_unit != null and physical_unit.numerical_unit == physical_unit.NumericalUnitSetting.DISCRETE:
+	if numerical_unit == NumericalUnitSetting.DISCRETE:
 		quantity = floor(quantity)
 
 func add_quantity(value:float):
@@ -29,28 +21,40 @@ func add_quantity(value:float):
 		return
 	set_quantity(quantity + value)
 
+func split(value:float):
+	if value == null:
+		return
+	var split_quantity = duplicate()
+	value = min(value, quantity)
+	add_quantity(-value)
+	split_quantity.quantity = value
+	return split_quantity
+
+func get_physical_unit():
+	var physical_unit = duplicate()
+	physical_unit.quantity = 1.0
+	return physical_unit
+
 func add_physical_quantity(value:PhysicalQuantity):
 	if value == null:
 		return
-	if value.get_group_name() != get_group_name():
+	if value.group_name != group_name:
 		print("Error: Adding incompatible quantities ", str(value), " and ", str(self))
 		return
 	add_quantity(value.quantity)	
 
-func get_unit_area():
-	return physical_unit.get_area()
-
 func get_mass():
-	return quantity * physical_unit.mass
+	return quantity * mass
+
+func get_unit_mass():
+	return mass
+
+func get_unit_area():
+	return .get_area()
 
 func get_area():
-	return quantity * get_unit_area()
-
-func get_group_name():
-	if physical_unit == null:
-		return
-	return physical_unit.group_name
+	return quantity * .get_area()
 
 func get_quantity_for_area(value:float):
-	var unit_area = get_unit_area()
+	var unit_area = .get_area()
 	return value / unit_area

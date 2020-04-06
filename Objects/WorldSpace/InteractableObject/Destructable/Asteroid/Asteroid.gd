@@ -5,11 +5,11 @@ func destroy_self():
 	world_space.asteroid_counter -= 1
 	.destroy_self()
 
-func set_physical_unit(value:PhysicalUnit):
+func set_physical_unit(value:PhysicalUnit, duplicate_flag=true):
 	if value == null:
 		return
-	sprite.modulate = value.color
-	.set_physical_unit(value)
+	sprite_node.modulate = value.color
+	.set_physical_unit(value, duplicate_flag)
 
 func exit_physics_area():
 	if not destroyed:

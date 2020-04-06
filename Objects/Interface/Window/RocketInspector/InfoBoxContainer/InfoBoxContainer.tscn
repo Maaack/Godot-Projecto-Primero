@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Objects/Interface/Window/RocketInspector/InfoBoxContainer/InfoBoxContainer.gd" type="Script" id=1]
+
+[node name="InfoBoxContainer" type="Container"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 976.0
+margin_bottom = 536.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -5,8 +5,6 @@
 [ext_resource path="res://Objects/Interface/ProgressBar/ProgressBar.gd" type="Script" id=3]
 [ext_resource path="res://Assets/originals/interface/progress_bar_empty.png" type="Texture" id=4]
 
-
-
 [node name="ProgressBar" type="HBoxContainer"]
 margin_right = 276.0
 margin_bottom = 32.0

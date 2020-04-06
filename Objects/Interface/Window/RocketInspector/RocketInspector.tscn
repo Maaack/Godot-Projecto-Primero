@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/Interface/Window/Window.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Interface/Window/RocketInspector/RocketInspector.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Interface/Window/RocketInspector/ComponentInspector/ComponentInspector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Interface/Inventory/Inventory.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Interface/Window/RocketInspector/InfoBoxContainer/InfoBoxContainer.tscn" type="PackedScene" id=5]
+
+[node name="RocketInspector" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="NinePatchRect" parent="MarginContainer" index="0"]
+margin_right = 1016.0
+margin_bottom = 592.0
+
+[node name="MarginContainer" parent="MarginContainer" index="1"]
+custom_constants/margin_bottom = 48
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer" index="0"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 976.0
+margin_bottom = 536.0
+
+[node name="Inventory" parent="MarginContainer/MarginContainer/HBoxContainer" index="0" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 470.0
+margin_bottom = 504.0
+
+[node name="ComponentInspector" parent="MarginContainer/MarginContainer/HBoxContainer" index="1" instance=ExtResource( 3 )]
+
+[node name="InfoBoxContainer" parent="MarginContainer/MarginContainer" index="1" instance=ExtResource( 5 )]
+mouse_filter = 2
+[connection signal="attention_off" from="MarginContainer/MarginContainer/HBoxContainer/Inventory" to="." method="_on_Inventory_attention_off"]
+[connection signal="attention_on" from="MarginContainer/MarginContainer/HBoxContainer/Inventory" to="." method="_on_Inventory_attention_on"]
+[connection signal="button_toggled" from="MarginContainer/MarginContainer/HBoxContainer/Inventory" to="." method="_on_Inventory_button_toggled"]
+[connection signal="attention_off" from="MarginContainer/MarginContainer/HBoxContainer/ComponentInspector" to="." method="_on_ComponentInspector_attention_off"]
+[connection signal="attention_on" from="MarginContainer/MarginContainer/HBoxContainer/ComponentInspector" to="." method="_on_ComponentInspector_attention_on"]
+[connection signal="button_toggled" from="MarginContainer/MarginContainer/HBoxContainer/ComponentInspector" to="." method="_on_ComponentInspector_button_toggled"]
+[connection signal="inspect_button_pressed" from="MarginContainer/MarginContainer/InfoBoxContainer" to="." method="_on_InfoBoxContainer_inspect_button_pressed"]

@@ -1,4 +1,4 @@
-extends "res://Objects/WorldSpace/InteractableObject/Node2D.gd"
+extends "res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/BasicOutputSystem.gd"
 
 
 onready var forward_engines = $ForwardEngineTriggerMount

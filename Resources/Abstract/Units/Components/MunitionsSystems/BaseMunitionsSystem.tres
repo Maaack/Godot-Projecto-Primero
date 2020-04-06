@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Abstract/PackedScenesUnit.gd" type="Script" id=1]
+[ext_resource path="res://Assets/originals/interface/icons/24x24/bullets.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+group_name = "MUNITIONS_SYSTEM"
+readable_name = "Munitions System"
+icon = ExtResource( 2 )
+size = Vector2( 5, 5 )
+mass = 0.01
+numerical_unit = 1
+scale = Vector2( 1, 1 )
+color = Color( 1, 1, 1, 1 )
+position = Vector2( 0, 0 )
+linear_velocity = Vector2( 0, 0 )
+rotation = 0.0
+angular_velocity = 0.0
