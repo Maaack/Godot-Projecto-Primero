@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Objects/WorldSpace/Collectable/TracerBulletLootBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/originals/background_1.png" type="Texture" id=2]
-[ext_resource path="res://Objects/Station.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/WorldSpace/Stations/StationAlpha.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/WorldSpace/Stations/StationGamma.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/WorldSpace/Collectable/OxygenLootBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Character/Character.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/WorldSpace/SphereOfInfluence/SphereOfInfluence.tscn" type="PackedScene" id=9]
@@ -32,11 +33,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Station" parent="." instance=ExtResource( 5 )]
-position = Vector2( -93475.6, 0 )
-
 [node name="Pequod" parent="." instance=ExtResource( 13 )]
-position = Vector2( -92608.1, 0 )
+position = Vector2( -178159, -3.48895 )
 initial_engines_system_mount_path = NodePath("../Pequod/ThreeGroupEnginesMount")
 initial_weapons_system_mount_path = NodePath("../Pequod/WeaponsSystemMount")
 
@@ -45,32 +43,41 @@ asteroid_spawn_distance_from_surface = 10000.0
 player_character_path = NodePath("../Character")
 
 [node name="BulletLootBox3" parent="." instance=ExtResource( 11 )]
-position = Vector2( -93088, -192 )
+position = Vector2( -178639, -195.489 )
 
 [node name="BulletLootBox1" parent="." instance=ExtResource( 11 )]
-position = Vector2( -93216, -192 )
+position = Vector2( -178767, -195.489 )
 
 [node name="BulletLootBox2" parent="." instance=ExtResource( 11 )]
-position = Vector2( -93152, -192 )
+position = Vector2( -178703, -195.489 )
 
 [node name="BulletLootBox4" parent="." instance=ExtResource( 11 )]
-position = Vector2( -93024, -192 )
+position = Vector2( -178575, -195.489 )
 
 [node name="TracerBulletLootBox" parent="." instance=ExtResource( 1 )]
-position = Vector2( -93184, -256 )
+position = Vector2( -178735, -259.489 )
 
 [node name="TracerBulletLootBox2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -93056, -256 )
+position = Vector2( -178607, -259.489 )
 
 [node name="OxygenLootBox" parent="." instance=ExtResource( 7 )]
-position = Vector2( -93376, -256 )
+position = Vector2( -178927, -259.489 )
 
 [node name="HydrogenLootBox" parent="." instance=ExtResource( 12 )]
-position = Vector2( -93376, -320 )
+position = Vector2( -178927, -323.489 )
 
 [node name="Rocket3MC" parent="." instance=ExtResource( 14 )]
-position = Vector2( -93116.6, 2.86102e-05 )
+position = Vector2( -178668, -3.48892 )
 
 [node name="Character" parent="." instance=ExtResource( 8 )]
-position = Vector2( -93116.6, 0 )
+position = Vector2( -178668, -3.48895 )
 initial_ship_path = NodePath("../Rocket3MC")
+
+[node name="StationAlpha" parent="." instance=ExtResource( 3 )]
+position = Vector2( 180000, 0 )
+
+[node name="Rocket3MC2" parent="." instance=ExtResource( 14 )]
+position = Vector2( 179000, 0 )
+
+[node name="StationGamma" parent="." instance=ExtResource( 4 )]
+position = Vector2( -180000, -3.48895 )

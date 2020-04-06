@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Resources/Abstract/Collections/PlanetaryRing.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Present/Quantities/Asteroids/BlueAsteroids1000.tres" type="Resource" id=2]
+[ext_resource path="res://Resources/Present/Quantities/Asteroids/BlueAsteroids400.tres" type="Resource" id=2]
 
 [resource]
 script = ExtResource( 1 )
 physical_quantities = [ ExtResource( 2 ) ]
-inner_radius = 16000.0
-outer_radius = 64000.0
+inner_radius = 96000.0
+outer_radius = 128000.0

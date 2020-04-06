@@ -4,7 +4,8 @@ extends "res://Objects/WorldSpace/WorldSpace.gd"
 onready var character = $Character
 onready var simple_rocket = $Rocket3MC
 onready var pequod = $Pequod
-onready var station = $Station
+onready var station_alpha = $StationAlpha
+onready var station_gamma = $StationGamma
 onready var planet8 = $SphereOfInfluence/Planet8
 onready var sphere_of_influence = $SphereOfInfluence
 
