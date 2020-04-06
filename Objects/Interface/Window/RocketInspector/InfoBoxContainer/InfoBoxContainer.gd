@@ -71,5 +71,4 @@ func clear_all():
 			child.queue_free()
 
 func _on_InfoBox_inspect_button_pressed(node_2d:Node2D, physical_unit:PhysicalUnit):
-	print("_on_InfoBox_inspect_button_pressed  ", node_2d, physical_unit)
 	emit_signal("inspect_button_pressed", node_2d, physical_unit)
