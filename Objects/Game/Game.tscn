@@ -37,6 +37,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Instructions" type="Label" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -172.0
+margin_top = 16.0
+margin_right = -4.0
+text = "Up Arrow - Thrust Forward
+Left | Right Arrow - Rotate
+Mouse Wheel - Zoom
+Left Click - Change Ship
+Space - Fire Weapon
+I - Inspect Ship
+H - Help (Command List)"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RocketInspector" parent="." instance=ExtResource( 5 )]
 visible = false
 margin_top = 0.0

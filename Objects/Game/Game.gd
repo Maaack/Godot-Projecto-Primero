@@ -2,6 +2,7 @@ extends Control
 
 
 onready var viewport_and_overlay = $ViewportAndOverlay
+onready var instructions = $Instructions
 onready var inspector = $RocketInspector
 
 var space_scene = preload("res://Objects/WorldSpace/Space/Space.tscn")
@@ -10,6 +11,7 @@ var space_instance = null
 func start_game():
 	space_instance = space_scene.instance()
 	viewport_and_overlay.set_scene_instance(space_instance)
+	instructions.show()
 	return space_instance
 
 func _on_ViewportAndOverlay_world_space_ready():
@@ -31,4 +33,9 @@ func _input(event):
 			inspector.hide()
 		else:
 			inspector.show()
+	if event.is_action_pressed("ui_help"):
+		if instructions.visible:
+			instructions.hide()
+		else:
+			instructions.show()
 
