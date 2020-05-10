@@ -77,9 +77,9 @@ margin_right = 848.0
 margin_bottom = 148.0
 size_flags_vertical = 6
 theme = ExtResource( 1 )
-text = "You left the system!
+text = "You left the system.
 
-You won..."
+By one means or another..."
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
@@ -93,5 +93,5 @@ margin_right = 848.0
 margin_bottom = 210.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
-text = "Thanks?"
+text = "Goodbye"
 [connection signal="pressed" from="MarginContainer/NinePatchRect/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
