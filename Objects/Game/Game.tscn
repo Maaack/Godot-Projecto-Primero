@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Game/FPSCounter.gd" type="Script" id=2]
 [ext_resource path="res://Objects/Interface/ViewportAndOverlay/ViewportAndOverlay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Interface/StartMenu/StartMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Interface/Window/RocketInspector/RocketInspector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Interface/EndScreen/EndScreen.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Control"]
 anchor_right = 1.0
@@ -17,6 +18,9 @@ __meta__ = {
 [node name="ViewportAndOverlay" parent="." instance=ExtResource( 3 )]
 
 [node name="StartMenu" parent="." instance=ExtResource( 4 )]
+
+[node name="EndScreen" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="FPS" type="Label" parent="."]
 anchor_left = 1.0

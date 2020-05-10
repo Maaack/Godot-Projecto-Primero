@@ -11,6 +11,7 @@ var space_instance = null
 func start_game():
 	space_instance = space_scene.instance()
 	viewport_and_overlay.set_scene_instance(space_instance)
+	space_instance.connect("player_left_area", self, "_on_Space_player_left_area")
 	instructions.show()
 	return space_instance
 
@@ -25,6 +26,9 @@ func _on_ViewportAndOverlay_world_space_ready():
 
 func _on_StartMenu_start_game_triggered():
 	start_game()
+
+func _on_Space_player_left_area():
+	$EndScreen.show()
 
 func _input(event):
 	if event.is_action_pressed("ui_inspect"):

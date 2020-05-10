@@ -6,19 +6,18 @@ onready var gravity_space_collider = $Area2D/CollisionShape2D
 onready var planet = $Planet8
 onready var planet_collider = $Planet8/CollisionShape2D
 
+signal player_left_area
+
 export var sphere_size_mod = 1.5
 export var asteroid_spawn_distance_from_surface = 15000.0
 enum OrbitDirectionSetting{CLOCKWISE, COUNTER_CLOCKWISE, EITHER}
 export(OrbitDirectionSetting) var orbit_direction
 export var vector_scale_mod = 1.0
-
-var orbiting_node_scene = preload("res://Objects/WorldSpace/OrbitingNode2D/OrbitingNode2D.tscn")
-
 export(Array, Resource) var rings
-
 export(NodePath) var player_character_path
-var player_character
 
+var player_character
+var orbiting_node_scene = preload("res://Objects/WorldSpace/OrbitingNode2D/OrbitingNode2D.tscn")
 
 func get_space_radius():
 	return gravity_space_collider.shape.radius
@@ -77,3 +76,9 @@ func _ready():
 		player_character = get_node(player_character_path)
 	spawn_orbiting_rings()
 	gravity_space_collider.shape.radius *= sphere_size_mod
+
+func _on_Area2D_body_exited(body):
+	if body.has_method("get_commander"):
+		var commander = body.get_commander()
+		if commander == player_character:
+			emit_signal("player_left_area")

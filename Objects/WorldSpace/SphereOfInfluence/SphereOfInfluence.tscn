@@ -43,3 +43,4 @@ __meta__ = {
 }
 
 [node name="Planet8" parent="." instance=ExtResource( 7 )]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

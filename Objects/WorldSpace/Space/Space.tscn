@@ -93,3 +93,4 @@ position = Vector2( -22000, 0 )
 [node name="CorvetteC2" parent="." instance=ExtResource( 5 )]
 position = Vector2( -175500, -3800 )
 contents = ExtResource( 6 )
+[connection signal="player_left_area" from="SphereOfInfluence" to="." method="_on_SphereOfInfluence_player_left_area"]
