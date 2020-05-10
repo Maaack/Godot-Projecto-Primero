@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Objects/WorldSpace/Collectable/TracerBulletLootBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/originals/background_1.png" type="Texture" id=2]
 [ext_resource path="res://Objects/WorldSpace/Stations/StationAlpha.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/WorldSpace/Stations/StationGamma.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/CorvetteC.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Present/Collections/AlmostEmptyCorvetteCargoBay.tres" type="Resource" id=6]
 [ext_resource path="res://Objects/WorldSpace/Collectable/OxygenLootBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Character/Character.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/WorldSpace/SphereOfInfluence/SphereOfInfluence.tscn" type="PackedScene" id=9]
@@ -88,3 +89,7 @@ position = Vector2( -180000, -3.48895 )
 
 [node name="CorvetteC" parent="." instance=ExtResource( 5 )]
 position = Vector2( -22000, 0 )
+
+[node name="CorvetteC2" parent="." instance=ExtResource( 5 )]
+position = Vector2( -175500, -3800 )
+contents = ExtResource( 6 )
