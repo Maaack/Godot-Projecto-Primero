@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Objects/WorldSpace/Collectable/QuantityCollectable.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Resources/Present/Quantities/Munitions/TracerBullets10.tres" type="Resource" id=2]
-
-
+[ext_resource path="res://Resources/Present/Quantities/Munitions/TracerBullets20.tres" type="Resource" id=2]
 
 [node name="TracerBulletLootBox" instance=ExtResource( 1 )]
 physical_quantity = ExtResource( 2 )

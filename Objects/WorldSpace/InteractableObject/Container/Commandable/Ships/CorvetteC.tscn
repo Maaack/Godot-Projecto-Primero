@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Rocket4MC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/originals/corvette.png" type="Texture" id=2]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/WeaponSystemMount/WeaponHardpoint.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Present/Units/Components/Weapons/BasicProjectileWeapon.tres" type="Resource" id=4]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/BaseEngineMount.gd" type="Script" id=5]
+[ext_resource path="res://Resources/Present/Units/Components/Engines/MediumEngine.tres" type="Resource" id=6]
+[ext_resource path="res://Resources/Present/Units/Components/Engines/SmallEngine.tres" type="Resource" id=7]
+[ext_resource path="res://Resources/Present/Units/Components/Engines/MiniEngine.tres" type="Resource" id=8]
+[ext_resource path="res://Resources/Present/Units/Components/EnginesSystems/FourGroupEnginesSystem.tres" type="Resource" id=9]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/FourGroupEnginesMount.gd" type="Script" id=10]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/TriggerOutputMount.gd" type="Script" id=11]
+[ext_resource path="res://Resources/Present/Units/Components/MunitionsSystems/TracerLoadingSystem.tres" type="Resource" id=12]
+[ext_resource path="res://Resources/Present/Units/Components/WeaponsSystems/BasicWeaponsSystem.tres" type="Resource" id=13]
+[ext_resource path="res://Resources/Present/Collections/CorvetteCargoBay.tres" type="Resource" id=14]
+
+[node name="CorvetteC" instance=ExtResource( 1 )]
+contents = ExtResource( 14 )
+initial_engines_system_mount_path = NodePath("FourGroupEnginesSystemMount")
+initial_engine_mount_paths = [ NodePath("ForwardCenterEngineMount"), NodePath("ForwardLeftEngineMount"), NodePath("ForwardRightEngineMount"), NodePath("ReverseLeftEngineMount"), NodePath("ReverseRightEngineMount") ]
+initial_weapons_system_mount_path = NodePath("WeaponsSystemMount")
+initial_weapon_mount_paths = [ NodePath("FrontLeftHardpoint"), NodePath("FrontRightHardpoint") ]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( 0, -31, -31, 30, -4, 18, 4, 18, 31, 30 )
+
+[node name="FrontLeftHardpoint" type="Node2D" parent="." index="3" groups=[
+"MOUNT",
+"PROJECTILE_WEAPON",
+"WEAPON",
+]]
+position = Vector2( -6, -30 )
+script = ExtResource( 3 )
+mounted_system = ExtResource( 4 )
+
+[node name="FrontRightHardpoint" type="Node2D" parent="." index="4" groups=[
+"MOUNT",
+"PROJECTILE_WEAPON",
+"WEAPON",
+]]
+position = Vector2( 6, -30 )
+script = ExtResource( 3 )
+mounted_system = ExtResource( 4 )
+
+[node name="ForwardCenterEngineMount" type="Node2D" parent="." index="5" groups=[
+"ENGINE",
+"MOUNT",
+]]
+position = Vector2( 0, 18 )
+script = ExtResource( 5 )
+mounted_system = ExtResource( 6 )
+
+[node name="ForwardLeftEngineMount" type="Node2D" parent="." index="6" groups=[
+"ENGINE",
+"MOUNT",
+]]
+position = Vector2( -22, 28 )
+script = ExtResource( 5 )
+mounted_system = ExtResource( 7 )
+
+[node name="ForwardRightEngineMount" type="Node2D" parent="." index="7" groups=[
+"ENGINE",
+"MOUNT",
+]]
+position = Vector2( 22, 28 )
+script = ExtResource( 5 )
+mounted_system = ExtResource( 7 )
+
+[node name="ReverseLeftEngineMount" type="Node2D" parent="." index="8" groups=[
+"ENGINE",
+"MOUNT",
+]]
+position = Vector2( -22, 8 )
+rotation = 3.14159
+script = ExtResource( 5 )
+mounted_system = ExtResource( 8 )
+
+[node name="ReverseRightEngineMount" type="Node2D" parent="." index="9" groups=[
+"ENGINE",
+"MOUNT",
+]]
+position = Vector2( 22, 8 )
+rotation = 3.14159
+script = ExtResource( 5 )
+mounted_system = ExtResource( 8 )
+
+[node name="FourGroupEnginesSystemMount" type="Node2D" parent="." index="10" groups=[
+"ENIGNES_SYSTEM",
+"MOUNT",
+]]
+visible = false
+script = ExtResource( 10 )
+mounted_system = ExtResource( 9 )
+initial_forward_engine_paths = [ NodePath("../ForwardCenterEngineMount"), NodePath("../ForwardLeftEngineMount"), NodePath("../ForwardRightEngineMount") ]
+initial_reverse_engine_paths = [ NodePath("../ReverseLeftEngineMount"), NodePath("../ReverseRightEngineMount") ]
+initial_right_spin_engine_paths = [ NodePath("../ForwardLeftEngineMount"), NodePath("../ReverseRightEngineMount") ]
+initial_left_spin_engine_paths = [ NodePath("../ForwardRightEngineMount"), NodePath("../ReverseLeftEngineMount") ]
+
+[node name="WeaponsSystemMount" type="Node2D" parent="." index="11" groups=[
+"MOUNT",
+"WEAPONS_SYSTEM",
+]]
+visible = false
+script = ExtResource( 11 )
+mounted_system = ExtResource( 13 )
+initial_output_mounts = [ NodePath("../FrontLeftHardpoint"), NodePath("../FrontRightHardpoint"), NodePath("../TracerLoadingMount") ]
+
+[node name="TracerLoadingMount" type="Node2D" parent="." index="12" groups=[
+"MOUNT",
+"TRACER_LOADER",
+]]
+visible = false
+script = ExtResource( 11 )
+mounted_system = ExtResource( 12 )
+initial_output_mounts = [ NodePath("../FrontLeftHardpoint"), NodePath("../FrontRightHardpoint") ]
