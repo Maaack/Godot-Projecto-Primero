@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Rocket4MC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/originals/corvette.png" type="Texture" id=2]
@@ -14,8 +14,16 @@
 [ext_resource path="res://Resources/Present/Units/Components/MunitionsSystems/TracerLoadingSystem.tres" type="Resource" id=12]
 [ext_resource path="res://Resources/Present/Units/Components/WeaponsSystems/BasicWeaponsSystem.tres" type="Resource" id=13]
 [ext_resource path="res://Resources/Present/Collections/CorvetteCargoBay.tres" type="Resource" id=14]
+[ext_resource path="res://Resources/Present/Destructables/ShipHull.tres" type="Resource" id=15]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/BaseCombatShip.gd" type="Script" id=16]
 
 [node name="CorvetteC" instance=ExtResource( 1 )]
+mass = 1800.0
+continuous_cd = 2
+can_sleep = false
+script = ExtResource( 16 )
+destructable = ExtResource( 15 )
+camera_scale = 0.2
 contents = ExtResource( 14 )
 initial_engines_system_mount_path = NodePath("FourGroupEnginesSystemMount")
 initial_engine_mount_paths = [ NodePath("ForwardCenterEngineMount"), NodePath("ForwardLeftEngineMount"), NodePath("ForwardRightEngineMount"), NodePath("ReverseLeftEngineMount"), NodePath("ReverseRightEngineMount") ]
@@ -117,3 +125,4 @@ visible = false
 script = ExtResource( 11 )
 mounted_system = ExtResource( 12 )
 initial_output_mounts = [ NodePath("../FrontLeftHardpoint"), NodePath("../FrontRightHardpoint") ]
+[connection signal="body_entered" from="CollectableArea" to="." method="_on_CollectableArea_body_entered"]

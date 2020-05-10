@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Resources/Abstract/PhysicalQuantity.gd" type="Script" id=1]
-[ext_resource path="res://Assets/originals/interface/icons/24x24/molecular_hydrogen.png" type="Texture" id=2]
+[ext_resource path="res://Assets/originals/interface/icons/empty_open_box_round.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-group_name = "HYDROGEN"
-readable_name = "Hydrogen"
+group_name = "EMPTY"
+readable_name = "Empty"
 icon = ExtResource( 2 )
-size = Vector2( 100, 10 )
-mass = 1.0
+size = Vector2( 100, 100 )
+mass = 0.0
 numerical_unit = 0
-quantity = 100.0
+quantity = 200.0

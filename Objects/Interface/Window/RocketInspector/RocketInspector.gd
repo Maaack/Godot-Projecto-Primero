@@ -23,10 +23,12 @@ func hide_info_box(physical_unit:PhysicalUnit):
 
 func inspect_toggled(button_pressed:bool, physical_unit:PhysicalUnit):
 	var node_2d
+	if not is_instance_valid(physical_unit):
+		return
 	if unit_component_map.has(physical_unit):
 		node_2d = unit_component_map[physical_unit]
 	else:
-		if physical_unit.component_scene == null:
+		if not physical_unit is PackedScenesUnit or physical_unit.component_scene == null:
 			return
 		node_2d = physical_unit.component_scene.instance()
 		node_2d.set_physical_unit(physical_unit, false)
