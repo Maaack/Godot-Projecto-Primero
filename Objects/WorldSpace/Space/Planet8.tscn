@@ -3,7 +3,6 @@
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/RigidBody2D.gd" type="Script" id=1]
 [ext_resource path="res://Assets/planets/planet08.png" type="Texture" id=2]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 12891.0
 

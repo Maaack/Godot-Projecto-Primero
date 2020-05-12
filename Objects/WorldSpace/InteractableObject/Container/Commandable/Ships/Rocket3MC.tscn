@@ -1,5 +1,5 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/BaseCombatShip.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Base3MCShip.tscn" type="PackedScene" id=1]
 
 [node name="Rocket3MC" instance=ExtResource( 1 )]

@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/BaseCombatShip.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Base3MCShip.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/originals/pequod_v2.png" type="Texture" id=2]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/WeaponsSystem/WeaponsSystem.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/WeaponsSystem/TracerLoadingSystem.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/Present/Collections/MassiveCargoBay.tres" type="Resource" id=5]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/OutputSystem/EngineSystem/ThreeGroupEngineSystem.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Resources/Present/Units/Components/Engines/BFEngine.tres" type="Resource" id=9]
 [ext_resource path="res://Resources/Present/Units/Components/Engines/SmallEngine.tres" type="Resource" id=10]
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 24 )
@@ -24,6 +24,7 @@ radius = 192.0
 [node name="Pequod" instance=ExtResource( 1 )]
 mass = 10000.0
 camera_scale = 0.5
+contents = ExtResource( 5 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

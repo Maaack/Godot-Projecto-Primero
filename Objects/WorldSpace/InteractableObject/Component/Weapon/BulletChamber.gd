@@ -3,7 +3,7 @@ extends "res://Objects/WorldSpace/InteractableObject/Node2D.gd"
 
 const BASE_IMPULSE_VECTOR = Vector2(1,0)
 const BASE_ORIENTATION = -PI/2
-export var initial_bullet_impulse = 800.0
+export var initial_bullet_impulse = 1600.0
 export var bullet_self_destruct_timeout = 10.0
 export var max_loaded_munitions = 1
 export var max_firing_munitions = 1

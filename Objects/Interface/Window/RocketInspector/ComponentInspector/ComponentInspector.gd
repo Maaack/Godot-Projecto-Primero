@@ -18,6 +18,8 @@ func show_component(component_node:Node2D):
 	show_mounts(component_node, texture_scale_ratio)
 
 func set_texture(component_node:Node2D):
+	if component_node == null:
+		return
 	var texture = circuit_board_texture
 	if component_node.sprite_node != null:
 		texture = component_node.sprite_node.texture

@@ -6,3 +6,5 @@ func _on_CollectableArea_body_entered(body):
 		if body.has_method('collect'):
 			var quantity = body.collect()
 			add_quantity_to_contents(quantity)
+	else:
+		print("Empty Space Required: %d M^2" % [body.physical_quantity.get_area()])

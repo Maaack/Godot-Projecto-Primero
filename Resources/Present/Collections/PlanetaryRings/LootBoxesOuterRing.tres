@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Abstract/Collections/PlanetaryRing.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Present/Quantities/LootBoxes/BulletLootBoxes.tres" type="Resource" id=2]
+[ext_resource path="res://Resources/Present/Quantities/LootBoxes/OxygenLootBoxes.tres" type="Resource" id=3]
+[ext_resource path="res://Resources/Present/Quantities/LootBoxes/TracerBulletLootBoxes.tres" type="Resource" id=4]
+[ext_resource path="res://Resources/Present/Quantities/LootBoxes/HydrogenLootBoxes.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 1 )
+physical_quantities = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ]
+inner_radius = 64000.0
+outer_radius = 192000.0

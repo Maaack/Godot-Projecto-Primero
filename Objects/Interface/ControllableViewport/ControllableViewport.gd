@@ -5,7 +5,7 @@ const VIEW_TYPE_TRACKING = 0
 const VIEW_TYPE_FREE = 1
 const ZOOM_RATIO = 0.8
 const ZOOM_IN_MAX = 6
-const ZOOM_OUT_MAX = 22
+const ZOOM_OUT_MAX = 26
 
 export var click_range = 32
 onready var camera_2d = $ViewportContainer/Viewport/Camera2D

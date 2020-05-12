@@ -4,9 +4,12 @@ extends "res://Objects/WorldSpace/WorldSpace.gd"
 onready var character = $Character
 onready var simple_rocket = $Rocket3MC
 onready var pequod = $Pequod
-onready var station = $Station
+onready var station_alpha = $StationAlpha
+onready var station_gamma = $StationGamma
 onready var planet8 = $SphereOfInfluence/Planet8
 onready var sphere_of_influence = $SphereOfInfluence
+
+signal player_left_area
 
 var asteroid_counter = 0
 
@@ -39,4 +42,6 @@ func spawn(physical_unit:PackedScenesUnit):
 
 func put_in_orbit(resource:PhysicalUnit):
 	sphere_of_influence.spawn_orbiting_sprite(resource)
-	
+
+func _on_SphereOfInfluence_player_left_area():
+	emit_signal("player_left_area")
