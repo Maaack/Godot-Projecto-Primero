@@ -57,23 +57,23 @@ func trigger_off():
 func integrate_forces(state):
 	engine_wake.hide()
 	if not is_triggered:
-		engine_sound.stop()
+		engine_sound.stream_paused = true
 		return
 	var fuels_required = get_fuel_requirement()
 	if fuels_required == null:
-		engine_sound.stop()
+		engine_sound.stream_paused = true
 		return
 	var burned_fuel = burn_fuel()
 	if burned_fuel == null:
-		engine_sound.stop()
+		engine_sound.stream_paused = true
 		return
 	var burned_ratio = burned_fuel.get_mass() / fuels_required.get_mass()
 	if burned_ratio < minimum_throttle:
-		engine_sound.stop()
+		engine_sound.stream_paused = true
 		return
 	engine_wake.show()
-	if not engine_sound.playing:
-		engine_sound.play()
+	if engine_sound.stream_paused:
+		engine_sound.stream_paused = false
 	var physical_owner = get_physical_owner()
 	var rotation_in_world_space = get_rotation_in_world_space()
 	var total_engine_impulse = burned_ratio * max_engine_impulse

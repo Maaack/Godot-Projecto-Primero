@@ -20,4 +20,6 @@ texture = ExtResource( 2 )
 
 [node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+autoplay = true
+stream_paused = true
 script = ExtResource( 5 )
