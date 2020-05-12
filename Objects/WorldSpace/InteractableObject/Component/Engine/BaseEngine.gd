@@ -5,8 +5,10 @@ const BASE_IMPULSE_VECTOR = Vector2(1, 0)
 const BASE_ORIENTATION = -PI/2
 const MASS_TO_IMPULSE_RATIO = 0.00001
 const IMPULSE_TO_WAKE_RATIO = 0.001
+const MAX_POSSIBLE_THRUST = 10000
 
 onready var engine_wake = $EngineWake/Sprite
+onready var engine_sound = $EngineSound
 
 export(Resource) var fuel_requirement setget set_fuel_requirement
 export var max_engine_impulse = 1000.0 setget set_max_engine_impulse
@@ -41,6 +43,11 @@ func set_engine_wake_size():
 	engine_wake.scale = init_engine_wake_scale * scale_ratio
 	engine_wake.position = init_engine_wake_position * scale_ratio
 
+func set_engine_volume():
+	if engine_sound == null:
+		return
+	engine_sound.volume_db = linear2db(max_engine_impulse / MAX_POSSIBLE_THRUST)
+
 func trigger_on():
 	is_triggered = true
 
@@ -50,17 +57,23 @@ func trigger_off():
 func integrate_forces(state):
 	engine_wake.hide()
 	if not is_triggered:
+		engine_sound.stop()
 		return
 	var fuels_required = get_fuel_requirement()
 	if fuels_required == null:
+		engine_sound.stop()
 		return
 	var burned_fuel = burn_fuel()
 	if burned_fuel == null:
+		engine_sound.stop()
 		return
 	var burned_ratio = burned_fuel.get_mass() / fuels_required.get_mass()
 	if burned_ratio < minimum_throttle:
+		engine_sound.stop()
 		return
 	engine_wake.show()
+	if not engine_sound.playing:
+		engine_sound.play()
 	var physical_owner = get_physical_owner()
 	var rotation_in_world_space = get_rotation_in_world_space()
 	var total_engine_impulse = burned_ratio * max_engine_impulse

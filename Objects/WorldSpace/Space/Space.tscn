@@ -98,6 +98,7 @@ contents = ExtResource( 6 )
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+volume_db = -10.0
 autoplay = true
 script = ExtResource( 16 )
 [connection signal="player_left_area" from="SphereOfInfluence" to="." method="_on_SphereOfInfluence_player_left_area"]
