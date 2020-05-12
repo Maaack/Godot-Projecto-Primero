@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/146770_qubodup_rocket-boost-engine-loop.ogg-6244282d92f080073031c5e9c3a3a47d.oggstr"
+
+[deps]
+
+source_file="res://Assets/sounds/146770_qubodup_rocket-boost-engine-loop.ogg"
+dest_files=[ "res://.import/146770_qubodup_rocket-boost-engine-loop.ogg-6244282d92f080073031c5e9c3a3a47d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

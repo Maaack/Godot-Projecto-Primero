@@ -3,6 +3,9 @@ extends "res://Objects/WorldSpace/InteractableObject/Node2D.gd"
 
 const BASE_IMPULSE_VECTOR = Vector2(1,0)
 const BASE_ORIENTATION = -PI/2
+
+onready var fire_sound = $FireSound
+
 export var initial_bullet_impulse = 1600.0
 export var bullet_self_destruct_timeout = 10.0
 export var max_loaded_munitions = 1
@@ -52,6 +55,7 @@ func fire_munitions():
 			if firing_munition.group_name == "TRACER_BULLET":
 				add_tracer(instance)
 			push_bullet(instance)
+			fire_sound.play()
 		if loaded_munitions.quantity == 0:
 			loaded_munitions = null
 

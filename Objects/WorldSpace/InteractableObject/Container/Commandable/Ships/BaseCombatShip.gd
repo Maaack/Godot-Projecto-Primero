@@ -1,6 +1,10 @@
 extends "res://Objects/WorldSpace/InteractableObject/Container/Commandable/CombatShip.gd"
 
 
+func _ready():
+	if is_instance_valid($CollisionSound):
+		collision_sound = $CollisionSound
+
 func _on_CollectableArea_body_entered(body):
 	if contents.has_empty_space(body.physical_quantity.get_area()):
 		if body.has_method('collect'):

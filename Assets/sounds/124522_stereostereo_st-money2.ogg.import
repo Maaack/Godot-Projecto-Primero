@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/124522_stereostereo_st-money2.ogg-be308ca855d1556b18e6382e95271967.oggstr"
+
+[deps]
+
+source_file="res://Assets/sounds/124522_stereostereo_st-money2.ogg"
+dest_files=[ "res://.import/124522_stereostereo_st-money2.ogg-be308ca855d1556b18e6382e95271967.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

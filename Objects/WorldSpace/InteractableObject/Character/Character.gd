@@ -66,6 +66,7 @@ func reward(quantities_array:Array):
 		contents = PhysicalCollection.new()
 	for quantity in quantities_array:
 		contents.add_physical_quantity(quantity)
+		$MoneySound.play()
 
 func get_physical_owner():
 	return self

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Engine/BaseEngine.gd" type="Script" id=1]
 [ext_resource path="res://Assets/originals/engine_wake.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Present/Collections/HydrogenOxygenFuel.tres" type="Resource" id=3]
+[ext_resource path="res://Assets/sounds/146770_qubodup_rocket-boost-engine-loop.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Objects/WorldSpace/Space/AudioPlayer2D.gd" type="Script" id=5]
 
 [node name="BaseEngine" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,3 +17,9 @@ visible = false
 position = Vector2( 0, 32 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
+
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+stream_paused = true
+script = ExtResource( 5 )

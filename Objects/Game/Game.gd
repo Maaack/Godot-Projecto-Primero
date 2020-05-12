@@ -42,4 +42,9 @@ func _input(event):
 			instructions.hide()
 		else:
 			instructions.show()
+	if event.is_action_pressed("ui_end"):
+		if $Credits.visible:
+			$Credits.hide()
+		else:
+			$Credits.show()
 

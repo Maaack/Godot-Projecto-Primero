@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Objects/WorldSpace/Collectable/TracerBulletLootBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/originals/background_1.png" type="Texture" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Objects/WorldSpace/Collectable/HydrogenLootBox.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Pequod.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/Rocket3MC.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/sounds/181031_almusic34_deep-space.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Objects/WorldSpace/Space/AudioPlayer.gd" type="Script" id=16]
 
 [node name="Space" type="Node2D"]
 script = ExtResource( 10 )
@@ -45,28 +47,28 @@ asteroid_spawn_distance_from_surface = 10000.0
 player_character_path = NodePath("../Character")
 
 [node name="BulletLootBox3" parent="." instance=ExtResource( 11 )]
-position = Vector2( -178639, -195.489 )
+position = Vector2( -178639, -195 )
 
 [node name="BulletLootBox1" parent="." instance=ExtResource( 11 )]
-position = Vector2( -178767, -195.489 )
+position = Vector2( -178767, -195 )
 
 [node name="BulletLootBox2" parent="." instance=ExtResource( 11 )]
-position = Vector2( -178703, -195.489 )
+position = Vector2( -178703, -195 )
 
 [node name="BulletLootBox4" parent="." instance=ExtResource( 11 )]
-position = Vector2( -178575, -195.489 )
+position = Vector2( -178575, -195 )
 
 [node name="TracerBulletLootBox" parent="." instance=ExtResource( 1 )]
-position = Vector2( -178735, -259.489 )
+position = Vector2( -178735, -260 )
 
 [node name="TracerBulletLootBox2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -178607, -259.489 )
+position = Vector2( -178607, -260 )
 
 [node name="OxygenLootBox" parent="." instance=ExtResource( 7 )]
-position = Vector2( -178927, -259.489 )
+position = Vector2( -178927, -260 )
 
 [node name="HydrogenLootBox" parent="." instance=ExtResource( 12 )]
-position = Vector2( -178927, -323.489 )
+position = Vector2( -178927, -323 )
 
 [node name="Rocket3MC" parent="." instance=ExtResource( 14 )]
 position = Vector2( -178668, 0 )
@@ -93,4 +95,10 @@ position = Vector2( -22000, 0 )
 [node name="CorvetteC2" parent="." instance=ExtResource( 5 )]
 position = Vector2( -175500, -3800 )
 contents = ExtResource( 6 )
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -10.0
+autoplay = true
+script = ExtResource( 16 )
 [connection signal="player_left_area" from="SphereOfInfluence" to="." method="_on_SphereOfInfluence_player_left_area"]

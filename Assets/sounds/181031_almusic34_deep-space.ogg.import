@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/181031_almusic34_deep-space.ogg-cdcc774df2155c48bd7c19b25aa8b563.oggstr"
+
+[deps]
+
+source_file="res://Assets/sounds/181031_almusic34_deep-space.ogg"
+dest_files=[ "res://.import/181031_almusic34_deep-space.ogg-cdcc774df2155c48bd7c19b25aa8b563.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

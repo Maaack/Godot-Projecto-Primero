@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Objects/Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Game/FPSCounter.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Objects/Interface/StartMenu/StartMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Interface/Window/RocketInspector/RocketInspector.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Interface/EndScreen/EndScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Interface/Credits/Credits.tscn" type="PackedScene" id=7]
 
 [node name="Game" type="Control"]
 anchor_right = 1.0
@@ -20,6 +21,9 @@ __meta__ = {
 [node name="StartMenu" parent="." instance=ExtResource( 4 )]
 
 [node name="EndScreen" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="Credits" parent="." instance=ExtResource( 7 )]
 visible = false
 
 [node name="FPS" type="Label" parent="."]
@@ -45,16 +49,20 @@ __meta__ = {
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -172.0
+margin_left = -253.0
 margin_top = 16.0
-margin_right = -4.0
-text = "Up Arrow - Thrust Forward
-Left | Right Arrow - Rotate
+margin_right = -8.0
+margin_bottom = 115.0
+text = "Arrow Keys or WASD - Movement
 Mouse Wheel - Zoom
 Left Click - Change Ship
 Space - Fire Weapon
 I - Inspect Ship
-H - Help (Command List)"
+M - Mute Sounds
+, or . - Lower or Raise Volume
+End - Show Credits
+H - Help (Command List)
+"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false

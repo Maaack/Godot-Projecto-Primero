@@ -27,6 +27,7 @@ handle_input_locally = false
 hdr = false
 usage = 0
 render_target_update_mode = 3
+audio_listener_enable_2d = true
 
 [node name="Camera2D" type="Camera2D" parent="ViewportContainer/Viewport"]
 rotating = true

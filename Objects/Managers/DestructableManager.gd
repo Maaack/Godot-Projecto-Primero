@@ -29,6 +29,8 @@ func process_all_forces(delta, object:RigidBody2D, sprite:Sprite):
 	if total_forces > destructable.force_tolerance:
 		var total_damage = (total_forces - destructable.force_tolerance) * destructable.force_damage
 		damage(total_damage, object, null)
+		if is_instance_valid(object.collision_sound):
+			object.collision_sound.play()
 
 func set_last_values(delta, object:RigidBody2D):
 	if last_linear_velocity:
