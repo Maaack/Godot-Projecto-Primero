@@ -12,6 +12,7 @@ var destructable_manager
 var destroyed = false
 var last_linear_velocity
 var legal_owner = null setget set_legal_owner, get_legal_owner
+var collision_sound
 
 signal destroyed
 

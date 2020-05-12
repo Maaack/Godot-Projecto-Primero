@@ -1,5 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://Assets/sounds/67617_qubodup_metal-crash-collision.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Objects/WorldSpace/Space/AudioPlayer2DOnce.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Present/Collections/SmallCargoBay.tres" type="Resource" id=6]
 [ext_resource path="res://Assets/originals/simple_rocket_1.png" type="Texture" id=8]
 [ext_resource path="res://Resources/Present/Destructables/ShipHull.tres" type="Resource" id=9]
@@ -42,4 +44,10 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableArea"]
 shape = SubResource( 1 )
+
+[node name="CollisionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = 5.0
+pitch_scale = 0.5
+script = ExtResource( 2 )
 [connection signal="body_entered" from="CollectableArea" to="." method="_on_CollectableArea_body_entered"]

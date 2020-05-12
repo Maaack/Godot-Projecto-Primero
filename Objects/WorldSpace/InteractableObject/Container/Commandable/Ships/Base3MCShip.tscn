@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Resources/Present/Units/Components/Engines/MiniEngine.tres" type="Resource" id=1]
 [ext_resource path="res://Resources/Present/Units/Components/Engines/MediumEngine.tres" type="Resource" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/ThreeGroupEngineMount.gd" type="Script" id=12]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Container/Commandable/Ships/BaseCombatShip.gd" type="Script" id=13]
 [ext_resource path="res://Objects/WorldSpace/InteractableObject/Component/Mount/EngineMount/BaseEngineMount.gd" type="Script" id=14]
+[ext_resource path="res://Objects/WorldSpace/Space/AudioPlayer2DOnce.gd" type="Script" id=15]
+[ext_resource path="res://Assets/sounds/67617_qubodup_metal-crash-collision.ogg" type="AudioStream" id=16]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 64.0
@@ -174,4 +176,10 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableArea"]
 shape = SubResource( 1 )
+
+[node name="CollisionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+volume_db = 5.0
+pitch_scale = 0.5
+script = ExtResource( 15 )
 [connection signal="body_entered" from="CollectableArea" to="." method="_on_CollectableArea_body_entered"]
